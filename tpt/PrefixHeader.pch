@@ -12,5 +12,6 @@
 #import "HYBNetworking.h"
 #import "SVProgressHUD.h"
 #import "TPCommon.h"
+#import "Macro.h"
 
 

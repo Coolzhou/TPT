@@ -7,7 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1869DD7A1D40B1C200BA6526 /* TPMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1869DD791D40B1C200BA6526 /* TPMainViewController.m */; };
+		180909141D48CBF7004C47F9 /* MCContent.m in Sources */ = {isa = PBXBuildFile; fileRef = 1809090D1D48CBF7004C47F9 /* MCContent.m */; };
+		180909151D48CBF7004C47F9 /* MCLeftSliderManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1809090F1D48CBF7004C47F9 /* MCLeftSliderManager.m */; };
+		180909161D48CBF7004C47F9 /* MCLeftSlideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 180909111D48CBF7004C47F9 /* MCLeftSlideViewController.m */; };
+		180909171D48CBF7004C47F9 /* UIView_extra.m in Sources */ = {isa = PBXBuildFile; fileRef = 180909131D48CBF7004C47F9 /* UIView_extra.m */; };
+		1809091A1D48CC0B004C47F9 /* MCFirstPageVIewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 180909191D48CC0B004C47F9 /* MCFirstPageVIewController.m */; };
+		1809091D1D48CC5E004C47F9 /* MCLeftSortsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1809091C1D48CC5E004C47F9 /* MCLeftSortsViewController.m */; };
+		180909211D48CD06004C47F9 /* MCMainNavgationVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 180909201D48CD06004C47F9 /* MCMainNavgationVC.m */; };
+		180909251D48CE69004C47F9 /* MCOtherViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 180909241D48CE69004C47F9 /* MCOtherViewController.m */; };
 		1869DD7E1D40C21700BA6526 /* PeripheralInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 1869DD7D1D40C21700BA6526 /* PeripheralInfo.m */; };
 		18B23CEF1D41CC3B00CE9AA6 /* ShareSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18B23CCD1D41CC3B00CE9AA6 /* ShareSDK.framework */; };
 		18B23CF01D41CC3B00CE9AA6 /* ShareSDKExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18B23CD01D41CC3B00CE9AA6 /* ShareSDKExtension.framework */; };
@@ -34,9 +41,9 @@
 		18B23D0F1D41CD6E00CE9AA6 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18B23D0E1D41CD6E00CE9AA6 /* MediaPlayer.framework */; };
 		18B23D111D41CD7800CE9AA6 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18B23D101D41CD7800CE9AA6 /* AssetsLibrary.framework */; };
 		18B23D131D41CD8200CE9AA6 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18B23D121D41CD8200CE9AA6 /* AddressBook.framework */; };
+		18B23D161D41D2D100CE9AA6 /* AppDelegate+shareSDK.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B23D151D41D2D100CE9AA6 /* AppDelegate+shareSDK.m */; };
 		18E560CF1D3DBB930053B9A4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E560CE1D3DBB930053B9A4 /* main.m */; };
 		18E560D21D3DBB930053B9A4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E560D11D3DBB930053B9A4 /* AppDelegate.m */; };
-		18E560D51D3DBB930053B9A4 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E560D41D3DBB930053B9A4 /* ViewController.m */; };
 		18E560D81D3DBB930053B9A4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18E560D61D3DBB930053B9A4 /* Main.storyboard */; };
 		18E560DA1D3DBB930053B9A4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18E560D91D3DBB930053B9A4 /* Assets.xcassets */; };
 		18E560DD1D3DBB930053B9A4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18E560DB1D3DBB930053B9A4 /* LaunchScreen.storyboard */; };
@@ -73,8 +80,25 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		1869DD781D40B1C200BA6526 /* TPMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPMainViewController.h; sourceTree = "<group>"; };
-		1869DD791D40B1C200BA6526 /* TPMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPMainViewController.m; sourceTree = "<group>"; };
+		180908E51D48AB31004C47F9 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		180908E61D48AB31004C47F9 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
+		1809090C1D48CBF7004C47F9 /* MCContent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCContent.h; sourceTree = "<group>"; };
+		1809090D1D48CBF7004C47F9 /* MCContent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCContent.m; sourceTree = "<group>"; };
+		1809090E1D48CBF7004C47F9 /* MCLeftSliderManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCLeftSliderManager.h; sourceTree = "<group>"; };
+		1809090F1D48CBF7004C47F9 /* MCLeftSliderManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCLeftSliderManager.m; sourceTree = "<group>"; };
+		180909101D48CBF7004C47F9 /* MCLeftSlideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCLeftSlideViewController.h; sourceTree = "<group>"; };
+		180909111D48CBF7004C47F9 /* MCLeftSlideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCLeftSlideViewController.m; sourceTree = "<group>"; };
+		180909121D48CBF7004C47F9 /* UIView_extra.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIView_extra.h; sourceTree = "<group>"; };
+		180909131D48CBF7004C47F9 /* UIView_extra.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIView_extra.m; sourceTree = "<group>"; };
+		180909181D48CC0B004C47F9 /* MCFirstPageVIewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCFirstPageVIewController.h; sourceTree = "<group>"; };
+		180909191D48CC0B004C47F9 /* MCFirstPageVIewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCFirstPageVIewController.m; sourceTree = "<group>"; };
+		1809091B1D48CC5E004C47F9 /* MCLeftSortsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCLeftSortsViewController.h; sourceTree = "<group>"; };
+		1809091C1D48CC5E004C47F9 /* MCLeftSortsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCLeftSortsViewController.m; sourceTree = "<group>"; };
+		1809091F1D48CD06004C47F9 /* MCMainNavgationVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCMainNavgationVC.h; sourceTree = "<group>"; };
+		180909201D48CD06004C47F9 /* MCMainNavgationVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCMainNavgationVC.m; sourceTree = "<group>"; };
+		180909221D48CDBC004C47F9 /* Macro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Macro.h; sourceTree = "<group>"; };
+		180909231D48CE69004C47F9 /* MCOtherViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCOtherViewController.h; sourceTree = "<group>"; };
+		180909241D48CE69004C47F9 /* MCOtherViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCOtherViewController.m; sourceTree = "<group>"; };
 		1869DD7B1D40B24400BA6526 /* TPCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPCommon.h; sourceTree = "<group>"; };
 		1869DD7C1D40C21700BA6526 /* PeripheralInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PeripheralInfo.h; sourceTree = "<group>"; };
 		1869DD7D1D40C21700BA6526 /* PeripheralInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PeripheralInfo.m; sourceTree = "<group>"; };
@@ -117,12 +141,12 @@
 		18B23D0E1D41CD6E00CE9AA6 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		18B23D101D41CD7800CE9AA6 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		18B23D121D41CD8200CE9AA6 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
+		18B23D141D41D2D100CE9AA6 /* AppDelegate+shareSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AppDelegate+shareSDK.h"; sourceTree = "<group>"; };
+		18B23D151D41D2D100CE9AA6 /* AppDelegate+shareSDK.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AppDelegate+shareSDK.m"; sourceTree = "<group>"; };
 		18E560CA1D3DBB930053B9A4 /* tpt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tpt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18E560CE1D3DBB930053B9A4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		18E560D01D3DBB930053B9A4 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		18E560D11D3DBB930053B9A4 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		18E560D31D3DBB930053B9A4 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		18E560D41D3DBB930053B9A4 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		18E560D71D3DBB930053B9A4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		18E560D91D3DBB930053B9A4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		18E560DC1D3DBB930053B9A4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -205,6 +229,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1809090B1D48CBF7004C47F9 /* LeftSlideViewController */ = {
+			isa = PBXGroup;
+			children = (
+				1809090C1D48CBF7004C47F9 /* MCContent.h */,
+				1809090D1D48CBF7004C47F9 /* MCContent.m */,
+				1809090E1D48CBF7004C47F9 /* MCLeftSliderManager.h */,
+				1809090F1D48CBF7004C47F9 /* MCLeftSliderManager.m */,
+				180909101D48CBF7004C47F9 /* MCLeftSlideViewController.h */,
+				180909111D48CBF7004C47F9 /* MCLeftSlideViewController.m */,
+				180909121D48CBF7004C47F9 /* UIView_extra.h */,
+				180909131D48CBF7004C47F9 /* UIView_extra.m */,
+			);
+			path = LeftSlideViewController;
+			sourceTree = "<group>";
+		};
+		1809091E1D48CCEC004C47F9 /* MCNavgation */ = {
+			isa = PBXGroup;
+			children = (
+				1809091F1D48CD06004C47F9 /* MCMainNavgationVC.h */,
+				180909201D48CD06004C47F9 /* MCMainNavgationVC.m */,
+			);
+			name = MCNavgation;
+			sourceTree = "<group>";
+		};
 		1869DD741D40B15900BA6526 /* 首页 */ = {
 			isa = PBXGroup;
 			children = (
@@ -218,8 +266,12 @@
 		1869DD751D40B16800BA6526 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				1869DD781D40B1C200BA6526 /* TPMainViewController.h */,
-				1869DD791D40B1C200BA6526 /* TPMainViewController.m */,
+				180909181D48CC0B004C47F9 /* MCFirstPageVIewController.h */,
+				180909191D48CC0B004C47F9 /* MCFirstPageVIewController.m */,
+				1809091B1D48CC5E004C47F9 /* MCLeftSortsViewController.h */,
+				1809091C1D48CC5E004C47F9 /* MCLeftSortsViewController.m */,
+				180909231D48CE69004C47F9 /* MCOtherViewController.h */,
+				180909241D48CE69004C47F9 /* MCOtherViewController.m */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -356,8 +408,6 @@
 			isa = PBXGroup;
 			children = (
 				18E561001D3DDBEA0053B9A4 /* Class */,
-				18E560D31D3DBB930053B9A4 /* ViewController.h */,
-				18E560D41D3DBB930053B9A4 /* ViewController.m */,
 				18E561011D3DDBFA0053B9A4 /* Foundation */,
 				18E561021D3DDC150053B9A4 /* Dependency */,
 				18E560CD1D3DBB930053B9A4 /* Supporting Files */,
@@ -370,8 +420,11 @@
 			children = (
 				18E560D01D3DBB930053B9A4 /* AppDelegate.h */,
 				18E560D11D3DBB930053B9A4 /* AppDelegate.m */,
+				18B23D141D41D2D100CE9AA6 /* AppDelegate+shareSDK.h */,
+				18B23D151D41D2D100CE9AA6 /* AppDelegate+shareSDK.m */,
 				18E561031D3DDCD10053B9A4 /* PrefixHeader.pch */,
 				1869DD7B1D40B24400BA6526 /* TPCommon.h */,
+				180909221D48CDBC004C47F9 /* Macro.h */,
 				18E560D91D3DBB930053B9A4 /* Assets.xcassets */,
 				18E560DB1D3DBB930053B9A4 /* LaunchScreen.storyboard */,
 				18E560DE1D3DBB930053B9A4 /* Info.plist */,
@@ -453,6 +506,8 @@
 		18E561071D3DDDB60053B9A4 /* 服务层 */ = {
 			isa = PBXGroup;
 			children = (
+				1809091E1D48CCEC004C47F9 /* MCNavgation */,
+				1809090B1D48CBF7004C47F9 /* LeftSlideViewController */,
 			);
 			name = "服务层";
 			sourceTree = "<group>";
@@ -682,20 +737,27 @@
 			buildActionMask = 2147483647;
 			files = (
 				18E561211D3E01FF0053B9A4 /* BabyDefine.m in Sources */,
-				18E560D51D3DBB930053B9A4 /* ViewController.m in Sources */,
 				18E5611E1D3E01FF0053B9A4 /* BabyBluetooth.m in Sources */,
 				18E5610A1D3DF6D90053B9A4 /* HYBNetworking.m in Sources */,
+				180909251D48CE69004C47F9 /* MCOtherViewController.m in Sources */,
 				18E560D21D3DBB930053B9A4 /* AppDelegate.m in Sources */,
 				18E561231D3E01FF0053B9A4 /* BabyPeripheralManager.m in Sources */,
 				18E5611F1D3E01FF0053B9A4 /* BabyCallback.m in Sources */,
+				1809091A1D48CC0B004C47F9 /* MCFirstPageVIewController.m in Sources */,
 				18E561201D3E01FF0053B9A4 /* BabyCentralManager.m in Sources */,
 				18E561221D3E01FF0053B9A4 /* BabyOptions.m in Sources */,
 				18E561251D3E01FF0053B9A4 /* BabySpeaker.m in Sources */,
+				180909211D48CD06004C47F9 /* MCMainNavgationVC.m in Sources */,
+				180909151D48CBF7004C47F9 /* MCLeftSliderManager.m in Sources */,
+				1809091D1D48CC5E004C47F9 /* MCLeftSortsViewController.m in Sources */,
 				18E561241D3E01FF0053B9A4 /* BabyRhythm.m in Sources */,
-				1869DD7A1D40B1C200BA6526 /* TPMainViewController.m in Sources */,
 				18E561261D3E01FF0053B9A4 /* BabyToy.m in Sources */,
+				18B23D161D41D2D100CE9AA6 /* AppDelegate+shareSDK.m in Sources */,
+				180909161D48CBF7004C47F9 /* MCLeftSlideViewController.m in Sources */,
 				1869DD7E1D40C21700BA6526 /* PeripheralInfo.m in Sources */,
+				180909171D48CBF7004C47F9 /* UIView_extra.m in Sources */,
 				18E560CF1D3DBB930053B9A4 /* main.m in Sources */,
+				180909141D48CBF7004C47F9 /* MCContent.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -735,6 +797,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				18E560D71D3DBB930053B9A4 /* Base */,
+				180908E61D48AB31004C47F9 /* zh-Hans */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -743,6 +806,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				18E560DC1D3DBB930053B9A4 /* Base */,
+				180908E51D48AB31004C47F9 /* zh-Hans */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -835,6 +899,7 @@
 			baseConfigurationReference = FFAD3A748BD7A4AAE36505A0 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/tpt/Dependency/ShareSDK",
@@ -851,6 +916,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/tpt/Dependency/ShareSDK/Support/PlatformSDK/SinaWeiboSDK",
 					"$(PROJECT_DIR)/tpt/Dependency/ShareSDK/Support/PlatformSDK/WeChatSDK",
+					"$(PROJECT_DIR)/tpt/Class",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.quarks.tpt;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -862,6 +928,7 @@
 			baseConfigurationReference = 43805D7A71E5C6F3FE52C4CF /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/tpt/Dependency/ShareSDK",
@@ -878,6 +945,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/tpt/Dependency/ShareSDK/Support/PlatformSDK/SinaWeiboSDK",
 					"$(PROJECT_DIR)/tpt/Dependency/ShareSDK/Support/PlatformSDK/WeChatSDK",
+					"$(PROJECT_DIR)/tpt/Class",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.quarks.tpt;
 				PRODUCT_NAME = "$(TARGET_NAME)";

@@ -7,8 +7,15 @@
 //
 
 #import "AppDelegate.h"
+#import "AppDelegate+shareSDK.h"
 #import <CoreBluetooth/CoreBluetooth.h>
 #import "BabyBluetooth.h"
+
+#import "MCLeftSlideViewController.h"
+#import "MCLeftSortsViewController.h"
+#import "MCFirstPageVIewController.h"
+#import "MCMainNavgationVC.h"
+
 
 @interface AppDelegate ()
 
@@ -20,9 +27,49 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
 
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    // Override point for customization after application launch.
+
     NSArray *centralManagerIdentifiers = launchOptions[UIApplicationLaunchOptionsBluetoothCentralsKey];
     NSLog(@"centralManagerIdentifiers = %@",centralManagerIdentifiers);
+
+    //shareSDK
+    [self shareSDKApplication:application didFinishLaunchingWithOptions:launchOptions];
+
+    [self initRootViewController];
+
+    [self.window makeKeyAndVisible];
     return YES;
+}
+
+/// 设置跟控制器
+-(void)initRootViewController{
+
+    MCFirstPageVIewController *firstVC = [[MCFirstPageVIewController alloc] init];
+
+    UINavigationController *firstNav = [[MCMainNavgationVC alloc] initWithRootViewController:firstVC];
+    firstNav.tabBarItem.image = [UIImage imageNamed:@"tab_buddy_nor"];
+    firstVC.title = @"首页";
+    firstVC.navigationController.navigationBar.barTintColor = [UIColor redColor];
+
+    MCLeftSortsViewController *leftVC = [[MCLeftSortsViewController alloc] init];
+    MCLeftSlideViewController *rootVC = [[MCLeftSlideViewController alloc] initWithLeftView:leftVC andMainView:firstNav];
+    self.window.rootViewController = rootVC;
+
+}
+
+- (BOOL)application:(UIApplication *)application
+      handleOpenURL:(NSURL *)url
+{
+    return [self shareSDKapplication:application handleOpenURL:url];
+}
+
+- (BOOL)application:(UIApplication *)application
+            openURL:(NSURL *)url
+  sourceApplication:(NSString *)sourceApplication
+         annotation:(id)annotation
+{
+    return [self shareSDKapplication:application openURL:url sourceApplication:sourceApplication annotation:annotation];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
