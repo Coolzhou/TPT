@@ -9,9 +9,12 @@
 #import "MCLeftSortsViewController.h"
 #import "MCLeftSliderManager.h"
 #import "MCOtherViewController.h"
+#import "TPLeftCell.h"
 
-
-@interface MCLeftSortsViewController () <UITableViewDelegate,UITableViewDataSource>
+@interface MCLeftSortsViewController () <UITableViewDelegate,UITableViewDataSource>{
+    NSArray *picArray;
+    NSArray *titleArray;
+}
 
 @end
 
@@ -19,26 +22,30 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    self.view.backgroundColor = [UIColor whiteColor];
+    picArray = [NSArray arrayWithObjects:@"left_home",@"left_history",@"left_down",@"left_setup",@"left_signout",nil];
+    titleArray = [NSArray arrayWithObjects:@"首页",@"历史记录",@"退烧攻略",@"系统设置",@"退出",nil];
 
-    UITableView *tableview = [[UITableView alloc] init];
+
+    UIImageView *bgImageView = [[UIImageView alloc]initWithFrame:self.view.bounds];
+    bgImageView.contentMode = UIViewContentModeScaleAspectFit;
+    bgImageView.image = [UIImage imageNamed:@"left_view_bg"];
+    [self.view addSubview:bgImageView];
+
+    UITableView *tableview = [[UITableView alloc]init];
+    tableview.backgroundColor = [UIColor orangeColor];
     self.tableview = tableview;
+    [self.view addSubview:tableview];
+
+    tableview.frame = CGRectMake(50, 0,kScreenWidth, kScreenHeight);
+    tableview.tableFooterView = [[UIView alloc]init];
     tableview.sectionHeaderHeight = 0;
     tableview.sectionFooterHeight = 0;
-    tableview.frame = self.view.bounds;
     tableview.dataSource = self;
     tableview.delegate  = self;
     tableview.separatorStyle = UITableViewCellSeparatorStyleNone;
-    [self.view addSubview:tableview];
-    
-  
-    UISwitch *lightButton = [UISwitch new];
-    lightButton.frame = CGRectMake((kScreenWidth - kMainPageDistance)/2 +100, kScreenHeight - 50, 200, 44);
-    [lightButton addTarget:self action:@selector(changeLight) forControlEvents:UIControlEventTouchUpInside];
-    
-    [self.view addSubview:lightButton];
-    // 设置夜间效果的颜色
+//    tableview.separatorColor = [UIColor whiteColor];
+
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -48,34 +55,16 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 7;
+    return 5;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *Identifier = @"Identifier";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:Identifier];
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:Identifier];
-    }
-    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-    cell.textLabel.font = [UIFont systemFontOfSize:20.0f];
-    
-    if (indexPath.row == 0) {
-        cell.textLabel.text = @"开通会员";
-    } else if (indexPath.row == 1) {
-        cell.textLabel.text = @"QQ钱包";
-    } else if (indexPath.row == 2) {
-        cell.textLabel.text = @"网上营业厅";
-    } else if (indexPath.row == 3) {
-        cell.textLabel.text = @"个性装扮";
-    } else if (indexPath.row == 4) {
-        cell.textLabel.text = @"我的收藏";
-    } else if (indexPath.row == 5) {
-        cell.textLabel.text = @"我的相册";
-    } else if (indexPath.row == 6) {
-        cell.textLabel.text = @"我的文件";
-    }
+    TPLeftCell *cell = [TPLeftCell theLeftCellWithTableView:tableView];
+//    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    cell.backgroundColor = [UIColor clearColor];
+    cell.titleLable.text = titleArray[indexPath.row];
+    cell.imageView.image =[UIImage imageNamed:picArray[indexPath.row]];
     return cell;
 }
 
@@ -84,7 +73,6 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     MCOtherViewController *vc = [[MCOtherViewController alloc] init];
-//    vc.titleName =
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     vc.titleName = cell.textLabel.text;
     [[MCLeftSliderManager sharedInstance].LeftSlideVC closeLeftView];//关闭左侧抽屉
@@ -92,11 +80,5 @@
 
 }
 
-
-
--(void)changeLight{
-    NSLog(@"daindad");
-
-}
 
 @end

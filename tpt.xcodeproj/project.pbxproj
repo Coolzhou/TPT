@@ -16,6 +16,7 @@
 		180909211D48CD06004C47F9 /* MCMainNavgationVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 180909201D48CD06004C47F9 /* MCMainNavgationVC.m */; };
 		180909251D48CE69004C47F9 /* MCOtherViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 180909241D48CE69004C47F9 /* MCOtherViewController.m */; };
 		1869DD7E1D40C21700BA6526 /* PeripheralInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 1869DD7D1D40C21700BA6526 /* PeripheralInfo.m */; };
+		18A3E0291D49EFB600FCFF01 /* XPQRotateDials.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A3E0281D49EFB600FCFF01 /* XPQRotateDials.m */; };
 		18B23CEF1D41CC3B00CE9AA6 /* ShareSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18B23CCD1D41CC3B00CE9AA6 /* ShareSDK.framework */; };
 		18B23CF01D41CC3B00CE9AA6 /* ShareSDKExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18B23CD01D41CC3B00CE9AA6 /* ShareSDKExtension.framework */; };
 		18B23CF11D41CC3B00CE9AA6 /* ShareSDKUI.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 18B23CD11D41CC3B00CE9AA6 /* ShareSDKUI.bundle */; };
@@ -42,6 +43,8 @@
 		18B23D111D41CD7800CE9AA6 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18B23D101D41CD7800CE9AA6 /* AssetsLibrary.framework */; };
 		18B23D131D41CD8200CE9AA6 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18B23D121D41CD8200CE9AA6 /* AddressBook.framework */; };
 		18B23D161D41D2D100CE9AA6 /* AppDelegate+shareSDK.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B23D151D41D2D100CE9AA6 /* AppDelegate+shareSDK.m */; };
+		18B953631D49CF5400F2221C /* TPLeftCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B953611D49CF5400F2221C /* TPLeftCell.m */; };
+		18B953641D49CF5400F2221C /* TPLeftCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18B953621D49CF5400F2221C /* TPLeftCell.xib */; };
 		18E560CF1D3DBB930053B9A4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E560CE1D3DBB930053B9A4 /* main.m */; };
 		18E560D21D3DBB930053B9A4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E560D11D3DBB930053B9A4 /* AppDelegate.m */; };
 		18E560D81D3DBB930053B9A4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18E560D61D3DBB930053B9A4 /* Main.storyboard */; };
@@ -102,6 +105,8 @@
 		1869DD7B1D40B24400BA6526 /* TPCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPCommon.h; sourceTree = "<group>"; };
 		1869DD7C1D40C21700BA6526 /* PeripheralInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PeripheralInfo.h; sourceTree = "<group>"; };
 		1869DD7D1D40C21700BA6526 /* PeripheralInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PeripheralInfo.m; sourceTree = "<group>"; };
+		18A3E0271D49EFB600FCFF01 /* XPQRotateDials.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XPQRotateDials.h; sourceTree = "<group>"; };
+		18A3E0281D49EFB600FCFF01 /* XPQRotateDials.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XPQRotateDials.m; sourceTree = "<group>"; };
 		18B23CCD1D41CC3B00CE9AA6 /* ShareSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ShareSDK.framework; sourceTree = "<group>"; };
 		18B23CD01D41CC3B00CE9AA6 /* ShareSDKExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ShareSDKExtension.framework; sourceTree = "<group>"; };
 		18B23CD11D41CC3B00CE9AA6 /* ShareSDKUI.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ShareSDKUI.bundle; sourceTree = "<group>"; };
@@ -143,6 +148,9 @@
 		18B23D121D41CD8200CE9AA6 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 		18B23D141D41D2D100CE9AA6 /* AppDelegate+shareSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AppDelegate+shareSDK.h"; sourceTree = "<group>"; };
 		18B23D151D41D2D100CE9AA6 /* AppDelegate+shareSDK.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AppDelegate+shareSDK.m"; sourceTree = "<group>"; };
+		18B953601D49CF5400F2221C /* TPLeftCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPLeftCell.h; sourceTree = "<group>"; };
+		18B953611D49CF5400F2221C /* TPLeftCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPLeftCell.m; sourceTree = "<group>"; };
+		18B953621D49CF5400F2221C /* TPLeftCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TPLeftCell.xib; sourceTree = "<group>"; };
 		18E560CA1D3DBB930053B9A4 /* tpt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tpt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18E560CE1D3DBB930053B9A4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		18E560D01D3DBB930053B9A4 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -279,6 +287,11 @@
 		1869DD761D40B18000BA6526 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				18B953601D49CF5400F2221C /* TPLeftCell.h */,
+				18B953611D49CF5400F2221C /* TPLeftCell.m */,
+				18B953621D49CF5400F2221C /* TPLeftCell.xib */,
+				18A3E0271D49EFB600FCFF01 /* XPQRotateDials.h */,
+				18A3E0281D49EFB600FCFF01 /* XPQRotateDials.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -673,6 +686,7 @@
 			files = (
 				18B23CF11D41CC3B00CE9AA6 /* ShareSDKUI.bundle in Resources */,
 				18E560DD1D3DBB930053B9A4 /* LaunchScreen.storyboard in Resources */,
+				18B953641D49CF5400F2221C /* TPLeftCell.xib in Resources */,
 				18E560DA1D3DBB930053B9A4 /* Assets.xcassets in Resources */,
 				18B23CF41D41CC3B00CE9AA6 /* TencentOpenApi_IOS_Bundle.bundle in Resources */,
 				18B23CFA1D41CC3C00CE9AA6 /* ShareSDK.bundle in Resources */,
@@ -736,12 +750,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18A3E0291D49EFB600FCFF01 /* XPQRotateDials.m in Sources */,
 				18E561211D3E01FF0053B9A4 /* BabyDefine.m in Sources */,
 				18E5611E1D3E01FF0053B9A4 /* BabyBluetooth.m in Sources */,
 				18E5610A1D3DF6D90053B9A4 /* HYBNetworking.m in Sources */,
 				180909251D48CE69004C47F9 /* MCOtherViewController.m in Sources */,
 				18E560D21D3DBB930053B9A4 /* AppDelegate.m in Sources */,
 				18E561231D3E01FF0053B9A4 /* BabyPeripheralManager.m in Sources */,
+				18B953631D49CF5400F2221C /* TPLeftCell.m in Sources */,
 				18E5611F1D3E01FF0053B9A4 /* BabyCallback.m in Sources */,
 				1809091A1D48CC0B004C47F9 /* MCFirstPageVIewController.m in Sources */,
 				18E561201D3E01FF0053B9A4 /* BabyCentralManager.m in Sources */,

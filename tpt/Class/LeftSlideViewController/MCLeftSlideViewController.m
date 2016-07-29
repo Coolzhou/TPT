@@ -71,7 +71,7 @@
             }
         }
         self.leftTableview.backgroundColor = [UIColor clearColor];
-        self.leftTableview.frame = CGRectMake(kMainPageDistance, (kScreenHeight - 300)/2, kScreenWidth - kMainPageDistance*1.5, 300);
+        self.leftTableview.frame = CGRectMake(kMainPageDistance/2, (kScreenHeight - 300)/3, kScreenWidth - kMainPageDistance, 300);
         //设置左侧tableview的初始位置和缩放系数
         self.leftTableview.transform = CGAffineTransformMakeScale(kLeftScale, kLeftScale);
         [self.view addSubview:self.leftVC.view];
@@ -250,9 +250,8 @@
     self.mainVC.view.transform = CGAffineTransformScale(CGAffineTransformIdentity,kMainPageScale,kMainPageScale);
     self.mainVC.view.center = kMainPageCenter;
     self.closed = NO;
-    
-    
-    self.leftVC.view.center = CGPointMake((kScreenWidth - kMainPageDistance) * 0.5, kScreenHeight * 0.5);
+
+    self.leftVC.view.center = CGPointMake((kScreenWidth -kMainPageDistance) * 0.5, kScreenHeight * 0.5);
     self.leftVC.view.transform = CGAffineTransformScale(CGAffineTransformIdentity,1.0,1.0);
     self.contentView.alpha = 0;
     
