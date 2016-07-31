@@ -28,7 +28,7 @@
     // Override point for customization after application launch.
 
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    // Override point for customization after application launch.
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent]; 
 
     NSArray *centralManagerIdentifiers = launchOptions[UIApplicationLaunchOptionsBluetoothCentralsKey];
     NSLog(@"centralManagerIdentifiers = %@",centralManagerIdentifiers);
@@ -48,9 +48,8 @@
     MCFirstPageVIewController *firstVC = [[MCFirstPageVIewController alloc] init];
 
     UINavigationController *firstNav = [[MCMainNavgationVC alloc] initWithRootViewController:firstVC];
-    firstNav.tabBarItem.image = [UIImage imageNamed:@"tab_buddy_nor"];
-    firstVC.title = @"首页";
-    firstVC.navigationController.navigationBar.barTintColor = [UIColor redColor];
+
+//    firstVC.navigationController.navigationBar.barTintColor = [UIColor redColor];
 
     MCLeftSortsViewController *leftVC = [[MCLeftSortsViewController alloc] init];
     MCLeftSlideViewController *rootVC = [[MCLeftSlideViewController alloc] initWithLeftView:leftVC andMainView:firstNav];

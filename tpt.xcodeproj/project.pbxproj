@@ -63,6 +63,11 @@
 		18E561251D3E01FF0053B9A4 /* BabySpeaker.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E5611B1D3E01FF0053B9A4 /* BabySpeaker.m */; };
 		18E561261D3E01FF0053B9A4 /* BabyToy.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E5611D1D3E01FF0053B9A4 /* BabyToy.m */; };
 		65F7D86E2F5D5B266B647E2A /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FF0E0FFA8A85449D3B61F59 /* libPods.a */; };
+		AE29875C1D4C9B3600B50AC2 /* UIViewController+NavBarHidden.m in Sources */ = {isa = PBXBuildFile; fileRef = AE29875B1D4C9B3600B50AC2 /* UIViewController+NavBarHidden.m */; };
+		AE2987611D4C9EF300B50AC2 /* TPBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE2987601D4C9EF300B50AC2 /* TPBaseViewController.m */; };
+		AE6E9B631D4DBF870080116A /* TPTuiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE6E9B621D4DBF870080116A /* TPTuiViewController.m */; };
+		AE6E9B661D4DC5C40080116A /* TPTuiSelectView.m in Sources */ = {isa = PBXBuildFile; fileRef = AE6E9B651D4DC5C40080116A /* TPTuiSelectView.m */; };
+		AE6E9B6C1D4DD4180080116A /* UIButton+FillColor.m in Sources */ = {isa = PBXBuildFile; fileRef = AE6E9B6B1D4DD4180080116A /* UIButton+FillColor.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -188,6 +193,17 @@
 		18E5611D1D3E01FF0053B9A4 /* BabyToy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BabyToy.m; sourceTree = "<group>"; };
 		43805D7A71E5C6F3FE52C4CF /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		5FF0E0FFA8A85449D3B61F59 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		AE29875A1D4C9B3600B50AC2 /* UIViewController+NavBarHidden.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+NavBarHidden.h"; sourceTree = "<group>"; };
+		AE29875B1D4C9B3600B50AC2 /* UIViewController+NavBarHidden.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+NavBarHidden.m"; sourceTree = "<group>"; };
+		AE29875D1D4C9B6600B50AC2 /* TPFoundation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPFoundation.h; sourceTree = "<group>"; };
+		AE29875F1D4C9EF300B50AC2 /* TPBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPBaseViewController.h; sourceTree = "<group>"; };
+		AE2987601D4C9EF300B50AC2 /* TPBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPBaseViewController.m; sourceTree = "<group>"; };
+		AE6E9B611D4DBF870080116A /* TPTuiViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPTuiViewController.h; sourceTree = "<group>"; };
+		AE6E9B621D4DBF870080116A /* TPTuiViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPTuiViewController.m; sourceTree = "<group>"; };
+		AE6E9B641D4DC5C40080116A /* TPTuiSelectView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPTuiSelectView.h; sourceTree = "<group>"; };
+		AE6E9B651D4DC5C40080116A /* TPTuiSelectView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPTuiSelectView.m; sourceTree = "<group>"; };
+		AE6E9B6A1D4DD4180080116A /* UIButton+FillColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+FillColor.h"; sourceTree = "<group>"; };
+		AE6E9B6B1D4DD4180080116A /* UIButton+FillColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+FillColor.m"; sourceTree = "<group>"; };
 		FFAD3A748BD7A4AAE36505A0 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -420,8 +436,8 @@
 		18E560CC1D3DBB930053B9A4 /* tpt */ = {
 			isa = PBXGroup;
 			children = (
+				AE2987571D4C9ACD00B50AC2 /* Foundation */,
 				18E561001D3DDBEA0053B9A4 /* Class */,
-				18E561011D3DDBFA0053B9A4 /* Foundation */,
 				18E561021D3DDC150053B9A4 /* Dependency */,
 				18E560CD1D3DBB930053B9A4 /* Supporting Files */,
 			);
@@ -476,13 +492,6 @@
 			path = Class;
 			sourceTree = "<group>";
 		};
-		18E561011D3DDBFA0053B9A4 /* Foundation */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Foundation;
-			sourceTree = "<group>";
-		};
 		18E561021D3DDC150053B9A4 /* Dependency */ = {
 			isa = PBXGroup;
 			children = (
@@ -495,6 +504,9 @@
 		18E561041D3DDD9C0053B9A4 /* 视图层 */ = {
 			isa = PBXGroup;
 			children = (
+				AE2987641D4CAE2D00B50AC2 /* 系统设置 */,
+				AE2987631D4CAE2400B50AC2 /* 退烧攻略 */,
+				AE2987621D4CAE1400B50AC2 /* 历史记录 */,
 				1869DD741D40B15900BA6526 /* 首页 */,
 			);
 			name = "视图层";
@@ -577,6 +589,133 @@
 				5FF0E0FFA8A85449D3B61F59 /* libPods.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		AE2987571D4C9ACD00B50AC2 /* Foundation */ = {
+			isa = PBXGroup;
+			children = (
+				AE29875D1D4C9B6600B50AC2 /* TPFoundation.h */,
+				AE29875E1D4C9E8A00B50AC2 /* TPBaseViewController */,
+				AE2987591D4C9B0A00B50AC2 /* TPCategory */,
+			);
+			path = Foundation;
+			sourceTree = "<group>";
+		};
+		AE2987591D4C9B0A00B50AC2 /* TPCategory */ = {
+			isa = PBXGroup;
+			children = (
+				AE6E9B6A1D4DD4180080116A /* UIButton+FillColor.h */,
+				AE6E9B6B1D4DD4180080116A /* UIButton+FillColor.m */,
+				AE29875A1D4C9B3600B50AC2 /* UIViewController+NavBarHidden.h */,
+				AE29875B1D4C9B3600B50AC2 /* UIViewController+NavBarHidden.m */,
+			);
+			path = TPCategory;
+			sourceTree = "<group>";
+		};
+		AE29875E1D4C9E8A00B50AC2 /* TPBaseViewController */ = {
+			isa = PBXGroup;
+			children = (
+				AE29875F1D4C9EF300B50AC2 /* TPBaseViewController.h */,
+				AE2987601D4C9EF300B50AC2 /* TPBaseViewController.m */,
+			);
+			name = TPBaseViewController;
+			sourceTree = "<group>";
+		};
+		AE2987621D4CAE1400B50AC2 /* 历史记录 */ = {
+			isa = PBXGroup;
+			children = (
+				AE2987671D4CAE5F00B50AC2 /* Model */,
+				AE2987661D4CAE5600B50AC2 /* View */,
+				AE2987651D4CAE4C00B50AC2 /* ViewController */,
+			);
+			name = "历史记录";
+			sourceTree = "<group>";
+		};
+		AE2987631D4CAE2400B50AC2 /* 退烧攻略 */ = {
+			isa = PBXGroup;
+			children = (
+				AE29876A1D4CAE7400B50AC2 /* Model */,
+				AE2987691D4CAE6E00B50AC2 /* View */,
+				AE2987681D4CAE6800B50AC2 /* ViewController */,
+			);
+			name = "退烧攻略";
+			sourceTree = "<group>";
+		};
+		AE2987641D4CAE2D00B50AC2 /* 系统设置 */ = {
+			isa = PBXGroup;
+			children = (
+				AE29876D1D4CAE8D00B50AC2 /* Model */,
+				AE29876C1D4CAE8300B50AC2 /* View */,
+				AE29876B1D4CAE7D00B50AC2 /* ViewController */,
+			);
+			name = "系统设置";
+			sourceTree = "<group>";
+		};
+		AE2987651D4CAE4C00B50AC2 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = ViewController;
+			sourceTree = "<group>";
+		};
+		AE2987661D4CAE5600B50AC2 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		AE2987671D4CAE5F00B50AC2 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		AE2987681D4CAE6800B50AC2 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				AE6E9B611D4DBF870080116A /* TPTuiViewController.h */,
+				AE6E9B621D4DBF870080116A /* TPTuiViewController.m */,
+			);
+			name = ViewController;
+			sourceTree = "<group>";
+		};
+		AE2987691D4CAE6E00B50AC2 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				AE6E9B641D4DC5C40080116A /* TPTuiSelectView.h */,
+				AE6E9B651D4DC5C40080116A /* TPTuiSelectView.m */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		AE29876A1D4CAE7400B50AC2 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		AE29876B1D4CAE7D00B50AC2 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = ViewController;
+			sourceTree = "<group>";
+		};
+		AE29876C1D4CAE8300B50AC2 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		AE29876D1D4CAE8D00B50AC2 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -758,16 +897,21 @@
 				18E560D21D3DBB930053B9A4 /* AppDelegate.m in Sources */,
 				18E561231D3E01FF0053B9A4 /* BabyPeripheralManager.m in Sources */,
 				18B953631D49CF5400F2221C /* TPLeftCell.m in Sources */,
+				AE6E9B631D4DBF870080116A /* TPTuiViewController.m in Sources */,
+				AE6E9B6C1D4DD4180080116A /* UIButton+FillColor.m in Sources */,
 				18E5611F1D3E01FF0053B9A4 /* BabyCallback.m in Sources */,
 				1809091A1D48CC0B004C47F9 /* MCFirstPageVIewController.m in Sources */,
 				18E561201D3E01FF0053B9A4 /* BabyCentralManager.m in Sources */,
 				18E561221D3E01FF0053B9A4 /* BabyOptions.m in Sources */,
 				18E561251D3E01FF0053B9A4 /* BabySpeaker.m in Sources */,
 				180909211D48CD06004C47F9 /* MCMainNavgationVC.m in Sources */,
+				AE29875C1D4C9B3600B50AC2 /* UIViewController+NavBarHidden.m in Sources */,
+				AE2987611D4C9EF300B50AC2 /* TPBaseViewController.m in Sources */,
 				180909151D48CBF7004C47F9 /* MCLeftSliderManager.m in Sources */,
 				1809091D1D48CC5E004C47F9 /* MCLeftSortsViewController.m in Sources */,
 				18E561241D3E01FF0053B9A4 /* BabyRhythm.m in Sources */,
 				18E561261D3E01FF0053B9A4 /* BabyToy.m in Sources */,
+				AE6E9B661D4DC5C40080116A /* TPTuiSelectView.m in Sources */,
 				18B23D161D41D2D100CE9AA6 /* AppDelegate+shareSDK.m in Sources */,
 				180909161D48CBF7004C47F9 /* MCLeftSlideViewController.m in Sources */,
 				1869DD7E1D40C21700BA6526 /* PeripheralInfo.m in Sources */,

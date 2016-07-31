@@ -9,6 +9,8 @@
 #import "MCLeftSortsViewController.h"
 #import "MCLeftSliderManager.h"
 #import "MCOtherViewController.h"
+#import "TPTuiViewController.h"
+
 #import "TPLeftCell.h"
 
 @interface MCLeftSortsViewController () <UITableViewDelegate,UITableViewDataSource>{
@@ -72,11 +74,32 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    MCOtherViewController *vc = [[MCOtherViewController alloc] init];
-    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    vc.titleName = cell.textLabel.text;
+    UIViewController *pushvc =nil;
+    switch (indexPath.row) {
+        case 0:{
+            pushvc = [[MCOtherViewController alloc] init];
+        }
+            break;
+        case 1:{
+            pushvc = [[MCOtherViewController alloc] init];
+        }
+            break;
+        case 2:{
+            pushvc = [[TPTuiViewController alloc] init];
+        }
+            break;
+        case 3:{
+            pushvc = [[MCOtherViewController alloc] init];
+        }
+            break;
+            
+        default:{
+            pushvc = [[MCOtherViewController alloc] init];
+        }
+            break;
+    }
     [[MCLeftSliderManager sharedInstance].LeftSlideVC closeLeftView];//关闭左侧抽屉
-    [[MCLeftSliderManager sharedInstance].mainNavigationController pushViewController:vc animated:NO];
+    [[MCLeftSliderManager sharedInstance].mainNavigationController pushViewController:pushvc animated:NO];
 
 }
 

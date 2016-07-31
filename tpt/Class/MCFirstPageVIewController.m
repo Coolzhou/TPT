@@ -38,7 +38,7 @@
 
 -(void)viewDidAppear:(BOOL)animated{
     NSLog(@"viewDidAppear");
-
+    
     //停止之前的连接
     [baby cancelAllPeripheralsConnection];
     //设置委托后直接可以使用，无需等待CBCentralManagerStatePoweredOn状态。
@@ -51,6 +51,7 @@
     // 设置黑夜效果
 
     self.view.backgroundColor = [UIColor whiteColor];
+    self.bgimageView.image = [UIImage imageNamed:@"main_first_bg"];
 
     [self addNavigationItem]; //分享按钮
 
@@ -62,12 +63,13 @@
 
 #pragma mark rightBarButtonItem
 -(void)addNavigationItem{
-    UIButton *menuBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    menuBtn.frame = CGRectMake(0, 0, 20, 18);
-    [menuBtn setBackgroundImage:[UIImage imageNamed:@"nav_menu"] forState:UIControlStateNormal];
-    [menuBtn addTarget:self action:@selector(shareReftList) forControlEvents:UIControlEventTouchUpInside];
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:menuBtn];
+    [self.navbackButton setImage:[UIImage imageNamed:@"navigation_left"] forState:UIControlStateNormal];
 }
+-(void)clickLeftBarButtonItem{
+    //打开左视图
+    [[MCLeftSliderManager sharedInstance].LeftSlideVC openLeftView];
+}
+
 
 #pragma mark 转盘
 -(void)addRotateDials{

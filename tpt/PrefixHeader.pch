@@ -13,6 +13,7 @@
 #import "Masonry.h"
 #import "HYBNetworking.h"
 #import "SVProgressHUD.h"
+#import "TPFoundation.h"
 #import "TPCommon.h"
 #import "Macro.h"
 

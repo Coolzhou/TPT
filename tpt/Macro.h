@@ -43,4 +43,6 @@ blue:((float)(rgbValue & 0xFF)) / 255.0 alpha:1.0]
 //项目整体背景色
 #define MCBaseColor kColorWithRGB(0xf6f6f6)
 
+#define MainTitleColor RGB(233, 129, 177)
+
 #endif /* Macro_h */

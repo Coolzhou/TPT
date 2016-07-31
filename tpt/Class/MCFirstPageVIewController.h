@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MCFirstPageVIewController : UIViewController
+#import "MCLeftSliderManager.h"
+
+@interface MCFirstPageVIewController : TPBaseViewController
 
 @end

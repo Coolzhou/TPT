@@ -9,8 +9,8 @@
 #ifndef TPCommon_h
 #define TPCommon_h
 
-//屏幕宽、高
-#define SCREEN_WIDTH [UIScreen mainScreen].bounds.size.width
-#define SCREEN_HEIGHT [UIScreen mainScreen].bounds.size.height
+////屏幕宽、高
+//#define SCREEN_WIDTH [UIScreen mainScreen].bounds.size.width
+//#define SCREEN_HEIGHT [UIScreen mainScreen].bounds.size.height
 
 #endif /* TPCommon_h */

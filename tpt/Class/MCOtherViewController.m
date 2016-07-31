@@ -17,11 +17,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
+    self.navTitleLable.text = @"其他";
 
-    UILabel *navigationLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 50, 44)];
-    navigationLabel.text = self.titleName;
-    navigationLabel.textAlignment = NSTextAlignmentCenter;
-    self.navigationItem.titleView = navigationLabel;
 
 }
 
