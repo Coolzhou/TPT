@@ -55,8 +55,12 @@
         [titleButton setTitleColor:[UIColor blackColor] forState:UIControlStateSelected];
         [titleButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         //自定义按钮的背景颜色,并附带状态选择
-        [titleButton setBackgroundColor:MainTitleColor forState:UIControlStateNormal];
-        [titleButton setBackgroundColor:[UIColor yellowColor] forState:UIControlStateSelected];
+        
+        [titleButton setBackgroundImage:[UIImage imageNamed:@"tui_button_n"] forState:UIControlStateNormal];
+        [titleButton setBackgroundImage:[UIImage imageNamed:@"tui_button_p"] forState:UIControlStateSelected];
+        
+//        [titleButton setBackgroundColor:MainTitleColor forState:UIControlStateNormal];
+//        [titleButton setBackgroundColor:[UIColor yellowColor] forState:UIControlStateSelected];
         [titleButton addTarget:self action:@selector(clickTitleButton:) forControlEvents:UIControlEventTouchUpInside];
     }
 }

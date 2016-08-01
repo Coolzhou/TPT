@@ -7,8 +7,8 @@
 //
 
 #import "TPTuiViewController.h"
-
 #import "TPTuiSelectView.h"
+#import "TPTuiCell.h"
 
 @interface TPTuiViewController ()<UITableViewDataSource,UITableViewDelegate>
 @property(nonatomic,strong)UITableView *tableView;
@@ -23,6 +23,8 @@
     self.navTitleLable.text = @"退烧攻略";
     
     [self addHeadView];
+    
+    [self initTableView];
 }
 
 #pragma mark 增加按钮列表
@@ -35,6 +37,42 @@
     [self.view addSubview:tuiSelectView];
     
 }
+
+-(void)initTableView{
+    self.tableView = [[UITableView alloc]initWithFrame:CGRectZero style:UITableViewStylePlain];
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
+    self.tableView.tableFooterView = [[UIView alloc]init];
+    self.tableView.sectionFooterHeight = 0.0001;
+    self.tableView.backgroundColor = [UIColor clearColor];
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    [self.view addSubview:self.tableView];
+    
+    [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(self.view).with.insets(UIEdgeInsetsMake(120, 0, 0, 0));
+    }];
+}
+#pragma mark UITableViewDataSource,UITableViewDelegate
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return 7;
+}
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    TPTuiCell *cell = [TPTuiCell theTuiWithTableView:tableView andIndexPath:indexPath];
+    return cell;
+}
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 50;
+}
+
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    
+}
+
 
 
 

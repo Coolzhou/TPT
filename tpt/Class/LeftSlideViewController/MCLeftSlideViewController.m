@@ -119,7 +119,7 @@
     _scalef = (point.x * self.speedf + _scalef);
     
     BOOL needMoveWithTap = YES;  //是否还需要跟随手指移动
-    if (((self.mainVC.view.x <= 0) && (_scalef <= 0)) || ((self.mainVC.view.x >= (kScreenWidth - kMainPageDistance )) && (_scalef >= 0)))
+    if (((self.mainVC.view.x_k <= 0) && (_scalef <= 0)) || ((self.mainVC.view.x_k >= (kScreenWidth - kMainPageDistance )) && (_scalef >= 0)))
     {
         //边界值管控
         _scalef = 0;
@@ -160,12 +160,12 @@
     else
     {
         //超出范围，
-        if (self.mainVC.view.x < 0)
+        if (self.mainVC.view.x_k < 0)
         {
             [self closeLeftView];
             _scalef = 0;
         }
-        else if (self.mainVC.view.x > (kScreenWidth - kMainPageDistance))
+        else if (self.mainVC.view.x_k > (kScreenWidth - kMainPageDistance))
         {
             [self openLeftView];
             _scalef = 0;

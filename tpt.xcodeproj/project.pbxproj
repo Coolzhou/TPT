@@ -10,7 +10,6 @@
 		180909141D48CBF7004C47F9 /* MCContent.m in Sources */ = {isa = PBXBuildFile; fileRef = 1809090D1D48CBF7004C47F9 /* MCContent.m */; };
 		180909151D48CBF7004C47F9 /* MCLeftSliderManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1809090F1D48CBF7004C47F9 /* MCLeftSliderManager.m */; };
 		180909161D48CBF7004C47F9 /* MCLeftSlideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 180909111D48CBF7004C47F9 /* MCLeftSlideViewController.m */; };
-		180909171D48CBF7004C47F9 /* UIView_extra.m in Sources */ = {isa = PBXBuildFile; fileRef = 180909131D48CBF7004C47F9 /* UIView_extra.m */; };
 		1809091A1D48CC0B004C47F9 /* MCFirstPageVIewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 180909191D48CC0B004C47F9 /* MCFirstPageVIewController.m */; };
 		1809091D1D48CC5E004C47F9 /* MCLeftSortsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1809091C1D48CC5E004C47F9 /* MCLeftSortsViewController.m */; };
 		180909211D48CD06004C47F9 /* MCMainNavgationVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 180909201D48CD06004C47F9 /* MCMainNavgationVC.m */; };
@@ -68,6 +67,9 @@
 		AE6E9B631D4DBF870080116A /* TPTuiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE6E9B621D4DBF870080116A /* TPTuiViewController.m */; };
 		AE6E9B661D4DC5C40080116A /* TPTuiSelectView.m in Sources */ = {isa = PBXBuildFile; fileRef = AE6E9B651D4DC5C40080116A /* TPTuiSelectView.m */; };
 		AE6E9B6C1D4DD4180080116A /* UIButton+FillColor.m in Sources */ = {isa = PBXBuildFile; fileRef = AE6E9B6B1D4DD4180080116A /* UIButton+FillColor.m */; };
+		AE6E9B6F1D4DD99D0080116A /* UIView_extra.m in Sources */ = {isa = PBXBuildFile; fileRef = AE6E9B6E1D4DD99D0080116A /* UIView_extra.m */; };
+		AE6E9B731D4DDC820080116A /* TPTuiCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE6E9B701D4DDC820080116A /* TPTuiCell.xib */; };
+		AE6E9B741D4DDC820080116A /* TPTuiCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AE6E9B711D4DDC820080116A /* TPTuiCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -96,8 +98,6 @@
 		1809090F1D48CBF7004C47F9 /* MCLeftSliderManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCLeftSliderManager.m; sourceTree = "<group>"; };
 		180909101D48CBF7004C47F9 /* MCLeftSlideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCLeftSlideViewController.h; sourceTree = "<group>"; };
 		180909111D48CBF7004C47F9 /* MCLeftSlideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCLeftSlideViewController.m; sourceTree = "<group>"; };
-		180909121D48CBF7004C47F9 /* UIView_extra.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIView_extra.h; sourceTree = "<group>"; };
-		180909131D48CBF7004C47F9 /* UIView_extra.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIView_extra.m; sourceTree = "<group>"; };
 		180909181D48CC0B004C47F9 /* MCFirstPageVIewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCFirstPageVIewController.h; sourceTree = "<group>"; };
 		180909191D48CC0B004C47F9 /* MCFirstPageVIewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCFirstPageVIewController.m; sourceTree = "<group>"; };
 		1809091B1D48CC5E004C47F9 /* MCLeftSortsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCLeftSortsViewController.h; sourceTree = "<group>"; };
@@ -204,6 +204,11 @@
 		AE6E9B651D4DC5C40080116A /* TPTuiSelectView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPTuiSelectView.m; sourceTree = "<group>"; };
 		AE6E9B6A1D4DD4180080116A /* UIButton+FillColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+FillColor.h"; sourceTree = "<group>"; };
 		AE6E9B6B1D4DD4180080116A /* UIButton+FillColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+FillColor.m"; sourceTree = "<group>"; };
+		AE6E9B6D1D4DD99D0080116A /* UIView_extra.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIView_extra.h; sourceTree = "<group>"; };
+		AE6E9B6E1D4DD99D0080116A /* UIView_extra.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIView_extra.m; sourceTree = "<group>"; };
+		AE6E9B701D4DDC820080116A /* TPTuiCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TPTuiCell.xib; sourceTree = "<group>"; };
+		AE6E9B711D4DDC820080116A /* TPTuiCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPTuiCell.m; sourceTree = "<group>"; };
+		AE6E9B721D4DDC820080116A /* TPTuiCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPTuiCell.h; sourceTree = "<group>"; };
 		FFAD3A748BD7A4AAE36505A0 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -262,8 +267,8 @@
 				1809090F1D48CBF7004C47F9 /* MCLeftSliderManager.m */,
 				180909101D48CBF7004C47F9 /* MCLeftSlideViewController.h */,
 				180909111D48CBF7004C47F9 /* MCLeftSlideViewController.m */,
-				180909121D48CBF7004C47F9 /* UIView_extra.h */,
-				180909131D48CBF7004C47F9 /* UIView_extra.m */,
+				AE6E9B6D1D4DD99D0080116A /* UIView_extra.h */,
+				AE6E9B6E1D4DD99D0080116A /* UIView_extra.m */,
 			);
 			path = LeftSlideViewController;
 			sourceTree = "<group>";
@@ -686,6 +691,9 @@
 			children = (
 				AE6E9B641D4DC5C40080116A /* TPTuiSelectView.h */,
 				AE6E9B651D4DC5C40080116A /* TPTuiSelectView.m */,
+				AE6E9B721D4DDC820080116A /* TPTuiCell.h */,
+				AE6E9B711D4DDC820080116A /* TPTuiCell.m */,
+				AE6E9B701D4DDC820080116A /* TPTuiCell.xib */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -827,6 +835,7 @@
 				18E560DD1D3DBB930053B9A4 /* LaunchScreen.storyboard in Resources */,
 				18B953641D49CF5400F2221C /* TPLeftCell.xib in Resources */,
 				18E560DA1D3DBB930053B9A4 /* Assets.xcassets in Resources */,
+				AE6E9B731D4DDC820080116A /* TPTuiCell.xib in Resources */,
 				18B23CF41D41CC3B00CE9AA6 /* TencentOpenApi_IOS_Bundle.bundle in Resources */,
 				18B23CFA1D41CC3C00CE9AA6 /* ShareSDK.bundle in Resources */,
 				18E560D81D3DBB930053B9A4 /* Main.storyboard in Resources */,
@@ -897,6 +906,7 @@
 				18E560D21D3DBB930053B9A4 /* AppDelegate.m in Sources */,
 				18E561231D3E01FF0053B9A4 /* BabyPeripheralManager.m in Sources */,
 				18B953631D49CF5400F2221C /* TPLeftCell.m in Sources */,
+				AE6E9B741D4DDC820080116A /* TPTuiCell.m in Sources */,
 				AE6E9B631D4DBF870080116A /* TPTuiViewController.m in Sources */,
 				AE6E9B6C1D4DD4180080116A /* UIButton+FillColor.m in Sources */,
 				18E5611F1D3E01FF0053B9A4 /* BabyCallback.m in Sources */,
@@ -915,9 +925,9 @@
 				18B23D161D41D2D100CE9AA6 /* AppDelegate+shareSDK.m in Sources */,
 				180909161D48CBF7004C47F9 /* MCLeftSlideViewController.m in Sources */,
 				1869DD7E1D40C21700BA6526 /* PeripheralInfo.m in Sources */,
-				180909171D48CBF7004C47F9 /* UIView_extra.m in Sources */,
 				18E560CF1D3DBB930053B9A4 /* main.m in Sources */,
 				180909141D48CBF7004C47F9 /* MCContent.m in Sources */,
+				AE6E9B6F1D4DD99D0080116A /* UIView_extra.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

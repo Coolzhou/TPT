@@ -45,4 +45,6 @@ blue:((float)(rgbValue & 0xFF)) / 255.0 alpha:1.0]
 
 #define MainTitleColor RGB(233, 129, 177)
 
+#define DEGREES_TO_RADIANS(d) (d * M_PI / 180)
+
 #endif /* Macro_h */

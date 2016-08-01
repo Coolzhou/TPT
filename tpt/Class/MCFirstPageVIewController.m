@@ -61,6 +61,8 @@
 
 }
 
+
+
 #pragma mark rightBarButtonItem
 -(void)addNavigationItem{
     [self.navbackButton setImage:[UIImage imageNamed:@"navigation_left"] forState:UIControlStateNormal];
@@ -73,7 +75,9 @@
 
 #pragma mark 转盘
 -(void)addRotateDials{
-
+    
+    self.rotateDials = [[XPQRotateDials alloc]initWithFrame:CGRectMake(0, 90, kScreenWidth, 400)];
+    [self.view addSubview:self.rotateDials];
 
 }
 
@@ -373,6 +377,8 @@
     
     [[NSNotificationCenter defaultCenter]removeObserver:self name:@"backBabyBlue" object:nil];
 }
+
+
 
 
 @end
