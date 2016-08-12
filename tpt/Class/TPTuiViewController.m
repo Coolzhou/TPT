@@ -9,9 +9,14 @@
 #import "TPTuiViewController.h"
 #import "TPTuiSelectView.h"
 #import "TPTuiCell.h"
+#import "IGDisplayer.h"
 
 @interface TPTuiViewController ()<UITableViewDataSource,UITableViewDelegate>
 @property(nonatomic,strong)UITableView *tableView;
+
+@property (nonatomic,strong)NSMutableArray *dataArray;
+
+@property(nonatomic,assign)NSInteger typeNum;
 
 @end
 
@@ -21,6 +26,9 @@
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
     self.navTitleLable.text = @"退烧攻略";
+    self.typeNum = 1;
+    self.dataArray = [[NSMutableArray alloc]init];
+    [self initData];
     
     [self addHeadView];
     
@@ -30,12 +38,22 @@
 #pragma mark 增加按钮列表
 -(void)addHeadView{
     
-    TPTuiSelectView *tuiSelectView = [[TPTuiSelectView alloc]initWithFrame:CGRectMake(0,64,kScreenWidth, 30)];
+    TPTuiSelectView *tuiSelectView = [[TPTuiSelectView alloc]initWithFrame:CGRectMake(0,84,kScreenWidth, 30)];
+
+    __weak typeof(self) weakSelf = self;
     tuiSelectView.tuiBlock = ^(int num){
         NSLog(@"num = %d",num);
+        weakSelf.typeNum = num;
+        [weakSelf.tableView reloadData];
     };
     [self.view addSubview:tuiSelectView];
-    
+
+}
+#pragma mark 初始化数据
+-(void)initData{
+        NSString *paththree = [[NSBundle mainBundle]pathForResource:@"TPtui" ofType:@"plist"
+                               ];
+        self.dataArray = [[NSMutableArray alloc]initWithContentsOfFile:paththree];
 }
 
 -(void)initTableView{
@@ -55,26 +73,72 @@
 #pragma mark UITableViewDataSource,UITableViewDelegate
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 7;
+    NSArray *array = [self selectTypeNum];
+    return array.count;
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    
     TPTuiCell *cell = [TPTuiCell theTuiWithTableView:tableView andIndexPath:indexPath];
+    NSArray *array = [self selectTypeNum];
+    NSDictionary *dict =(NSDictionary *)array[indexPath.row];
+    [cell theTuiWithTableViewWithIndexPath:indexPath andType:self.typeNum andDict:dict];
     return cell;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 50;
+    if (indexPath.row==0) {
+        NSArray *array = [self selectTypeNum];
+        NSDictionary *dict =(NSDictionary *)array[indexPath.row];
+
+        NSString *content =[NSString stringWithFormat:@"%@",[dict valueForKey:@"content"]];
+
+        CGSize size =[content sizeForMaxWidth:(kScreenWidth - 30) font:[UIFont systemFontOfSize:16]];
+
+        NSLog(@"size.height = %f",size.height);
+
+        return size.height +40;
+
+    }else{
+        return 60;
+    }
+
 }
-
-
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-    
+
+    NSArray *array = [self selectTypeNum];
+    if (indexPath.row !=0) {
+        NSDictionary *dict = (NSDictionary *)array[indexPath.row];
+        NSString *title = [NSString stringWithFormat:@"%@",[dict objectForKey:@"title"]];
+        NSString *content = [NSString stringWithFormat:@"%@",[dict objectForKey:@"content"]];
+        [IGDisplayer showDisplayerWithTitleText:title contentText:content];
+    }
 }
 
-
-
+-(NSArray *)selectTypeNum{
+    NSArray *array = [[NSArray alloc]init];
+    switch (self.typeNum) {
+        case 1:{
+            array = (NSArray *)self.dataArray[0];
+        }
+            break;
+        case 2:{
+            array = (NSArray *)self.dataArray[1];
+        }
+            break;
+        case 3:{
+            array = (NSArray *)self.dataArray[2];
+        }
+            break;
+        case 4:
+        {
+            array = (NSArray *)self.dataArray[3];
+        }
+            break;
+        default:
+            array = [[NSArray alloc]init];;
+            break;
+    }
+    return array;
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

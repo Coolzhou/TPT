@@ -13,5 +13,7 @@
 #import "UIViewController+NavBarHidden.h"
 #import "TPBaseViewController.h"
 #import "UIButton+FillColor.h"
+#import "NSString+DZCategory.h"
+#import "UIColor+Hex.h"
 
 #endif /* TPFoundation_h */

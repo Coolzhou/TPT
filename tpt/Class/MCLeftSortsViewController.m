@@ -10,6 +10,7 @@
 #import "MCLeftSliderManager.h"
 #import "MCOtherViewController.h"
 #import "TPTuiViewController.h"
+#import "TPTSetUpVC.h"
 
 #import "TPLeftCell.h"
 
@@ -77,29 +78,37 @@
     UIViewController *pushvc =nil;
     switch (indexPath.row) {
         case 0:{
-            pushvc = [[MCOtherViewController alloc] init];
+            [[MCLeftSliderManager sharedInstance].LeftSlideVC closeLeftView];//关闭左侧抽屉
         }
             break;
         case 1:{
             pushvc = [[MCOtherViewController alloc] init];
+
+            [[MCLeftSliderManager sharedInstance].LeftSlideVC closeLeftView];//关闭左侧抽屉
+            [[MCLeftSliderManager sharedInstance].mainNavigationController pushViewController:pushvc animated:NO];
         }
             break;
         case 2:{
             pushvc = [[TPTuiViewController alloc] init];
+            [[MCLeftSliderManager sharedInstance].LeftSlideVC closeLeftView];//关闭左侧抽屉
+            [[MCLeftSliderManager sharedInstance].mainNavigationController pushViewController:pushvc animated:NO];
         }
             break;
         case 3:{
-            pushvc = [[MCOtherViewController alloc] init];
+            pushvc = [[TPTSetUpVC alloc] init];
+            [[MCLeftSliderManager sharedInstance].LeftSlideVC closeLeftView];//关闭左侧抽屉
+            [[MCLeftSliderManager sharedInstance].mainNavigationController pushViewController:pushvc animated:NO];
         }
             break;
             
         default:{
             pushvc = [[MCOtherViewController alloc] init];
+            [[MCLeftSliderManager sharedInstance].LeftSlideVC closeLeftView];//关闭左侧抽屉
+            [[MCLeftSliderManager sharedInstance].mainNavigationController pushViewController:pushvc animated:NO];
         }
             break;
     }
-    [[MCLeftSliderManager sharedInstance].LeftSlideVC closeLeftView];//关闭左侧抽屉
-    [[MCLeftSliderManager sharedInstance].mainNavigationController pushViewController:pushvc animated:NO];
+
 
 }
 

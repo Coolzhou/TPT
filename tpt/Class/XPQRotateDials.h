@@ -13,4 +13,7 @@
     CALayer *tachLayer;
     CALayer *pinLayer;
 }
+
+@property (nonatomic,strong)NSString *value;
+
 @end

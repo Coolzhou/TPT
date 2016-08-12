@@ -16,21 +16,27 @@
 #import <ShareSDKUI/ShareSDK+SSUI.h>
 
 #import "XPQRotateDials.h"
+#import "SNChart.h"
+#import "TPTool.h"
 #define channelOnPeropheralView @"peripheralView"
 #define channelOnCharacteristicView @"CharacteristicView"
-
 #define kPeripheralName         @"360qws Electric Bike Service"         //外围设备名称
 #define kServiceUUID            @"8A0DFFD0-B80C-4335-8E5F-630031415354" //服务的UUID
 #define kCharacteristicWriteUUID     @"8A0DFFD1-B80C-4335-8E5F-630031415354" //读写特征的UUID
 #define kCharacteristicReadUUID     @"8A0DFFD2-B80C-4335-8E5F-630031415354" //读通知特征的UUID
 
-@interface MCFirstPageVIewController (){
+@interface MCFirstPageVIewController ()<SNChartDataSource>{
     BabyBluetooth *baby;
+    NSTimer *_timer;     //定时器
 }
 @property __block NSMutableArray *services; // service 数组
 @property(strong,nonatomic)CBPeripheral *currPeripheral;
-
+@property(strong,nonatomic)CBCharacteristic *writeCBCharacteristic; //写服务
 @property (strong, nonatomic)XPQRotateDials *rotateDials;
+
+@property (nonatomic,strong)SNChart * chart;  //折线图
+@property (nonatomic,strong)NSMutableArray *valueArray; //温度数组
+@property (nonatomic,strong)NSMutableArray *timeArray;  //时间数组
 
 @end
 
@@ -53,15 +59,58 @@
     self.view.backgroundColor = [UIColor whiteColor];
     self.bgimageView.image = [UIImage imageNamed:@"main_first_bg"];
 
-    [self addNavigationItem]; //分享按钮
+    [self loadBabayBluetooth]; //蓝牙
+    [self createTimer];
 
+    [self addNavigationItem]; //分享按钮
     [self addRotateDials]; //增加转盘
 
-    [self loadBabayBluetooth]; //蓝牙
+    [self addchartLineView];//增加折线图
 
 }
 
+-(void)addchartLineView{
+    self.chart = [[SNChart alloc] initWithFrame:CGRectMake(15,kScreenHeight-280, self.view.frame.size.width-30, 260) withDataSource:self andChatStyle:SNChartStyleLine];
+    [self.chart showInView:self.view];
+}
+- (NSArray *)chatConfigYValue:(SNChart *)chart {
+    return @[@"36",@"38"];
+}
 
+- (NSArray *)chatConfigXValue:(SNChart *)chart {
+    return @[@"1",@"2",];
+}
+
+- (void)createTimer
+{
+    _timer=[NSTimer scheduledTimerWithTimeInterval:10.0 target:self selector:@selector(dealTimer) userInfo:nil repeats:YES];
+    [[NSRunLoop currentRunLoop]addTimer:_timer forMode:NSDefaultRunLoopMode];
+}
+
+-(void)dealTimer{
+    if (self.writeCBCharacteristic) {
+        [self writeValue:self.writeCBCharacteristic];
+    }
+
+    NSString *aa =[NSString stringWithFormat:@"%f",arc4random()%7+35+0.46];
+    //                       NSString *aa =[NSString stringWithFormat:@"%u.%u",resultByte[3],resultByte[4]];
+    //                       NSLog(@"aaaaaa =%@",aa);
+    [self.valueArray addObject:aa];
+
+    NSString *bb =[TPTool getCurrentDate];
+    [self.timeArray addObject:bb];
+
+    if (self.valueArray.count>7) {
+        //默认为正序遍历
+        [self.valueArray removeObjectAtIndex:0];
+    }
+    if (self.timeArray.count>7) {
+        //默认为正序遍历
+        [self.timeArray removeObjectAtIndex:0];
+    }
+    self.chart.valueArray = self.valueArray;
+    self.chart.timeArray = self.timeArray;
+}
 
 #pragma mark rightBarButtonItem
 -(void)addNavigationItem{
@@ -72,11 +121,10 @@
     [[MCLeftSliderManager sharedInstance].LeftSlideVC openLeftView];
 }
 
-
 #pragma mark 转盘
 -(void)addRotateDials{
     
-    self.rotateDials = [[XPQRotateDials alloc]initWithFrame:CGRectMake(0, 90, kScreenWidth, 400)];
+    self.rotateDials = [[XPQRotateDials alloc]initWithFrame:CGRectMake(0, 110, kScreenWidth, 400)];
     [self.view addSubview:self.rotateDials];
 
 }
@@ -87,15 +135,11 @@
     //app 进入后台调用
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(appEnterBackGround) name:@"backBabyBlue" object:nil];
 
-    [SVProgressHUD showInfoWithStatus:@"准备打开设备"];
-
     self.services = [[NSMutableArray alloc]init];
     //初始化BabyBluetooth 蓝牙库
     baby = [BabyBluetooth shareBabyBluetooth];
     //设置蓝牙委托
     [self babyDelegate];
-    //启动一个定时任务
-//    [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(timerTask) userInfo:nil repeats:YES];
 }
 
 -(void)loadData{
@@ -138,7 +182,6 @@
     [baby setBlockOnDisconnectAtChannel:channelOnPeropheralView block:^(CBCentralManager *central, CBPeripheral *peripheral, NSError *error) {
         NSLog(@"设备：%@--断开连接",peripheral.name);
         [SVProgressHUD showInfoWithStatus:[NSString stringWithFormat:@"设备：%@--断开失败",peripheral.name]];
-
         [weakSelf loadData];
     }];
 
@@ -166,6 +209,7 @@
         NSLog(@"characteristic name:%@ value is:%@",characteristics.UUID,characteristics.value);
 
         if ([characteristics.UUID isEqual:[CBUUID UUIDWithString:kCharacteristicWriteUUID]]) {
+            weakSelf.writeCBCharacteristic = characteristics;
             [weakSelf writeValue:characteristics];  //开始写入命令
         }
         if ([characteristics.UUID isEqual:[CBUUID UUIDWithString:kCharacteristicReadUUID]]) {
@@ -220,7 +264,11 @@
     Byte dataArray[] = {0xFC,0x02,0x00,0x02,0xED};
     NSData *data = [NSData dataWithBytes:dataArray length:sizeof(dataArray)/sizeof(dataArray[0])];
     NSLog(@"data = %@",data);
-    [self.currPeripheral writeValue:data forCharacteristic:characteristic type:CBCharacteristicWriteWithResponse];
+
+    if (characteristic) {
+        [self.currPeripheral writeValue:data forCharacteristic:characteristic type:CBCharacteristicWriteWithResponse];
+    }
+    NSLog(@"charact = %@ ,current = %@",characteristic.UUID,self.currPeripheral.name);
 }
 //订阅一个值
 -(void)setNotifiy:(CBCharacteristic *)characteristic{
@@ -244,23 +292,42 @@
           characteristic:characteristic
                    block:^(CBPeripheral *peripheral, CBCharacteristic *characteristics, NSError *error) {
                        NSLog(@"通知的值 new value %@",characteristics.value);
-
                        NSData * data = characteristic.value;
                        Byte * resultByte = (Byte *)[data bytes];
 
-                       for(int i=0;i<[data length];i++)
-                           printf("testByteFF04[%d] = %d\n",i,resultByte[i]);
+////                       if (resultByte[3]) {
+////                           // 温度整数部分
+//                           NSLog(@"设置111 = %hhu",resultByte[3]);
+////                       }else if (resultByte[4]) {
+////                           // 温度小数部分
+//                           NSLog(@"设置222 = %hhu",resultByte[4]);
+////                       }else if (resultByte[5]) {
+//                           // 电量百分比
+//                           NSLog(@"设置333 = %hhu",resultByte[5]);
+////                       }
 
-                       if (resultByte[3]) {
-                           // 温度整数部分
-                           NSLog(@"设置111 = %hhu",resultByte[3]);
-                       }else if (resultByte[4]) {
-                           // 温度小数部分
-                           NSLog(@"设置222 = %hhu",resultByte[4]);
-                       }else if (resultByte[5]) {
-                           // 电量百分比
-                           NSLog(@"设置333 = %hhu",resultByte[5]);
+                       NSString *currentElec =[NSString stringWithFormat:@"%u",resultByte[5]];
+                       if (![NSString isNull:currentElec]) {
+                           [[NSUserDefaults standardUserDefaults]setObject:currentElec forKey:@"currentElec"];
                        }
+                       NSString *aa =[NSString stringWithFormat:@"%f",arc4random()%7+35+0.46];
+//                       NSString *aa =[NSString stringWithFormat:@"%u.%u",resultByte[3],resultByte[4]];
+//                       NSLog(@"aaaaaa =%@",aa);
+                       [self.valueArray addObject:aa];
+
+                       NSString *bb =[TPTool getCurrentDate];
+                       [self.timeArray addObject:bb];
+
+                       if (self.valueArray.count>7) {
+                           //默认为正序遍历
+                           [self.valueArray removeObjectAtIndex:0];
+                       }
+                       if (self.timeArray.count>7) {
+                           //默认为正序遍历
+                           [self.timeArray removeObjectAtIndex:0];
+                       }
+                       self.chart.valueArray = self.valueArray;
+                       self.chart.timeArray = self.timeArray;
                    }];
         }
     }
@@ -272,7 +339,6 @@
 
 #pragma mark app 进入后台
 - (void)appEnterBackGround{
-
 
     for(CBService *service in self.currPeripheral.services)
     {
@@ -378,7 +444,19 @@
     [[NSNotificationCenter defaultCenter]removeObserver:self name:@"backBabyBlue" object:nil];
 }
 
+-(NSMutableArray *)valueArray{
+    if (!_valueArray) {
+        _valueArray = [[NSMutableArray alloc]init];
+    }
+    return _valueArray;
+}
 
+-(NSMutableArray *)timeArray{
+    if (!_timeArray) {
+        _timeArray = [[NSMutableArray alloc]init];
+    }
+    return _timeArray;
+}
 
 
 @end

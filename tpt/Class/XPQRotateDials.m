@@ -15,13 +15,17 @@
     CGFloat _radii;
     CGPoint _dialCenter;
     CGFloat _rulingWidth;
+    CGSize _size;
 }
 
 @property (nonatomic) CGFloat needleAngle;
 
-@property (nonatomic, weak) UIImageView *needleView;
-@property (nonatomic, weak) UILabel *valueLabel;
-@property (nonatomic, weak) UIImageView *titleImageView;
+@property (nonatomic, strong) UIImageView *needleView;
+
+@property (nonatomic, strong) UIImageView *titleImageView;
+
+@property (nonatomic, strong) UILabel *valueLabel;
+
 @end
 
 @implementation XPQRotateDials
@@ -51,12 +55,16 @@
 }
 
 - (void)configSelf {
+
+    _size = self.bounds.size;
     [self configParam];
 }
 
 -(void)configParam {
     // 初始值
-    
+
+//    self.backgroundColor =[UIColor orangeColor];
+
     tachLayer = [CALayer layer];
     tachLayer.bounds = CGRectMake(marge, 0,dashW, dashW/2.126);
     tachLayer.position = CGPointMake(kScreenWidth/2, dashW/2.126/2);
@@ -64,15 +72,53 @@
     [self.layer addSublayer:tachLayer];
     
     // Create the layer for the pin
-    pinLayer = [CALayer layer];
-    pinLayer.bounds = CGRectMake(0, 0, dashW/5, dashW/2.5);
-    pinLayer.contents = (id)[UIImage imageNamed:@"main_needle"].CGImage;
-    pinLayer.position = CGPointMake(kScreenWidth/2, dashW/2.126);
-    pinLayer.anchorPoint = CGPointMake(1.0, 1.0);
-    // Rotate to the left 50 degrees so it lines up with the 0 position on the gauge
-    pinLayer.transform = CATransform3DRotate(pinLayer.transform, DEGREES_TO_RADIANS(-50), 0, 0, 1);
-    [tachLayer addSublayer:pinLayer];
-    
+
+
+    self.needleView =[[UIImageView alloc]init];
+    self.needleView.frame = CGRectMake((kScreenWidth/2-dashW/10),dashW/4, dashW/5, dashW/2.5);
+
+//    self.needleView.frame = CGRectMake(0,dashW/2, dashW/2, dashW/2.5);
+    self.needleView.image = [UIImage imageNamed:@"main_needle"];
+//    self.needleView.center = CGPointMake(dashW/2, dashW/2.126/2);
+    self.needleView.layer.anchorPoint = CGPointMake(1, 1.0);
+
+    self.needleView.transform = CGAffineTransformMakeRotation(M_PI_2 * -0.5);
+
+//    self.needleView.backgroundColor = [UIColor whiteColor];
+    [self addSubview:self.needleView];
+
+    [self needletransform];
+
+//    pinLayer = [CALayer layer];
+//    pinLayer.bounds = CGRectMake(0, 0, dashW/5, dashW/2.5);
+//    pinLayer.contents = (id)[UIImage imageNamed:@"main_needle"].CGImage;
+//    pinLayer.position = CGPointMake(kScreenWidth/2, dashW/2.126);
+//    pinLayer.anchorPoint = CGPointMake(1.0, 1.0);
+////    pinLayer.transform = CATransform3DRotate(pinLayer.transform, DEGREES_TO_RADIANS(-50), 0, 0, 1);
+//    [tachLayer addSublayer:pinLayer];
+
+}
+
+-(void)setValue:(NSString *)value{
+    _value = value;
+
+    if (value.floatValue>=37.5 && value.floatValue<38) {
+        //低热
+    }else if (value.floatValue>=38 && value.floatValue<39){
+        //中度热
+    }else if (value.floatValue>=39){
+        //高热
+    }else{
+        //正常体温
+    }
+
+}
+
+-(void)needletransform{
+
+    [UIView animateWithDuration:2 animations:^{
+        self.needleView.transform = CGAffineTransformMakeRotation(M_PI * 0.57);
+    }];
 }
 
 - (void)go:(id)sender {

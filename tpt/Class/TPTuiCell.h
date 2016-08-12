@@ -10,6 +10,10 @@
 
 @interface TPTuiCell : UITableViewCell
 
+@property (weak, nonatomic) IBOutlet UIView *bgView;
+
+@property (weak, nonatomic) IBOutlet UIImageView *cellBgImage;
+
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 
 @property (weak, nonatomic) IBOutlet UILabel *contentLable;
@@ -22,6 +26,9 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *contentleftConstraintMarge;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *contentrightConstraintMarge;
 
+
 + (instancetype)theTuiWithTableView:(UITableView *)tableView andIndexPath:(NSIndexPath *)indexpath;
+
+-(void)theTuiWithTableViewWithIndexPath:(NSIndexPath *)indexPath andType:(NSInteger)type andDict:(NSDictionary *)dictionary;
 
 @end
