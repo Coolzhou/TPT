@@ -18,6 +18,11 @@
 #import "XPQRotateDials.h"
 #import "SNChart.h"
 #import "TPTool.h"
+
+//记录温度数据
+#import "WBCacheTool.h"
+#import "TPTStateCacheTool.h"
+#import "WBTemperature.h"
 #define channelOnPeropheralView @"peripheralView"
 #define channelOnCharacteristicView @"CharacteristicView"
 #define kPeripheralName         @"360qws Electric Bike Service"         //外围设备名称
@@ -37,6 +42,8 @@
 @property (nonatomic,strong)SNChart * chart;  //折线图
 @property (nonatomic,strong)NSMutableArray *valueArray; //温度数组
 @property (nonatomic,strong)NSMutableArray *timeArray;  //时间数组
+
+@property (nonatomic,strong)NSString *staticTemp;//默认正常状态
 
 @end
 
@@ -58,7 +65,7 @@
 
     self.view.backgroundColor = [UIColor whiteColor];
     self.bgimageView.image = [UIImage imageNamed:@"main_first_bg"];
-
+    self.staticTemp = @"0";
     [self loadBabayBluetooth]; //蓝牙
     [self createTimer];
 
@@ -92,24 +99,42 @@
         [self writeValue:self.writeCBCharacteristic];
     }
 
-    NSString *aa =[NSString stringWithFormat:@"%f",arc4random()%7+35+0.46];
-    //                       NSString *aa =[NSString stringWithFormat:@"%u.%u",resultByte[3],resultByte[4]];
-    //                       NSLog(@"aaaaaa =%@",aa);
-    [self.valueArray addObject:aa];
+    NSString *tempStr =[NSString stringWithFormat:@"%f",arc4random()%7+35+0.46];
+    [self.valueArray addObject:tempStr];
 
-    NSString *bb =[TPTool getCurrentDate];
-    [self.timeArray addObject:bb];
+    NSString *timeStr =[TPTool getCurrentDate];
+    NSString *tempTimeStr = [TPTool getTempCurrentDate];
+    [self.timeArray addObject:timeStr];
 
-    if (self.valueArray.count>7) {
+    if (self.valueArray.count>chartMaxNum) {
         //默认为正序遍历
         [self.valueArray removeObjectAtIndex:0];
     }
-    if (self.timeArray.count>7) {
+    if (self.timeArray.count>chartMaxNum) {
         //默认为正序遍历
         [self.timeArray removeObjectAtIndex:0];
     }
     self.chart.valueArray = self.valueArray;
     self.chart.timeArray = self.timeArray;
+
+    //记录所有数据
+    WBTemperature *temp = [[WBTemperature alloc] init];
+    temp.create_time = timeStr;
+    temp.temp = tempStr.floatValue;
+    [WBCacheTool addTemperature:temp];
+
+    //记录提醒数据
+    NSString *getTemp = [TPTool getCurrentTempState:tempStr];
+    if (![getTemp isEqualToString:@"-1"]) {
+        if (![self.staticTemp isEqualToString:getTemp]) {
+            WBTemperature *temp = [[WBTemperature alloc] init];
+            temp.create_time = tempTimeStr;
+            temp.temp = tempStr.floatValue;
+            temp.temp_state = getTemp;
+            [TPTStateCacheTool addTemperature:temp];
+            self.staticTemp = getTemp;
+        }
+    }
 }
 
 #pragma mark rightBarButtonItem

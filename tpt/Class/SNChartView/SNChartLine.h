@@ -9,10 +9,10 @@
 #import <UIKit/UIKit.h>
 
 static const CGFloat chartLineStartX = 40.f;
-static const CGFloat chartLineTheXAxisSpan = 50.f;
-static const CGFloat chartLineTheYAxisSpan = 50.f;
 
-@interface SNChartLine : UIView
+@interface SNChartLine : UIView{
+    CGFloat chartLineTheXAxisSpan;
+}
 
 @property (nonatomic, strong) NSArray * xValues;
 @property (nonatomic, strong) NSArray * yValues;

@@ -14,7 +14,13 @@
 @property (nonatomic ,assign) CGFloat temp;
 /** 时间*/
 @property (nonatomic ,copy) NSString *create_time;
-/** */
-@property (nonatomic ,assign) int tempID;
+/** 完整时间*/
+@property (nonatomic ,copy) NSString *temp_time;
+/** 温度状态*/
+@property (nonatomic ,copy) NSString *temp_state;
+
+
+///** */
+//@property (nonatomic ,assign) int tempID;
 
 @end

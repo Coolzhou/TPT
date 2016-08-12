@@ -15,7 +15,6 @@
 #define kHVLineColor RGB(236, 237, 238)
 #define kBulldesFont [UIFont systemFontOfSize:10]
 
-static const NSInteger kYEqualPaths = 7;//y轴为5等份
 static const CGFloat kTopSpace = 30.f;//距离顶部y值
 
 
@@ -39,6 +38,7 @@ static const CGFloat kTopSpace = 30.f;//距离顶部y值
 //        self.backgroundColor = [UIColor redColor];
         self.curve = NO;
         self.lineH = 0;
+        chartLineTheXAxisSpan = (self.bounds.size.width-2*chartLineStartX)/(chartMaxNum-1);
         [self drawHorizontal];
         [self drawVertical];
     }
@@ -89,12 +89,12 @@ static const CGFloat kTopSpace = 30.f;//距离顶部y值
     UIBezierPath * path = [UIBezierPath bezierPath];
     CAShapeLayer * shapeLayer = [CAShapeLayer layer];
 
-    self.lineH = (self.bounds.size.height - 2*kTopSpace)/kYEqualPaths;
+    self.lineH = (self.bounds.size.height - 2*kTopSpace)/chartMaxNum;
     
-    for (NSInteger i = 0; i <= kYEqualPaths; i++) {
+    for (NSInteger i = 0; i <= chartMaxNum; i++) {
         
         [path moveToPoint:CGPointMake(chartLineStartX, self.lineH * i + kTopSpace)];
-        [path addLineToPoint:CGPointMake(chartLineStartX + (kYEqualPaths - 1) * 50, self.lineH * i + kTopSpace)];
+        [path addLineToPoint:CGPointMake(chartLineStartX + (chartMaxNum - 1) * chartLineTheXAxisSpan, self.lineH * i + kTopSpace)];
         [path closePath];
         shapeLayer.path = path.CGPath;
         shapeLayer.strokeColor = kHVLineColor.CGColor;
@@ -102,7 +102,6 @@ static const CGFloat kTopSpace = 30.f;//距离顶部y值
         shapeLayer.lineWidth = 0.4f;
         [self.layer addSublayer:shapeLayer];
     }
-
 }
 //画竖线
 - (void)drawVertical {
@@ -110,7 +109,7 @@ static const CGFloat kTopSpace = 30.f;//距离顶部y值
     UIBezierPath * path = [UIBezierPath bezierPath];
     CAShapeLayer * shapeLayer = [CAShapeLayer layer];
     
-    for (NSInteger i = 0; i < kYEqualPaths; i++) {
+    for (NSInteger i = 0; i < chartMaxNum; i++) {
         
         [path moveToPoint:CGPointMake(chartLineStartX+ chartLineTheXAxisSpan*i,kTopSpace)];
         [path addLineToPoint:CGPointMake(chartLineStartX + chartLineTheXAxisSpan * i,self.bounds.size.height-kTopSpace)];
@@ -136,7 +135,7 @@ static const CGFloat kTopSpace = 30.f;//距离顶部y值
 //        NSLog(@"50 * 7  - 30 + = %f",(self.lineH * kYEqualPaths-[_yValues[i] floatValue]-kLableMin)/(_yMax-kLableMin) * self.lineH *kYEqualPaths);
 
 
-    [self.pointYArray addObject:@(self.lineH * kYEqualPaths-([_yValues[i] floatValue]-kLableMin)/(_yMax-kLableMin) * self.lineH *kYEqualPaths+kTopSpace)];
+    [self.pointYArray addObject:@(self.lineH * chartMaxNum-([_yValues[i] floatValue]-kLableMin)/(_yMax-kLableMin) * self.lineH *chartMaxNum+kTopSpace)];
 
 //        [self.pointYArray addObject:@(chartLineTheYAxisSpan * kYEqualPaths - [_yValues[i] floatValue]/_yMax * chartLineTheYAxisSpan * kYEqualPaths + kTopSpace)];
     }
@@ -211,7 +210,7 @@ static const CGFloat kTopSpace = 30.f;//距离顶部y值
 //标记x轴label
 - (void)addXLabel:(CGPoint)point andIndex:(NSInteger)index {
     UILabel * label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, chartLineTheXAxisSpan, 20)];
-    label.center = CGPointMake(point.x, self.lineH * kYEqualPaths + kTopSpace+15);
+    label.center = CGPointMake(point.x, self.lineH * chartMaxNum + kTopSpace+15);
     label.textColor = [UIColor lightGrayColor];
     label.font = [UIFont systemFontOfSize:10.f];
     label.textAlignment = NSTextAlignmentCenter;
@@ -221,13 +220,13 @@ static const CGFloat kTopSpace = 30.f;//距离顶部y值
 
 //标记y轴label
 - (void)addYLabel {
-    for (NSInteger i = 0; i <= kYEqualPaths; i++) {
+    for (NSInteger i = 0; i <= chartMaxNum; i++) {
         UILabel * label = [[UILabel alloc] initWithFrame:CGRectMake(0, self.lineH * i + kTopSpace-5, chartLineStartX - 5, 10)];
         label.textColor = [UIColor lightGrayColor];
         label.font = [UIFont systemFontOfSize:10.f];
         label.textAlignment = NSTextAlignmentRight;
         [self addSubview:label];
-        if (i == kYEqualPaths) {
+        if (i == chartMaxNum) {
             label.text = [NSString stringWithFormat:@""];
         } else {
             label.text = [NSString stringWithFormat:@"%.0f",_yMax - i];

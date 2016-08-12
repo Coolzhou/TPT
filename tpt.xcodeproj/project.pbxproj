@@ -25,6 +25,9 @@
 		187550E81D5D98C700648557 /* TPTHistoryVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 187550E71D5D98C700648557 /* TPTHistoryVC.m */; };
 		187550EC1D5D9DE500648557 /* WBCacheTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 187550EB1D5D9DE500648557 /* WBCacheTool.m */; };
 		187550EF1D5D9E3C00648557 /* WBTemperature.m in Sources */ = {isa = PBXBuildFile; fileRef = 187550EE1D5D9E3C00648557 /* WBTemperature.m */; };
+		187550F31D5DA6EC00648557 /* TPTStateCacheTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 187550F21D5DA6EC00648557 /* TPTStateCacheTool.m */; };
+		187550F71D5DB3B700648557 /* TPTHistoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 187550F51D5DB3B700648557 /* TPTHistoryCell.m */; };
+		187550F81D5DB3B700648557 /* TPTHistoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 187550F61D5DB3B700648557 /* TPTHistoryCell.xib */; };
 		18A3E0291D49EFB600FCFF01 /* XPQRotateDials.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A3E0281D49EFB600FCFF01 /* XPQRotateDials.m */; };
 		18B23CEF1D41CC3B00CE9AA6 /* ShareSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18B23CCD1D41CC3B00CE9AA6 /* ShareSDK.framework */; };
 		18B23CF01D41CC3B00CE9AA6 /* ShareSDKExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18B23CD01D41CC3B00CE9AA6 /* ShareSDKExtension.framework */; };
@@ -160,6 +163,11 @@
 		187550EB1D5D9DE500648557 /* WBCacheTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBCacheTool.m; sourceTree = "<group>"; };
 		187550ED1D5D9E3C00648557 /* WBTemperature.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBTemperature.h; sourceTree = "<group>"; };
 		187550EE1D5D9E3C00648557 /* WBTemperature.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBTemperature.m; sourceTree = "<group>"; };
+		187550F11D5DA6EC00648557 /* TPTStateCacheTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPTStateCacheTool.h; sourceTree = "<group>"; };
+		187550F21D5DA6EC00648557 /* TPTStateCacheTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPTStateCacheTool.m; sourceTree = "<group>"; };
+		187550F41D5DB3B700648557 /* TPTHistoryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPTHistoryCell.h; sourceTree = "<group>"; };
+		187550F51D5DB3B700648557 /* TPTHistoryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPTHistoryCell.m; sourceTree = "<group>"; };
+		187550F61D5DB3B700648557 /* TPTHistoryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TPTHistoryCell.xib; sourceTree = "<group>"; };
 		18A3E0271D49EFB600FCFF01 /* XPQRotateDials.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XPQRotateDials.h; sourceTree = "<group>"; };
 		18A3E0281D49EFB600FCFF01 /* XPQRotateDials.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XPQRotateDials.m; sourceTree = "<group>"; };
 		18B23CCD1D41CC3B00CE9AA6 /* ShareSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ShareSDK.framework; sourceTree = "<group>"; };
@@ -433,6 +441,8 @@
 				1810D9C21D588AEE00C1DB65 /* TPTool.m */,
 				187550EA1D5D9DE500648557 /* WBCacheTool.h */,
 				187550EB1D5D9DE500648557 /* WBCacheTool.m */,
+				187550F11D5DA6EC00648557 /* TPTStateCacheTool.h */,
+				187550F21D5DA6EC00648557 /* TPTStateCacheTool.m */,
 			);
 			name = Tool;
 			sourceTree = "<group>";
@@ -851,6 +861,9 @@
 		AE2987661D4CAE5600B50AC2 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				187550F41D5DB3B700648557 /* TPTHistoryCell.h */,
+				187550F51D5DB3B700648557 /* TPTHistoryCell.m */,
+				187550F61D5DB3B700648557 /* TPTHistoryCell.xib */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -1049,6 +1062,7 @@
 				18FFB3B91D5C833300EFE0D3 /* alertSetTwoCell.xib in Resources */,
 				18B23CF61D41CC3B00CE9AA6 /* WeiboSDK.bundle in Resources */,
 				18FFB3A51D5C28BB00EFE0D3 /* CustomSwitch.xib in Resources */,
+				187550F81D5DB3B700648557 /* TPTHistoryCell.xib in Resources */,
 				18D8679E1D59CE1F00686AB2 /* TPtui.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1117,6 +1131,7 @@
 				187550EC1D5D9DE500648557 /* WBCacheTool.m in Sources */,
 				18E561231D3E01FF0053B9A4 /* BabyPeripheralManager.m in Sources */,
 				18B953631D49CF5400F2221C /* TPLeftCell.m in Sources */,
+				187550F71D5DB3B700648557 /* TPTHistoryCell.m in Sources */,
 				187550E81D5D98C700648557 /* TPTHistoryVC.m in Sources */,
 				1810D9BC1D587F4600C1DB65 /* SNChart.m in Sources */,
 				18FD05451D5B3B1B009D4B16 /* TPTSetupCell.m in Sources */,
@@ -1152,6 +1167,7 @@
 				180909161D48CBF7004C47F9 /* MCLeftSlideViewController.m in Sources */,
 				18FD054F1D5B3B71009D4B16 /* TPTSetOtherCell.m in Sources */,
 				1869DD7E1D40C21700BA6526 /* PeripheralInfo.m in Sources */,
+				187550F31D5DA6EC00648557 /* TPTStateCacheTool.m in Sources */,
 				18FFB3B31D5C831800EFE0D3 /* alertSetOneCell.m in Sources */,
 				18E560CF1D3DBB930053B9A4 /* main.m in Sources */,
 				180909141D48CBF7004C47F9 /* MCContent.m in Sources */,

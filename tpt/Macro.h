@@ -10,14 +10,7 @@
 #define Macro_h
 
 
-#define kUserDefaults     [NSUserDefaults standardUserDefaults]
 
-// 屏幕宽度
-#define kScreenRect   [[UIScreen mainScreen] bounds]
-
-#define kScreenSize           [[UIScreen mainScreen] bounds].size
-#define kScreenWidth          [[UIScreen mainScreen] bounds].size.width
-#define kScreenHeight         [[UIScreen mainScreen] bounds].size.height
 
 #define kMainPageDistance   100   //打开左侧窗时，中视图(右视图)露出的宽度
 #define kMainPageScale   1.0  //打开左侧窗时，中视图(右视图）缩放比例
@@ -47,7 +40,10 @@ blue:((float)(rgbValue & 0xFF)) / 255.0 alpha:1.0]
 
 #define MainContentColor RGB(82, 84, 82)
 
+//line 边框线颜色
 #define LineColor RGB(220,232,230)
+
+#define chartMaxNum 6
 
 #define DEGREES_TO_RADIANS(d) (d * M_PI / 180)
 
