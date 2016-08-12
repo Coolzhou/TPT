@@ -38,12 +38,10 @@
 
         self.myScrollView.frame = self.bounds;
         self.chartLine = [[SNChartLine alloc] initWithFrame:self.bounds];
-        self.chartLine.yMax = 42;
         self.chartLine.curve = self.curve;
         [self.myScrollView addSubview:self.chartLine];
 
         if (self.timeArray.count>0) {
-
 
             NSMutableArray * yArray = self.valueArray;
             NSArray * xArray = self.timeArray;
@@ -55,16 +53,17 @@
 
                 }
             }
+
             NSArray * sourtArray = [yArray sortedArrayUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
 
                 return [obj2 floatValue] > [obj1 floatValue];
             }];
+            self.chartLine.yMin = [sourtArray.lastObject floatValue];
+            self.chartLine.yMax = [sourtArray.firstObject floatValue];
+
             [self.chartLine setXValues:xArray];
             [self.chartLine setYValues:yArray];
-
         }
-
-
         [self.chartLine startDrawLines];
         
         self.myScrollView.contentSize = CGSizeMake(self.bounds.size.width, 0);

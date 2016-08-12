@@ -19,6 +19,8 @@ static const CGFloat chartLineStartX = 40.f;
 
 @property (nonatomic, assign) CGFloat yMax;
 
+@property (nonatomic, assign) CGFloat yMin;
+
 @property (nonatomic, assign) BOOL curve;//是否曲线
 
 /**

@@ -38,6 +38,7 @@ static const CGFloat kTopSpace = 30.f;//距离顶部y值
 //        self.backgroundColor = [UIColor redColor];
         self.curve = NO;
         self.lineH = 0;
+        _yMax = 42;
         chartLineTheXAxisSpan = (self.bounds.size.width-2*chartLineStartX)/(chartMaxNum-1);
         [self drawHorizontal];
         [self drawVertical];
@@ -68,6 +69,13 @@ static const CGFloat kTopSpace = 30.f;//距离顶部y值
 
 - (void)setYMax:(CGFloat)yMax {
     _yMax = yMax;
+
+    _yMax = _yMax + 2;
+}
+
+-(void)setYMin:(CGFloat)yMin{
+    _yMax = yMin;
+    _yMin = yMin - 2;
 }
 
 - (void)setCurve:(BOOL)curve {
@@ -137,7 +145,6 @@ static const CGFloat kTopSpace = 30.f;//距离顶部y值
 
     [self.pointYArray addObject:@(self.lineH * chartMaxNum-([_yValues[i] floatValue]-kLableMin)/(_yMax-kLableMin) * self.lineH *chartMaxNum+kTopSpace)];
 
-//        [self.pointYArray addObject:@(chartLineTheYAxisSpan * kYEqualPaths - [_yValues[i] floatValue]/_yMax * chartLineTheYAxisSpan * kYEqualPaths + kTopSpace)];
     }
     
     for (NSInteger i = 0; i < self.pointXArray.count; i++) {
@@ -226,11 +233,13 @@ static const CGFloat kTopSpace = 30.f;//距离顶部y值
         label.font = [UIFont systemFontOfSize:10.f];
         label.textAlignment = NSTextAlignmentRight;
         [self addSubview:label];
-        if (i == chartMaxNum) {
-            label.text = [NSString stringWithFormat:@""];
-        } else {
+
+        if (_yValues.count<chartMaxNum) {
+            label.text = [NSString stringWithFormat:@"%.0f",_yMax - i];
+        }else{
             label.text = [NSString stringWithFormat:@"%.0f",_yMax - i];
         }
+        NSLog(@"yyyy = %f ,,, %ld",(_yMax - _yMin)/chartMaxNum,(NSInteger)(_yMax - _yMin)/chartMaxNum);
     }
 }
 //圆圈点击事件
