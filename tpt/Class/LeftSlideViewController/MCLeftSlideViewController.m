@@ -88,8 +88,6 @@
         firstVC.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:menuBtn];
         
     }
-    
-    
     return self;
 }
 - (void) openOrCloseLeftList

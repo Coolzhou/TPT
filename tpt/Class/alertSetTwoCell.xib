@@ -27,9 +27,9 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y20-dX-hxv">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y20-dX-hxv" customClass="CustomSwitch">
                                 <rect key="frame" x="205" y="9" width="75" height="25"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="25" id="00w-Ed-eVi"/>
                                     <constraint firstAttribute="width" constant="75" id="Xm0-KI-1Gf"/>
@@ -61,6 +61,8 @@
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <connections>
                 <outlet property="bgImgView" destination="5so-Zx-1cK" id="y7v-DQ-nim"/>
+                <outlet property="switchBtn" destination="y20-dX-hxv" id="IaF-bi-AJ2"/>
+                <outlet property="titleLable" destination="y1d-mg-e3a" id="sdC-nr-cvp"/>
             </connections>
         </tableViewCell>
     </objects>

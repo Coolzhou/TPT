@@ -47,6 +47,8 @@ blue:((float)(rgbValue & 0xFF)) / 255.0 alpha:1.0]
 
 #define MainContentColor RGB(82, 84, 82)
 
+#define LineColor RGB(220,232,230)
+
 #define DEGREES_TO_RADIANS(d) (d * M_PI / 180)
 
 #endif /* Macro_h */

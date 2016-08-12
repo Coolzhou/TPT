@@ -11,6 +11,7 @@
 @interface alertSetOneCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UIView *bgView;
+@property (weak, nonatomic) IBOutlet UILabel *contentLable;
 
 + (instancetype)thealertSetOneCellWithTableView:(UITableView *)tableView andIndexPath:(NSIndexPath *)indexpath;
 

@@ -30,6 +30,14 @@
 @property (weak, nonatomic) IBOutlet UIButton *FreeBtn;
 
 
+@property (weak, nonatomic) IBOutlet UILabel *topTitleOneLable;
+@property (weak, nonatomic) IBOutlet UILabel *topTitleTwoLable;
+@property (weak, nonatomic) IBOutlet UILabel *topTitleThreeLable;
+@property (weak, nonatomic) IBOutlet UILabel *topTitleFreeLable;
+
+
+
+
 + (instancetype)thealertSetThreeCellWithTableView:(UITableView *)tableView andIndexPath:(NSIndexPath *)indexpath;
 
 @end

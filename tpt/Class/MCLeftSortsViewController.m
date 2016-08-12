@@ -8,7 +8,7 @@
 
 #import "MCLeftSortsViewController.h"
 #import "MCLeftSliderManager.h"
-#import "MCOtherViewController.h"
+#import "TPTHistoryVC.h"
 #import "TPTuiViewController.h"
 #import "TPTSetUpVC.h"
 
@@ -82,7 +82,7 @@
         }
             break;
         case 1:{
-            pushvc = [[MCOtherViewController alloc] init];
+            pushvc = [[TPTHistoryVC alloc] init];
 
             [[MCLeftSliderManager sharedInstance].LeftSlideVC closeLeftView];//关闭左侧抽屉
             [[MCLeftSliderManager sharedInstance].mainNavigationController pushViewController:pushvc animated:NO];
@@ -102,9 +102,9 @@
             break;
             
         default:{
-            pushvc = [[MCOtherViewController alloc] init];
-            [[MCLeftSliderManager sharedInstance].LeftSlideVC closeLeftView];//关闭左侧抽屉
-            [[MCLeftSliderManager sharedInstance].mainNavigationController pushViewController:pushvc animated:NO];
+//            pushvc = [[MCOtherViewController alloc] init];
+//            [[MCLeftSliderManager sharedInstance].LeftSlideVC closeLeftView];//关闭左侧抽屉
+//            [[MCLeftSliderManager sharedInstance].mainNavigationController pushViewController:pushvc animated:NO];
         }
             break;
     }

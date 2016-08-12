@@ -53,16 +53,19 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="点击上方数字直接设置温度值" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4WY-Sp-aXZ">
-                                <rect key="frame" x="10" y="105" width="270" height="21"/>
+                                <rect key="frame" x="10" y="100" width="270" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="rtu-Tp-W1l"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="说明：低温指腋温为37.5~38℃、中度热为18.1~39℃、高热为39。1~40℃、超高热为41℃以上。" textAlignment="natural" lineBreakMode="characterWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pID-s8-WR8">
-                                <rect key="frame" x="8" y="136" width="274" height="52"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="说明：低温指腋温为37.5~38℃、中度热为18.1~39℃、高热为39。1~40℃、超高热为41℃以上。" lineBreakMode="characterWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pID-s8-WR8">
+                                <rect key="frame" x="8" y="126" width="274" height="51"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="62" id="UBh-3w-ChV"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -108,7 +111,6 @@
                                 <state key="normal" title="Button"/>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="0.51025644520000002" blue="0.75267083440000004" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="bNf-lG-sAt" firstAttribute="leading" secondItem="dXC-er-yTg" secondAttribute="trailing" id="4CR-dW-mgb"/>
                             <constraint firstItem="Q5l-IA-dIB" firstAttribute="top" secondItem="dXC-er-yTg" secondAttribute="bottom" id="6Ak-Kv-lqF"/>
@@ -152,17 +154,16 @@
                             <constraint firstItem="2su-8V-3DZ" firstAttribute="top" secondItem="ijI-I3-R6T" secondAttribute="top" constant="44" id="i1V-eJ-tZz"/>
                             <constraint firstAttribute="trailing" secondItem="KhJ-FG-JFf" secondAttribute="trailing" constant="84" id="jK1-3K-bIC"/>
                             <constraint firstItem="Q5l-IA-dIB" firstAttribute="top" secondItem="8CC-1b-16G" secondAttribute="bottom" id="kn0-Xd-wru"/>
-                            <constraint firstItem="pID-s8-WR8" firstAttribute="top" secondItem="4WY-Sp-aXZ" secondAttribute="bottom" constant="10" id="lLJ-7r-D8a"/>
+                            <constraint firstItem="pID-s8-WR8" firstAttribute="top" secondItem="4WY-Sp-aXZ" secondAttribute="bottom" constant="5" id="lLJ-7r-D8a"/>
                             <constraint firstItem="cvP-ev-vBT" firstAttribute="top" secondItem="ijI-I3-R6T" secondAttribute="top" id="mpA-A4-t8h"/>
                             <constraint firstItem="dXC-er-yTg" firstAttribute="leading" secondItem="cvP-ev-vBT" secondAttribute="trailing" id="nkI-a6-MOC"/>
-                            <constraint firstAttribute="bottom" secondItem="pID-s8-WR8" secondAttribute="bottom" constant="13" id="rHc-iB-gn2"/>
                             <constraint firstItem="BQP-sj-gqY" firstAttribute="top" secondItem="2su-8V-3DZ" secondAttribute="bottom" id="s7l-yH-rMz"/>
                             <constraint firstItem="Ce4-jh-XD4" firstAttribute="leading" secondItem="KhJ-FG-JFf" secondAttribute="trailing" id="sTC-Uh-KpH"/>
                             <constraint firstItem="KhJ-FG-JFf" firstAttribute="leading" secondItem="GBj-4Z-Rai" secondAttribute="trailing" id="szf-Ah-bxC"/>
                             <constraint firstAttribute="trailing" secondItem="Ce4-jh-XD4" secondAttribute="trailing" id="tiT-6T-VgK"/>
                             <constraint firstItem="dXC-er-yTg" firstAttribute="top" secondItem="ijI-I3-R6T" secondAttribute="top" id="udC-oD-0Wn"/>
                             <constraint firstItem="KhJ-FG-JFf" firstAttribute="leading" secondItem="8CC-1b-16G" secondAttribute="trailing" constant="60" id="vXv-aA-qJX"/>
-                            <constraint firstItem="4WY-Sp-aXZ" firstAttribute="top" secondItem="Q5l-IA-dIB" secondAttribute="bottom" constant="15" id="xYS-td-h7g"/>
+                            <constraint firstItem="4WY-Sp-aXZ" firstAttribute="top" secondItem="Q5l-IA-dIB" secondAttribute="bottom" constant="10" id="xYS-td-h7g"/>
                             <constraint firstItem="dEi-9y-ZmN" firstAttribute="leading" secondItem="KhJ-FG-JFf" secondAttribute="trailing" id="xZy-VX-a4R"/>
                             <constraint firstAttribute="trailing" secondItem="pID-s8-WR8" secondAttribute="trailing" constant="8" id="xbL-Ld-0Uz"/>
                             <constraint firstAttribute="trailing" secondItem="dEi-9y-ZmN" secondAttribute="trailing" id="xkU-wL-pV5"/>
@@ -201,6 +202,10 @@
                 <outlet property="lineMargeThree" destination="fRY-zB-Hru" id="NuQ-88-Cju"/>
                 <outlet property="lineMargeTwo" destination="9yg-WS-ZF9" id="LQc-2y-jaj"/>
                 <outlet property="titleLable" destination="4WY-Sp-aXZ" id="dDQ-w7-Jkn"/>
+                <outlet property="topTitleFreeLable" destination="Ce4-jh-XD4" id="8tO-Ei-nlI"/>
+                <outlet property="topTitleOneLable" destination="cvP-ev-vBT" id="YMD-65-Vux"/>
+                <outlet property="topTitleThreeLable" destination="GBj-4Z-Rai" id="4vm-a4-Goy"/>
+                <outlet property="topTitleTwoLable" destination="bNf-lG-sAt" id="ce2-Ia-fKi"/>
                 <outlet property="wLineOneView" destination="2su-8V-3DZ" id="TAk-qL-mg5"/>
                 <outlet property="wLineTwoView" destination="Q5l-IA-dIB" id="Ebx-ao-gTv"/>
             </connections>

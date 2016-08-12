@@ -43,6 +43,7 @@
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <connections>
                 <outlet property="bgView" destination="Xnp-u1-UMN" id="JQ7-5e-94n"/>
+                <outlet property="contentLable" destination="RQg-qX-6Rc" id="O2i-RO-44h"/>
             </connections>
             <point key="canvasLocation" x="259" y="323"/>
         </tableViewCell>

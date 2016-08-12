@@ -22,6 +22,9 @@
 		1810D9C31D588AEE00C1DB65 /* TPTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 1810D9C21D588AEE00C1DB65 /* TPTool.m */; };
 		1810D9C61D58902400C1DB65 /* NSString+DZCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 1810D9C51D58902400C1DB65 /* NSString+DZCategory.m */; };
 		1869DD7E1D40C21700BA6526 /* PeripheralInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 1869DD7D1D40C21700BA6526 /* PeripheralInfo.m */; };
+		187550E81D5D98C700648557 /* TPTHistoryVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 187550E71D5D98C700648557 /* TPTHistoryVC.m */; };
+		187550EC1D5D9DE500648557 /* WBCacheTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 187550EB1D5D9DE500648557 /* WBCacheTool.m */; };
+		187550EF1D5D9E3C00648557 /* WBTemperature.m in Sources */ = {isa = PBXBuildFile; fileRef = 187550EE1D5D9E3C00648557 /* WBTemperature.m */; };
 		18A3E0291D49EFB600FCFF01 /* XPQRotateDials.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A3E0281D49EFB600FCFF01 /* XPQRotateDials.m */; };
 		18B23CEF1D41CC3B00CE9AA6 /* ShareSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18B23CCD1D41CC3B00CE9AA6 /* ShareSDK.framework */; };
 		18B23CF01D41CC3B00CE9AA6 /* ShareSDKExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18B23CD01D41CC3B00CE9AA6 /* ShareSDKExtension.framework */; };
@@ -151,6 +154,12 @@
 		1869DD7B1D40B24400BA6526 /* TPCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPCommon.h; sourceTree = "<group>"; };
 		1869DD7C1D40C21700BA6526 /* PeripheralInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PeripheralInfo.h; sourceTree = "<group>"; };
 		1869DD7D1D40C21700BA6526 /* PeripheralInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PeripheralInfo.m; sourceTree = "<group>"; };
+		187550E61D5D98C700648557 /* TPTHistoryVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPTHistoryVC.h; sourceTree = "<group>"; };
+		187550E71D5D98C700648557 /* TPTHistoryVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPTHistoryVC.m; sourceTree = "<group>"; };
+		187550EA1D5D9DE500648557 /* WBCacheTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBCacheTool.h; sourceTree = "<group>"; };
+		187550EB1D5D9DE500648557 /* WBCacheTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBCacheTool.m; sourceTree = "<group>"; };
+		187550ED1D5D9E3C00648557 /* WBTemperature.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBTemperature.h; sourceTree = "<group>"; };
+		187550EE1D5D9E3C00648557 /* WBTemperature.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBTemperature.m; sourceTree = "<group>"; };
 		18A3E0271D49EFB600FCFF01 /* XPQRotateDials.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XPQRotateDials.h; sourceTree = "<group>"; };
 		18A3E0281D49EFB600FCFF01 /* XPQRotateDials.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XPQRotateDials.m; sourceTree = "<group>"; };
 		18B23CCD1D41CC3B00CE9AA6 /* ShareSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ShareSDK.framework; sourceTree = "<group>"; };
@@ -416,6 +425,27 @@
 			name = Model;
 			sourceTree = "<group>";
 		};
+		187550E91D5D9DC700648557 /* Tool */ = {
+			isa = PBXGroup;
+			children = (
+				187550F01D5D9E4800648557 /* Model */,
+				1810D9C11D588AEE00C1DB65 /* TPTool.h */,
+				1810D9C21D588AEE00C1DB65 /* TPTool.m */,
+				187550EA1D5D9DE500648557 /* WBCacheTool.h */,
+				187550EB1D5D9DE500648557 /* WBCacheTool.m */,
+			);
+			name = Tool;
+			sourceTree = "<group>";
+		};
+		187550F01D5D9E4800648557 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				187550ED1D5D9E3C00648557 /* WBTemperature.h */,
+				187550EE1D5D9E3C00648557 /* WBTemperature.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		18B23CCC1D41CC3B00CE9AA6 /* ShareSDK */ = {
 			isa = PBXGroup;
 			children = (
@@ -636,12 +666,11 @@
 		18E561071D3DDDB60053B9A4 /* 服务层 */ = {
 			isa = PBXGroup;
 			children = (
+				187550E91D5D9DC700648557 /* Tool */,
 				18D8679F1D59E33A00686AB2 /* IGDisplayer */,
 				1810D9B21D587F4600C1DB65 /* SNChartView */,
 				1809091E1D48CCEC004C47F9 /* MCNavgation */,
 				1809090B1D48CBF7004C47F9 /* LeftSlideViewController */,
-				1810D9C11D588AEE00C1DB65 /* TPTool.h */,
-				1810D9C21D588AEE00C1DB65 /* TPTool.m */,
 			);
 			name = "服务层";
 			sourceTree = "<group>";
@@ -813,6 +842,8 @@
 		AE2987651D4CAE4C00B50AC2 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				187550E61D5D98C700648557 /* TPTHistoryVC.h */,
+				187550E71D5D98C700648557 /* TPTHistoryVC.m */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -1083,8 +1114,10 @@
 				18E5610A1D3DF6D90053B9A4 /* HYBNetworking.m in Sources */,
 				180909251D48CE69004C47F9 /* MCOtherViewController.m in Sources */,
 				18E560D21D3DBB930053B9A4 /* AppDelegate.m in Sources */,
+				187550EC1D5D9DE500648557 /* WBCacheTool.m in Sources */,
 				18E561231D3E01FF0053B9A4 /* BabyPeripheralManager.m in Sources */,
 				18B953631D49CF5400F2221C /* TPLeftCell.m in Sources */,
+				187550E81D5D98C700648557 /* TPTHistoryVC.m in Sources */,
 				1810D9BC1D587F4600C1DB65 /* SNChart.m in Sources */,
 				18FD05451D5B3B1B009D4B16 /* TPTSetupCell.m in Sources */,
 				18FD05411D5B3AC9009D4B16 /* TPTSetUpVC.m in Sources */,
@@ -1115,6 +1148,7 @@
 				18B23D161D41D2D100CE9AA6 /* AppDelegate+shareSDK.m in Sources */,
 				18FFB3AF1D5C52C400EFE0D3 /* TPTAlertSetupVC.m in Sources */,
 				1810D9BF1D587F4600C1DB65 /* UIBezierPath+curved.m in Sources */,
+				187550EF1D5D9E3C00648557 /* WBTemperature.m in Sources */,
 				180909161D48CBF7004C47F9 /* MCLeftSlideViewController.m in Sources */,
 				18FD054F1D5B3B71009D4B16 /* TPTSetOtherCell.m in Sources */,
 				1869DD7E1D40C21700BA6526 /* PeripheralInfo.m in Sources */,

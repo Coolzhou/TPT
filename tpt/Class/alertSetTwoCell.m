@@ -14,6 +14,12 @@
     // Initialization code
 
     self.bgImgView.image = [[UIImage imageNamed:@"tui_cell_bg"] stretchableImageWithLeftCapWidth:10 topCapHeight:10];
+
+
+    self.switchBtn.arrange = CustomSwitchArrangeONLeftOFFRight;
+    self.switchBtn.onImage = [UIImage imageNamed:@"switchOne_on"];
+    self.switchBtn.offImage = [UIImage imageNamed:@"switchOne_off"];
+    self.switchBtn.status = CustomSwitchStatusOff;
 }
 
 + (instancetype)thealertSetTwoCellWithTableView:(UITableView *)tableView andIndexPath:(NSIndexPath *)indexpath{

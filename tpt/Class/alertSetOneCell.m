@@ -12,7 +12,13 @@
 
 - (void)awakeFromNib {
     // Initialization code
-    self.bgView.backgroundColor = RGB(211, 213, 208);
+    self.bgView.backgroundColor = RGBA(211, 213, 190,0.5);
+    self.bgView.layer.cornerRadius = 5;
+    self.bgView.layer.masksToBounds = YES;
+
+    self.bgView.layer.borderWidth = 1;
+    self.bgView.layer.borderColor = [UIColor groupTableViewBackgroundColor].CGColor;
+    self.contentLable.textColor = MainContentColor;
 }
 
 + (instancetype)thealertSetOneCellWithTableView:(UITableView *)tableView andIndexPath:(NSIndexPath *)indexpath{
