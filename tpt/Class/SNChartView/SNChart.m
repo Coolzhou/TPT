@@ -54,13 +54,31 @@
                 }
             }
 
-            NSArray * sourtArray = [yArray sortedArrayUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
+//            NSArray * sourtArray = [yArray sortedArrayUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
+//
+//                return [obj2 floatValue] > [obj1 floatValue];
+//            }];
 
-                return [obj2 floatValue] > [obj1 floatValue];
+
+            NSArray *sortedArray = [yArray sortedArrayUsingComparator:^(NSNumber *number1,NSNumber *number2) {
+                int val1 = [number1 intValue];
+                int val2 = [number2 intValue];
+                if (val1 > val2) {
+                    return NSOrderedAscending;
+                } else {
+                    return NSOrderedDescending;
+                }
             }];
-            self.chartLine.yMin = [sourtArray.lastObject floatValue];
-            self.chartLine.yMax = [sourtArray.firstObject floatValue];
 
+            NSLog(@"%@", sortedArray);
+
+            if (yArray.count>1) {
+                self.chartLine.yMin = [sortedArray.lastObject floatValue];
+                self.chartLine.yMax = [sortedArray.firstObject floatValue];
+            }else{
+                self.chartLine.yMin = [sortedArray.lastObject floatValue]-3;
+                self.chartLine.yMax = [sortedArray.firstObject floatValue]+3;
+            }
             [self.chartLine setXValues:xArray];
             [self.chartLine setYValues:yArray];
         }

@@ -1,32 +1,26 @@
 //
-//  TPTAlertSetupVC.m
+//  TPTDeviceInfoVC.m
 //  tpt
 //
-//  Created by apple on 16/8/11.
+//  Created by apple on 16/8/19.
 //  Copyright © 2016年 MDJ. All rights reserved.
 //
 
-#import "TPTAlertSetupVC.h"
-#import "alertSetOneCell.h"
-#import "alertSetTwoCell.h"
-#import "alertSetThreeCell.h"
-#import "alertSetFreeCell.h"
-
-#import "CustomAlertView.h"
-@interface TPTAlertSetupVC ()<UITableViewDataSource,UITableViewDelegate>
+#import "TPTDeviceInfoVC.h"
+#import "TPTDeviceInfoCell.h"
+@interface TPTDeviceInfoVC ()<UITableViewDataSource,UITableViewDelegate>
 
 @property (nonatomic,strong)UITableView *tableView;
 
 @end
 
-@implementation TPTAlertSetupVC
+@implementation TPTDeviceInfoVC
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navTitleLable.text = @"温度超限报警设置";
+    self.navTitleLable.text = @"设备信息";
     [self initTableView];
 }
-
 
 -(void)initTableView{
     self.tableView = [[UITableView alloc]initWithFrame:CGRectZero style:UITableViewStyleGrouped];
@@ -44,50 +38,18 @@
 }
 #pragma mark UITableViewDataSource,UITableViewDelegate
 
--(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 4;
-}
-
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return 1;
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    TPTDeviceInfoCell *cell = [TPTDeviceInfoCell theTPTDeviceInfoCellWithTableView:tableView];
+    return cell;
 
-    if (indexPath.section==0) {
-        alertSetOneCell *cell = [alertSetOneCell thealertSetOneCellWithTableView:tableView andIndexPath:indexPath];
-        return cell;
-    }else if (indexPath.section ==1){
-        alertSetTwoCell *cell = [alertSetTwoCell thealertSetTwoCellWithTableView:tableView andIndexPath:indexPath];
-        return cell;
-    }else if(indexPath.section ==2){
-        alertSetThreeCell *cell = [alertSetThreeCell thealertSetThreeCellWithTableView:tableView andIndexPath:indexPath];
-        return cell;
-    }else{
-        alertSetFreeCell *cell = [alertSetFreeCell thealertSetFreeCellWithTableView:tableView andIndexPath:indexPath];
-        return cell;
-    }
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.section==0) {
-        return 84;
-    }else if(indexPath.section==1){
-        return 44;
-    }else if(indexPath.section ==2){
-        return 200;
-    }else{
-        return 133;
-    }
+    return [UITableViewCell whc_CellHeightForIndexPath:indexPath tableView:tableView];;
 }
-
--(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    if (section==0) {
-        return 30;
-    }else{
-        return 20;
-    }
-}
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

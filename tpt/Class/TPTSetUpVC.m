@@ -8,6 +8,9 @@
 
 #import "TPTSetUpVC.h"
 #import "TPTAlertSetupVC.h"
+#import "TPTDutyVC.h"
+#import "TPTDeviceInfoVC.h"
+
 #import "TPTSetupCell.h"
 #import "TPTSetEleCell.h"
 #import "TPTSetOtherCell.h"
@@ -96,16 +99,19 @@
         TPTAlertSetupVC * alertVC = [[TPTAlertSetupVC alloc]init];
         [self.navigationController pushViewController:alertVC animated:YES];
     }else{
-
+        TPTDutyVC * alertVC = [[TPTDutyVC alloc]init];
+        [self.navigationController pushViewController:alertVC animated:YES];
     }
 }
 
 #pragma mark 点击了第三行cell
 -(void)clickSectionThreeTableViewCell:(NSInteger)row{
     if (row==1) {
-
+        TPTDeviceInfoVC *info = [[TPTDeviceInfoVC alloc]init];
+        [self.navigationController pushViewController:info animated:YES];
     }else{
-        
+        TPTDutyVC * alertVC = [[TPTDutyVC alloc]init];
+        [self.navigationController pushViewController:alertVC animated:YES];
     }
 }
 

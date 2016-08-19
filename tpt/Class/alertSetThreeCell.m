@@ -7,7 +7,7 @@
 //
 
 #import "alertSetThreeCell.h"
-
+#import "CustomAlertView.h"
 @implementation alertSetThreeCell
 
 - (void)awakeFromNib {
@@ -38,7 +38,12 @@
     self.topTitleThreeLable.textColor = kColorWithRGB(0x62922C);
     self.topTitleFreeLable.textColor = kColorWithRGB(0x62922C);
 
-    
+
+    [self.OneBtn setTitle:UserModel.max_tem_low forState:UIControlStateNormal];
+    [self.TwoBtn setTitle:UserModel.max_tem_middle forState:UIControlStateNormal];
+    [self.ThreeBtn setTitle:UserModel.max_tem_high forState:UIControlStateNormal];
+    [self.FreeBtn setTitle:UserModel.max_tem_supper_high forState:UIControlStateNormal];
+
 }
 
 + (instancetype)thealertSetThreeCellWithTableView:(UITableView *)tableView andIndexPath:(NSIndexPath *)indexpath{
@@ -51,10 +56,34 @@
     return cell;
 }
 
+- (IBAction)clickChangeTemp:(UIButton *)sender {
+
+
+    CustomAlertView *alert = [[CustomAlertView alloc]initWithAlertViewType:CustomAlert andTag:sender.tag];
+
+    __weak typeof(self) weakself = self;
+    alert.ButtonClick = ^void(NSInteger buttonTag){
+        NSLog(@"buttonTag = %ld",buttonTag);
+        [weakself saveButtonTemp:buttonTag];
+    };
+}
+
+//保存按钮的值
+-(void)saveButtonTemp:(NSInteger)tag{
+
+    if (tag ==10) {
+        [self.OneBtn setTitle:UserModel.max_tem_low forState:UIControlStateNormal];
+    }else if (tag ==11){
+        [self.TwoBtn setTitle:UserModel.max_tem_middle forState:UIControlStateNormal];
+    }else if (tag ==12){
+        [self.ThreeBtn setTitle:UserModel.max_tem_high forState:UIControlStateNormal];
+    }else{
+        [self.FreeBtn setTitle:UserModel.max_tem_supper_high forState:UIControlStateNormal];
+    }
+}
+
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
 }
 
 @end

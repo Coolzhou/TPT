@@ -95,46 +95,46 @@
 }
 
 -(void)dealTimer{
-    if (self.writeCBCharacteristic) {
-        [self writeValue:self.writeCBCharacteristic];
-    }
-
-    NSString *tempStr =[NSString stringWithFormat:@"%f",arc4random()%7+35+0.46];
-    [self.valueArray addObject:tempStr];
-
-    NSString *timeStr =[TPTool getCurrentDate];
-    NSString *tempTimeStr = [TPTool getTempCurrentDate];
-    [self.timeArray addObject:timeStr];
-
-    if (self.valueArray.count>chartMaxNum) {
-        //默认为正序遍历
-        [self.valueArray removeObjectAtIndex:0];
-    }
-    if (self.timeArray.count>chartMaxNum) {
-        //默认为正序遍历
-        [self.timeArray removeObjectAtIndex:0];
-    }
-    self.chart.valueArray = self.valueArray;
-    self.chart.timeArray = self.timeArray;
-
-    //记录所有数据
-    WBTemperature *temp = [[WBTemperature alloc] init];
-    temp.create_time = timeStr;
-    temp.temp = tempStr.floatValue;
-    [WBCacheTool addTemperature:temp];
-
-    //记录提醒数据
-    NSString *getTemp = [TPTool getCurrentTempState:tempStr];
-    if (![getTemp isEqualToString:@"-1"]) {
-        if (![self.staticTemp isEqualToString:getTemp]) {
-            WBTemperature *temp = [[WBTemperature alloc] init];
-            temp.create_time = tempTimeStr;
-            temp.temp = tempStr.floatValue;
-            temp.temp_state = getTemp;
-            [TPTStateCacheTool addTemperature:temp];
-            self.staticTemp = getTemp;
-        }
-    }
+//    if (self.writeCBCharacteristic) {
+//        [self writeValue:self.writeCBCharacteristic];
+//    }
+//
+//    NSString *tempStr =[NSString stringWithFormat:@"%f",arc4random()%7+35+0.46];
+//    [self.valueArray addObject:tempStr];
+//
+//    NSString *timeStr =[TPTool getCurrentDate];
+//    NSString *tempTimeStr = [TPTool getTempCurrentDate];
+//    [self.timeArray addObject:timeStr];
+//
+//    if (self.valueArray.count>chartMaxNum) {
+//        //默认为正序遍历
+//        [self.valueArray removeObjectAtIndex:0];
+//    }
+//    if (self.timeArray.count>chartMaxNum) {
+//        //默认为正序遍历
+//        [self.timeArray removeObjectAtIndex:0];
+//    }
+//    self.chart.valueArray = self.valueArray;
+//    self.chart.timeArray = self.timeArray;
+//
+//    //记录所有数据
+//    WBTemperature *temp = [[WBTemperature alloc] init];
+//    temp.create_time = timeStr;
+//    temp.temp = tempStr.floatValue;
+//    [WBCacheTool addTemperature:temp];
+//
+//    //记录提醒数据
+//    NSString *getTemp = [TPTool getCurrentTempState:tempStr];
+//    if (![getTemp isEqualToString:@"-1"]) {
+//        if (![self.staticTemp isEqualToString:getTemp]) {
+//            WBTemperature *temp = [[WBTemperature alloc] init];
+//            temp.create_time = tempTimeStr;
+//            temp.temp = tempStr.floatValue;
+//            temp.temp_state = getTemp;
+//            [TPTStateCacheTool addTemperature:temp];
+//            self.staticTemp = getTemp;
+//        }
+//    }
 }
 
 #pragma mark rightBarButtonItem

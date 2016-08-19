@@ -15,7 +15,7 @@
 
     self.bgImgView.image = [[UIImage imageNamed:@"tui_cell_bg"] stretchableImageWithLeftCapWidth:10 topCapHeight:10];
 
-
+    self.titleLable.textColor = MainContentColor;
     self.switchBtn.arrange = CustomSwitchArrangeONLeftOFFRight;
     self.switchBtn.onImage = [UIImage imageNamed:@"switchOne_on"];
     self.switchBtn.offImage = [UIImage imageNamed:@"switchOne_off"];

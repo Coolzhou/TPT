@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+
+
 @interface alertSetThreeCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UIView *bgView;
@@ -34,9 +36,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *topTitleTwoLable;
 @property (weak, nonatomic) IBOutlet UILabel *topTitleThreeLable;
 @property (weak, nonatomic) IBOutlet UILabel *topTitleFreeLable;
-
-
-
 
 + (instancetype)thealertSetThreeCellWithTableView:(UITableView *)tableView andIndexPath:(NSIndexPath *)indexpath;
 

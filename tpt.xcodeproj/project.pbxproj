@@ -14,6 +14,18 @@
 		1809091D1D48CC5E004C47F9 /* MCLeftSortsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1809091C1D48CC5E004C47F9 /* MCLeftSortsViewController.m */; };
 		180909211D48CD06004C47F9 /* MCMainNavgationVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 180909201D48CD06004C47F9 /* MCMainNavgationVC.m */; };
 		180909251D48CE69004C47F9 /* MCOtherViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 180909241D48CE69004C47F9 /* MCOtherViewController.m */; };
+		1809122D1D66B370003F51A5 /* CustomAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1809122C1D66B370003F51A5 /* CustomAlertView.m */; };
+		1809122F1D66B74A003F51A5 /* bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 1809122E1D66B74A003F51A5 /* bg.png */; };
+		180912331D66BB1D003F51A5 /* TPTDutyVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 180912321D66BB1D003F51A5 /* TPTDutyVC.m */; };
+		180912381D66BC1D003F51A5 /* TPTdutyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 180912361D66BC1D003F51A5 /* TPTdutyCell.m */; };
+		180912391D66BC1D003F51A5 /* TPTdutyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 180912371D66BC1D003F51A5 /* TPTdutyCell.xib */; };
+		1809123C1D66D8F3003F51A5 /* TPTNewDutyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1809123B1D66D8F3003F51A5 /* TPTNewDutyCell.m */; };
+		180912441D66D915003F51A5 /* UITableViewCell+WHC_AutoHeightForCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1809123F1D66D915003F51A5 /* UITableViewCell+WHC_AutoHeightForCell.m */; };
+		180912451D66D915003F51A5 /* UIView+WHC_AutoLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 180912411D66D915003F51A5 /* UIView+WHC_AutoLayout.m */; };
+		180912461D66D915003F51A5 /* WHC_StackView.m in Sources */ = {isa = PBXBuildFile; fileRef = 180912431D66D915003F51A5 /* WHC_StackView.m */; };
+		1809124A1D66EF1A003F51A5 /* TPTDeviceInfoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 180912491D66EF1A003F51A5 /* TPTDeviceInfoVC.m */; };
+		1809124E1D66EF42003F51A5 /* TPTDeviceInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1809124D1D66EF42003F51A5 /* TPTDeviceInfoCell.m */; };
+		180912511D66F724003F51A5 /* ZCUserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 180912501D66F724003F51A5 /* ZCUserModel.m */; };
 		1810D9BC1D587F4600C1DB65 /* SNChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 1810D9B41D587F4600C1DB65 /* SNChart.m */; };
 		1810D9BD1D587F4600C1DB65 /* SNChartBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 1810D9B61D587F4600C1DB65 /* SNChartBar.m */; };
 		1810D9BE1D587F4600C1DB65 /* SNChartLine.m in Sources */ = {isa = PBXBuildFile; fileRef = 1810D9B81D587F4600C1DB65 /* SNChartLine.m */; };
@@ -22,6 +34,8 @@
 		1810D9C31D588AEE00C1DB65 /* TPTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 1810D9C21D588AEE00C1DB65 /* TPTool.m */; };
 		1810D9C61D58902400C1DB65 /* NSString+DZCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 1810D9C51D58902400C1DB65 /* NSString+DZCategory.m */; };
 		1869DD7E1D40C21700BA6526 /* PeripheralInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 1869DD7D1D40C21700BA6526 /* PeripheralInfo.m */; };
+		1872A2BE1D619E4A0049C7FE /* TPChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 1872A2BD1D619E4A0049C7FE /* TPChart.m */; };
+		1872A2C11D619E610049C7FE /* TPChartLine.m in Sources */ = {isa = PBXBuildFile; fileRef = 1872A2C01D619E610049C7FE /* TPChartLine.m */; };
 		187550E81D5D98C700648557 /* TPTHistoryVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 187550E71D5D98C700648557 /* TPTHistoryVC.m */; };
 		187550EC1D5D9DE500648557 /* WBCacheTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 187550EB1D5D9DE500648557 /* WBCacheTool.m */; };
 		187550EF1D5D9E3C00648557 /* WBTemperature.m in Sources */ = {isa = PBXBuildFile; fileRef = 187550EE1D5D9E3C00648557 /* WBTemperature.m */; };
@@ -141,6 +155,28 @@
 		180909221D48CDBC004C47F9 /* Macro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Macro.h; sourceTree = "<group>"; };
 		180909231D48CE69004C47F9 /* MCOtherViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCOtherViewController.h; sourceTree = "<group>"; };
 		180909241D48CE69004C47F9 /* MCOtherViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCOtherViewController.m; sourceTree = "<group>"; };
+		1809122B1D66B370003F51A5 /* CustomAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomAlertView.h; sourceTree = "<group>"; };
+		1809122C1D66B370003F51A5 /* CustomAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomAlertView.m; sourceTree = "<group>"; };
+		1809122E1D66B74A003F51A5 /* bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg.png; sourceTree = "<group>"; };
+		180912311D66BB1D003F51A5 /* TPTDutyVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPTDutyVC.h; sourceTree = "<group>"; };
+		180912321D66BB1D003F51A5 /* TPTDutyVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPTDutyVC.m; sourceTree = "<group>"; };
+		180912351D66BC1D003F51A5 /* TPTdutyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPTdutyCell.h; sourceTree = "<group>"; };
+		180912361D66BC1D003F51A5 /* TPTdutyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPTdutyCell.m; sourceTree = "<group>"; };
+		180912371D66BC1D003F51A5 /* TPTdutyCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TPTdutyCell.xib; sourceTree = "<group>"; };
+		1809123A1D66D8F3003F51A5 /* TPTNewDutyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPTNewDutyCell.h; sourceTree = "<group>"; };
+		1809123B1D66D8F3003F51A5 /* TPTNewDutyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPTNewDutyCell.m; sourceTree = "<group>"; };
+		1809123E1D66D915003F51A5 /* UITableViewCell+WHC_AutoHeightForCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableViewCell+WHC_AutoHeightForCell.h"; sourceTree = "<group>"; };
+		1809123F1D66D915003F51A5 /* UITableViewCell+WHC_AutoHeightForCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableViewCell+WHC_AutoHeightForCell.m"; sourceTree = "<group>"; };
+		180912401D66D915003F51A5 /* UIView+WHC_AutoLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+WHC_AutoLayout.h"; sourceTree = "<group>"; };
+		180912411D66D915003F51A5 /* UIView+WHC_AutoLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+WHC_AutoLayout.m"; sourceTree = "<group>"; };
+		180912421D66D915003F51A5 /* WHC_StackView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHC_StackView.h; sourceTree = "<group>"; };
+		180912431D66D915003F51A5 /* WHC_StackView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHC_StackView.m; sourceTree = "<group>"; };
+		180912481D66EF1A003F51A5 /* TPTDeviceInfoVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPTDeviceInfoVC.h; sourceTree = "<group>"; };
+		180912491D66EF1A003F51A5 /* TPTDeviceInfoVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPTDeviceInfoVC.m; sourceTree = "<group>"; };
+		1809124C1D66EF42003F51A5 /* TPTDeviceInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPTDeviceInfoCell.h; sourceTree = "<group>"; };
+		1809124D1D66EF42003F51A5 /* TPTDeviceInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPTDeviceInfoCell.m; sourceTree = "<group>"; };
+		1809124F1D66F724003F51A5 /* ZCUserModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCUserModel.h; sourceTree = "<group>"; };
+		180912501D66F724003F51A5 /* ZCUserModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCUserModel.m; sourceTree = "<group>"; };
 		1810D9B31D587F4600C1DB65 /* SNChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNChart.h; sourceTree = "<group>"; };
 		1810D9B41D587F4600C1DB65 /* SNChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNChart.m; sourceTree = "<group>"; };
 		1810D9B51D587F4600C1DB65 /* SNChartBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNChartBar.h; sourceTree = "<group>"; };
@@ -157,6 +193,10 @@
 		1869DD7B1D40B24400BA6526 /* TPCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPCommon.h; sourceTree = "<group>"; };
 		1869DD7C1D40C21700BA6526 /* PeripheralInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PeripheralInfo.h; sourceTree = "<group>"; };
 		1869DD7D1D40C21700BA6526 /* PeripheralInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PeripheralInfo.m; sourceTree = "<group>"; };
+		1872A2BC1D619E4A0049C7FE /* TPChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPChart.h; sourceTree = "<group>"; };
+		1872A2BD1D619E4A0049C7FE /* TPChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPChart.m; sourceTree = "<group>"; };
+		1872A2BF1D619E610049C7FE /* TPChartLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPChartLine.h; sourceTree = "<group>"; };
+		1872A2C01D619E610049C7FE /* TPChartLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPChartLine.m; sourceTree = "<group>"; };
 		187550E61D5D98C700648557 /* TPTHistoryVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPTHistoryVC.h; sourceTree = "<group>"; };
 		187550E71D5D98C700648557 /* TPTHistoryVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPTHistoryVC.m; sourceTree = "<group>"; };
 		187550EA1D5D9DE500648557 /* WBCacheTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBCacheTool.h; sourceTree = "<group>"; };
@@ -373,6 +413,60 @@
 			name = MCNavgation;
 			sourceTree = "<group>";
 		};
+		180912301D66BA98003F51A5 /* 免责声明 */ = {
+			isa = PBXGroup;
+			children = (
+				180912341D66BBFF003F51A5 /* View */,
+				180912311D66BB1D003F51A5 /* TPTDutyVC.h */,
+				180912321D66BB1D003F51A5 /* TPTDutyVC.m */,
+			);
+			name = "免责声明";
+			sourceTree = "<group>";
+		};
+		180912341D66BBFF003F51A5 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				180912351D66BC1D003F51A5 /* TPTdutyCell.h */,
+				180912361D66BC1D003F51A5 /* TPTdutyCell.m */,
+				180912371D66BC1D003F51A5 /* TPTdutyCell.xib */,
+				1809123A1D66D8F3003F51A5 /* TPTNewDutyCell.h */,
+				1809123B1D66D8F3003F51A5 /* TPTNewDutyCell.m */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		1809123D1D66D915003F51A5 /* WHC_AutoLayoutKit */ = {
+			isa = PBXGroup;
+			children = (
+				1809123E1D66D915003F51A5 /* UITableViewCell+WHC_AutoHeightForCell.h */,
+				1809123F1D66D915003F51A5 /* UITableViewCell+WHC_AutoHeightForCell.m */,
+				180912401D66D915003F51A5 /* UIView+WHC_AutoLayout.h */,
+				180912411D66D915003F51A5 /* UIView+WHC_AutoLayout.m */,
+				180912421D66D915003F51A5 /* WHC_StackView.h */,
+				180912431D66D915003F51A5 /* WHC_StackView.m */,
+			);
+			path = WHC_AutoLayoutKit;
+			sourceTree = "<group>";
+		};
+		180912471D66EEBC003F51A5 /* 设备信息 */ = {
+			isa = PBXGroup;
+			children = (
+				1809124B1D66EF22003F51A5 /* View */,
+				180912481D66EF1A003F51A5 /* TPTDeviceInfoVC.h */,
+				180912491D66EF1A003F51A5 /* TPTDeviceInfoVC.m */,
+			);
+			name = "设备信息";
+			sourceTree = "<group>";
+		};
+		1809124B1D66EF22003F51A5 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1809124C1D66EF42003F51A5 /* TPTDeviceInfoCell.h */,
+				1809124D1D66EF42003F51A5 /* TPTDeviceInfoCell.m */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
 		1810D9B21D587F4600C1DB65 /* SNChartView */ = {
 			isa = PBXGroup;
 			children = (
@@ -431,6 +525,17 @@
 				1869DD7D1D40C21700BA6526 /* PeripheralInfo.m */,
 			);
 			name = Model;
+			sourceTree = "<group>";
+		};
+		1872A2BB1D619E090049C7FE /* TPHistChart */ = {
+			isa = PBXGroup;
+			children = (
+				1872A2BC1D619E4A0049C7FE /* TPChart.h */,
+				1872A2BD1D619E4A0049C7FE /* TPChart.m */,
+				1872A2BF1D619E610049C7FE /* TPChartLine.h */,
+				1872A2C01D619E610049C7FE /* TPChartLine.m */,
+			);
+			name = TPHistChart;
 			sourceTree = "<group>";
 		};
 		187550E91D5D9DC700648557 /* Tool */ = {
@@ -668,6 +773,8 @@
 		18E561061D3DDDAF0053B9A4 /* 数据层 */ = {
 			isa = PBXGroup;
 			children = (
+				1809124F1D66F724003F51A5 /* ZCUserModel.h */,
+				180912501D66F724003F51A5 /* ZCUserModel.m */,
 				18D8679D1D59CE1F00686AB2 /* TPtui.plist */,
 			);
 			name = "数据层";
@@ -676,6 +783,8 @@
 		18E561071D3DDDB60053B9A4 /* 服务层 */ = {
 			isa = PBXGroup;
 			children = (
+				1809123D1D66D915003F51A5 /* WHC_AutoLayoutKit */,
+				1872A2BB1D619E090049C7FE /* TPHistChart */,
 				187550E91D5D9DC700648557 /* Tool */,
 				18D8679F1D59E33A00686AB2 /* IGDisplayer */,
 				1810D9B21D587F4600C1DB65 /* SNChartView */,
@@ -744,6 +853,9 @@
 				18FFB3BF1D5C835400EFE0D3 /* alertSetFreeCell.h */,
 				18FFB3C01D5C835400EFE0D3 /* alertSetFreeCell.m */,
 				18FFB3C11D5C835400EFE0D3 /* alertSetFreeCell.xib */,
+				1809122E1D66B74A003F51A5 /* bg.png */,
+				1809122B1D66B370003F51A5 /* CustomAlertView.h */,
+				1809122C1D66B370003F51A5 /* CustomAlertView.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -841,6 +953,8 @@
 		AE2987641D4CAE2D00B50AC2 /* 系统设置 */ = {
 			isa = PBXGroup;
 			children = (
+				180912471D66EEBC003F51A5 /* 设备信息 */,
+				180912301D66BA98003F51A5 /* 免责声明 */,
 				18FFB3A61D5C4E5500EFE0D3 /* 温度超限报警设置 */,
 				AE29876D1D4CAE8D00B50AC2 /* Model */,
 				AE29876C1D4CAE8300B50AC2 /* View */,
@@ -1054,6 +1168,7 @@
 				AE6E9B731D4DDC820080116A /* TPTuiCell.xib in Resources */,
 				18B23CF41D41CC3B00CE9AA6 /* TencentOpenApi_IOS_Bundle.bundle in Resources */,
 				18B23CFA1D41CC3C00CE9AA6 /* ShareSDK.bundle in Resources */,
+				180912391D66BC1D003F51A5 /* TPTdutyCell.xib in Resources */,
 				18E560D81D3DBB930053B9A4 /* Main.storyboard in Resources */,
 				18FFB3BE1D5C834400EFE0D3 /* alertSetThreeCell.xib in Resources */,
 				18FD054B1D5B3B5C009D4B16 /* TPTSetEleCell.xib in Resources */,
@@ -1063,6 +1178,7 @@
 				18B23CF61D41CC3B00CE9AA6 /* WeiboSDK.bundle in Resources */,
 				18FFB3A51D5C28BB00EFE0D3 /* CustomSwitch.xib in Resources */,
 				187550F81D5DB3B700648557 /* TPTHistoryCell.xib in Resources */,
+				1809122F1D66B74A003F51A5 /* bg.png in Resources */,
 				18D8679E1D59CE1F00686AB2 /* TPtui.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1123,11 +1239,16 @@
 			files = (
 				18A3E0291D49EFB600FCFF01 /* XPQRotateDials.m in Sources */,
 				18E561211D3E01FF0053B9A4 /* BabyDefine.m in Sources */,
+				1809124E1D66EF42003F51A5 /* TPTDeviceInfoCell.m in Sources */,
+				180912511D66F724003F51A5 /* ZCUserModel.m in Sources */,
+				180912381D66BC1D003F51A5 /* TPTdutyCell.m in Sources */,
 				18D8679C1D5984E000686AB2 /* UIColor+Hex.m in Sources */,
 				18E5611E1D3E01FF0053B9A4 /* BabyBluetooth.m in Sources */,
 				18E5610A1D3DF6D90053B9A4 /* HYBNetworking.m in Sources */,
+				1809124A1D66EF1A003F51A5 /* TPTDeviceInfoVC.m in Sources */,
 				180909251D48CE69004C47F9 /* MCOtherViewController.m in Sources */,
 				18E560D21D3DBB930053B9A4 /* AppDelegate.m in Sources */,
+				180912441D66D915003F51A5 /* UITableViewCell+WHC_AutoHeightForCell.m in Sources */,
 				187550EC1D5D9DE500648557 /* WBCacheTool.m in Sources */,
 				18E561231D3E01FF0053B9A4 /* BabyPeripheralManager.m in Sources */,
 				18B953631D49CF5400F2221C /* TPLeftCell.m in Sources */,
@@ -1137,24 +1258,31 @@
 				18FD05451D5B3B1B009D4B16 /* TPTSetupCell.m in Sources */,
 				18FD05411D5B3AC9009D4B16 /* TPTSetUpVC.m in Sources */,
 				AE6E9B741D4DDC820080116A /* TPTuiCell.m in Sources */,
+				1872A2C11D619E610049C7FE /* TPChartLine.m in Sources */,
+				180912331D66BB1D003F51A5 /* TPTDutyVC.m in Sources */,
 				AE6E9B631D4DBF870080116A /* TPTuiViewController.m in Sources */,
 				1810D9C61D58902400C1DB65 /* NSString+DZCategory.m in Sources */,
+				180912461D66D915003F51A5 /* WHC_StackView.m in Sources */,
 				18FFB3BD1D5C834400EFE0D3 /* alertSetThreeCell.m in Sources */,
 				AE6E9B6C1D4DD4180080116A /* UIButton+FillColor.m in Sources */,
 				18E5611F1D3E01FF0053B9A4 /* BabyCallback.m in Sources */,
 				1809091A1D48CC0B004C47F9 /* MCFirstPageVIewController.m in Sources */,
+				1872A2BE1D619E4A0049C7FE /* TPChart.m in Sources */,
 				18FFB3C21D5C835400EFE0D3 /* alertSetFreeCell.m in Sources */,
 				18E561201D3E01FF0053B9A4 /* BabyCentralManager.m in Sources */,
+				1809122D1D66B370003F51A5 /* CustomAlertView.m in Sources */,
 				1810D9BD1D587F4600C1DB65 /* SNChartBar.m in Sources */,
 				1810D9C31D588AEE00C1DB65 /* TPTool.m in Sources */,
 				18E561221D3E01FF0053B9A4 /* BabyOptions.m in Sources */,
 				18FFB3B81D5C833300EFE0D3 /* alertSetTwoCell.m in Sources */,
 				1810D9BE1D587F4600C1DB65 /* SNChartLine.m in Sources */,
 				18E561251D3E01FF0053B9A4 /* BabySpeaker.m in Sources */,
+				180912451D66D915003F51A5 /* UIView+WHC_AutoLayout.m in Sources */,
 				180909211D48CD06004C47F9 /* MCMainNavgationVC.m in Sources */,
 				AE29875C1D4C9B3600B50AC2 /* UIViewController+NavBarHidden.m in Sources */,
 				AE2987611D4C9EF300B50AC2 /* TPBaseViewController.m in Sources */,
 				180909151D48CBF7004C47F9 /* MCLeftSliderManager.m in Sources */,
+				1809123C1D66D8F3003F51A5 /* TPTNewDutyCell.m in Sources */,
 				1809091D1D48CC5E004C47F9 /* MCLeftSortsViewController.m in Sources */,
 				18E561241D3E01FF0053B9A4 /* BabyRhythm.m in Sources */,
 				18E561261D3E01FF0053B9A4 /* BabyToy.m in Sources */,

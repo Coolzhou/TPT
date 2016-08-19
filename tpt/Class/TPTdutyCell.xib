@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="14F1808" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="309" id="KGk-i7-Jjw" customClass="TPTdutyCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="309"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="308"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9KO-eU-vHA">
+                        <rect key="frame" x="15" y="0.0" width="290" height="308"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5gU-zg-aLc">
+                                <rect key="frame" x="0.0" y="0.0" width="290" height="308"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="免责声明" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SWe-pt-Xth">
+                                <rect key="frame" x="15" y="20" width="260" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="1fX-37-Dlx"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S81-H9-iw4">
+                                <rect key="frame" x="15" y="51" width="260" height="111"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="111" id="0yp-3a-b9o"/>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="111" id="oRP-pA-GbW"/>
+                                </constraints>
+                                <mutableString key="text">该应用程序中的所有内容（特别是界面设计、文本、图片、标志、音频剪辑等）都是受版权保护的，在没有本公司书面证明和授权的情况下，对所有内容的复制、公众传达或者其它未
+    经我公司许可的行为都属侵犯本公司合法权益行为，未经本公司许可，程序内所有涉及著作权、代码应用和商标等都不允许变更和移除。\n
+    本智能软件是配合智能硬件使用的，在检测婴幼儿生命体征的过程中由于人体的复杂必，疾病并不能通过某些单一的症状发现，须要专业医生综合检查、分析判断。\n
+    我们希望我们的产品在婴幼儿出现疾病征兆时，能够及时帮助您更好地掌握婴幼儿的身体健康情况。使您可能更加轻松，方便的照顾自己的孩子。</mutableString>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="0yp-3a-b9o"/>
+                                    </mask>
+                                </variation>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="注意事项" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mPu-gf-vuZ">
+                                <rect key="frame" x="15" y="172" width="260" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="g0V-qg-blu"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="我方所有信息公供参考，不做个别诊断、用药和使用的根据。" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r3T-kw-cwk">
+                                <rect key="frame" x="15" y="208" width="260" height="85"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="S81-H9-iw4" secondAttribute="trailing" constant="15" id="5Ya-Ec-R2R"/>
+                            <constraint firstItem="mPu-gf-vuZ" firstAttribute="leading" secondItem="9KO-eU-vHA" secondAttribute="leading" constant="15" id="ATi-vl-2Lg"/>
+                            <constraint firstItem="S81-H9-iw4" firstAttribute="top" secondItem="SWe-pt-Xth" secondAttribute="bottom" constant="10" id="AiN-nc-zGg"/>
+                            <constraint firstItem="r3T-kw-cwk" firstAttribute="leading" secondItem="9KO-eU-vHA" secondAttribute="leading" constant="15" id="CzP-lT-37p"/>
+                            <constraint firstItem="mPu-gf-vuZ" firstAttribute="top" secondItem="S81-H9-iw4" secondAttribute="bottom" constant="10" id="Dem-gS-QiT"/>
+                            <constraint firstItem="SWe-pt-Xth" firstAttribute="leading" secondItem="9KO-eU-vHA" secondAttribute="leading" constant="15" id="HQ6-cG-Rnt"/>
+                            <constraint firstItem="S81-H9-iw4" firstAttribute="leading" secondItem="9KO-eU-vHA" secondAttribute="leading" constant="15" id="WiH-RR-Urb"/>
+                            <constraint firstAttribute="trailing" secondItem="r3T-kw-cwk" secondAttribute="trailing" constant="15" id="atJ-2z-PMl"/>
+                            <constraint firstAttribute="trailing" secondItem="SWe-pt-Xth" secondAttribute="trailing" constant="15" id="dk9-eD-jMM"/>
+                            <constraint firstAttribute="trailing" secondItem="mPu-gf-vuZ" secondAttribute="trailing" constant="15" id="eqt-V0-XOU"/>
+                            <constraint firstAttribute="bottom" secondItem="5gU-zg-aLc" secondAttribute="bottom" id="h2C-VO-inl"/>
+                            <constraint firstItem="5gU-zg-aLc" firstAttribute="leading" secondItem="9KO-eU-vHA" secondAttribute="leading" id="jF2-cg-W3P"/>
+                            <constraint firstAttribute="trailing" secondItem="5gU-zg-aLc" secondAttribute="trailing" id="jTk-sR-PJM"/>
+                            <constraint firstItem="5gU-zg-aLc" firstAttribute="top" secondItem="9KO-eU-vHA" secondAttribute="top" id="jpP-Xq-mXT"/>
+                            <constraint firstItem="SWe-pt-Xth" firstAttribute="top" secondItem="9KO-eU-vHA" secondAttribute="top" constant="20" id="mzY-5i-zCr"/>
+                            <constraint firstItem="r3T-kw-cwk" firstAttribute="top" secondItem="mPu-gf-vuZ" secondAttribute="bottom" constant="15" id="r2n-60-Y0Z"/>
+                            <constraint firstAttribute="bottom" secondItem="r3T-kw-cwk" secondAttribute="bottom" constant="15" id="wrR-WX-zjf"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="9KO-eU-vHA" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="Kpn-Gi-m9N"/>
+                    <constraint firstAttribute="trailing" secondItem="9KO-eU-vHA" secondAttribute="trailing" constant="15" id="c7V-ls-tfI"/>
+                    <constraint firstAttribute="bottom" secondItem="9KO-eU-vHA" secondAttribute="bottom" id="heQ-27-nBy"/>
+                    <constraint firstItem="9KO-eU-vHA" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="zjc-qs-dFg"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <connections>
+                <outlet property="bgImgView" destination="5gU-zg-aLc" id="djt-kN-cM2"/>
+                <outlet property="contentLableOne" destination="S81-H9-iw4" id="Ftf-nz-9zK"/>
+                <outlet property="contentLableTwo" destination="r3T-kw-cwk" id="7fG-V0-ube"/>
+                <outlet property="contentOneConstraintH" destination="oRP-pA-GbW" id="PCw-JR-Y9O"/>
+                <outlet property="titleLableOne" destination="SWe-pt-Xth" id="sm8-aj-ExY"/>
+                <outlet property="titleLableTwo" destination="mPu-gf-vuZ" id="Ipy-Ok-Cd9"/>
+            </connections>
+            <point key="canvasLocation" x="254" y="261.5"/>
+        </tableViewCell>
+    </objects>
+</document>

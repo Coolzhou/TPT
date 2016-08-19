@@ -40,7 +40,7 @@
                                     <constraint firstAttribute="width" constant="100" id="rXT-lV-jEm"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="铃声" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s1k-ZF-4Qo">
@@ -49,7 +49,7 @@
                                     <constraint firstAttribute="width" constant="100" id="2zg-Xr-Fjy"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="振动" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zSa-HS-3us">
@@ -58,7 +58,7 @@
                                     <constraint firstAttribute="width" constant="100" id="gTI-G4-xtd"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rxP-33-SY1" customClass="CustomSwitch">
@@ -127,6 +127,8 @@
             <connections>
                 <outlet property="bgImgView" destination="ce9-uu-4lV" id="hxG-FW-Pna"/>
                 <outlet property="dongSwitchBtn" destination="RRT-UW-CG0" id="YBi-YN-VVZ"/>
+                <outlet property="lineTwoView" destination="tph-N5-KGo" id="DFt-W1-kjx"/>
+                <outlet property="lineView" destination="6L0-Ny-Uuq" id="Osx-AG-JF4"/>
                 <outlet property="shengSwitchBtn" destination="rxP-33-SY1" id="y1z-fU-ylb"/>
                 <outlet property="titleLable" destination="8W8-wU-dIa" id="kUx-Mc-vRT"/>
                 <outlet property="titleOneLable" destination="s1k-ZF-4Qo" id="Gx6-lW-yvh"/>

@@ -8,12 +8,16 @@
 
 #import "TPTHistoryVC.h"
 #import "TPTHistoryCell.h"
-#import "SNChart.h"
+
 #import "TPTStateCacheTool.h"
+#import "TPChartLine.h"
+#import "TPChart.h"
 @interface TPTHistoryVC ()<UITableViewDataSource,UITableViewDelegate>
 @property (nonatomic,strong)UITableView *tableView;
 
-@property (nonatomic,strong)SNChart * chart;  //折线图
+@property (nonatomic,strong)TPChart * chart;  //折线图
+
+@property (nonatomic,strong)TPChartLine * chartLine;  //折线图
 
 @property (nonatomic,strong)NSMutableArray *dataArray;
 
@@ -27,7 +31,7 @@
 
     [self initData];
     [self initTableView];
-//    [self initTableViewHeadView];
+    [self initTableViewHeadView];
 }
 
 -(void)initData{
@@ -39,18 +43,11 @@
 
 -(void)initTableViewHeadView{
 
-//    self.chart = [[SNChart alloc] initWithFrame:CGRectMake(15,kScreenHeight-280, self.view.frame.size.width-30, 260) withDataSource:self andChatStyle:SNChartStyleLine];
-//    [self.tableView.tableHeaderView = self.chart;
-}
+//    self.chartLine = [[TPChartLine alloc]initWithFrame:CGRectMake(15,kScreenHeight-280, self.view.frame.size.width-30, 260) withDataArray:self.dataArray];
 
-- (NSArray *)chatConfigYValue:(SNChart *)chart {
-    return @[@"36",@"38"];
+    self.chart = [[TPChart alloc]initWithFrame:CGRectMake(15,kScreenHeight-280, self.view.frame.size.width-30, 260) withDataSource:self.dataArray];
+    self.tableView.tableHeaderView = self.chart;
 }
-
-- (NSArray *)chatConfigXValue:(SNChart *)chart {
-    return @[@"1",@"2",];
-}
-
 
 -(void)initTableView{
     self.tableView = [[UITableView alloc]initWithFrame:CGRectZero style:UITableViewStyleGrouped];
@@ -63,7 +60,7 @@
     [self.view addSubview:self.tableView];
 
     [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(self.view).with.insets(UIEdgeInsetsMake(64, 0, 0, 0));
+        make.edges.equalTo(self.view).with.insets(UIEdgeInsetsMake(84, 0, 0, 0));
     }];
 }
 #pragma mark UITableViewDataSource,UITableViewDelegate

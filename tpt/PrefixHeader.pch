@@ -18,5 +18,6 @@
 #import "TPFoundation.h"
 #import "TPCommon.h"
 #import "Macro.h"
+#import "ZCUserModel.h"
 
 

@@ -19,6 +19,11 @@
 @property (weak, nonatomic) IBOutlet CustomSwitch *shengSwitchBtn;
 @property (weak, nonatomic) IBOutlet CustomSwitch *dongSwitchBtn;
 
+@property (weak, nonatomic) IBOutlet UIView *lineView;
+
+@property (weak, nonatomic) IBOutlet UIView *lineTwoView;
+
+
 + (instancetype)thealertSetFreeCellWithTableView:(UITableView *)tableView andIndexPath:(NSIndexPath *)indexpath;
 
 @end

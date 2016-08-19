@@ -26,6 +26,9 @@
     self.dongSwitchBtn.onImage = [UIImage imageNamed:@"switchOne_on"];
     self.dongSwitchBtn.offImage = [UIImage imageNamed:@"switchOne_off"];
     self.dongSwitchBtn.status = CustomSwitchStatusOff;
+
+    self.lineView.backgroundColor = MainTitleColor;
+    self.lineTwoView.backgroundColor = MainTitleColor;
 }
 
 + (instancetype)thealertSetFreeCellWithTableView:(UITableView *)tableView andIndexPath:(NSIndexPath *)indexpath{

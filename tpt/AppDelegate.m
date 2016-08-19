@@ -16,7 +16,7 @@
 #import "MCFirstPageVIewController.h"
 #import "MCMainNavgationVC.h"
 
-
+#import "ZCUserModel.h"
 @interface AppDelegate ()
 
 @end
@@ -25,13 +25,21 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
 
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent]; 
 
     NSArray *centralManagerIdentifiers = launchOptions[UIApplicationLaunchOptionsBluetoothCentralsKey];
     NSLog(@"centralManagerIdentifiers = %@",centralManagerIdentifiers);
+
+
+    if(![[NSUserDefaults standardUserDefaults] boolForKey:@"firstStartTemp"]){
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"firstStartTemp"];
+        UserModel.max_tem_low = @"37.5";
+        UserModel.max_tem_middle = @"38.1";
+        UserModel.max_tem_high = @"39.1";
+        UserModel.max_tem_supper_high = @"41";
+    }
 
     //shareSDK
     [self shareSDKApplication:application didFinishLaunchingWithOptions:launchOptions];
@@ -48,8 +56,6 @@
     MCFirstPageVIewController *firstVC = [[MCFirstPageVIewController alloc] init];
 
     UINavigationController *firstNav = [[MCMainNavgationVC alloc] initWithRootViewController:firstVC];
-
-//    firstVC.navigationController.navigationBar.barTintColor = [UIColor redColor];
 
     MCLeftSortsViewController *leftVC = [[MCLeftSortsViewController alloc] init];
     MCLeftSlideViewController *rootVC = [[MCLeftSlideViewController alloc] initWithLeftView:leftVC andMainView:firstNav];

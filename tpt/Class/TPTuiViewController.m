@@ -114,7 +114,7 @@
 }
 
 -(NSArray *)selectTypeNum{
-    NSArray *array = [[NSArray alloc]init];
+    NSArray *array;
     switch (self.typeNum) {
         case 1:{
             array = (NSArray *)self.dataArray[0];

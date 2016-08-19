@@ -39,6 +39,7 @@ static const CGFloat kTopSpace = 30.f;//距离顶部y值
         self.curve = NO;
         self.lineH = 0;
         _yMax = 42;
+        _yMin = 36;
         chartLineTheXAxisSpan = (self.bounds.size.width-2*chartLineStartX)/(chartMaxNum-1);
         [self drawHorizontal];
         [self drawVertical];
@@ -143,7 +144,14 @@ static const CGFloat kTopSpace = 30.f;//距离顶部y值
 //        NSLog(@"50 * 7  - 30 + = %f",(self.lineH * kYEqualPaths-[_yValues[i] floatValue]-kLableMin)/(_yMax-kLableMin) * self.lineH *kYEqualPaths);
 
 
-    [self.pointYArray addObject:@(self.lineH * chartMaxNum-([_yValues[i] floatValue]-kLableMin)/(_yMax-kLableMin) * self.lineH *chartMaxNum+kTopSpace)];
+//    [self.pointYArray addObject:@(self.lineH * chartMaxNum-([_yValues[i] floatValue]-kLableMin)/(_yMax-kLableMin) * self.lineH *chartMaxNum+kTopSpace)];
+
+//        CGFloat margeH = (_yValues[i] - _yMin)/chartMaxNum;
+//        NSInteger  yy =margeH>1? (NSInteger)margeH:1;
+
+        [self.pointYArray addObject:@(self.lineH * chartMaxNum-([_yValues[i] floatValue]-_yMin)/(_yMax-_yMin) * self.lineH *chartMaxNum+kTopSpace)];
+
+//        NSLog(@"ssss = %f")
 
     }
     
@@ -200,6 +208,10 @@ static const CGFloat kTopSpace = 30.f;//距离顶部y值
     view.layer.cornerRadius = 4.f;
     view.layer.masksToBounds = YES;
     [self addSubview:view];
+
+    UILabel *pointLable = [[UILabel alloc]initWithFrame:CGRectMake(0, 0,20, 16)];
+    pointLable.text = [NSString stringWithFormat:@"%.2f",point.y];
+    [self addSubview:pointLable];
     
     UIButton * btn = [UIButton buttonWithType:UIButtonTypeCustom];
     btn.frame = CGRectMake(0, 0, 12, 12);
@@ -234,12 +246,17 @@ static const CGFloat kTopSpace = 30.f;//距离顶部y值
         label.textAlignment = NSTextAlignmentRight;
         [self addSubview:label];
 
+        CGFloat margeH = (_yMax - _yMin)/chartMaxNum;
+        CGFloat  yy =margeH>1? margeH:1;
+
         if (_yValues.count<chartMaxNum) {
-            label.text = [NSString stringWithFormat:@"%.0f",_yMax - i];
+            NSLog(@"1111");
+            label.text = [NSString stringWithFormat:@"%.0f",_yMax - i*yy];
         }else{
-            label.text = [NSString stringWithFormat:@"%.0f",_yMax - i];
+            label.text = [NSString stringWithFormat:@"%.0f",_yMax - i*yy];
+            NSLog(@"2222");
         }
-        NSLog(@"yyyy = %f ,,, %ld",(_yMax - _yMin)/chartMaxNum,(NSInteger)(_yMax - _yMin)/chartMaxNum);
+//        NSLog(@"yyyy = %f ,,, %f ,,,%f",(_yMax - _yMin)/chartMaxNum,_yMax,_yMin);
     }
 }
 //圆圈点击事件

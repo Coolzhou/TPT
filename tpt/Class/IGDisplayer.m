@@ -15,10 +15,10 @@
 @implementation IGDisplayer
 
 -(instancetype)init{
-    if (self != [super init]) {
-        return nil;
+    self = [super init];
+    if (self) {
+        [self initParams];
     }
-    [self initParams];
     return self;
 }
 
