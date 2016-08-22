@@ -37,6 +37,7 @@
 		185A96D61D6A929400403E44 /* TPTCorrectCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 185A96D41D6A929400403E44 /* TPTCorrectCell.m */; };
 		185A96D71D6A929400403E44 /* TPTCorrectCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 185A96D51D6A929400403E44 /* TPTCorrectCell.xib */; };
 		185A96DA1D6A951500403E44 /* TPTCorrectInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 185A96D91D6A951500403E44 /* TPTCorrectInfoCell.m */; };
+		185A96E81D6B050300403E44 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 185A96EA1D6B050300403E44 /* Localizable.strings */; };
 		1869DD7E1D40C21700BA6526 /* PeripheralInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 1869DD7D1D40C21700BA6526 /* PeripheralInfo.m */; };
 		1872A2BE1D619E4A0049C7FE /* TPChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 1872A2BD1D619E4A0049C7FE /* TPChart.m */; };
 		1872A2C11D619E610049C7FE /* TPChartLine.m in Sources */ = {isa = PBXBuildFile; fileRef = 1872A2C01D619E610049C7FE /* TPChartLine.m */; };
@@ -201,6 +202,8 @@
 		185A96D51D6A929400403E44 /* TPTCorrectCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TPTCorrectCell.xib; sourceTree = "<group>"; };
 		185A96D81D6A951500403E44 /* TPTCorrectInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPTCorrectInfoCell.h; sourceTree = "<group>"; };
 		185A96D91D6A951500403E44 /* TPTCorrectInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPTCorrectInfoCell.m; sourceTree = "<group>"; };
+		185A96E91D6B050300403E44 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		185A96EB1D6B050700403E44 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		1869DD7B1D40B24400BA6526 /* TPCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPCommon.h; sourceTree = "<group>"; };
 		1869DD7C1D40C21700BA6526 /* PeripheralInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PeripheralInfo.h; sourceTree = "<group>"; };
 		1869DD7D1D40C21700BA6526 /* PeripheralInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PeripheralInfo.m; sourceTree = "<group>"; };
@@ -734,6 +737,7 @@
 				18B23D141D41D2D100CE9AA6 /* AppDelegate+shareSDK.h */,
 				18B23D151D41D2D100CE9AA6 /* AppDelegate+shareSDK.m */,
 				18E561031D3DDCD10053B9A4 /* PrefixHeader.pch */,
+				185A96EA1D6B050300403E44 /* Localizable.strings */,
 				1869DD7B1D40B24400BA6526 /* TPCommon.h */,
 				180909221D48CDBC004C47F9 /* Macro.h */,
 				18E560D91D3DBB930053B9A4 /* Assets.xcassets */,
@@ -1173,6 +1177,7 @@
 			knownRegions = (
 				en,
 				Base,
+				"zh-Hans",
 			);
 			mainGroup = 18E560C11D3DBB930053B9A4;
 			productRefGroup = 18E560CB1D3DBB930053B9A4 /* Products */;
@@ -1201,6 +1206,7 @@
 				18E560DA1D3DBB930053B9A4 /* Assets.xcassets in Resources */,
 				AE6E9B731D4DDC820080116A /* TPTuiCell.xib in Resources */,
 				18B23CF41D41CC3B00CE9AA6 /* TencentOpenApi_IOS_Bundle.bundle in Resources */,
+				185A96E81D6B050300403E44 /* Localizable.strings in Resources */,
 				18B23CFA1D41CC3C00CE9AA6 /* ShareSDK.bundle in Resources */,
 				180912391D66BC1D003F51A5 /* TPTdutyCell.xib in Resources */,
 				18E560D81D3DBB930053B9A4 /* Main.storyboard in Resources */,
@@ -1375,6 +1381,15 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		185A96EA1D6B050300403E44 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				185A96E91D6B050300403E44 /* en */,
+				185A96EB1D6B050700403E44 /* zh-Hans */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		18E560D61D3DBB930053B9A4 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

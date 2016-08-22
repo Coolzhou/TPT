@@ -22,4 +22,6 @@
 @property (nonatomic, strong) NSString *max_notify_voice; //铃声
 @property (nonatomic, strong) NSString *max_notify_vibration;  //振动
 
+@property (nonatomic, strong) NSString *temp_check;
+
 @end

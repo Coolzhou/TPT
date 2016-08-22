@@ -76,8 +76,10 @@
 }
 
 -(void)addchartLineView{
-    self.chart = [[SNChart alloc] initWithFrame:CGRectMake(15,kScreenHeight-280, self.view.frame.size.width-30, 260) withDataSource:self andChatStyle:SNChartStyleLine];
+    self.chart = [[SNChart alloc] initWithFrame:CGRectMake(15,kScreenHeight-kScreenHeight/2.8-20, self.view.frame.size.width-30, kScreenHeight/2.8) withDataSource:self andChatStyle:SNChartStyleLine];
     [self.chart showInView:self.view];
+
+    
 }
 - (NSArray *)chatConfigYValue:(SNChart *)chart {
     return @[@"36",@"38"];
@@ -97,8 +99,10 @@
 //    if (self.writeCBCharacteristic) {
 //        [self writeValue:self.writeCBCharacteristic];
 //    }
-//
-//    NSString *tempStr =[NSString stringWithFormat:@"%f",arc4random()%7+35+0.46];
+
+    NSString *tempStr =[NSString stringWithFormat:@"%f",arc4random()%7+35+0.46];
+
+    self.rotateDials.value = tempStr;
 //    [self.valueArray addObject:tempStr];
 //
 //    NSString *timeStr =[TPTool getCurrentDate];
@@ -148,7 +152,7 @@
 #pragma mark 转盘
 -(void)addRotateDials{
     
-    self.rotateDials = [[XPQRotateDials alloc]initWithFrame:CGRectMake(0, 110, kScreenWidth, 400)];
+    self.rotateDials = [[XPQRotateDials alloc]initWithFrame:CGRectMake(0,kScreenHeight/7.2, kScreenWidth, 400)];
     [self.view addSubview:self.rotateDials];
 
 }

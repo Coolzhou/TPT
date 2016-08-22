@@ -88,7 +88,7 @@
     if (indexPath.row==0) {
         NSArray *array = [self selectTypeNum];
         NSDictionary *dict =(NSDictionary *)array[indexPath.row];
-
+        
         NSString *content =[NSString stringWithFormat:@"%@",[dict valueForKey:@"content"]];
 
         CGSize size =[content sizeForMaxWidth:(kScreenWidth - 30) font:[UIFont systemFontOfSize:16]];

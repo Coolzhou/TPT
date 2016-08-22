@@ -24,7 +24,7 @@
 
 -(instancetype)init{
     if (self = [super init]) {
-        self.titleButArray = [NSArray arrayWithObjects:@"无聊降温",@"药物降温",@"发烧原因",@"发烧了吗",nil];
+        self.titleButArray = [NSArray arrayWithObjects:NSLocalizedString(@"raiders_tab_1",@""),NSLocalizedString(@"raiders_tab_2",@""),NSLocalizedString(@"raiders_tab_3",@""),NSLocalizedString(@"raiders_tab_4",@""),nil];
         [self addButtonView];
     }
     return self;
@@ -33,7 +33,7 @@
 -(instancetype)initWithFrame:(CGRect)frame{
     self = [super initWithFrame:frame];
     if (self) {
-        self.titleButArray = [NSArray arrayWithObjects:@"物理降温",@"药物降温",@"发烧原因",@"发烧了吗",nil];
+        self.titleButArray = [NSArray arrayWithObjects:NSLocalizedString(@"raiders_tab_1",@""),NSLocalizedString(@"raiders_tab_2",@""),NSLocalizedString(@"raiders_tab_3",@""),NSLocalizedString(@"raiders_tab_4",@""),nil];
         [self addButtonView];
     }
     return self;

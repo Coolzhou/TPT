@@ -1,0 +1,139 @@
+/* 
+  Localizable.strings
+  tpt
+
+  Created by apple on 16/8/22.
+  Copyright © 2016年 MDJ. All rights reserved.
+*/
+
+
+"app_name"= "U-Telecare";
+"unknown_device"= "Unknown device";
+"unknown_characteristic"= "Unknown characteristic";
+"unknown_service"= "Unknown service";
+
+"ble_not_supported"= "Bluetooth Not Supported";
+"cur_temperature"= "Current temperature";
+"setting_main"= "Home";
+"setting_history"= "Histories";
+"setting_raiders"= "How to Reduce a Fever";
+"setting_"= "Settings";
+"setting_logout"= "Logout";
+"setting_cut_tip"= "Disconnection Alert";
+"setting_cut_tip_on"= "Enable Disconnection Alert";
+"setting_cut_tip_off"= "Disable Disconnection Alert";
+
+"setting_cut_tip_content"= "Auto-check the device connection staus, send notification when it is disconnected";
+
+"setting_max_tem"= "Max Temperature Alert";
+
+"setting_max_tem_content"= "The user can define the temperature value according to the different status.";
+
+"setting_tem_unit"= "Thermometric Scale";
+
+"setting_tem_unit_content"= "Set the temperature scale with ℃ or ℉";
+"setting_tem_check"= "Temperature Calibration";
+"setting_tem_check_content"= "The。";
+"setting"= "Setting&#160;= ";
+"setting_see"= "Check&#160;= ";
+"setting_power"= "The battery power";
+"setting_power_lest"= "The current battery value%1$s";
+"setting_info"= "Device info";
+"setting_info_content"= "About the device model, version, etc.";
+"setting_disclaimer"= "Disclaimers";
+"setting_disclaimer_content"= "About disclaimers.";
+
+"disclaimer_content"= " Copyright ©  2014-2016 U-Telecare Ltd. All the informations in this mobile app (Especially the trademark, the software code, UI design, contents, images, icons, audio clips, etc）are copyrighted by U-telecare™. Without U-telecare™'s official authorization, everyone is not allowed to copy any informations and use it in the public. And every illegal behaviors will be investigated through legal channels. \n This mobile app is working with the smart thermometer hardware, the datas in the mobile app is only for reference, due to the complicated body systems of the babies, please make the Diagnostic the baby as directed by a physician\n We hope our smart thermometer can provide the instant informations for the parents, and check your bobies' real-time physical health data when your babies got fever, and help you take a good care of your child without worries";
+
+"disclaimer_tip"= "Notifications";
+"disclaimer_tip_content"= "The informations and suggestions in this mobile app are ONLY for reference, please reduce the fever as directed by a physician";
+
+
+
+"system_device_model"= "Device ID：";
+"system_software_version"= "Software version：";
+"system_hardware_version"= "F.W version：";
+
+
+
+
+"raiders_tab_1"= "Physical cooling";
+"raiders_tab_2"= "Medical Fever Reducing";
+"raiders_tab_3"= "The causes of fever";
+"raiders_tab_4"= "Got a Fever or not?";
+
+"raiders_close"= "Close";
+
+
+"max_tem"= "Temperature Limit Alarm";
+"max_suggest"= "ADVICE：Baby%1$s The suggested temperature value%2$s";
+"max_save"= "Save";
+"max_cancel"= "Cancel";
+"max_notify"= "Notifications";
+"max_notify_voice"= "Ringtone";
+"max_notify_vibration"= "Vibration";
+"max_tem_low"= "Low fever";
+"max_tem_middle"= "Medium fever";
+"max_tem_high"= "High fever";
+"max_tem_supper_high"= "ultra-high fever ";
+"max_tem_switch"= "Alarm Switch";
+"max_tem_click_tip"= "Please click the figures to set the temperature limit value";
+"max_tem_click_explanation_c"= "NOTE: Low fever:37.5~38℃, Medium fever: 38.1~39℃, High fever: 39.1~40℃, ultra-high fever: ≥41℃";
+
+"max_tem_click_explanation_f"= "NOTE: Low fever:99.5~100.4℉, Medium fever: 100.5~102.2℉, High fever: 102.3~104℉, ultra-high fever: ≥105℉。";
+
+"max_tem_explanation"= "NOTE: Set the temperature limit value, when the thermometer detects the temperature arrives or exceed this value， it will send alert notification to your mobile immediately, and you can take some measures accordingly";
+
+"history_cur_state"= "Current Status";
+"history_del"= "Delete";
+"history_normal"= "Normal";
+"history_common_method"= "Normal Methods：";
+"history_common_method_1"= "";
+"history_common_method_2"= "Rubbing alcohol baths";
+"history_common_method_3"= "酒类擦浴";
+"history_common_method_4"= "Cooling Paste";
+"history_common_method_5"= "Visit Hospital";
+
+"raiders_tab1_title_1" = "Drink plenty of fluids";
+"raiders_tab1_title_2" = "Rubbing warm-warter baths";
+"raiders_tab1_title_3" = "Low environment temperature";
+"raiders_tab1_title_4" = "Cooling paste";
+"raiders_tab1_title_5" = "Rubbing alcohol baths";
+"raiders_tab1_title_6" = "More excretion";
+
+"raiders_tab1_content_1" = "The most effective way to reduce your baby's fever is to drink plenty of fluids. if your kid is tired of drinking water, it is better to take some fresh fruit juice instead of water.";
+
+"raiders_tab1_content_2" = "For all ages, it’s efficacious to reduce the body temperature by rubbing warm-warter baths, the water temperature should be from 32℃ to 34℃. Keep rubbing warm water baths for more than 10 minutes. Especially on neck, armpit, elbow, groin, etc.";
+
+"raiders_tab1_content_3" = "Heat exchange for reducing the fever, the more cooling, the more efficacious. And the best indoor temperature range  is 20℃~24℃(due to the different seasons). Per the Infant in the summer, choose a cool place，open their closes, the body temperature will be reduced gradually。DO NOT use this method when the child early fever accompanied by chills, because that means the body temperature is still on the rise.";
+
+"raiders_tab1_content_4" = "Cooling paste is a supplementary measures, it may makes the child feel better. But the cold compression therapy may cause the capillary contraction, and prevents heat dissipation. DO NOT use this method when the child fever is with chills.";
+
+"raiders_tab1_content_5" = "DO NOT try this on the babies and infants. The rubbing alcohol baths can also irritate the skin, prevents heat dissipation. And it may cause alcohol intoxication";
+
+"raiders_tab1_content_6" = "Dring more water with more urination, it can take away the heat of the body. Actually, it can get a same result with more defecation. If no defecation for days, please take stool softener for babies as as directed by your physician.";
+
+
+"raiders_tab3_title_1" = "Non-disease factors";
+"raiders_tab3_title_2" = "Fever infection";
+
+"raiders_tab3_content_1" = "In many cases, the child's higher temperature is not caused by fever, but caused by hot temperature (heat stroke), wearing too many clothes, water shortages (Sweating, diarrhea), etc. So you should open or take off the clothes, take some fluids, fan the air, then it will back to normal gradually within few hours. ";
+
+"raiders_tab3_content_2" = "The bacterial and viral infection is the most suspected cause of a fever, such as bacteria, viruses, parasites, mycoplasma, chlamydia, rickettsia, spirochetes, fungi, etc. In order to prevent the viral and bacterial invasion, the body's immune system will take some measures to resist the invasion, then it will cause the body high temperature and cause the fever. ";
+
+"raiders_tab4_title_1" = "Air circulation";
+"raiders_tab4_title_2" = "Take off clothes";
+"raiders_tab4_title_3" = "Rubbing warm-warter baths";
+"raiders_tab4_title_4" = "Cooling paste";
+"raiders_tab4_title_5" = "Drink plenty of fluids";
+
+"raiders_tab4_content_1" = "Keep the indoor temperature within 25℃-27℃ with the help of air conditioner, and low down the body temperature gradually, that may make your child feel better. But if your child is with cold limbs and chills, you should put a thin blanket on the baby. ";
+
+
+"raiders_tab4_content_2" = "Take less clothes on when you find the baby's limbs is warm and sweating.";
+
+"raiders_tab4_content_3" = "Take off the baby's clothes, and wipe with a towel (the water in the water should be around 37℃). ";
+
+"raiders_tab4_content_4" = ">Cooling paste is a supplementary measures, it may makes the child feel better. But do not use the cold compression therapy for infants, that may cause the capillary contraction, and prevents heat dissipation. DO NOT use this method when the child fever is with chills.";
+
+"raiders_tab4_content_5" = "To prevent body water shortage, and get more sweating. The water can bring the body temperature to a normal level gradually. ";

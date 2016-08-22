@@ -26,7 +26,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     picArray = [NSArray arrayWithObjects:@"left_home",@"left_history",@"left_down",@"left_setup",@"left_signout",nil];
-    titleArray = [NSArray arrayWithObjects:@"首页",@"历史记录",@"退烧攻略",@"系统设置",@"退出",nil];
+    titleArray = [NSArray arrayWithObjects:NSLocalizedString(@"setting_main",@""),NSLocalizedString(@"setting_history",@""),NSLocalizedString(@"setting_raiders", @""),NSLocalizedString(@"setting_", @""),NSLocalizedString(@"setting_logout", @""),nil];
 
 
     UIImageView *bgImageView = [[UIImageView alloc]initWithFrame:self.view.bounds];

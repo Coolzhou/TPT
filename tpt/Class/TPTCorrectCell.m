@@ -8,6 +8,11 @@
 
 #import "TPTCorrectCell.h"
 
+@interface TPTCorrectCell ()
+
+
+@end
+
 @implementation TPTCorrectCell
 
 - (void)awakeFromNib {
@@ -21,6 +26,8 @@
     self.jianButton.layer.masksToBounds = YES;
     self.jianButton.layer.cornerRadius = 5;
     self.bgImgView.image = [[UIImage imageNamed:@"tui_cell_bg"] stretchableImageWithLeftCapWidth:10 topCapHeight:10];
+
+    self.tempLable.text = [NSString stringWithFormat:@"%.1f℃",[UserModel.temp_check floatValue]];
 }
 
 + (instancetype)theTPTCorrectCellWithTableView:(UITableView *)tableView{
@@ -35,12 +42,25 @@
 
 
 - (IBAction)clickAddButton:(UIButton *)sender {
+
+    float temp = UserModel.temp_check.floatValue;
+    temp = temp +0.1;
+    self.tempLable.text = [NSString stringWithFormat:@"%.1f",temp];
 }
 
 - (IBAction)clickJianButton:(UIButton *)sender {
+
+    float temp = UserModel.temp_check.floatValue;
+    temp = temp  - 0.1;
+
+    self.tempLable.text = [NSString stringWithFormat:@"%.1f",temp];
 }
 
 - (IBAction)clickSaveButton:(UIButton *)sender {
+
+    NSString *temp = self.tempLable.text;
+
+    UserModel.temp_check = [NSString stringWithFormat:@"%.1f",[temp floatValue]];
 }
 
 - (IBAction)clickDissButton:(UIButton *)sender {

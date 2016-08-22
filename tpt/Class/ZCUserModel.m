@@ -20,6 +20,8 @@ static NSString * const MAX_ALERT_STATE = @"max_alert_state";
 static NSString * const MAX_NOTIFY_VOICE= @"max_notify_voice";
 static NSString * const MAX_NOFIFY_VIBRATION= @"max_notify_vibration";
 
+static NSString * const TEMP_CHECK= @"temp_check";
+
 + (ZCUserModel *)sharedInstance
 {
     static ZCUserModel *sharedInstance = nil;
@@ -92,6 +94,17 @@ static NSString * const MAX_NOFIFY_VIBRATION= @"max_notify_vibration";
 -(NSString *)max_notify_vibration{
     NSString *max_notify_vibration = [[NSUserDefaults standardUserDefaults]objectForKey:MAX_NOFIFY_VIBRATION];
     return max_notify_vibration;
+}
+
+//误差效岩
+
+-(void)setTemp_check:(NSString *)temp_check{
+    [[NSUserDefaults standardUserDefaults] setObject:temp_check forKey:TEMP_CHECK];
+}
+
+-(NSString *)temp_check{
+    NSString *temp_check = [[NSUserDefaults standardUserDefaults]objectForKey:TEMP_CHECK];
+    return temp_check;
 }
 
 @end

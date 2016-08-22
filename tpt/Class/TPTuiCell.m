@@ -39,7 +39,6 @@
     return cell;
 }
 
-
 -(void)theTuiWithTableViewWithIndexPath:(NSIndexPath *)indexPath andType:(NSInteger)type andDict:(NSDictionary *)dictionary{
 
     NSString *title = [NSString stringWithFormat:@"%@",[dictionary objectForKey:@"title"]];
