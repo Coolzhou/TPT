@@ -8,8 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
+#define TPToolShare [TPTool sharedToolInstance]
+
 @interface TPTool : NSObject
 
++(instancetype)sharedToolInstance;
 //返回当前时间hh:ss:mm
 +(NSString *)getCurrentDate;
 
@@ -19,5 +22,10 @@
 //当前温度状态 0正常 1低热 2中热 3高热4 超热
 +(NSString *)getCurrentTempState:(NSString *)temp;
 
+//截屏
++ (UIImage *) captureScreen;
+
+//保存到相册
++ (void)saveScreenshotToPhotosAlbum;
 
 @end

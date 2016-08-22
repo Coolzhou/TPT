@@ -33,6 +33,10 @@
 		1810D9C01D587F4600C1DB65 /* 气泡.png in Resources */ = {isa = PBXBuildFile; fileRef = 1810D9BB1D587F4600C1DB65 /* 气泡.png */; };
 		1810D9C31D588AEE00C1DB65 /* TPTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 1810D9C21D588AEE00C1DB65 /* TPTool.m */; };
 		1810D9C61D58902400C1DB65 /* NSString+DZCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 1810D9C51D58902400C1DB65 /* NSString+DZCategory.m */; };
+		185A96D11D6A927300403E44 /* TPTCorrectVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 185A96D01D6A927300403E44 /* TPTCorrectVC.m */; };
+		185A96D61D6A929400403E44 /* TPTCorrectCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 185A96D41D6A929400403E44 /* TPTCorrectCell.m */; };
+		185A96D71D6A929400403E44 /* TPTCorrectCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 185A96D51D6A929400403E44 /* TPTCorrectCell.xib */; };
+		185A96DA1D6A951500403E44 /* TPTCorrectInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 185A96D91D6A951500403E44 /* TPTCorrectInfoCell.m */; };
 		1869DD7E1D40C21700BA6526 /* PeripheralInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 1869DD7D1D40C21700BA6526 /* PeripheralInfo.m */; };
 		1872A2BE1D619E4A0049C7FE /* TPChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 1872A2BD1D619E4A0049C7FE /* TPChart.m */; };
 		1872A2C11D619E610049C7FE /* TPChartLine.m in Sources */ = {isa = PBXBuildFile; fileRef = 1872A2C01D619E610049C7FE /* TPChartLine.m */; };
@@ -190,6 +194,13 @@
 		1810D9C21D588AEE00C1DB65 /* TPTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPTool.m; sourceTree = "<group>"; };
 		1810D9C41D58902400C1DB65 /* NSString+DZCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+DZCategory.h"; sourceTree = "<group>"; };
 		1810D9C51D58902400C1DB65 /* NSString+DZCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+DZCategory.m"; sourceTree = "<group>"; };
+		185A96CF1D6A927300403E44 /* TPTCorrectVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPTCorrectVC.h; sourceTree = "<group>"; };
+		185A96D01D6A927300403E44 /* TPTCorrectVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPTCorrectVC.m; sourceTree = "<group>"; };
+		185A96D31D6A929400403E44 /* TPTCorrectCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPTCorrectCell.h; sourceTree = "<group>"; };
+		185A96D41D6A929400403E44 /* TPTCorrectCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPTCorrectCell.m; sourceTree = "<group>"; };
+		185A96D51D6A929400403E44 /* TPTCorrectCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TPTCorrectCell.xib; sourceTree = "<group>"; };
+		185A96D81D6A951500403E44 /* TPTCorrectInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPTCorrectInfoCell.h; sourceTree = "<group>"; };
+		185A96D91D6A951500403E44 /* TPTCorrectInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPTCorrectInfoCell.m; sourceTree = "<group>"; };
 		1869DD7B1D40B24400BA6526 /* TPCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPCommon.h; sourceTree = "<group>"; };
 		1869DD7C1D40C21700BA6526 /* PeripheralInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PeripheralInfo.h; sourceTree = "<group>"; };
 		1869DD7D1D40C21700BA6526 /* PeripheralInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PeripheralInfo.m; sourceTree = "<group>"; };
@@ -481,6 +492,28 @@
 				1810D9BB1D587F4600C1DB65 /* 气泡.png */,
 			);
 			path = SNChartView;
+			sourceTree = "<group>";
+		};
+		185A96CE1D6A924300403E44 /* 温度校准 */ = {
+			isa = PBXGroup;
+			children = (
+				185A96D21D6A927900403E44 /* View */,
+				185A96CF1D6A927300403E44 /* TPTCorrectVC.h */,
+				185A96D01D6A927300403E44 /* TPTCorrectVC.m */,
+			);
+			name = "温度校准";
+			sourceTree = "<group>";
+		};
+		185A96D21D6A927900403E44 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				185A96D31D6A929400403E44 /* TPTCorrectCell.h */,
+				185A96D41D6A929400403E44 /* TPTCorrectCell.m */,
+				185A96D51D6A929400403E44 /* TPTCorrectCell.xib */,
+				185A96D81D6A951500403E44 /* TPTCorrectInfoCell.h */,
+				185A96D91D6A951500403E44 /* TPTCorrectInfoCell.m */,
+			);
+			name = View;
 			sourceTree = "<group>";
 		};
 		1869DD741D40B15900BA6526 /* 首页 */ = {
@@ -953,6 +986,7 @@
 		AE2987641D4CAE2D00B50AC2 /* 系统设置 */ = {
 			isa = PBXGroup;
 			children = (
+				185A96CE1D6A924300403E44 /* 温度校准 */,
 				180912471D66EEBC003F51A5 /* 设备信息 */,
 				180912301D66BA98003F51A5 /* 免责声明 */,
 				18FFB3A61D5C4E5500EFE0D3 /* 温度超限报警设置 */,
@@ -1170,6 +1204,7 @@
 				18B23CFA1D41CC3C00CE9AA6 /* ShareSDK.bundle in Resources */,
 				180912391D66BC1D003F51A5 /* TPTdutyCell.xib in Resources */,
 				18E560D81D3DBB930053B9A4 /* Main.storyboard in Resources */,
+				185A96D71D6A929400403E44 /* TPTCorrectCell.xib in Resources */,
 				18FFB3BE1D5C834400EFE0D3 /* alertSetThreeCell.xib in Resources */,
 				18FD054B1D5B3B5C009D4B16 /* TPTSetEleCell.xib in Resources */,
 				18B23CF81D41CC3C00CE9AA6 /* README.txt in Resources */,
@@ -1237,6 +1272,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				185A96D11D6A927300403E44 /* TPTCorrectVC.m in Sources */,
 				18A3E0291D49EFB600FCFF01 /* XPQRotateDials.m in Sources */,
 				18E561211D3E01FF0053B9A4 /* BabyDefine.m in Sources */,
 				1809124E1D66EF42003F51A5 /* TPTDeviceInfoCell.m in Sources */,
@@ -1265,6 +1301,7 @@
 				180912461D66D915003F51A5 /* WHC_StackView.m in Sources */,
 				18FFB3BD1D5C834400EFE0D3 /* alertSetThreeCell.m in Sources */,
 				AE6E9B6C1D4DD4180080116A /* UIButton+FillColor.m in Sources */,
+				185A96DA1D6A951500403E44 /* TPTCorrectInfoCell.m in Sources */,
 				18E5611F1D3E01FF0053B9A4 /* BabyCallback.m in Sources */,
 				1809091A1D48CC0B004C47F9 /* MCFirstPageVIewController.m in Sources */,
 				1872A2BE1D619E4A0049C7FE /* TPChart.m in Sources */,
@@ -1290,6 +1327,7 @@
 				AE6E9B661D4DC5C40080116A /* TPTuiSelectView.m in Sources */,
 				18B23D161D41D2D100CE9AA6 /* AppDelegate+shareSDK.m in Sources */,
 				18FFB3AF1D5C52C400EFE0D3 /* TPTAlertSetupVC.m in Sources */,
+				185A96D61D6A929400403E44 /* TPTCorrectCell.m in Sources */,
 				1810D9BF1D587F4600C1DB65 /* UIBezierPath+curved.m in Sources */,
 				187550EF1D5D9E3C00648557 /* WBTemperature.m in Sources */,
 				180909161D48CBF7004C47F9 /* MCLeftSlideViewController.m in Sources */,

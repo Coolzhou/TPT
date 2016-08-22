@@ -10,6 +10,15 @@
 
 @implementation TPTool
 
++(instancetype)sharedToolInstance{
+    static TPTool *tool = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        tool = [[self alloc]init];
+    });
+    return tool;
+}
+
 +(NSString *)getCurrentDate{
     NSDate *currentDate = [NSDate date];//获取当前时间，日期
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
@@ -44,6 +53,24 @@
     }else{
         return @"-1";
     }
+}
+
+//截屏
++ (UIImage *) captureScreen {
+    UIWindow *keyWindow = [[UIApplication sharedApplication] keyWindow];
+    CGRect rect = [keyWindow bounds];
+
+    UIGraphicsBeginImageContextWithOptions(rect.size, YES, 0);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    [keyWindow.layer renderInContext:context];
+    UIImage *img = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return img;
+}
+//保存到相册
++ (void)saveScreenshotToPhotosAlbum
+{
+    UIImageWriteToSavedPhotosAlbum([TPTool captureScreen], nil, nil, nil);
 }
 
 @end

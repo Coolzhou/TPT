@@ -11,6 +11,7 @@
 #import "TPTDutyVC.h"
 #import "TPTDeviceInfoVC.h"
 
+#import "TPTCorrectVC.h"
 #import "TPTSetupCell.h"
 #import "TPTSetEleCell.h"
 #import "TPTSetOtherCell.h"
@@ -99,7 +100,7 @@
         TPTAlertSetupVC * alertVC = [[TPTAlertSetupVC alloc]init];
         [self.navigationController pushViewController:alertVC animated:YES];
     }else{
-        TPTDutyVC * alertVC = [[TPTDutyVC alloc]init];
+        TPTCorrectVC * alertVC = [[TPTCorrectVC alloc]init];
         [self.navigationController pushViewController:alertVC animated:YES];
     }
 }
