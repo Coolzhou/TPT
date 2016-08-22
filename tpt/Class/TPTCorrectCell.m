@@ -45,7 +45,7 @@
 
     float temp = UserModel.temp_check.floatValue;
     temp = temp +0.1;
-    self.tempLable.text = [NSString stringWithFormat:@"%.1f",temp];
+    self.tempLable.text = [NSString stringWithFormat:@"%.1f℃",temp];
 }
 
 - (IBAction)clickJianButton:(UIButton *)sender {
@@ -53,7 +53,7 @@
     float temp = UserModel.temp_check.floatValue;
     temp = temp  - 0.1;
 
-    self.tempLable.text = [NSString stringWithFormat:@"%.1f",temp];
+    self.tempLable.text = [NSString stringWithFormat:@"%.1f℃",temp];
 }
 
 - (IBAction)clickSaveButton:(UIButton *)sender {
