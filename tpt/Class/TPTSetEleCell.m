@@ -13,6 +13,9 @@
 - (void)awakeFromNib {
     // Initialization code
     self.bgImgView.image = [[UIImage imageNamed:@"set_bg_red"] stretchableImageWithLeftCapWidth:10 topCapHeight:10];
+    self.titleLable.text = NSLocalizedString(@"setting_power",@"");
+    NSString *content = NSLocalizedString(@"setting_power_lest",@"");
+    self.contentLable.text = [NSString stringWithFormat:@"%@17%%",content];
 }
 
 + (instancetype)theTPTSetEleCellWithTableView:(UITableView *)tableView andIndexPath:(NSIndexPath *)indexpath{

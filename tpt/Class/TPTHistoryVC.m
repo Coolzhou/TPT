@@ -27,7 +27,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navTitleLable.text = @"历史记录";
+    self.navTitleLable.text = NSLocalizedString(@"setting_history", @"");
 
     [self initData];
     [self initTableView];

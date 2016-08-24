@@ -27,7 +27,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.navTitleLable.text = @"系统设置";
+    self.navTitleLable.text = NSLocalizedString(@"setting_",@"");
     [self initTableView];
 }
 
@@ -76,11 +76,11 @@
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section==0) {
-        return 203;
+        return 308;
     }else if(indexPath.section==1){
-        return 50;
+        return 67;
     }else{
-        return 101;
+        return 162;
     }
 }
 

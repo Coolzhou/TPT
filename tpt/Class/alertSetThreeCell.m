@@ -44,6 +44,14 @@
     [self.ThreeBtn setTitle:UserModel.max_tem_high forState:UIControlStateNormal];
     [self.FreeBtn setTitle:UserModel.max_tem_supper_high forState:UIControlStateNormal];
 
+    self.topTitleOneLable.text = NSLocalizedString(@"max_tem_low", @"");
+    self.topTitleTwoLable.text = NSLocalizedString(@"max_tem_middle", @"");
+    self.topTitleThreeLable.text = NSLocalizedString(@"max_tem_high", @"");
+    self.topTitleFreeLable.text = NSLocalizedString(@"max_tem_supper_high", @"");
+
+    self.titleLable.text = NSLocalizedString(@"max_tem_click_tip", @"");
+    self.contentLable.text = NSLocalizedString(@"max_tem_click_explanation_c", @"");
+    //self.contentLable.text = NSLocalizedString(@"max_tem_click_explanation_f", @"");
 }
 
 + (instancetype)thealertSetThreeCellWithTableView:(UITableView *)tableView andIndexPath:(NSIndexPath *)indexpath{

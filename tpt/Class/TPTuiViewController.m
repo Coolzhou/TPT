@@ -25,7 +25,7 @@
 -(void)viewDidLoad{
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
-    self.navTitleLable.text = @"退烧攻略";
+    self.navTitleLable.text = NSLocalizedString(@"setting_raiders", @"");
     self.typeNum = 1;
     self.dataArray = [[NSMutableArray alloc]init];
     [self initData];
@@ -38,7 +38,7 @@
 #pragma mark 增加按钮列表
 -(void)addHeadView{
     
-    TPTuiSelectView *tuiSelectView = [[TPTuiSelectView alloc]initWithFrame:CGRectMake(0,84,kScreenWidth, 30)];
+    TPTuiSelectView *tuiSelectView = [[TPTuiSelectView alloc]initWithFrame:CGRectMake(0,84,kScreenWidth, 40)];
 
     __weak typeof(self) weakSelf = self;
     tuiSelectView.tuiBlock = ^(int num){
@@ -65,9 +65,10 @@
     self.tableView.backgroundColor = [UIColor clearColor];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.view addSubview:self.tableView];
+    self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 20, 0);
     
     [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(self.view).with.insets(UIEdgeInsetsMake(120, 0, 0, 0));
+        make.edges.equalTo(self.view).with.insets(UIEdgeInsetsMake(140, 0, 0, 0));
     }];
 }
 #pragma mark UITableViewDataSource,UITableViewDelegate
@@ -86,31 +87,96 @@
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.row==0) {
-        NSArray *array = [self selectTypeNum];
-        NSDictionary *dict =(NSDictionary *)array[indexPath.row];
-        
-        NSString *content =[NSString stringWithFormat:@"%@",[dict valueForKey:@"content"]];
+        NSString *content =[self heightRowFirst];
 
         CGSize size =[content sizeForMaxWidth:(kScreenWidth - 30) font:[UIFont systemFontOfSize:16]];
-
         NSLog(@"size.height = %f",size.height);
 
         return size.height +40;
 
     }else{
-        return 60;
+        return 92;
     }
-
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [self selectRowAtIndexPath:indexPath];
+}
 
-    NSArray *array = [self selectTypeNum];
-    if (indexPath.row !=0) {
-        NSDictionary *dict = (NSDictionary *)array[indexPath.row];
-        NSString *title = [NSString stringWithFormat:@"%@",[dict objectForKey:@"title"]];
-        NSString *content = [NSString stringWithFormat:@"%@",[dict objectForKey:@"content"]];
-        [IGDisplayer showDisplayerWithTitleText:title contentText:content];
+-(void)selectRowAtIndexPath:(NSIndexPath *)indexPath{
+    NSString *titileStr = @"";
+    NSString *contentStr = @"";
+
+    if (indexPath.row!=0) {
+        if (self.typeNum ==1) {
+            if (indexPath.row==0) {
+                contentStr = NSLocalizedString(@"raiders_tab1_content_top",@"");
+            }else if (indexPath.row==1){
+                titileStr = NSLocalizedString(@"raiders_tab1_title_1",@"");
+                contentStr = NSLocalizedString(@"raiders_tab1_content_1",@"");
+            }else if (indexPath.row==2){
+                titileStr = NSLocalizedString(@"raiders_tab1_title_2",@"");
+                contentStr = NSLocalizedString(@"raiders_tab1_content_2",@"");
+            }else if (indexPath.row==3){
+                titileStr = NSLocalizedString(@"raiders_tab1_title_3",@"");
+                contentStr = NSLocalizedString(@"raiders_tab1_content_3",@"");
+            }else if (indexPath.row==4){
+                titileStr = NSLocalizedString(@"raiders_tab1_title_4",@"");
+                contentStr = NSLocalizedString(@"raiders_tab1_content_4",@"");
+            }else{
+                titileStr = NSLocalizedString(@"raiders_tab1_title_5",@"");
+                contentStr = NSLocalizedString(@"raiders_tab1_content_5",@"");
+            }
+        }else if(self.typeNum==2){
+            if (indexPath.row==0) {
+                contentStr = NSLocalizedString(@"raiders_tab2_content_top",@"");
+            }
+        }else if (self.typeNum==3){
+            if (indexPath.row==0) {
+                contentStr = NSLocalizedString(@"raiders_tab3_content_top",@"");
+            }else if (indexPath.row==1){
+                titileStr = NSLocalizedString(@"raiders_tab1_title_1",@"");
+                contentStr = NSLocalizedString(@"raiders_tab3_content_1",@"");
+            }else{
+                titileStr = NSLocalizedString(@"raiders_tab1_title_2",@"");
+                contentStr = NSLocalizedString(@"raiders_tab3_content_2",@"");
+            }
+        }else{
+            if (indexPath.row==0) {
+                contentStr = NSLocalizedString(@"raiders_tab4_content_top",@"");
+            }else if (indexPath.row==1){
+                titileStr = NSLocalizedString(@"raiders_tab1_title_1",@"");
+                contentStr = NSLocalizedString(@"raiders_tab4_content_1",@"");
+            }else if (indexPath.row==2){
+                titileStr = NSLocalizedString(@"raiders_tab1_title_2",@"");
+                contentStr = NSLocalizedString(@"raiders_tab4_content_2",@"");
+            }else if (indexPath.row==3){
+                titileStr = NSLocalizedString(@"raiders_tab1_title_3",@"");
+                contentStr = NSLocalizedString(@"raiders_tab4_content_3",@"");
+            }else if (indexPath.row==4){
+                titileStr = NSLocalizedString(@"raiders_tab1_title_4",@"");
+                contentStr = NSLocalizedString(@"raiders_tab4_content_4",@"");
+            }else{
+                titileStr = NSLocalizedString(@"raiders_tab1_title_5",@"");
+                contentStr = NSLocalizedString(@"raiders_tab4_content_5",@"");
+            }
+        }
+        [IGDisplayer showDisplayerWithTitleText:titileStr contentText:contentStr];
     }
+}
+
+-(NSString *)heightRowFirst{
+
+    NSString *contentStr = @"";
+    if (self.typeNum ==1) {
+        contentStr = NSLocalizedString(@"raiders_tab1_content_top",@"");
+    }else if(self.typeNum==2){
+        contentStr = NSLocalizedString(@"raiders_tab2_content_top",@"");
+    }else if (self.typeNum==3){
+        contentStr = NSLocalizedString(@"raiders_tab3_content_top",@"");
+    }else{
+        contentStr = NSLocalizedString(@"raiders_tab4_content_top",@"");
+    }
+    return contentStr;
 }
 
 -(NSArray *)selectTypeNum{

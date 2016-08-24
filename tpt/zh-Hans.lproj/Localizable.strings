@@ -31,10 +31,10 @@
 "setting_tem_check" = "温度校验";
 
 "setting_tem_check_content" = "校准体温计与手机端显示温度的差异。";
-"setting" = "设置&#160; = ";
+"setting" = "设置>>";
 "setting_see" = "查看&#160; = ";
 "setting_power" = "宝宝手环电量";
-"setting_power_lest" = "目前电池电量%1$s";
+"setting_power_lest" = "目前电池电量";
 "setting_info" = "设备信息";
 "setting_info_content" = "关于设备的型号、版本等详细信息";
 "setting_disclaimer" = "免责声明";

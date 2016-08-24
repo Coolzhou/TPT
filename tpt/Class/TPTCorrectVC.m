@@ -21,7 +21,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navTitleLable.text = @"温度误差较验";
+    self.navTitleLable.text = NSLocalizedString(@"setting_tem_check_title", @"");
     [self initTableView];
 }
 

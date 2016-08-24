@@ -29,6 +29,10 @@
 
     self.lineView.backgroundColor = MainTitleColor;
     self.lineTwoView.backgroundColor = MainTitleColor;
+
+    self.titleLable.text = NSLocalizedString(@"max_notify", @"");
+    self.titleOneLable.text = NSLocalizedString(@"max_notify_voice", @"");
+    self.titleTwoLable.text = NSLocalizedString(@"max_notify_vibration", @"");
 }
 
 + (instancetype)thealertSetFreeCellWithTableView:(UITableView *)tableView andIndexPath:(NSIndexPath *)indexpath{

@@ -141,9 +141,9 @@
     NSString *contentStr = @"T1.0";
     NSString *contentTwoStr = @"1.0";
     NSString *contentThreeStr = @"T1.0";
-    _titleLableOne.text = @"设备型号：";
-    _titleLableTwo.text = @"软件版本：";
-    _titleLableThree.text = @"硬件版本：";
+    _titleLableOne.text = NSLocalizedString(@"system_device_model",@"");
+    _titleLableTwo.text = NSLocalizedString(@"system_software_version",@"");
+    _titleLableThree.text = NSLocalizedString(@"system_hardware_version",@"");
     _contentLableOne.text = contentStr;
     _contentLableTwo.text = contentTwoStr;
     _contentLableThree.text = contentThreeStr;

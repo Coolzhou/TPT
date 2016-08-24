@@ -13,6 +13,13 @@
 - (void)awakeFromNib {
     // Initialization code
     self.bgImgView.image = [[UIImage imageNamed:@"set_bg_red"] stretchableImageWithLeftCapWidth:10 topCapHeight:10];
+
+    self.titleOneLable.text = NSLocalizedString(@"setting_info",@"");
+    self.titleTwoLable.text = NSLocalizedString(@"setting_disclaimer",@"");
+    self.contentOneLable.text = NSLocalizedString(@"setting_info_content",@"");
+    self.contentTwoLable.text = NSLocalizedString(@"setting_disclaimer_content",@"");
+    [self.oneBut setTitle:NSLocalizedString(@"setting",@"") forState:UIControlStateNormal];
+    [self.twoBut setTitle:NSLocalizedString(@"setting",@"") forState:UIControlStateNormal];
 }
 
 

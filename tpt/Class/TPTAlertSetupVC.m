@@ -23,7 +23,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navTitleLable.text = @"温度超限报警设置";
+    self.navTitleLable.text = NSLocalizedString(@"max_tem", @"");
     [self initTableView];
 }
 
@@ -70,7 +70,12 @@
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section==0) {
-        return 84;
+
+        NSString *content = NSLocalizedString(@"max_tem_explanation",@"");
+        CGSize size =[content sizeForMaxWidth:(kScreenWidth - 50) font:[UIFont systemFontOfSize:15]];
+        NSLog(@"size.height = %f",size.height);
+        
+        return size.height+20;
     }else if(indexPath.section==1){
         return 44;
     }else if(indexPath.section ==2){

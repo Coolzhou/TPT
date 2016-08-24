@@ -90,9 +90,15 @@
     [_contentLableOne whc_heightAuto];
 
 
-    NSString *contentStr = @"1：用医用体温计测量宝宝的腋温并记录。\n2：通过上面的“+”、“-”按键调节显示的温度与医用体温计测量的温度一致。\n3：温度误差建议控制在0.1~0.2℃之间";
-    _titleLableOne.text = @"体温误差校正步骤指引：";
-    _contentLableOne.text = contentStr;
+//    NSString *contentStr = @"1：用医用体温计测量宝宝的腋温并记录。\n2：通过上面的“+”、“-”按键调节显示的温度与医用体温计测量的温度一致。\n3：温度误差建议控制在0.1~0.2℃之间";
+
+    NSString *contentOne = NSLocalizedString(@"setting_tem_check_1",@"");
+    NSString *contentTwo = NSLocalizedString(@"setting_tem_check_2",@"");
+    NSString *contentThree = NSLocalizedString(@"setting_tem_check_3",@"");
+
+
+    _titleLableOne.text = NSLocalizedString(@"setting_tem_check_tip", @"");
+    _contentLableOne.text = [NSString stringWithFormat:@"%@\n%@\n%@",contentOne,contentTwo,contentThree];
 
     /// 设置cell底部间隙
     self.whc_CellBottomView = _contentLableOne;

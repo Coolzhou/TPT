@@ -19,6 +19,8 @@
     self.bgView.layer.borderWidth = 1;
     self.bgView.layer.borderColor = [UIColor groupTableViewBackgroundColor].CGColor;
     self.contentLable.textColor = MainContentColor;
+    self.contentLable.text = NSLocalizedString(@"max_tem_explanation",@"");
+    
 }
 
 + (instancetype)thealertSetOneCellWithTableView:(UITableView *)tableView andIndexPath:(NSIndexPath *)indexpath{

@@ -13,9 +13,9 @@
 - (void)awakeFromNib {
     // Initialization code
     self.bgImgView.image = [[UIImage imageNamed:@"tui_cell_bg"] stretchableImageWithLeftCapWidth:10 topCapHeight:10];
-    self.lineOne.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"set_bg_red"]];
-    self.lineTwo.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"set_bg_red"]];
-    self.lineThree.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"set_bg_red"]];
+    self.lineOne.backgroundColor = MainTitleColor;
+    self.lineTwo.backgroundColor = MainTitleColor;
+    self.lineThree.backgroundColor = MainTitleColor;
 
     self.titleOneLable.textColor = MainTitleColor;
     self.titleTwoLable.textColor = MainTitleColor;
@@ -40,6 +40,19 @@
     self.switchTwo.onImage = [UIImage imageNamed:@"switchOne_on"];
     self.switchTwo.offImage = [UIImage imageNamed:@"switchOne_off"];
     self.switchTwo.status = CustomSwitchStatusOff;
+
+    self.titleOneLable.text = NSLocalizedString(@"setting_cut_tip",@"");
+    self.titleTwoLable.text = NSLocalizedString(@"setting_max_tem",@"");
+    self.titleThreeLable.text = NSLocalizedString(@"setting_tem_unit",@"");
+    self.titleFreeLable.text = NSLocalizedString(@"setting_tem_check",@"");
+
+    self.contentOneLable.text = NSLocalizedString(@"setting_cut_tip_content",@"");
+    self.contentTwoLable.text = NSLocalizedString(@"setting_max_tem_content",@"");
+    self.contentThreeLable.text = NSLocalizedString(@"setting_tem_unit_content",@"");
+    self.contentFreeLable.text = NSLocalizedString(@"setting_tem_check_content",@"");
+
+    [self.rightBtnOne setTitle:NSLocalizedString(@"setting",@"") forState:UIControlStateNormal];
+    [self.rightBtnTwo setTitle:NSLocalizedString(@"setting",@"") forState:UIControlStateNormal];
 
 }
 

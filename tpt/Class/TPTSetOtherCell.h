@@ -20,6 +20,11 @@ typedef void(^SetOtherCellBlock)(NSInteger tag);
 
 @property (nonatomic,copy) SetOtherCellBlock setOtherBlock;
 
+@property (weak, nonatomic) IBOutlet UIButton *oneBut;
+@property (weak, nonatomic) IBOutlet UIButton *twoBut;
+
+
+
 + (instancetype)theTPTSetOtherCellWithTableView:(UITableView *)tableView andIndexPath:(NSIndexPath *)indexpath;
 
 @end

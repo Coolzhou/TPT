@@ -18,7 +18,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navTitleLable.text = @"设备信息";
+    self.navTitleLable.text = NSLocalizedString(@"setting_info", @"");
     [self initTableView];
 }
 

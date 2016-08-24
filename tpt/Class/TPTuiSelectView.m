@@ -47,6 +47,8 @@
         titleButton.layer.masksToBounds = YES;
         titleButton.tag = 1+i;
         titleButton.titleLabel.font = [UIFont systemFontOfSize:14];
+        titleButton.titleLabel.numberOfLines = 0;
+        titleButton.titleLabel.lineBreakMode = NSLineBreakByCharWrapping;
         if (i==0) {
             titleButton.selected = YES;
             _receiveButton = titleButton;

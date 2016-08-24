@@ -21,7 +21,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="290" height="43"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="报警开关" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y1d-mg-e3a">
-                                <rect key="frame" x="10" y="11" width="80" height="21"/>
+                                <rect key="frame" x="10" y="11" width="175" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="80" id="1gc-vP-qlu"/>
                                     <constraint firstAttribute="height" constant="21" id="BpN-wx-doD"/>
@@ -29,6 +29,11 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="1gc-vP-qlu"/>
+                                    </mask>
+                                </variation>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y20-dX-hxv" customClass="CustomSwitch">
                                 <rect key="frame" x="205" y="9" width="75" height="25"/>
@@ -43,6 +48,7 @@
                             <constraint firstItem="5so-Zx-1cK" firstAttribute="top" secondItem="ezV-p6-q9f" secondAttribute="top" id="9Es-6U-8Pk"/>
                             <constraint firstItem="y1d-mg-e3a" firstAttribute="leading" secondItem="ezV-p6-q9f" secondAttribute="leading" constant="10" id="EYE-SG-x6w"/>
                             <constraint firstAttribute="bottom" secondItem="5so-Zx-1cK" secondAttribute="bottom" id="KAd-j7-JEE"/>
+                            <constraint firstItem="y20-dX-hxv" firstAttribute="leading" secondItem="y1d-mg-e3a" secondAttribute="trailing" constant="20" id="Lcb-Eh-kCT"/>
                             <constraint firstItem="y1d-mg-e3a" firstAttribute="centerY" secondItem="ezV-p6-q9f" secondAttribute="centerY" id="N9k-xo-m0w"/>
                             <constraint firstAttribute="trailing" secondItem="y20-dX-hxv" secondAttribute="trailing" constant="10" id="PgX-Eg-He5"/>
                             <constraint firstAttribute="trailing" secondItem="5so-Zx-1cK" secondAttribute="trailing" id="RBG-gY-c3z"/>

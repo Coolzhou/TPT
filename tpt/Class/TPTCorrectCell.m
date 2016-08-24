@@ -28,6 +28,8 @@
     self.bgImgView.image = [[UIImage imageNamed:@"tui_cell_bg"] stretchableImageWithLeftCapWidth:10 topCapHeight:10];
 
     self.tempLable.text = [NSString stringWithFormat:@"%.1f℃",[UserModel.temp_check floatValue]];
+
+    self.infoLable.text = NSLocalizedString(@"history_cur_tem", @"");
 }
 
 + (instancetype)theTPTCorrectCellWithTableView:(UITableView *)tableView{

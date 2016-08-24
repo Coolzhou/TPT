@@ -117,13 +117,11 @@
     [_contentLableTwo whc_RightSpace:15];
     [_contentLableTwo whc_heightAuto];
 
-    NSString *contentStr = @"该应用程序中的所有内容（特别是界面设计、文本、图片、标志、音频剪辑等）都是受版权保护的，在没有本公司书面证明和授权的情况下，对所有内容的复制、公众传达或者其它未经我公司许可的行为都属侵犯本公司合法权益行为，未经本公司许可，程序内所有涉及著作权、代码应用和商标等都不允许变更和移除。\n本智能软件是配合智能硬件使用的，在检测婴幼儿生命体征的过程中由于人体的复杂必，疾病并不能通过某些单一的症状发现，须要专业医生综合检查、分析判断。\n我们希望我们的产品在婴幼儿出现疾病征兆时，能够及时帮助您更好地掌握婴幼儿的身体健康情况。使您可能更加轻松，方便的照顾自己的孩子。";
+    NSString *contentStr = NSLocalizedString(@"disclaimer_content",@"");
+    NSString *contentTwoStr = NSLocalizedString(@"disclaimer_tip_content",@"");
 
-
-    NSString *contentTwoStr = @"我方所有信息公供参考，不做个别诊断、用药和使用的根据。";
-
-    _titleLableOne.text = @"免责声明";
-    _titleLableTwo.text = @"注意事项";
+    _titleLableOne.text = NSLocalizedString(@"setting_disclaimer", @"");
+    _titleLableTwo.text = NSLocalizedString(@"disclaimer_tip", @"");
     _contentLableOne.text = contentStr;
     _contentLableTwo.text = contentTwoStr;
 

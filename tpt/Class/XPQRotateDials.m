@@ -96,7 +96,7 @@
         make.top.equalTo(self.needleView.bottom).with.offset(0);
         make.left.equalTo (self.left).with.offset(35);
         make.height.mas_equalTo(21);
-        make.width.mas_equalTo(120);
+        make.width.mas_equalTo(200);
     }];
 
     [self addSubview:self.valueLabel];

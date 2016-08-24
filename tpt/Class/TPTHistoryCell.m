@@ -30,6 +30,9 @@
         self.fangConstraint.constant = 15;
         self.timeConstraint.constant = 15;
     }
+    self.changLable.text = NSLocalizedString(@"history_common_method", @"");
+
+    [self.delectBtn setTitle:NSLocalizedString(@"history_del", @"") forState:UIControlStateNormal];
 }
 
 + (instancetype)theTPTHistoryCellWithTableView:(UITableView *)tableView andIndexPath:(NSIndexPath *)indexpath{
@@ -55,28 +58,29 @@
 
 //    NSLog(@"tempModel = %@ = %@ = %f",tempModel.create_time,tempModel.temp_state,tempModel.temp);
 
-
+    //常出来方法  history_common_method
     //低热 2中热 3高热4 超热
     if ([tempModel.temp_state isEqualToString:@"0"]) {
-        self.stateLable.text = @"正常";
-        self.methodLable.text = @"无需处理";
+        self.stateLable.text = NSLocalizedString(@"history_normal",@"");
+        self.methodLable.text = NSLocalizedString(@"history_common_method_1", @"");
     }else if ([tempModel.temp_state isEqualToString:@"1"]){
-        self.stateLable.text = @"低热";
-        self.methodLable.text = @"酒精擦拭";
+        self.stateLable.text = NSLocalizedString(@"max_tem_low", @"");;
+        self.methodLable.text = NSLocalizedString(@"history_common_method_2", @"");
     }else if ([tempModel.temp_state isEqualToString:@"2"]){
-        self.stateLable.text = @"中热";
-        self.methodLable.text = @"酒精擦拭";
+        self.stateLable.text = NSLocalizedString(@"max_tem_middle", @"");;
+        self.methodLable.text = NSLocalizedString(@"history_common_method_3", @"");
     }else if ([tempModel.temp_state isEqualToString:@"3"]){
-        self.stateLable.text = @"高热";
-        self.methodLable.text = @"酒精擦拭";
+        self.stateLable.text = NSLocalizedString(@"max_tem_high", @"");;
+        self.methodLable.text = NSLocalizedString(@"history_common_method_4", @"");
+;
     }else if ([tempModel.temp_state isEqualToString:@"4"]){
-        self.stateLable.text = @"超热";
-        self.methodLable.text = @"酒精擦拭";
+        self.stateLable.text = NSLocalizedString(@"max_tem_supper_high", @"");;
+        self.methodLable.text = NSLocalizedString(@"history_common_method_5", @"");
+;
     }else{
-        self.stateLable.text = @"正常";
+        self.stateLable.text = NSLocalizedString(@"history_normal",@"");
     }
     self.timeLable.text = tempModel.create_time;
-
 }
 
 

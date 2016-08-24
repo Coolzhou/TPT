@@ -240,7 +240,7 @@
 -(UIButton *)cancelButton{
     if (!_cancelButton) {
         _cancelButton = [[UIButton alloc] init];
-        [_cancelButton setTitle:@"关闭" forState:0];
+        [_cancelButton setTitle:NSLocalizedString(@"raiders_close",@"") forState:0];
         [_cancelButton setTitleColor:[UIColor whiteColor] forState:0];
         _cancelButton.layer.cornerRadius = 5;
         _cancelButton.layer.masksToBounds = YES;

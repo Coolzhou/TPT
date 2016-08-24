@@ -19,7 +19,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navTitleLable.text = @"免责声明";
+    self.navTitleLable.text = NSLocalizedString(@"setting_disclaimer",@"");
     [self initTableView];
 }
 

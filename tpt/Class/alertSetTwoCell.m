@@ -20,6 +20,7 @@
     self.switchBtn.onImage = [UIImage imageNamed:@"switchOne_on"];
     self.switchBtn.offImage = [UIImage imageNamed:@"switchOne_off"];
     self.switchBtn.status = CustomSwitchStatusOff;
+    self.titleLable.text = NSLocalizedString(@"max_tem_switch", @"");
 }
 
 + (instancetype)thealertSetTwoCellWithTableView:(UITableView *)tableView andIndexPath:(NSIndexPath *)indexpath{
