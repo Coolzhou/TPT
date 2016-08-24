@@ -39,8 +39,6 @@
         }else{
             self.currentArray = dataSource;
         }
-
-
         [self startDraw];
     }
     return self;

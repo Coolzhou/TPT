@@ -25,4 +25,5 @@
 @property (weak, nonatomic) IBOutlet UIImageView *bgImgView;
 
 + (instancetype)theTPTCorrectCellWithTableView:(UITableView *)tableView;
+
 @end

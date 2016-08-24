@@ -20,9 +20,11 @@ typedef NS_ENUM(NSUInteger, CustomSwitchArrange)
     CustomSwitchArrangeOFFLeftONRight = 1//左边是关闭，右边是开启
 };
 
+@class CustomSwitch;
+
 @protocol CustomSwitchDelegate <NSObject>
 
--(void)customSwitchSetStatus:(CustomSwitchStatus)status;
+-(void)customSwitchView:(CustomSwitch *)switchViwe SetStatus:(CustomSwitchStatus)status;
 @end
 
 @interface CustomSwitch : UIControl

@@ -43,8 +43,6 @@
 
 -(void)initTableViewHeadView{
 
-//    self.chartLine = [[TPChartLine alloc]initWithFrame:CGRectMake(15,kScreenHeight-280, self.view.frame.size.width-30, 260) withDataArray:self.dataArray];
-
     self.chart = [[TPChart alloc]initWithFrame:CGRectMake(15,kScreenHeight-280, self.view.frame.size.width-30, 260) withDataSource:self.dataArray];
     self.tableView.tableHeaderView = self.chart;
 }

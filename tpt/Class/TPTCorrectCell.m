@@ -20,16 +20,19 @@
     self.tempLable.textColor = MainTitleColor;
     self.infoLable.textColor = MainContentColor;
 
-    self.addButton.layer.masksToBounds = YES;
-    self.addButton.layer.cornerRadius = 5;
+    self.saveButton.layer.masksToBounds = YES;
+    self.saveButton.layer.cornerRadius = 5;
 
-    self.jianButton.layer.masksToBounds = YES;
-    self.jianButton.layer.cornerRadius = 5;
+    self.dissButton.layer.masksToBounds = YES;
+    self.dissButton.layer.cornerRadius = 5;
     self.bgImgView.image = [[UIImage imageNamed:@"tui_cell_bg"] stretchableImageWithLeftCapWidth:10 topCapHeight:10];
 
     self.tempLable.text = [NSString stringWithFormat:@"%.1f℃",[UserModel.temp_check floatValue]];
 
-    self.infoLable.text = NSLocalizedString(@"history_cur_tem", @"");
+    self.infoLable.text = NSLocalizedString(@"cur_temperature", @"");
+
+    [self.saveButton setTitle:NSLocalizedString(@"max_save", @"") forState:UIControlStateNormal];
+    [self.dissButton setTitle:NSLocalizedString(@"max_cancel", @"") forState:UIControlStateNormal];
 }
 
 + (instancetype)theTPTCorrectCellWithTableView:(UITableView *)tableView{

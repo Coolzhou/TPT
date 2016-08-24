@@ -93,6 +93,13 @@
 "history_common_method_5"= "Visit Hospital";
 
 
+"setting_tem_check_title" = "Thermometer Calibration Guide";
+"setting_tem_check_tip" = "Adjust the temperature tolerance as follows:";
+"setting_tem_check_1" = "1：Measure and mark the axillary temperature with a normal thermometer.";
+"setting_tem_check_2" = "2：Adjust the temperature to the measured figures of normal thermometer with the '+', '-' button.";
+"setting_tem_check_3" = "3：Keep the temperature tolerance to 0.1℃ ~ 0.2℃";
+
+
 "raiders_tab1_content_top" = "When the child's temperature is 38℃~39℃, below is the methods to reduce the fever:";
 
 "raiders_tab2_content_top" = "When your child's temperature is above 38.5°C, please take antipyretic as directed by your physician.\n Body Temperature bewteen 37.5℃~38℃ is low fever, medium fever:38℃~39℃, high fever: above 39℃, Super-high fever: above 41℃. \n When your child's temperature is above 38.5°C, please take antipyretic as directed by your physician. \nDon't try to reduce the fever when it is below 38℃, especially before the diagnosis. \nAny actions to reduce the fever blindly, that may adversely affect the final diagnosis. \n When it is above 39℃, please reduce the fever as directed by your physician.\nMedical advice：When your child's temperature is below 38.5°C, it shoud be to reduce the fever physically ranther than taking the antipyretic, like cold compresses, cooling paste, etc";

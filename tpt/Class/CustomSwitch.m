@@ -94,17 +94,14 @@
     [_customSwitch exchangeSubviewAtIndex:0 withSubviewAtIndex:1];
     
     _status = status;
-    
-    if ([_delegate respondsToSelector:@selector(customSwitchSetStatus:)]) {
-        [_delegate customSwitchSetStatus:_status];
-    }
-    
+
+
 }
 
 -(void)moveButtonTranslation:(CGFloat)translation
 {
     [UIView animateWithDuration:DEFAULT_DURATION animations:^{
-        
+        [self bringSubviewToFront:self.onButton];
         _onButton.transform = CGAffineTransformMakeTranslation(translation, 0);
         _offButton.transform = CGAffineTransformMakeTranslation(translation, 0);
         
@@ -145,10 +142,10 @@
     [_customSwitch addSubview:_onButton];
     [_customSwitch addSubview:_offButton];
     
-    UIPanGestureRecognizer *panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(switchBtnDragged)];
-    [_onButton addGestureRecognizer:panGesture];
-    [_offButton addGestureRecognizer:panGesture];
-    
+//    UIPanGestureRecognizer *panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(switchBtnDragged)];
+//    [_onButton addGestureRecognizer:panGesture];
+//    [_offButton addGestureRecognizer:panGesture];
+
     [self addSubview:_customSwitch];
     return self;
 }
@@ -180,9 +177,16 @@
 -(void)switchBtnClicked
 {
     if (_status == CustomSwitchStatusOn) {
+
         [self setStatus:CustomSwitchStatusOff];
+
     }else{
         [self setStatus:CustomSwitchStatusOn];
+
+    }
+
+    if ([_delegate respondsToSelector:@selector(customSwitchView:SetStatus:)]) {
+        [_delegate customSwitchView:self SetStatus:_status];
     }
 }
 
@@ -210,8 +214,6 @@
                 }
             }
             if (move) {
-                
-                
                 //移动范围不能超过可视范围
                 if (fabs(moveTranslation) >= 0) {
                     [self moveButtonTranslation:0];

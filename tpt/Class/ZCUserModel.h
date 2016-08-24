@@ -18,10 +18,13 @@
 @property (nonatomic, strong) NSString *max_tem_middle; //中热
 @property (nonatomic, strong) NSString *max_tem_high;   //高热
 @property (nonatomic, strong) NSString *max_tem_supper_high; //超高热
-@property (nonatomic, strong) NSString *max_alert_state; //警报开启、关闭
-@property (nonatomic, strong) NSString *max_notify_voice; //铃声
-@property (nonatomic, strong) NSString *max_notify_vibration;  //振动
 
-@property (nonatomic, strong) NSString *temp_check;
+@property (nonatomic, strong) NSString *temp_check; //校准值
+
+@property (nonatomic, assign) BOOL max_alert_state; //警报开启、关闭
+@property (nonatomic, assign) BOOL max_notify_voice; //铃声
+@property (nonatomic, assign) BOOL max_notify_vibration;  //振动
+@property (nonatomic, assign) BOOL temp_unit; //温度单位
+@property (nonatomic, assign) BOOL device_disconnect; //设备断开链接报警
 
 @end
