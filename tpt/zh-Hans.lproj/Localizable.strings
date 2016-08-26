@@ -51,7 +51,7 @@
 "raiders_tab_4" = "发烧了吗";
 "raiders_close" = "关闭";
 "max_tem" = "温度超限报警设置";
-"max_suggest" = "建议设置：宝宝%1$s温度建议设置为%2$s";
+"max_suggest" = "建议设置：宝宝%1$s温度建议设置为";
 "max_save" = "保存";
 "max_cancel" = "关闭";
 "max_notify" = "声音与提醒";

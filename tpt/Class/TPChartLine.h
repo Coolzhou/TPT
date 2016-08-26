@@ -9,10 +9,11 @@
 #import <UIKit/UIKit.h>
 
 
-static const CGFloat LineStartX = 40.f;
+static const CGFloat LineStartX = 20.f;
 
 @interface TPChartLine : UIView{
     CGFloat chartLineTheXAxisSpan;
+    CGFloat chartLineTheMarge;
 }
 
 

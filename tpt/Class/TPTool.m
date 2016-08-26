@@ -73,4 +73,39 @@
     UIImageWriteToSavedPhotosAlbum([TPTool captureScreen], nil, nil, nil);
 }
 
+//根据单位℃、℉ 得到不同温度NSString
++(CGFloat)getUnitCurrentTemp:(NSString *)temp{
+
+    CGFloat currentFloat = 0.0;
+    CGFloat tempFloat = [temp floatValue];
+
+    if (UserModel.temp_unit == NO) {
+        //摄氏度
+        currentFloat = tempFloat;
+    }else{
+        //华氏度
+        currentFloat = 1.8 * tempFloat + 32;
+    }
+    return currentFloat;
+}
+
+//根据单位℃、℉ 得到不同温度CGFloat
++(CGFloat)getUnitCurrentTempFloat:(CGFloat)temp{
+    CGFloat currentFloat = 0.0;
+    CGFloat tempFloat = temp;
+    NSLog(@"currentFloat - temp = %f",temp);
+    if (UserModel.temp_unit == NO) {
+        //摄氏度
+        currentFloat = tempFloat;
+    }else{
+        //华氏度
+        currentFloat = 1.8 * tempFloat + 32;
+    }
+
+    NSLog(@"currentFloat = %f",currentFloat);
+    return currentFloat;
+}
+
+
+
 @end

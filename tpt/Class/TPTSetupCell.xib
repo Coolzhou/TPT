@@ -111,10 +111,10 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view tag="10" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vq5-oi-Yxd" customClass="CustomSwitch">
-                                <rect key="frame" x="220" y="36" width="70" height="25"/>
+                                <rect key="frame" x="230" y="36" width="60" height="25"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="70" id="A9X-sL-txE"/>
+                                    <constraint firstAttribute="width" constant="60" id="A9X-sL-txE"/>
                                     <constraint firstAttribute="height" constant="25" id="nmb-v9-eaA"/>
                                 </constraints>
                             </view>
@@ -141,10 +141,10 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view tag="11" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kON-20-JGF" customClass="CustomSwitch">
-                                <rect key="frame" x="220" y="193" width="70" height="25"/>
+                                <rect key="frame" x="230" y="193" width="60" height="25"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="70" id="5zf-HA-Zwi"/>
+                                    <constraint firstAttribute="width" constant="60" id="5zf-HA-Zwi"/>
                                     <constraint firstAttribute="height" constant="25" id="d3F-Oe-KXU"/>
                                 </constraints>
                             </view>

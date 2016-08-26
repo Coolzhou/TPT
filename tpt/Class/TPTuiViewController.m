@@ -38,7 +38,7 @@
 #pragma mark 增加按钮列表
 -(void)addHeadView{
     
-    TPTuiSelectView *tuiSelectView = [[TPTuiSelectView alloc]initWithFrame:CGRectMake(0,84,kScreenWidth, 40)];
+    TPTuiSelectView *tuiSelectView = [[TPTuiSelectView alloc]initWithFrame:CGRectMake(0,84,kScreenWidth, 45)];
 
     __weak typeof(self) weakSelf = self;
     tuiSelectView.tuiBlock = ^(int num){

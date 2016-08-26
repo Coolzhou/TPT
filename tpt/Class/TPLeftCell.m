@@ -12,7 +12,7 @@
 
 - (void)awakeFromNib {
     // Initialization code
-    self.imageLeftConstraint.constant = 20;
+    self.titlesLable.numberOfLines = 0;
 }
 
 + (instancetype)theLeftCellWithTableView:(UITableView *)tableView{

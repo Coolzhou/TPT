@@ -23,9 +23,15 @@
 +(NSString *)getCurrentTempState:(NSString *)temp;
 
 //截屏
-+ (UIImage *) captureScreen;
++(UIImage *) captureScreen;
 
 //保存到相册
-+ (void)saveScreenshotToPhotosAlbum;
++(void)saveScreenshotToPhotosAlbum;
 
+//根据单位℃、℉ 得到不同温度NSString
++(CGFloat)getUnitCurrentTemp:(NSString *)temp;
+
+
+//根据单位℃、℉ 得到不同温度CGFloat
++(CGFloat)getUnitCurrentTempFloat:(CGFloat)temp;
 @end

@@ -17,6 +17,8 @@
 @property (nonatomic,strong)UIButton *navrightButton;//右侧按钮
 
 @property (nonatomic,strong)UILabel *navTitleLable;//右侧按钮
+
+
 //点击左导航按钮
 -(void)clickLeftBarButtonItem;
 

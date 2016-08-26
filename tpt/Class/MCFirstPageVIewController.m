@@ -11,12 +11,9 @@
 #import <CoreBluetooth/CoreBluetooth.h>
 #import "BabyBluetooth.h"
 #import "PeripheralInfo.h"
-
-
-
 #import "XPQRotateDials.h"
 #import "SNChart.h"
-#import "TPTool.h"
+#import "MJAudioTool.h"
 
 //记录温度数据
 #import "WBCacheTool.h"
@@ -44,6 +41,8 @@
 
 @property (nonatomic,strong)NSString *staticTemp;//默认正常状态
 
+@property (nonatomic,strong)UIImageView *titleImageView;
+
 @end
 
 @implementation MCFirstPageVIewController
@@ -58,12 +57,23 @@
     
 }
 
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    if (self.rotateDials) {
+        self.rotateDials.refresh =@"1";
+    }
+    if (self.chart) {
+        self.chart.refresh = @"1";
+    }
+}
+
 -(void)viewDidLoad{
     [super viewDidLoad];
-    // 设置黑夜效果
 
     self.view.backgroundColor = [UIColor whiteColor];
-    self.bgimageView.image = [UIImage imageNamed:@"main_first_bg"];
+
+    self.navigationItem.titleView = self.titleImageView;
+
     self.staticTemp = @"0";
     [self loadBabayBluetooth]; //蓝牙
     [self createTimer];
@@ -96,48 +106,47 @@
 }
 
 -(void)dealTimer{
-//    if (self.writeCBCharacteristic) {
-//        [self writeValue:self.writeCBCharacteristic];
-//    }
+    if (self.writeCBCharacteristic) {
+        [self writeValue:self.writeCBCharacteristic];
+    }
 
     NSString *tempStr =[NSString stringWithFormat:@"%f",arc4random()%7+35+0.46];
-
     self.rotateDials.value = tempStr;
-//    [self.valueArray addObject:tempStr];
-//
-//    NSString *timeStr =[TPTool getCurrentDate];
-//    NSString *tempTimeStr = [TPTool getTempCurrentDate];
-//    [self.timeArray addObject:timeStr];
-//
-//    if (self.valueArray.count>chartMaxNum) {
-//        //默认为正序遍历
-//        [self.valueArray removeObjectAtIndex:0];
-//    }
-//    if (self.timeArray.count>chartMaxNum) {
-//        //默认为正序遍历
-//        [self.timeArray removeObjectAtIndex:0];
-//    }
-//    self.chart.valueArray = self.valueArray;
-//    self.chart.timeArray = self.timeArray;
-//
-//    //记录所有数据
-//    WBTemperature *temp = [[WBTemperature alloc] init];
-//    temp.create_time = timeStr;
-//    temp.temp = tempStr.floatValue;
-//    [WBCacheTool addTemperature:temp];
-//
-//    //记录提醒数据
-//    NSString *getTemp = [TPTool getCurrentTempState:tempStr];
-//    if (![getTemp isEqualToString:@"-1"]) {
-//        if (![self.staticTemp isEqualToString:getTemp]) {
-//            WBTemperature *temp = [[WBTemperature alloc] init];
-//            temp.create_time = tempTimeStr;
-//            temp.temp = tempStr.floatValue;
-//            temp.temp_state = getTemp;
-//            [TPTStateCacheTool addTemperature:temp];
-//            self.staticTemp = getTemp;
-//        }
-//    }
+    [self.valueArray addObject:tempStr];
+
+    NSString *timeStr =[TPTool getCurrentDate];
+    NSString *tempTimeStr = [TPTool getTempCurrentDate];
+    [self.timeArray addObject:timeStr];
+
+    if (self.valueArray.count>chartMaxNum) {
+        //默认为正序遍历
+        [self.valueArray removeObjectAtIndex:0];
+    }
+    if (self.timeArray.count>chartMaxNum) {
+        //默认为正序遍历
+        [self.timeArray removeObjectAtIndex:0];
+    }
+    self.chart.valueArray = self.valueArray;
+    self.chart.timeArray = self.timeArray;
+
+    //记录所有数据
+    WBTemperature *temp = [[WBTemperature alloc] init];
+    temp.create_time = timeStr;
+    temp.temp = tempStr.floatValue;
+    [WBCacheTool addTemperature:temp];
+
+    //记录提醒数据
+    NSString *getTemp = [TPTool getCurrentTempState:tempStr];
+    if (![getTemp isEqualToString:@"-1"]) {
+        if (![self.staticTemp isEqualToString:getTemp]) {
+            WBTemperature *temp = [[WBTemperature alloc] init];
+            temp.create_time = tempTimeStr;
+            temp.temp = tempStr.floatValue;
+            temp.temp_state = getTemp;
+            [TPTStateCacheTool addTemperature:temp];
+            self.staticTemp = getTemp;
+        }
+    }
 }
 
 #pragma mark rightBarButtonItem
@@ -323,45 +332,78 @@
                        NSData * data = characteristic.value;
                        Byte * resultByte = (Byte *)[data bytes];
 
-////                       if (resultByte[3]) {
-////                           // 温度整数部分
-//                           NSLog(@"设置111 = %hhu",resultByte[3]);
-////                       }else if (resultByte[4]) {
-////                           // 温度小数部分
-//                           NSLog(@"设置222 = %hhu",resultByte[4]);
-////                       }else if (resultByte[5]) {
-//                           // 电量百分比
-//                           NSLog(@"设置333 = %hhu",resultByte[5]);
-////                       }
-
                        NSString *currentElec =[NSString stringWithFormat:@"%u",resultByte[5]];
+
                        if (![NSString isNull:currentElec]) {
-                           [[NSUserDefaults standardUserDefaults]setObject:currentElec forKey:@"currentElec"];
+                           [[NSUserDefaults standardUserDefaults]setObject:currentElec forKey:@"currentElec"];//电量
                        }
-                       NSString *aa =[NSString stringWithFormat:@"%f",arc4random()%7+35+0.46];
-//                       NSString *aa =[NSString stringWithFormat:@"%u.%u",resultByte[3],resultByte[4]];
-//                       NSLog(@"aaaaaa =%@",aa);
+                       //温度
+                       NSString *aa =[NSString stringWithFormat:@"%u.%u",resultByte[3],resultByte[4]];
+
+                   CGFloat tempfloats = [aa floatValue] + [UserModel.temp_check floatValue];
+
+                       self.rotateDials.value = [NSString stringWithFormat:@"%.1f",tempfloats];
                        [self.valueArray addObject:aa];
 
-                       NSString *bb =[TPTool getCurrentDate];
-                       [self.timeArray addObject:bb];
+                       [weakSelf showAlarm:tempfloats];
 
-                       if (self.valueArray.count>7) {
+                       NSString *timeStr =[TPTool getCurrentDate];
+                       NSString *tempTimeStr = [TPTool getTempCurrentDate];
+                       [self.timeArray addObject:timeStr];
+                   
+                       if (self.valueArray.count>chartMaxNum) {
                            //默认为正序遍历
                            [self.valueArray removeObjectAtIndex:0];
                        }
-                       if (self.timeArray.count>7) {
+                       if (self.timeArray.count>chartMaxNum) {
                            //默认为正序遍历
                            [self.timeArray removeObjectAtIndex:0];
                        }
                        self.chart.valueArray = self.valueArray;
                        self.chart.timeArray = self.timeArray;
+                   
+                       //记录所有数据
+                       WBTemperature *temp = [[WBTemperature alloc] init];
+                       temp.create_time = timeStr;
+                       temp.temp = [aa floatValue];
+                       [WBCacheTool addTemperature:temp];
+                   
+                       //记录提醒数据
+                       NSString *getTemp = [TPTool getCurrentTempState:aa];
+                       if (![getTemp isEqualToString:@"-1"]) {
+                           if (![self.staticTemp isEqualToString:getTemp]) {
+                               WBTemperature *temp = [[WBTemperature alloc] init];
+                               temp.create_time = tempTimeStr;
+                               temp.temp = aa.floatValue;
+                               temp.temp_state = getTemp;
+                               [TPTStateCacheTool addTemperature:temp];
+                               self.staticTemp = getTemp;
+                           }
+                       }
+
                    }];
         }
     }
     else{
         [SVProgressHUD showErrorWithStatus:@"这个characteristic没有nofity的权限"];
         return;
+    }
+}
+
+#pragma mark 警报
+
+-(void)showAlarm:(CGFloat)temp{
+
+    if (temp>[UserModel.max_tem_low floatValue]) {
+
+        if (UserModel.max_notify_voice) {
+            [MJAudioTool playSound:@"innocence.mp3" andRepeat:NO];
+        }
+
+//        //振动
+//        if (UserModel.max_notify_vibration) {
+//            [MJAudioTool begainPlayingSoundid];
+//        }
     }
 }
 
@@ -408,6 +450,7 @@
     }
 }
 
+
 -(void)dealloc{
     
     [[NSNotificationCenter defaultCenter]removeObserver:self name:@"backBabyBlue" object:nil];
@@ -425,6 +468,14 @@
         _timeArray = [[NSMutableArray alloc]init];
     }
     return _timeArray;
+}
+
+-(UIImageView *)titleImageView{
+    if (!_titleImageView) {
+        _titleImageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0,208,25)];
+        _titleImageView.image = [UIImage imageNamed:@"main_titleImg"];
+    }
+    return _titleImageView;
 }
 
 

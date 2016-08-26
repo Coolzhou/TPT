@@ -33,6 +33,8 @@
 		1810D9C01D587F4600C1DB65 /* 气泡.png in Resources */ = {isa = PBXBuildFile; fileRef = 1810D9BB1D587F4600C1DB65 /* 气泡.png */; };
 		1810D9C31D588AEE00C1DB65 /* TPTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 1810D9C21D588AEE00C1DB65 /* TPTool.m */; };
 		1810D9C61D58902400C1DB65 /* NSString+DZCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 1810D9C51D58902400C1DB65 /* NSString+DZCategory.m */; };
+		183370F71D704453001D5EFE /* MJAudioTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 183370F61D704453001D5EFE /* MJAudioTool.m */; };
+		183370F91D70449D001D5EFE /* innocence.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 183370F81D70449D001D5EFE /* innocence.mp3 */; };
 		185A96D11D6A927300403E44 /* TPTCorrectVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 185A96D01D6A927300403E44 /* TPTCorrectVC.m */; };
 		185A96D61D6A929400403E44 /* TPTCorrectCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 185A96D41D6A929400403E44 /* TPTCorrectCell.m */; };
 		185A96D71D6A929400403E44 /* TPTCorrectCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 185A96D51D6A929400403E44 /* TPTCorrectCell.xib */; };
@@ -195,6 +197,9 @@
 		1810D9C21D588AEE00C1DB65 /* TPTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPTool.m; sourceTree = "<group>"; };
 		1810D9C41D58902400C1DB65 /* NSString+DZCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+DZCategory.h"; sourceTree = "<group>"; };
 		1810D9C51D58902400C1DB65 /* NSString+DZCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+DZCategory.m"; sourceTree = "<group>"; };
+		183370F51D704453001D5EFE /* MJAudioTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJAudioTool.h; sourceTree = "<group>"; };
+		183370F61D704453001D5EFE /* MJAudioTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJAudioTool.m; sourceTree = "<group>"; };
+		183370F81D70449D001D5EFE /* innocence.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = innocence.mp3; sourceTree = "<group>"; };
 		185A96CF1D6A927300403E44 /* TPTCorrectVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPTCorrectVC.h; sourceTree = "<group>"; };
 		185A96D01D6A927300403E44 /* TPTCorrectVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPTCorrectVC.m; sourceTree = "<group>"; };
 		185A96D31D6A929400403E44 /* TPTCorrectCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPTCorrectCell.h; sourceTree = "<group>"; };
@@ -580,6 +585,9 @@
 				187550F01D5D9E4800648557 /* Model */,
 				1810D9C11D588AEE00C1DB65 /* TPTool.h */,
 				1810D9C21D588AEE00C1DB65 /* TPTool.m */,
+				183370F81D70449D001D5EFE /* innocence.mp3 */,
+				183370F51D704453001D5EFE /* MJAudioTool.h */,
+				183370F61D704453001D5EFE /* MJAudioTool.m */,
 				187550EA1D5D9DE500648557 /* WBCacheTool.h */,
 				187550EB1D5D9DE500648557 /* WBCacheTool.m */,
 				187550F11D5DA6EC00648557 /* TPTStateCacheTool.h */,
@@ -1159,6 +1167,7 @@
 				TargetAttributes = {
 					18E560C91D3DBB930053B9A4 = {
 						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = 56ZWZ5K99K;
 					};
 					18E560E21D3DBB930053B9A4 = {
 						CreatedOnToolsVersion = 7.2;
@@ -1221,6 +1230,7 @@
 				187550F81D5DB3B700648557 /* TPTHistoryCell.xib in Resources */,
 				1809122F1D66B74A003F51A5 /* bg.png in Resources */,
 				18D8679E1D59CE1F00686AB2 /* TPtui.plist in Resources */,
+				183370F91D70449D001D5EFE /* innocence.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1304,6 +1314,7 @@
 				180912331D66BB1D003F51A5 /* TPTDutyVC.m in Sources */,
 				AE6E9B631D4DBF870080116A /* TPTuiViewController.m in Sources */,
 				1810D9C61D58902400C1DB65 /* NSString+DZCategory.m in Sources */,
+				183370F71D704453001D5EFE /* MJAudioTool.m in Sources */,
 				180912461D66D915003F51A5 /* WHC_StackView.m in Sources */,
 				18FFB3BD1D5C834400EFE0D3 /* alertSetThreeCell.m in Sources */,
 				AE6E9B6C1D4DD4180080116A /* UIButton+FillColor.m in Sources */,
@@ -1496,6 +1507,9 @@
 			baseConfigurationReference = FFAD3A748BD7A4AAE36505A0 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: MA CHAOSHAN (56ZWZ5K99K)";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1517,6 +1531,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.quarks.tpt;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "2c66d580-fbd4-41e7-b6ea-a731fd70a4e7";
 			};
 			name = Debug;
 		};
@@ -1525,6 +1540,9 @@
 			baseConfigurationReference = 43805D7A71E5C6F3FE52C4CF /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: MA CHAOSHAN (56ZWZ5K99K)";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1546,6 +1564,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.quarks.tpt;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "2c66d580-fbd4-41e7-b6ea-a731fd70a4e7";
 			};
 			name = Release;
 		};

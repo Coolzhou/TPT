@@ -51,6 +51,10 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section==0) {
         TPTCorrectCell *cell = [TPTCorrectCell theTPTCorrectCellWithTableView:tableView];
+        __weak typeof(self) weakself = self;
+        cell.dissBlock =^{
+            [weakself dissCurrentVC];
+        };
         return cell;
     }else{
         TPTCorrectInfoCell *cell = [TPTCorrectInfoCell theTPTCorrectInfoCellWithTableView:tableView];
@@ -65,6 +69,11 @@
         return [UITableViewCell whc_CellHeightForIndexPath:indexPath tableView:tableView];
     }
 
+}
+
+
+-(void)dissCurrentVC{
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{

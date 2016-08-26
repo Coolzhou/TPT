@@ -34,18 +34,19 @@
     bgImageView.image = [UIImage imageNamed:@"left_view_bg"];
     [self.view addSubview:bgImageView];
 
-    UITableView *tableview = [[UITableView alloc]init];
-    tableview.backgroundColor = [UIColor orangeColor];
-    self.tableview = tableview;
-    [self.view addSubview:tableview];
+    UITableView *tableview = [[UITableView alloc]initWithFrame:CGRectMake(kMainPageDistance/2, (kScreenHeight - 300)/3, kScreenWidth - kMainPageDistance, 300) style:UITableViewStylePlain];
+//    self.tableview = tableview;
+    tableview.backgroundColor = [UIColor clearColor];
 
-    tableview.frame = CGRectMake(50, 0,kScreenWidth, kScreenHeight);
-    tableview.tableFooterView = [[UIView alloc]init];
-    tableview.sectionHeaderHeight = 0;
-    tableview.sectionFooterHeight = 0;
+
+//    tableview.tableFooterView = [[UIView alloc]init];
+//    tableview.sectionHeaderHeight = 0;
+//    tableview.sectionFooterHeight = 0;
     tableview.dataSource = self;
     tableview.delegate  = self;
     tableview.separatorStyle = UITableViewCellSeparatorStyleNone;
+
+    [self.view addSubview:tableview];
 //    tableview.separatorColor = [UIColor whiteColor];
 
 
@@ -64,11 +65,13 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     TPLeftCell *cell = [TPLeftCell theLeftCellWithTableView:tableView];
-//    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-    cell.backgroundColor = [UIColor clearColor];
-    cell.titleLable.text = titleArray[indexPath.row];
-    cell.imageView.image =[UIImage imageNamed:picArray[indexPath.row]];
+    cell.titlesLable.text = titleArray[indexPath.row];
+    cell.leftImgView.image =[UIImage imageNamed:picArray[indexPath.row]];
     return cell;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 44;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

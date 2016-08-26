@@ -10,10 +10,13 @@
 
 @interface TPLeftCell : UITableViewCell
 
-@property (weak, nonatomic) IBOutlet UIImageView *imageView;
-@property (weak, nonatomic) IBOutlet UILabel *titleLable;
 
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *imageLeftConstraint;
+@property (weak, nonatomic) IBOutlet UIImageView *leftImgView;
+
+
+@property (weak, nonatomic) IBOutlet UILabel *titlesLable;
+
+
 + (instancetype)theLeftCellWithTableView:(UITableView *)tableView;
 
 @end

@@ -39,10 +39,26 @@
     self.topTitleFreeLable.textColor = kColorWithRGB(0x62922C);
 
 
-    [self.OneBtn setTitle:UserModel.max_tem_low forState:UIControlStateNormal];
-    [self.TwoBtn setTitle:UserModel.max_tem_middle forState:UIControlStateNormal];
-    [self.ThreeBtn setTitle:UserModel.max_tem_high forState:UIControlStateNormal];
-    [self.FreeBtn setTitle:UserModel.max_tem_supper_high forState:UIControlStateNormal];
+    NSString *max_tem_low =@"";
+    NSString *max_tem_middle =@"";
+    NSString *max_tem_high =@"";
+    NSString *max_tem_supper_high =@"";
+
+    if (UserModel.temp_unit) {
+        max_tem_low =[NSString stringWithFormat:@"%.1f℉", [TPTool getUnitCurrentTemp:UserModel.max_tem_low]];
+        max_tem_middle =[NSString stringWithFormat:@"%.1f℉", [TPTool getUnitCurrentTemp:UserModel.max_tem_middle]];
+        max_tem_high =[NSString stringWithFormat:@"%.1f℉", [TPTool getUnitCurrentTemp:UserModel.max_tem_high]];
+        max_tem_supper_high =[NSString stringWithFormat:@"%.1f℉", [TPTool getUnitCurrentTemp:UserModel.max_tem_supper_high]];
+    }else{
+        max_tem_low =[NSString stringWithFormat:@"%.1f℃", [TPTool getUnitCurrentTemp:UserModel.max_tem_low]];
+        max_tem_middle =[NSString stringWithFormat:@"%.1f℃", [TPTool getUnitCurrentTemp:UserModel.max_tem_middle]];
+        max_tem_high =[NSString stringWithFormat:@"%.1f℃", [TPTool getUnitCurrentTemp:UserModel.max_tem_high]];
+        max_tem_supper_high =[NSString stringWithFormat:@"%.1f℃", [TPTool getUnitCurrentTemp:UserModel.max_tem_supper_high]];
+    }
+    [self.OneBtn setTitle:max_tem_low forState:UIControlStateNormal];
+    [self.TwoBtn setTitle:max_tem_middle forState:UIControlStateNormal];
+    [self.ThreeBtn setTitle:max_tem_high forState:UIControlStateNormal];
+    [self.FreeBtn setTitle:max_tem_supper_high forState:UIControlStateNormal];
 
     self.topTitleOneLable.text = NSLocalizedString(@"max_tem_low", @"");
     self.topTitleTwoLable.text = NSLocalizedString(@"max_tem_middle", @"");

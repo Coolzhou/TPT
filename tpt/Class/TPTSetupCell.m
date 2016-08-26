@@ -51,9 +51,9 @@
     self.switchTwo.offImage = [UIImage imageNamed:@"switchOne_off"];
 
     if (UserModel.temp_unit) {
-        self.switchOne.status = CustomSwitchStatusOn;
+        self.switchTwo.status = CustomSwitchStatusOn;
     }else{
-        self.switchOne.status = CustomSwitchStatusOff;
+        self.switchTwo.status = CustomSwitchStatusOff;
     }
 
     NSLog(@"user.deve = %d  tempunit = %d",UserModel.device_disconnect,UserModel.temp_unit);
@@ -89,16 +89,12 @@
 }
 
 -(void)customSwitchView:(CustomSwitch *)switchViwe SetStatus:(CustomSwitchStatus)status{
-
-    NSLog(@"swithci = %ld ,state = %ld",switchViwe.tag,status);
     if (switchViwe.tag == 10) {
-
         if (status == CustomSwitchStatusOn) {
             UserModel.device_disconnect = YES;
         }else{
             UserModel.device_disconnect = NO;
         }
-
     }else{
         if (status == CustomSwitchStatusOn) {
             UserModel.temp_unit = YES;

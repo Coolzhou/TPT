@@ -24,11 +24,6 @@ typedef void(^HistoryCellBlock)(NSInteger row);
 
 @property (weak, nonatomic) IBOutlet UIImageView *bgImgView;
 
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *iconConstraint;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *iconConstraintH;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *stateConstraintM;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *timeConstraint;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *fangConstraint;
 
 @property (nonatomic,strong)WBTemperature *tempModel;
 

@@ -55,7 +55,10 @@ static FMDatabaseQueue *_queue;
     [_queue close];
     NSLog(@"缓存数据");
 }
-+(NSArray *)getTemperature:(int)tempID
+
+//得到历史记录数组
+
++(NSArray *)getTemperature
 {
     [self setup];
     //1. 定义数组
@@ -64,17 +67,14 @@ static FMDatabaseQueue *_queue;
     //2. 使用数据库
     [_queue inDatabase:^(FMDatabase *db) {
         tempAry = [NSMutableArray array];
-        
         FMResultSet *rs = nil;
-        rs = [db executeQuery:@"select * from t_temp where tempID = ? order by create_time",@(tempID)];
+        rs = [db executeQuery:@"select * from t_temp order by id asc"];
         while (rs.next) {
             NSData *data = [rs dataForColumn:@"temp"];
             WBTemperature *temp = [NSKeyedUnarchiver unarchiveObjectWithData:data];
             [tempAry addObject:temp];
         }
-        
     }];
-   
     [_queue close];
     
     return tempAry;

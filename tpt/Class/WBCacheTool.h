@@ -17,8 +17,8 @@
 /** 混存一组温度数据*/
 +(void)addtemperatures:(NSArray *)tempAry;
 
-/** 获取一组数组里面的数据*/
-+(NSArray *)getTemperature:(int)tempID;
+/** 获取后300的数据*/
++(NSArray *)getTemperature;
 
 /** 获取一组数据的最大温度*/
 +(CGFloat)getMaxTemp:(int)tempID;
@@ -30,7 +30,7 @@
 +(NSArray*)temperatureCounts;
 
 /** 删除一条温度*/
-+(void)deleteTemp:(int)tempID;
++(void)deleteTemp:(NSString*)tempID;
 
 +(void)deleteAllTemp;
 

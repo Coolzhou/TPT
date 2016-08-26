@@ -55,6 +55,9 @@ static FMDatabaseQueue *_queue;
     [_queue close];
     NSLog(@"缓存数据");
 }
+
+//返回状态数组
+
 +(NSArray *)getTemperature
 {
     [self setup];

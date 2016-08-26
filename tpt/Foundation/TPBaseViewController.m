@@ -7,8 +7,6 @@
 //
 
 #import "TPBaseViewController.h"
-#import "TPTool.h"
-
 #import <ShareSDK/ShareSDK.h>
 #import <ShareSDKUI/ShareSDK+SSUI.h>
 #import <ShareSDKExtension/SSEShareHelper.h>

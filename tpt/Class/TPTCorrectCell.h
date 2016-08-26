@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+typedef void(^clickBtnDissBlock)(void);
+
 @interface TPTCorrectCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UIButton *addButton;
@@ -23,6 +25,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *dissButton;
 
 @property (weak, nonatomic) IBOutlet UIImageView *bgImgView;
+
+@property (copy, nonatomic) clickBtnDissBlock dissBlock;
 
 + (instancetype)theTPTCorrectCellWithTableView:(UITableView *)tableView;
 

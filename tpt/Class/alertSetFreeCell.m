@@ -8,6 +8,10 @@
 
 #import "alertSetFreeCell.h"
 
+@interface alertSetFreeCell()<CustomSwitchDelegate>
+
+@end
+
 @implementation alertSetFreeCell
 
 - (void)awakeFromNib {
@@ -17,15 +21,17 @@
     self.titleOneLable.textColor = MainContentColor;
     self.titleTwoLable.textColor = MainContentColor;
 
+    self.shengSwitchBtn.delegate = self;
     self.shengSwitchBtn.arrange = CustomSwitchArrangeONLeftOFFRight;
     self.shengSwitchBtn.onImage = [UIImage imageNamed:@"switchOne_on"];
     self.shengSwitchBtn.offImage = [UIImage imageNamed:@"switchOne_off"];
-    self.shengSwitchBtn.status = CustomSwitchStatusOff;
+    self.shengSwitchBtn.status = UserModel.max_notify_voice;
 
+    self.dongSwitchBtn.delegate = self;
     self.dongSwitchBtn.arrange = CustomSwitchArrangeONLeftOFFRight;
     self.dongSwitchBtn.onImage = [UIImage imageNamed:@"switchOne_on"];
     self.dongSwitchBtn.offImage = [UIImage imageNamed:@"switchOne_off"];
-    self.dongSwitchBtn.status = CustomSwitchStatusOff;
+    self.dongSwitchBtn.status = UserModel.max_notify_vibration;
 
     self.lineView.backgroundColor = MainTitleColor;
     self.lineTwoView.backgroundColor = MainTitleColor;
@@ -43,6 +49,17 @@
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
+}
+
+-(void)customSwitchView:(CustomSwitch *)switchViwe SetStatus:(CustomSwitchStatus)status{
+
+    if (self.shengSwitchBtn ==switchViwe) {
+        UserModel.max_notify_voice = status;
+    }else{
+        UserModel.max_notify_vibration = status;
+    }
+
+    NSLog(@"ss = %d,dd = %d",UserModel.max_notify_voice,UserModel.max_notify_vibration);
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

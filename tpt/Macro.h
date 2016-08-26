@@ -45,6 +45,8 @@ blue:((float)(rgbValue & 0xFF)) / 255.0 alpha:1.0]
 
 #define chartMaxNum 6
 
+#define chartHistoryMaxNum 7
+
 #define DEGREES_TO_RADIANS(d) (d * M_PI / 180)
 
 #endif /* Macro_h */

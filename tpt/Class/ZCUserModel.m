@@ -95,7 +95,7 @@ static NSString * const  DEVICE_DISCONNECT = @"device_disconnect";
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 -(BOOL)max_alert_state{
-    BOOL max_alert_state = [[NSUserDefaults standardUserDefaults]objectForKey:MAX_ALERT_STATE];
+    BOOL max_alert_state = [[NSUserDefaults standardUserDefaults]boolForKey:MAX_ALERT_STATE];
     [[NSUserDefaults standardUserDefaults] synchronize];
     return max_alert_state;
 }
@@ -106,7 +106,7 @@ static NSString * const  DEVICE_DISCONNECT = @"device_disconnect";
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 -(BOOL)max_notify_voice{
-    BOOL max_notify_voice = [[NSUserDefaults standardUserDefaults]objectForKey:MAX_NOTIFY_VOICE];
+    BOOL max_notify_voice = [[NSUserDefaults standardUserDefaults]boolForKey:MAX_NOTIFY_VOICE];
     return max_notify_voice;
 }
 
@@ -116,28 +116,27 @@ static NSString * const  DEVICE_DISCONNECT = @"device_disconnect";
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 -(BOOL)max_notify_vibration{
-    BOOL max_notify_vibration = [[NSUserDefaults standardUserDefaults]objectForKey:MAX_NOFIFY_VIBRATION];
+    BOOL max_notify_vibration = [[NSUserDefaults standardUserDefaults]boolForKey:MAX_NOFIFY_VIBRATION];
     return max_notify_vibration;
 }
 
 //温度单位
 -(void)setTemp_unit:(BOOL)temp_unit{
     [[NSUserDefaults standardUserDefaults]setBool:temp_unit forKey:TEMP_UNIT];
-
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 -(BOOL)temp_unit{
-    BOOL temp_unit = [[NSUserDefaults standardUserDefaults]objectForKey:TEMP_UNIT];
+    BOOL temp_unit = [[NSUserDefaults standardUserDefaults]boolForKey:TEMP_UNIT];
     return temp_unit;
 }
 
 //设备断开链接报警
 -(void)setDevice_disconnect:(BOOL)device_disconnect{
     [[NSUserDefaults standardUserDefaults]setBool:device_disconnect forKey:DEVICE_DISCONNECT];
-//    [[NSUserDefaults standardUserDefaults] synchronize];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 -(BOOL)device_disconnect{
-    BOOL device_disconnect = [[NSUserDefaults standardUserDefaults]objectForKey:DEVICE_DISCONNECT];
+    BOOL device_disconnect = [[NSUserDefaults standardUserDefaults]boolForKey:DEVICE_DISCONNECT];
     return device_disconnect;
 }
 

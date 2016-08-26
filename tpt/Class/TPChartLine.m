@@ -24,6 +24,8 @@ static const CGFloat kTopSpace = 30.f;//距离顶部y值
 @property (nonatomic, strong) NSMutableArray * pointYArray;
 @property (nonatomic, strong) NSMutableArray * points;
 
+@property (nonatomic, strong) NSMutableArray *dataArray;
+
 @property (nonatomic, strong) UIImageView * bulldesImageView;
 @property (nonatomic, strong) UILabel * bulldesLabel;
 
@@ -42,7 +44,7 @@ static const CGFloat kTopSpace = 30.f;//距离顶部y值
         self.lineH = 0;
         _yMax = 42;
         _yMin = 36;
-        chartLineTheXAxisSpan = (self.bounds.size.width-2*LineStartX)/(chartMaxNum-1);
+        chartLineTheXAxisSpan = (self.bounds.size.width-2*LineStartX)/(chartHistoryMaxNum-1);
         [self drawHorizontal];
         [self drawVertical];
     }
@@ -60,9 +62,13 @@ static const CGFloat kTopSpace = 30.f;//距离顶部y值
         self.lineH = 0;
         _yMax = 42;
         _yMin = 36;
-        chartLineTheXAxisSpan = (self.bounds.size.width-2*LineStartX)/(chartMaxNum-1);
+        chartLineTheXAxisSpan = (self.bounds.size.width-2*LineStartX)/(chartHistoryMaxNum-1);
+        chartLineTheMarge = (self.bounds.size.width-2*LineStartX)/(dataSource.count-1);
+        self.dataArray = [dataSource mutableCopy];
         [self drawHorizontal];
         [self drawVertical];
+
+        NSLog(@"self.daAryya = %ld",self.dataArray.count);
     }
     return self;
 }
@@ -105,6 +111,8 @@ static const CGFloat kTopSpace = 30.f;//距离顶部y值
 
 - (void)setYValues:(NSArray *)yValues {
     _yValues = yValues;
+
+    NSLog(@"ycount = %ld",yValues.count);
     //    [self drawHorizontal];
 }
 
@@ -118,12 +126,12 @@ static const CGFloat kTopSpace = 30.f;//距离顶部y值
     UIBezierPath * path = [UIBezierPath bezierPath];
     CAShapeLayer * shapeLayer = [CAShapeLayer layer];
 
-    self.lineH = (self.bounds.size.height - 2*kTopSpace)/chartMaxNum;
+    self.lineH = (self.bounds.size.height - 2*kTopSpace)/chartHistoryMaxNum;
 
-    for (NSInteger i = 0; i <= chartMaxNum; i++) {
+    for (NSInteger i = 0; i <= chartHistoryMaxNum; i++) {
 
         [path moveToPoint:CGPointMake(LineStartX, self.lineH * i + kTopSpace)];
-        [path addLineToPoint:CGPointMake(LineStartX + (chartMaxNum - 1) * chartLineTheXAxisSpan, self.lineH * i + kTopSpace)];
+        [path addLineToPoint:CGPointMake(LineStartX + (chartHistoryMaxNum - 1) * chartLineTheXAxisSpan, self.lineH * i + kTopSpace)];
         [path closePath];
         shapeLayer.path = path.CGPath;
         shapeLayer.strokeColor = kHVLineColor.CGColor;
@@ -135,13 +143,15 @@ static const CGFloat kTopSpace = 30.f;//距离顶部y值
 //画竖线
 - (void)drawVertical {
 
+   CGFloat chartLineH = (self.bounds.size.width-2*LineStartX)/(self.dataArray.count-1);
+
     UIBezierPath * path = [UIBezierPath bezierPath];
     CAShapeLayer * shapeLayer = [CAShapeLayer layer];
 
-    for (NSInteger i = 0; i < chartMaxNum; i++) {
+    for (NSInteger i = 0; i < self.dataArray.count; i++) {
 
-        [path moveToPoint:CGPointMake(LineStartX+ chartLineTheXAxisSpan*i,kTopSpace)];
-        [path addLineToPoint:CGPointMake(LineStartX + chartLineTheXAxisSpan * i,self.bounds.size.height-kTopSpace)];
+        [path moveToPoint:CGPointMake(LineStartX+ chartLineH*i,kTopSpace)];
+        [path addLineToPoint:CGPointMake(LineStartX + chartLineH * i,self.bounds.size.height-kTopSpace)];
         [path closePath];
         shapeLayer.path = path.CGPath;
         shapeLayer.strokeColor = kHVLineColor.CGColor;
@@ -153,31 +163,21 @@ static const CGFloat kTopSpace = 30.f;//距离顶部y值
 
 - (void)startDrawLines {
     //设置x轴
-    for (NSInteger i = 0; i < _xValues.count; i++) {
-        [self.pointXArray addObject:@(LineStartX + chartLineTheXAxisSpan * i)];
+    for (NSInteger i = 0; i < self.dataArray.count; i++) {
+        
+        [self.pointXArray addObject:@(LineStartX + chartLineTheMarge * i)];
     }
     //设置y轴
-    for (NSInteger i = 0; i < _xValues.count; i++) {
+    for (NSInteger i = 0; i < _yValues.count; i++) {
 
-        //        NSLog(@"aaa = %f",chartLineTheYAxisSpan * kYEqualPaths - [_yValues[i] floatValue]/_yMax * chartLineTheYAxisSpan * kYEqualPaths + kTopSpace);
-        //
-        //        NSLog(@"50 * 7  - 30 + = %f",(self.lineH * kYEqualPaths-[_yValues[i] floatValue]-kLableMin)/(_yMax-kLableMin) * self.lineH *kYEqualPaths);
-
-
-        //    [self.pointYArray addObject:@(self.lineH * chartMaxNum-([_yValues[i] floatValue]-kLableMin)/(_yMax-kLableMin) * self.lineH *chartMaxNum+kTopSpace)];
-
-        //        CGFloat margeH = (_yValues[i] - _yMin)/chartMaxNum;
-        //        NSInteger  yy =margeH>1? (NSInteger)margeH:1;
-
-        [self.pointYArray addObject:@(self.lineH * chartMaxNum-([_yValues[i] floatValue]-_yMin)/(_yMax-_yMin) * self.lineH *chartMaxNum+kTopSpace)];
-
-        //        NSLog(@"ssss = %f")
-
+        if ([_yValues[i] floatValue]<=35) {
+            [self.pointYArray addObject:@(self.lineH * chartHistoryMaxNum-(35-35)/(42-35)* self.lineH *chartHistoryMaxNum+kTopSpace)];
+        }else{
+            [self.pointYArray addObject:@(self.lineH * chartHistoryMaxNum-([_yValues[i] floatValue]-35)/(42-35)* self.lineH *chartHistoryMaxNum+kTopSpace)];
+        }
     }
-
     for (NSInteger i = 0; i < self.pointXArray.count; i++) {
         CGPoint point = CGPointMake([self.pointXArray[i] floatValue], [self.pointYArray[i] floatValue]);
-        //        NSValue * value = [NSValue valueWithBytes:&point objCType:@encode(CGPoint)];
         NSValue * value = [NSValue valueWithCGPoint:point];
         [self.points addObject:value];
     }
@@ -200,23 +200,16 @@ static const CGFloat kTopSpace = 30.f;//距离顶部y值
             [bezierLine addLineToPoint:point];
         }
         [self addCircle:point andIndex:i];
-        [self addXLabel:point andIndex:i];
-    }
 
-    [self addYLabel];
+        if (i%2!=0) {
+            [self addXLabel:point andIndex:i];
+        }
+    }
 
     if (self.curve) {
         bezierLine =[bezierLine smoothedPathWithGranularity:20];//设置曲线
     }
     _shapeLayer.path = bezierLine.CGPath;
-
-    //    CABasicAnimation *pathAnimation = [CABasicAnimation animationWithKeyPath:@"strokeEnd"];
-    //    pathAnimation.duration = self.points.count * 0.5f;
-    //    pathAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
-    //    pathAnimation.fromValue = [NSNumber numberWithFloat:0.0f];
-    //    pathAnimation.toValue = [NSNumber numberWithFloat:1.f];
-    //    pathAnimation.autoreverses = NO;
-    //    [_shapeLayer addAnimation:pathAnimation forKey:@"strokeEndAnimation"];
     _shapeLayer.strokeEnd = 1.f;
 }
 
@@ -228,10 +221,6 @@ static const CGFloat kTopSpace = 30.f;//距离顶部y值
     view.layer.cornerRadius = 4.f;
     view.layer.masksToBounds = YES;
     [self addSubview:view];
-
-    UILabel *pointLable = [[UILabel alloc]initWithFrame:CGRectMake(0, 0,20, 16)];
-    pointLable.text = [NSString stringWithFormat:@"%.2f",point.y];
-    [self addSubview:pointLable];
 
     UIButton * btn = [UIButton buttonWithType:UIButtonTypeCustom];
     btn.frame = CGRectMake(0, 0, 12, 12);
@@ -248,8 +237,8 @@ static const CGFloat kTopSpace = 30.f;//距离顶部y值
 
 //标记x轴label
 - (void)addXLabel:(CGPoint)point andIndex:(NSInteger)index {
-    UILabel * label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, chartLineTheXAxisSpan, 20)];
-    label.center = CGPointMake(point.x, self.lineH * chartMaxNum + kTopSpace+15);
+    UILabel * label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0,60,20)];
+    label.center = CGPointMake(point.x, self.lineH * chartHistoryMaxNum + kTopSpace+15);
     label.textColor = [UIColor lightGrayColor];
     label.font = [UIFont systemFontOfSize:10.f];
     label.textAlignment = NSTextAlignmentCenter;
@@ -260,24 +249,21 @@ static const CGFloat kTopSpace = 30.f;//距离顶部y值
 
 //标记y轴label
 - (void)addYLabel {
-    for (NSInteger i = 0; i <= chartMaxNum; i++) {
+    for (NSInteger i = 0; i <= chartHistoryMaxNum; i++) {
         UILabel * label = [[UILabel alloc] initWithFrame:CGRectMake(0, self.lineH * i + kTopSpace-5, LineStartX - 5, 10)];
         label.textColor = [UIColor lightGrayColor];
         label.font = [UIFont systemFontOfSize:10.f];
         label.textAlignment = NSTextAlignmentRight;
         [self addSubview:label];
 
-        CGFloat margeH = (_yMax - _yMin)/chartMaxNum;
+        CGFloat margeH = (_yMax - _yMin)/chartHistoryMaxNum;
         CGFloat  yy =margeH>1? margeH:1;
 
-        if (_yValues.count<chartMaxNum) {
-//            NSLog(@"1111");
+        if (_yValues.count<chartHistoryMaxNum) {
             label.text = [NSString stringWithFormat:@"%.0f",_yMax - i*yy];
         }else{
             label.text = [NSString stringWithFormat:@"%.0f",_yMax - i*yy];
-//            NSLog(@"2222");
         }
-        //        NSLog(@"yyyy = %f ,,, %f ,,,%f",(_yMax - _yMin)/chartMaxNum,_yMax,_yMin);
     }
 }
 //圆圈点击事件
@@ -288,11 +274,15 @@ static const CGFloat kTopSpace = 30.f;//距离顶部y值
     CGSize size = [content sizeWithAttributes:@{NSFontAttributeName:kBulldesFont}];
     if (size.width < 25.f) {
         size.width = 25.f;
+    }else if (size.width>40){
+        size.width = 40.f;
     }
     [self addBulldesView];
-    _bulldesImageView.frame = CGRectMake(x, y - 20.f, size.width, 20);
+    _bulldesImageView.frame = CGRectMake(x-10, y - 20.f, size.width, 20);
     _bulldesLabel.frame = CGRectMake(0, 1, _bulldesImageView.frame.size.width, 10);
-    _bulldesLabel.text = content;
+
+    NSLog(@"历史记录 -content = %@",content);
+    _bulldesLabel.text = [NSString stringWithFormat:@"%.2f",[TPTool getUnitCurrentTemp:content]];
 }
 
 - (void)addBulldesView {
@@ -301,7 +291,7 @@ static const CGFloat kTopSpace = 30.f;//距离顶部y值
         _bulldesImageView = [[UIImageView alloc] init];
         [self addSubview:_bulldesImageView];
         UIImage * image = [UIImage imageNamed:@"气泡"];
-        UIImage * resizableImage = [image resizableImageWithCapInsets:UIEdgeInsetsMake(0, 0, 5, 0) resizingMode:UIImageResizingModeStretch];
+        UIImage * resizableImage = [image stretchableImageWithLeftCapWidth:5 topCapHeight:5];;
         _bulldesImageView.image = resizableImage;
     }
     if (!_bulldesLabel) {
@@ -311,6 +301,6 @@ static const CGFloat kTopSpace = 30.f;//距离顶部y值
         _bulldesLabel.textAlignment = NSTextAlignmentCenter;
         [_bulldesImageView addSubview:_bulldesLabel];
     }
-    
 }
+
 @end

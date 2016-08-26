@@ -8,6 +8,10 @@
 
 #import "alertSetTwoCell.h"
 
+@interface alertSetTwoCell()<CustomSwitchDelegate>
+
+@end
+
 @implementation alertSetTwoCell
 
 - (void)awakeFromNib {
@@ -16,11 +20,16 @@
     self.bgImgView.image = [[UIImage imageNamed:@"tui_cell_bg"] stretchableImageWithLeftCapWidth:10 topCapHeight:10];
 
     self.titleLable.textColor = MainContentColor;
+    self.switchBtn.delegate = self;
     self.switchBtn.arrange = CustomSwitchArrangeONLeftOFFRight;
     self.switchBtn.onImage = [UIImage imageNamed:@"switchOne_on"];
     self.switchBtn.offImage = [UIImage imageNamed:@"switchOne_off"];
-    self.switchBtn.status = CustomSwitchStatusOff;
+    self.switchBtn.status = UserModel.max_alert_state;
     self.titleLable.text = NSLocalizedString(@"max_tem_switch", @"");
+}
+
+-(void)customSwitchView:(CustomSwitch *)switchViwe SetStatus:(CustomSwitchStatus)status{
+    UserModel.max_alert_state = status;
 }
 
 + (instancetype)thealertSetTwoCellWithTableView:(UITableView *)tableView andIndexPath:(NSIndexPath *)indexpath{

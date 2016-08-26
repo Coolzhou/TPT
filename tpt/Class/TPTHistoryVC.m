@@ -12,6 +12,7 @@
 #import "TPTStateCacheTool.h"
 #import "TPChartLine.h"
 #import "TPChart.h"
+#import "WBCacheTool.h"
 @interface TPTHistoryVC ()<UITableViewDataSource,UITableViewDelegate>
 @property (nonatomic,strong)UITableView *tableView;
 
@@ -19,7 +20,9 @@
 
 @property (nonatomic,strong)TPChartLine * chartLine;  //折线图
 
-@property (nonatomic,strong)NSMutableArray *dataArray;
+@property (nonatomic,strong)NSMutableArray *dataArray;//状态数组
+
+@property (nonatomic,strong)NSMutableArray *historyArray; //历史记录数组
 
 @end
 
@@ -33,17 +36,21 @@
     [self initTableView];
     [self initTableViewHeadView];
 }
-
 -(void)initData{
+
     NSArray *array = [TPTStateCacheTool getTemperature];
     self.dataArray = [array mutableCopy];
+
+    NSArray *histroyArray = [WBCacheTool getTemperature];
+    self.historyArray = [histroyArray mutableCopy];
+
+    NSLog(@"self.history = %@",histroyArray);
     
 }
 
-
 -(void)initTableViewHeadView{
 
-    self.chart = [[TPChart alloc]initWithFrame:CGRectMake(15,kScreenHeight-280, self.view.frame.size.width-30, 260) withDataSource:self.dataArray];
+    self.chart = [[TPChart alloc]initWithFrame:CGRectMake(15,kScreenHeight-280, self.view.frame.size.width-30, 260) withDataSource:self.historyArray];
     self.tableView.tableHeaderView = self.chart;
 }
 
@@ -76,17 +83,22 @@
     cell.indexPath = indexPath;
     cell.tempModel = self.dataArray[indexPath.row];
     cell.delectHistBlock = ^(NSInteger row){
-        NSLog(@"row = %ld",row);
+        [weakself removeDataArrayCell:row];
     };
     return cell;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (IS_IPHONE_6 ||IS_IPHONE_6) {
-        return 90;
-    }else{
-        return 70;
-    }
+    return 110;
+}
+
+-(void)removeDataArrayCell:(NSInteger)row{
+
+    [self.dataArray removeObjectAtIndex:row];
+    NSArray *_tempIndexPathArr = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:row inSection:0]];
+    [self.tableView deleteRowsAtIndexPaths:_tempIndexPathArr withRowAnimation:UITableViewRowAnimationNone];
+    [self.tableView reloadData];
+
 }
 
 -(NSMutableArray *)dataArray{
@@ -94,6 +106,13 @@
         _dataArray = [[NSMutableArray alloc]init];
     }
     return _dataArray;
+}
+
+-(NSMutableArray *)historyArray{
+    if (!_historyArray) {
+        _historyArray = [[NSMutableArray alloc]init];
+    }
+    return _historyArray;
 }
 
 

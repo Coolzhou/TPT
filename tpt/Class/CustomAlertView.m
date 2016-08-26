@@ -16,7 +16,7 @@
 //#define AlertViewHeight 248
 #define AlertViewJianGe 25
 
-#define AlertViewMarge 140         // 加、减 按钮间隔
+#define AlertViewMarge 150         // 加、减 按钮间隔
 #define AlertViewOtherMarge 80    //保存、关闭 按钮间隔
 
 @interface CustomAlertView()
@@ -64,7 +64,7 @@
         //title
         UILabel *lab = [[UILabel alloc] init];
         lab.frame = CGRectMake(0, 0,alertW, 60);
-        lab.text = @"温度超限报警设置";
+        lab.text = NSLocalizedString(@"max_tem",@"");
         lab.font = [UIFont systemFontOfSize:21];
         lab.textAlignment = NSTextAlignmentCenter;
         lab.textColor = MainTitleColor;
@@ -90,7 +90,9 @@
 
 
         self.tempLable.frame = CGRectMake(addButton.frame.origin.x+btnWidth,0,AlertViewMarge, btnHeight);
-        self.tempLable.text = self.tempValue;
+
+
+        self.tempLable.text =[NSString stringWithFormat:@"%.1f",[TPTool getUnitCurrentTemp:self.tempValue]];
         self.tempLable.font = [UIFont boldSystemFontOfSize:55];
         self.tempLable.textAlignment = NSTextAlignmentCenter;
         [centerView addSubview:self.tempLable];
@@ -109,7 +111,6 @@
         CGFloat infoT = CGRectGetMaxY(centerView.frame);
 
         self.infoLable.frame = CGRectMake(AlertViewJianGe,infoT,alertW- 2*AlertViewJianGe, 54);
-        self.infoLable.text = @"建议设置：宝宝中热温度设置为38.8℃";
         self.infoLable.font = [UIFont systemFontOfSize:16];
         self.infoLable.textAlignment = NSTextAlignmentLeft;
         [self addSubview:self.infoLable];
@@ -146,6 +147,20 @@
         qRButton.tag =1;
         [self addSubview:qRButton];
 
+        NSString *suggestStr = NSLocalizedString(@"max_suggest",@"");
+        if (tag ==10) {
+            NSString *temp = @"37.5";
+            self.infoLable.text = [NSString stringWithFormat:@"%@%@℃",suggestStr,temp];
+        }else if (tag ==11){
+            NSString *temp = @"38.1";
+            self.infoLable.text = [NSString stringWithFormat:@"%@%@℃",suggestStr,temp];
+        }else if (tag ==12){
+            NSString *temp = @"39.1";
+            self.infoLable.text = [NSString stringWithFormat:@"%@%@℃",suggestStr,temp];
+        }else{
+            NSString *temp = @"41";
+            self.infoLable.text = [NSString stringWithFormat:@"%@%@℃",suggestStr,temp];
+        }
         [self show:YES];
     }
     return self;
@@ -155,16 +170,18 @@
 -(void)getTempValue:(NSInteger)tag{
 
     if (tag ==10) {
-        self.tempLable.text = UserModel.max_tem_low;
+        self.tempLable.text =[NSString stringWithFormat:@"%.1f",[TPTool getUnitCurrentTemp:UserModel.max_tem_low]];
+        self.tempValue = UserModel.max_tem_low;
     }else if (tag ==11){
-        self.tempLable.text = UserModel.max_tem_middle;
+        self.tempLable.text =[NSString stringWithFormat:@"%.1f",[TPTool getUnitCurrentTemp:UserModel.max_tem_middle]];
+        self.tempValue = UserModel.max_tem_middle;
     }else if (tag ==12){
-        self.tempLable.text = UserModel.max_tem_high;
+        self.tempLable.text =[NSString stringWithFormat:@"%.1f",[TPTool getUnitCurrentTemp:UserModel.max_tem_high]];
+        self.tempValue = UserModel.max_tem_high;
     }else{
-        self.tempLable.text = UserModel.max_tem_supper_high;
+        self.tempLable.text =[NSString stringWithFormat:@"%.1f",[TPTool getUnitCurrentTemp:UserModel.max_tem_supper_high]];
+        self.tempValue = UserModel.max_tem_supper_high;
     }
-
-    self.tempValue = self.tempLable.text;
 }
 
 -(void)saveTempValue{
@@ -209,7 +226,7 @@
     float temp = self.tempValue.floatValue;
     temp = temp +0.1;
     self.tempValue = [NSString stringWithFormat:@"%.1f",temp];
-    self.tempLable.text = self.tempValue;
+    self.tempLable.text =[NSString stringWithFormat:@"%.1f",[TPTool getUnitCurrentTempFloat:temp]];
 }
 
 #pragma mark 减
@@ -217,7 +234,7 @@
     float temp = self.tempValue.floatValue;
     temp = temp - 0.1;
     self.tempValue = [NSString stringWithFormat:@"%.1f",temp];
-    self.tempLable.text = self.tempValue;
+    self.tempLable.text =[NSString stringWithFormat:@"%.1f",[TPTool getUnitCurrentTempFloat:temp]];
 }
 
 #pragma mark 点击保存

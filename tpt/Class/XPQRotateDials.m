@@ -65,6 +65,7 @@
 
     _animationTime = 0.5;
     _size = self.bounds.size;
+    self.value = @"0.0";
     [self configParam];
 }
 
@@ -72,8 +73,6 @@
     // 初始值
 
 //    self.backgroundColor =[UIColor orangeColor];
-
-    self.valueLabel.text = @"0.0℃";
 
     tachLayer = [CALayer layer];
     tachLayer.bounds = CGRectMake(marge, 0,dashW, dashW/2);
@@ -109,27 +108,31 @@
 
 }
 
-
 -(void)setValue:(NSString *)value{
     _value = value;
 
-//    if (value.floatValue>=37.5 && value.floatValue<38) {
-//        //低热
-//    }else if (value.floatValue>=38 && value.floatValue<39){
-//        //中度热
-//    }else if (value.floatValue>=39){
-//        //高热
-//    }else{
-//        //正常体温
-//    }
-
     NSLog(@"value ==== %@",value);
-    self.valueLabel.text = [NSString stringWithFormat:@"%.1f℃", [value floatValue]];
 
+    if (UserModel.temp_unit) {
+        self.valueLabel.text = [NSString stringWithFormat:@"%.1f℉", [TPTool getUnitCurrentTemp:_value]];
+    }else{
+        self.valueLabel.text = [NSString stringWithFormat:@"%.1f℃", [TPTool getUnitCurrentTemp:_value]];
+    }
     CGFloat tempValue = [value floatValue];
     self.needleAngle = [self angleWithValue:tempValue];
-
 }
+
+-(void)setRefresh:(NSString *)refresh{
+
+    _refresh = refresh;
+
+    if (UserModel.temp_unit) {
+        self.valueLabel.text = [NSString stringWithFormat:@"%.1f℉", [TPTool getUnitCurrentTemp:_value]];
+    }else{
+        self.valueLabel.text = [NSString stringWithFormat:@"%.1f℃", [TPTool getUnitCurrentTemp:_value]];
+    }
+}
+
 
 #pragma mark 设置值
 -(void)setNeedleAngle:(CGFloat)needleAngle {

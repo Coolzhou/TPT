@@ -21,17 +21,17 @@
                                 <rect key="frame" x="0.0" y="0.0" width="290" height="224"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.0℃" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kmM-TL-sN3">
-                                <rect key="frame" x="85" y="25" width="120" height="68"/>
+                                <rect key="frame" x="75" y="25" width="140" height="68"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="68" id="KtC-PF-bNu"/>
-                                    <constraint firstAttribute="width" constant="120" id="Sq1-hR-p9i"/>
+                                    <constraint firstAttribute="width" constant="140" id="Sq1-hR-p9i"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="45"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cj6-ns-a8r">
-                                <rect key="frame" x="5" y="25" width="75" height="68"/>
+                                <rect key="frame" x="5" y="25" width="65" height="68"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="40"/>
                                 <state key="normal" title="+">
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -41,7 +41,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pq3-Hw-Ph5">
-                                <rect key="frame" x="210" y="25" width="75" height="68"/>
+                                <rect key="frame" x="220" y="25" width="65" height="68"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="40"/>
                                 <state key="normal" title="-">
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>

@@ -189,14 +189,6 @@ static const CGFloat kTopSpace = 30.f;//距离顶部y值
         bezierLine =[bezierLine smoothedPathWithGranularity:20];//设置曲线
     }
     _shapeLayer.path = bezierLine.CGPath;
-    
-//    CABasicAnimation *pathAnimation = [CABasicAnimation animationWithKeyPath:@"strokeEnd"];
-//    pathAnimation.duration = self.points.count * 0.5f;
-//    pathAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
-//    pathAnimation.fromValue = [NSNumber numberWithFloat:0.0f];
-//    pathAnimation.toValue = [NSNumber numberWithFloat:1.f];
-//    pathAnimation.autoreverses = NO;
-//    [_shapeLayer addAnimation:pathAnimation forKey:@"strokeEndAnimation"];
     _shapeLayer.strokeEnd = 1.f;
 }
 
@@ -246,17 +238,19 @@ static const CGFloat kTopSpace = 30.f;//距离顶部y值
         label.textAlignment = NSTextAlignmentRight;
         [self addSubview:label];
 
-        CGFloat margeH = (_yMax - _yMin)/chartMaxNum;
+        CGFloat maxFloat = [TPTool getUnitCurrentTempFloat:_yMax];
+        CGFloat minFloat = [TPTool getUnitCurrentTempFloat:_yMin];
+
+        CGFloat margeH = (maxFloat - minFloat)/chartMaxNum;
         CGFloat  yy =margeH>1? margeH:1;
 
+        NSLog(@"max %f- float%f ||  min %f- mfloat %f",_yMax,maxFloat,_yMin,maxFloat);
+
         if (_yValues.count<chartMaxNum) {
-            NSLog(@"1111");
-            label.text = [NSString stringWithFormat:@"%.0f",_yMax - i*yy];
+            label.text = [NSString stringWithFormat:@"%.0f",maxFloat - i*yy];
         }else{
-            label.text = [NSString stringWithFormat:@"%.0f",_yMax - i*yy];
-            NSLog(@"2222");
+            label.text = [NSString stringWithFormat:@"%.0f",maxFloat - i*yy];
         }
-//        NSLog(@"yyyy = %f ,,, %f ,,,%f",(_yMax - _yMin)/chartMaxNum,_yMax,_yMin);
     }
 }
 //圆圈点击事件
@@ -267,11 +261,14 @@ static const CGFloat kTopSpace = 30.f;//距离顶部y值
     CGSize size = [content sizeWithAttributes:@{NSFontAttributeName:kBulldesFont}];
     if (size.width < 25.f) {
         size.width = 25.f;
+    }else if (size.width>40){
+        size.width = 40.f;
     }
     [self addBulldesView];
-    _bulldesImageView.frame = CGRectMake(x, y - 20.f, size.width, 20);
+    _bulldesImageView.frame = CGRectMake(x-10, y - 20.f, size.width, 20);
     _bulldesLabel.frame = CGRectMake(0, 1, _bulldesImageView.frame.size.width, 10);
-    _bulldesLabel.text = content;
+
+    _bulldesLabel.text = [NSString stringWithFormat:@"%.1f",[TPTool getUnitCurrentTemp:content]];
 }
 
 - (void)addBulldesView {
@@ -280,7 +277,7 @@ static const CGFloat kTopSpace = 30.f;//距离顶部y值
         _bulldesImageView = [[UIImageView alloc] init];
         [self addSubview:_bulldesImageView];
         UIImage * image = [UIImage imageNamed:@"气泡"];
-        UIImage * resizableImage = [image resizableImageWithCapInsets:UIEdgeInsetsMake(0, 0, 5, 0) resizingMode:UIImageResizingModeStretch];
+        UIImage * resizableImage = [image stretchableImageWithLeftCapWidth:5 topCapHeight:5];;
         _bulldesImageView.image = resizableImage;
     }
     if (!_bulldesLabel) {
@@ -290,7 +287,6 @@ static const CGFloat kTopSpace = 30.f;//距离顶部y值
         _bulldesLabel.textAlignment = NSTextAlignmentCenter;
         [_bulldesImageView addSubview:_bulldesLabel];
     }
-
 }
 
 @end

@@ -14,6 +14,8 @@
     CALayer *pinLayer;
 }
 
+@property (nonatomic,strong)NSString *refresh;
+
 @property (nonatomic,strong)NSString *value;
 
 /*

@@ -9,7 +9,7 @@
 #import "CustomSwitch.h"
 #import <QuartzCore/QuartzCore.h>
 
-#define DEFAULT_DURATION 0.5f
+#define DEFAULT_DURATION 0.2f
 
 @interface CustomSwitch()
 {

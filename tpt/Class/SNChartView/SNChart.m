@@ -53,13 +53,6 @@
 
                 }
             }
-
-//            NSArray * sourtArray = [yArray sortedArrayUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
-//
-//                return [obj2 floatValue] > [obj1 floatValue];
-//            }];
-
-
             NSArray *sortedArray = [yArray sortedArrayUsingComparator:^(NSNumber *number1,NSNumber *number2) {
                 int val1 = [number1 intValue];
                 int val2 = [number2 intValue];
@@ -146,6 +139,12 @@
 
     NSLog(@"time = %@",timeArray);
 
+    [self.chartLine removeFromSuperview];
+    [self startDraw];
+}
+
+-(void)setRefresh:(NSString *)refresh{
+    _refresh = refresh;
     [self.chartLine removeFromSuperview];
     [self startDraw];
 }

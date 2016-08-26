@@ -25,10 +25,11 @@ typedef NS_ENUM(NSInteger, SNChartStyle) {
 
 @interface SNChart : UIView
 
+@property (nonatomic,strong)NSString *refresh;
+
 @property (nonatomic,strong)NSMutableArray *valueArray;
 
 @property (nonatomic,strong)NSMutableArray *timeArray;
-
 /**
  *  @author sen, 15-12-24 17:12:50
  *

@@ -23,13 +23,6 @@
     self.changLable.textColor = MainContentColor;
     self.timeLable.textColor = MainContentColor;
 
-    if (IS_IPHONE_6 ||IS_IPHONE_6) {
-        self.iconConstraint.constant = 55;
-        self.iconConstraintH.constant = 55;
-        self.stateConstraintM.constant = 15;
-        self.fangConstraint.constant = 15;
-        self.timeConstraint.constant = 15;
-    }
     self.changLable.text = NSLocalizedString(@"history_common_method", @"");
 
     [self.delectBtn setTitle:NSLocalizedString(@"history_del", @"") forState:UIControlStateNormal];
