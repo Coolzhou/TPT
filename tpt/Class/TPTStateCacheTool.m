@@ -135,14 +135,15 @@ static FMDatabaseQueue *_queue;
     return  [array copy];
 }
 
-+(void)deleteTemp:(int)tempID
++(void)deleteTemp:(NSString*)tempID
 {
     [self setup];
 
+    NSLog(@"tempID = %@",tempID);
+
     [_queue inDatabase:^(FMDatabase *db) {
 
-        [db executeUpdate:@"delete from t_temp_state where tempID = ?",@(tempID)];
-
+        [db executeUpdate:@"delete from t_temp_state where create_time = ?",tempID];
     }];
 
     [_queue close];
@@ -153,7 +154,6 @@ static FMDatabaseQueue *_queue;
 {
     [self setup];
     [_queue inDatabase:^(FMDatabase *db) {
-
         [db executeUpdate:@"drop table t_temp_state"];
     }];
     [_queue close];

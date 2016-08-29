@@ -89,23 +89,42 @@
     self.needleView.layer.position = CGPointMake(marge+dashW/2, 0.5*dashW/4+dashW/2-dashW/8);
     [self addSubview:self.needleView];
 
-
-    [self addSubview:self.infoLable];
-    [self.infoLable makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.needleView.bottom).with.offset(0);
-        make.left.equalTo (self.left).with.offset(35);
-        make.height.mas_equalTo(21);
-        make.width.mas_equalTo(200);
-    }];
-
     [self addSubview:self.valueLabel];
-    [self.valueLabel makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.infoLable.bottom).with.offset(0);
-        make.left.equalTo (self.left).with.offset(0);
-        make.right.equalTo (self.right).with.offset(0);
-        make.height.mas_equalTo(50);
-    }];
+    [self addSubview:self.infoLable];
+    CGFloat needleViewH = CGRectGetHeight(self.needleView.frame);
+    CGFloat needleViewY = CGRectGetMaxY(self.needleView.frame);
+    
+    if ((self.bounds.size.height - needleViewY)>70) {
 
+        [self.infoLable makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(self.needleView.bottom).with.offset(0);
+            make.left.equalTo (self.left).with.offset(35);
+            make.height.mas_equalTo(25);
+            make.width.mas_equalTo(200);
+        }];
+
+        [self.valueLabel makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(self.infoLable.bottom).with.offset(0);
+            make.bottom.equalTo(self.bottom).with.offset(0);
+            make.left.equalTo (self.left).with.offset(0);
+            make.right.equalTo (self.right).with.offset(0);
+        }];
+
+    }else{
+
+        [self.valueLabel makeConstraints:^(MASConstraintMaker *make) {
+            make.bottom.equalTo(self.bottom).with.offset(0);
+            make.left.equalTo (self.left).with.offset(0);
+            make.right.equalTo (self.right).with.offset(0);
+            make.height.mas_equalTo(50);
+        }];
+        [self.infoLable makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(self.needleView.bottom).with.offset(-needleViewH/2+15);
+            make.left.equalTo (self.left).with.offset(35);
+            make.bottom.equalTo(self.valueLabel.top).with.offset(0);
+            make.width.mas_equalTo(200);
+        }];
+    }
 }
 
 -(void)setValue:(NSString *)value{

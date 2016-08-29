@@ -63,7 +63,13 @@ static const CGFloat kTopSpace = 30.f;//距离顶部y值
         _yMax = 42;
         _yMin = 36;
         chartLineTheXAxisSpan = (self.bounds.size.width-2*LineStartX)/(chartHistoryMaxNum-1);
-        chartLineTheMarge = (self.bounds.size.width-2*LineStartX)/(dataSource.count-1);
+
+        if (dataSource.count>1) {
+            chartLineTheMarge = (self.bounds.size.width-2*LineStartX)/(dataSource.count-1);
+        }else{
+            chartLineTheMarge = (self.bounds.size.width-2*LineStartX);
+        }
+
         self.dataArray = [dataSource mutableCopy];
         [self drawHorizontal];
         [self drawVertical];
@@ -123,6 +129,8 @@ static const CGFloat kTopSpace = 30.f;//距离顶部y值
 //画横线
 - (void)drawHorizontal {
 
+    NSLog(@"44444444");
+
     UIBezierPath * path = [UIBezierPath bezierPath];
     CAShapeLayer * shapeLayer = [CAShapeLayer layer];
 
@@ -143,6 +151,8 @@ static const CGFloat kTopSpace = 30.f;//距离顶部y值
 //画竖线
 - (void)drawVertical {
 
+    NSLog(@"333333");
+
    CGFloat chartLineH = (self.bounds.size.width-2*LineStartX)/(self.dataArray.count-1);
 
     UIBezierPath * path = [UIBezierPath bezierPath];
@@ -162,11 +172,13 @@ static const CGFloat kTopSpace = 30.f;//距离顶部y值
 }
 
 - (void)startDrawLines {
+
     //设置x轴
     for (NSInteger i = 0; i < self.dataArray.count; i++) {
-        
+
         [self.pointXArray addObject:@(LineStartX + chartLineTheMarge * i)];
     }
+
     //设置y轴
     for (NSInteger i = 0; i < _yValues.count; i++) {
 
@@ -176,11 +188,13 @@ static const CGFloat kTopSpace = 30.f;//距离顶部y值
             [self.pointYArray addObject:@(self.lineH * chartHistoryMaxNum-([_yValues[i] floatValue]-35)/(42-35)* self.lineH *chartHistoryMaxNum+kTopSpace)];
         }
     }
+
     for (NSInteger i = 0; i < self.pointXArray.count; i++) {
         CGPoint point = CGPointMake([self.pointXArray[i] floatValue], [self.pointYArray[i] floatValue]);
         NSValue * value = [NSValue valueWithCGPoint:point];
         [self.points addObject:value];
     }
+
     //画线
     _shapeLayer = [CAShapeLayer layer];
     _shapeLayer.lineCap = kCALineCapRound;
@@ -215,13 +229,13 @@ static const CGFloat kTopSpace = 30.f;//距离顶部y值
 
 //圆圈
 - (void)addCircle:(CGPoint)point andIndex:(NSInteger)index {
+
     UIView * view = [[UIView alloc] initWithFrame:CGRectMake(0, 0,8, 8)];
     view.center = point;
     view.backgroundColor = RGB(253, 221, 12);
     view.layer.cornerRadius = 4.f;
     view.layer.masksToBounds = YES;
     [self addSubview:view];
-
     UIButton * btn = [UIButton buttonWithType:UIButtonTypeCustom];
     btn.frame = CGRectMake(0, 0, 12, 12);
     btn.center = point;
@@ -233,10 +247,12 @@ static const CGFloat kTopSpace = 30.f;//距离顶部y值
     btn.layer.cornerRadius = 6.0f;
     btn.layer.masksToBounds = YES;
     [btn addTarget:self action:@selector(circleButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+
 }
 
 //标记x轴label
 - (void)addXLabel:(CGPoint)point andIndex:(NSInteger)index {
+
     UILabel * label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0,60,20)];
     label.center = CGPointMake(point.x, self.lineH * chartHistoryMaxNum + kTopSpace+15);
     label.textColor = [UIColor lightGrayColor];

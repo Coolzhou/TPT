@@ -73,8 +73,8 @@
 
         NSString *content = NSLocalizedString(@"max_tem_explanation",@"");
         CGSize size =[content sizeForMaxWidth:(kScreenWidth - 50) font:[UIFont systemFontOfSize:15]];
-        NSLog(@"size.height = %f",size.height);
-        
+//        NSLog(@"size.height = %f",size.height);
+
         return size.height+20;
     }else if(indexPath.section==1){
         return 44;

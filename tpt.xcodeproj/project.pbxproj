@@ -98,6 +98,11 @@
 		18E561241D3E01FF0053B9A4 /* BabyRhythm.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E561191D3E01FF0053B9A4 /* BabyRhythm.m */; };
 		18E561251D3E01FF0053B9A4 /* BabySpeaker.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E5611B1D3E01FF0053B9A4 /* BabySpeaker.m */; };
 		18E561261D3E01FF0053B9A4 /* BabyToy.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E5611D1D3E01FF0053B9A4 /* BabyToy.m */; };
+		18E595321D73E48100EBD5F4 /* iToast.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E595311D73E48100EBD5F4 /* iToast.m */; };
+		18E595361D73FFE100EBD5F4 /* SevenSwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E595351D73FFE100EBD5F4 /* SevenSwitch.m */; };
+		18E595381D73FFF900EBD5F4 /* check@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18E595371D73FFF900EBD5F4 /* check@2x.png */; };
+		18E5953A1D73FFFE00EBD5F4 /* cross@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18E595391D73FFFE00EBD5F4 /* cross@2x.png */; };
+		18E5953D1D7415D300EBD5F4 /* UIImage+DZCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E5953C1D7415D300EBD5F4 /* UIImage+DZCategory.m */; };
 		18FD05411D5B3AC9009D4B16 /* TPTSetUpVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FD05401D5B3AC9009D4B16 /* TPTSetUpVC.m */; };
 		18FD05451D5B3B1B009D4B16 /* TPTSetupCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FD05431D5B3B1B009D4B16 /* TPTSetupCell.m */; };
 		18FD05461D5B3B1B009D4B16 /* TPTSetupCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18FD05441D5B3B1B009D4B16 /* TPTSetupCell.xib */; };
@@ -313,6 +318,14 @@
 		18E5611B1D3E01FF0053B9A4 /* BabySpeaker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BabySpeaker.m; sourceTree = "<group>"; };
 		18E5611C1D3E01FF0053B9A4 /* BabyToy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BabyToy.h; sourceTree = "<group>"; };
 		18E5611D1D3E01FF0053B9A4 /* BabyToy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BabyToy.m; sourceTree = "<group>"; };
+		18E595301D73E48100EBD5F4 /* iToast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iToast.h; sourceTree = "<group>"; };
+		18E595311D73E48100EBD5F4 /* iToast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iToast.m; sourceTree = "<group>"; };
+		18E595341D73FFE100EBD5F4 /* SevenSwitch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SevenSwitch.h; sourceTree = "<group>"; };
+		18E595351D73FFE100EBD5F4 /* SevenSwitch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SevenSwitch.m; sourceTree = "<group>"; };
+		18E595371D73FFF900EBD5F4 /* check@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "check@2x.png"; sourceTree = "<group>"; };
+		18E595391D73FFFE00EBD5F4 /* cross@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cross@2x.png"; sourceTree = "<group>"; };
+		18E5953B1D7415D300EBD5F4 /* UIImage+DZCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+DZCategory.h"; sourceTree = "<group>"; };
+		18E5953C1D7415D300EBD5F4 /* UIImage+DZCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+DZCategory.m"; sourceTree = "<group>"; };
 		18FD053F1D5B3AC9009D4B16 /* TPTSetUpVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPTSetUpVC.h; sourceTree = "<group>"; };
 		18FD05401D5B3AC9009D4B16 /* TPTSetUpVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPTSetUpVC.m; sourceTree = "<group>"; };
 		18FD05421D5B3B1B009D4B16 /* TPTSetupCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPTSetupCell.h; sourceTree = "<group>"; };
@@ -828,6 +841,9 @@
 		18E561071D3DDDB60053B9A4 /* 服务层 */ = {
 			isa = PBXGroup;
 			children = (
+				18E595301D73E48100EBD5F4 /* iToast.h */,
+				18E595311D73E48100EBD5F4 /* iToast.m */,
+				18E595331D73FFC300EBD5F4 /* SevenSwitch */,
 				1809123D1D66D915003F51A5 /* WHC_AutoLayoutKit */,
 				1872A2BB1D619E090049C7FE /* TPHistChart */,
 				187550E91D5D9DC700648557 /* Tool */,
@@ -862,6 +878,17 @@
 				18E5611D1D3E01FF0053B9A4 /* BabyToy.m */,
 			);
 			path = BabyBluetooth;
+			sourceTree = "<group>";
+		};
+		18E595331D73FFC300EBD5F4 /* SevenSwitch */ = {
+			isa = PBXGroup;
+			children = (
+				18E595371D73FFF900EBD5F4 /* check@2x.png */,
+				18E595391D73FFFE00EBD5F4 /* cross@2x.png */,
+				18E595341D73FFE100EBD5F4 /* SevenSwitch.h */,
+				18E595351D73FFE100EBD5F4 /* SevenSwitch.m */,
+			);
+			name = SevenSwitch;
 			sourceTree = "<group>";
 		};
 		18FFB3A61D5C4E5500EFE0D3 /* 温度超限报警设置 */ = {
@@ -958,6 +985,8 @@
 				1810D9C51D58902400C1DB65 /* NSString+DZCategory.m */,
 				AE6E9B6A1D4DD4180080116A /* UIButton+FillColor.h */,
 				AE6E9B6B1D4DD4180080116A /* UIButton+FillColor.m */,
+				18E5953B1D7415D300EBD5F4 /* UIImage+DZCategory.h */,
+				18E5953C1D7415D300EBD5F4 /* UIImage+DZCategory.m */,
 				18D8679A1D5984E000686AB2 /* UIColor+Hex.h */,
 				18D8679B1D5984E000686AB2 /* UIColor+Hex.m */,
 				AE29875A1D4C9B3600B50AC2 /* UIViewController+NavBarHidden.h */,
@@ -1216,6 +1245,7 @@
 				AE6E9B731D4DDC820080116A /* TPTuiCell.xib in Resources */,
 				18B23CF41D41CC3B00CE9AA6 /* TencentOpenApi_IOS_Bundle.bundle in Resources */,
 				185A96E81D6B050300403E44 /* Localizable.strings in Resources */,
+				18E5953A1D73FFFE00EBD5F4 /* cross@2x.png in Resources */,
 				18B23CFA1D41CC3C00CE9AA6 /* ShareSDK.bundle in Resources */,
 				180912391D66BC1D003F51A5 /* TPTdutyCell.xib in Resources */,
 				18E560D81D3DBB930053B9A4 /* Main.storyboard in Resources */,
@@ -1225,6 +1255,7 @@
 				18B23CF81D41CC3C00CE9AA6 /* README.txt in Resources */,
 				18FFB3C31D5C835400EFE0D3 /* alertSetFreeCell.xib in Resources */,
 				18FFB3B91D5C833300EFE0D3 /* alertSetTwoCell.xib in Resources */,
+				18E595381D73FFF900EBD5F4 /* check@2x.png in Resources */,
 				18B23CF61D41CC3B00CE9AA6 /* WeiboSDK.bundle in Resources */,
 				18FFB3A51D5C28BB00EFE0D3 /* CustomSwitch.xib in Resources */,
 				187550F81D5DB3B700648557 /* TPTHistoryCell.xib in Resources */,
@@ -1311,6 +1342,7 @@
 				18FD05411D5B3AC9009D4B16 /* TPTSetUpVC.m in Sources */,
 				AE6E9B741D4DDC820080116A /* TPTuiCell.m in Sources */,
 				1872A2C11D619E610049C7FE /* TPChartLine.m in Sources */,
+				18E595321D73E48100EBD5F4 /* iToast.m in Sources */,
 				180912331D66BB1D003F51A5 /* TPTDutyVC.m in Sources */,
 				AE6E9B631D4DBF870080116A /* TPTuiViewController.m in Sources */,
 				1810D9C61D58902400C1DB65 /* NSString+DZCategory.m in Sources */,
@@ -1318,6 +1350,7 @@
 				180912461D66D915003F51A5 /* WHC_StackView.m in Sources */,
 				18FFB3BD1D5C834400EFE0D3 /* alertSetThreeCell.m in Sources */,
 				AE6E9B6C1D4DD4180080116A /* UIButton+FillColor.m in Sources */,
+				18E5953D1D7415D300EBD5F4 /* UIImage+DZCategory.m in Sources */,
 				185A96DA1D6A951500403E44 /* TPTCorrectInfoCell.m in Sources */,
 				18E5611F1D3E01FF0053B9A4 /* BabyCallback.m in Sources */,
 				1809091A1D48CC0B004C47F9 /* MCFirstPageVIewController.m in Sources */,
@@ -1341,6 +1374,7 @@
 				18E561241D3E01FF0053B9A4 /* BabyRhythm.m in Sources */,
 				18E561261D3E01FF0053B9A4 /* BabyToy.m in Sources */,
 				18FD054A1D5B3B5C009D4B16 /* TPTSetEleCell.m in Sources */,
+				18E595361D73FFE100EBD5F4 /* SevenSwitch.m in Sources */,
 				AE6E9B661D4DC5C40080116A /* TPTuiSelectView.m in Sources */,
 				18B23D161D41D2D100CE9AA6 /* AppDelegate+shareSDK.m in Sources */,
 				18FFB3AF1D5C52C400EFE0D3 /* TPTAlertSetupVC.m in Sources */,
@@ -1531,7 +1565,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.quarks.tpt;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "2c66d580-fbd4-41e7-b6ea-a731fd70a4e7";
+				PROVISIONING_PROFILE = "90784d56-5202-4a85-bfc3-d5fbc2f173b1";
 			};
 			name = Debug;
 		};
@@ -1564,7 +1598,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.quarks.tpt;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "2c66d580-fbd4-41e7-b6ea-a731fd70a4e7";
+				PROVISIONING_PROFILE = "90784d56-5202-4a85-bfc3-d5fbc2f173b1";
 			};
 			name = Release;
 		};

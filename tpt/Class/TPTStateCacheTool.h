@@ -32,7 +32,7 @@
 +(NSArray*)temperatureCounts;
 
 /** 删除一条温度*/
-+(void)deleteTemp:(int)tempID;
++(void)deleteTemp:(NSString *)tempID;
 
 +(void)deleteAllTemp;
 

@@ -127,9 +127,6 @@
      **/
 
     __weak TPBaseViewController *theController = self;
-
-    [SVProgressHUD show];
-
     [SSEShareHelper screenCaptureShare:^(SSDKImage *image, SSEShareHandler shareHandler) {
 
         if (!image)
@@ -138,57 +135,62 @@
             image = [[SSDKImage alloc] initWithImage:[UIImage imageNamed:@"shareImg.png"] format:SSDKImageFormatJpeg settings:nil];
         }
 
-        NSMutableDictionary *shareParams = [NSMutableDictionary dictionary];
-        [shareParams SSDKSetupShareParamsByText:@"分享内容"
-                                         images:@[image]
-                                            url:[NSURL URLWithString:@"http://mob.com"]
-                                          title:@"分享标题"
-                                           type:SSDKContentTypeAuto];
-        //2、分享（可以弹出我们的分享菜单和编辑界面）
-        [ShareSDK showShareActionSheet:theController.view //要显示菜单的视图, iPad版中此参数作为弹出菜单的参照视图，只有传这个才可以弹出我们的分享菜单，可以传分享的按钮对象或者自己创建小的view 对象，iPhone可以传nil不会影响
-                                 items:@[@(SSDKPlatformSubTypeWechatSession),
-                                         @(SSDKPlatformSubTypeWechatTimeline),
-                                         @(SSDKPlatformTypeQQ),
-                                         @(SSDKPlatformTypeSinaWeibo),
-                                         @(SSDKPlatformTypeFacebook),
-                                         @(SSDKPlatformTypeTwitter),
-                                         @(SSDKPlatformTypeGooglePlus),
-                                         @(SSDKPlatformTypeLine),
-                                         @(SSDKPlatformTypeWhatsApp)]
-                           shareParams:shareParams
-                   onShareStateChanged:^(SSDKResponseState state, SSDKPlatformType platformType, NSDictionary *userData, SSDKContentEntity *contentEntity, NSError *error, BOOL end) {
+       [image getNativeImage:^(UIImage *image) {
+           NSLog(@"image === %@",image);
 
-                       switch (state) {
-                           case SSDKResponseStateSuccess:
-                           {
-                               UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"分享成功"
-                                                                                   message:nil
-                                                                                  delegate:nil
-                                                                         cancelButtonTitle:@"确定"
-                                                                         otherButtonTitles:nil];
-                               [alertView show];
-                               break;
-                           }
-                           case SSDKResponseStateFail:
-                           {
-                               UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"分享失败"
-                                                                               message:[NSString stringWithFormat:@"%@",error]
-                                                                              delegate:nil
-                                                                     cancelButtonTitle:@"OK"
-                                                                     otherButtonTitles:nil, nil];
-                               [alert show];
+           image = [image thumbnailWithImageWithoutScale:image size:self.view.bounds.size];
 
-                               NSLog(@"error = %@",[NSString stringWithFormat:@"%@",error]);
-                               break;
-                           }
-                           default:
-                               break;
-                       }
-                            [SVProgressHUD dismiss];
-                   }
+           NSMutableDictionary *shareParams = [NSMutableDictionary dictionary];
+           [shareParams SSDKSetupShareParamsByText:@"分享内容"
+                                            images:@[image]
+                                               url:[NSURL URLWithString:@"http://mob.com"]
+                                             title:@"分享标题"
+                                              type:SSDKContentTypeAuto];
+           //2、分享（可以弹出我们的分享菜单和编辑界面）
+           [ShareSDK showShareActionSheet:theController.view //要显示菜单的视图, iPad版中此参数作为弹出菜单的参照视图，只有传这个才可以弹出我们的分享菜单，可以传分享的按钮对象或者自己创建小的view 对象，iPhone可以传nil不会影响
+                                    items:@[@(SSDKPlatformSubTypeWechatSession),
+                                            @(SSDKPlatformSubTypeWechatTimeline),
+                                            @(SSDKPlatformTypeQQ),
+                                            @(SSDKPlatformTypeSinaWeibo),
+                                            @(SSDKPlatformTypeFacebook),
+                                            @(SSDKPlatformTypeTwitter),
+                                            @(SSDKPlatformTypeGooglePlus),
+                                            @(SSDKPlatformTypeLine),
+                                            @(SSDKPlatformTypeWhatsApp)]
+                              shareParams:shareParams
+                      onShareStateChanged:^(SSDKResponseState state, SSDKPlatformType platformType, NSDictionary *userData, SSDKContentEntity *contentEntity, NSError *error, BOOL end) {
 
-         ];
-    } onStateChanged:^(SSDKResponseState state, NSDictionary *userData, SSDKContentEntity *contentEntity, NSError *error) {
+                          switch (state) {
+                              case SSDKResponseStateSuccess:
+                              {
+                                  UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"分享成功"
+                                                                                      message:nil
+                                                                                     delegate:nil
+                                                                            cancelButtonTitle:@"确定"
+                                                                            otherButtonTitles:nil];
+                                  [alertView show];
+                                  break;
+                              }
+                              case SSDKResponseStateFail:
+                              {
+                                  UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"分享失败"
+                                                                                  message:[NSString stringWithFormat:@"%@",error]
+                                                                                 delegate:nil
+                                                                        cancelButtonTitle:@"OK"
+                                                                        otherButtonTitles:nil, nil];
+                                  [alert show];
+
+                                  NSLog(@"error = %@",[NSString stringWithFormat:@"%@",error]);
+                                  break;
+                              }
+                              default:
+                                  break;
+                          }
+                      }
+            
+            ];
+       }];
+            } onStateChanged:^(SSDKResponseState state, NSDictionary *userData, SSDKContentEntity *contentEntity, NSError *error) {
     }];
 }
 

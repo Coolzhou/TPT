@@ -15,5 +15,6 @@
 #import "UIButton+FillColor.h"
 #import "NSString+DZCategory.h"
 #import "UIColor+Hex.h"
+#import "UIImage+DZCategory.h"
 
 #endif /* TPFoundation_h */

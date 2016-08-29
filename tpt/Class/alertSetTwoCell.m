@@ -8,7 +8,7 @@
 
 #import "alertSetTwoCell.h"
 
-@interface alertSetTwoCell()<CustomSwitchDelegate>
+@interface alertSetTwoCell()
 
 @end
 
@@ -20,16 +20,25 @@
     self.bgImgView.image = [[UIImage imageNamed:@"tui_cell_bg"] stretchableImageWithLeftCapWidth:10 topCapHeight:10];
 
     self.titleLable.textColor = MainContentColor;
-    self.switchBtn.delegate = self;
-    self.switchBtn.arrange = CustomSwitchArrangeONLeftOFFRight;
-    self.switchBtn.onImage = [UIImage imageNamed:@"switchOne_on"];
-    self.switchBtn.offImage = [UIImage imageNamed:@"switchOne_off"];
-    self.switchBtn.status = UserModel.max_alert_state;
+
+    self.switchBtn.onTintColor = [UIColor colorWithRed:0.20f green:0.42f blue:0.86f alpha:1.00f];
+    self.switchBtn.selectType = SevenSwitchImageType;
+    [self.switchBtn addTarget:self action:@selector(switchChanged:) forControlEvents:UIControlEventValueChanged];
+    if (UserModel.max_alert_state) {
+        self.switchBtn.on = YES;
+    }else{
+        self.switchBtn.on = NO;
+    }
     self.titleLable.text = NSLocalizedString(@"max_tem_switch", @"");
 }
 
--(void)customSwitchView:(CustomSwitch *)switchViwe SetStatus:(CustomSwitchStatus)status{
-    UserModel.max_alert_state = status;
+- (void)switchChanged:(SevenSwitch *)sender {
+
+    if (sender.on == YES) {
+         UserModel.max_alert_state = YES;
+    }else{
+         UserModel.max_alert_state = NO;
+    }
 }
 
 + (instancetype)thealertSetTwoCellWithTableView:(UITableView *)tableView andIndexPath:(NSIndexPath *)indexpath{

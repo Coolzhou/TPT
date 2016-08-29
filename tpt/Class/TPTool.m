@@ -93,7 +93,7 @@
 +(CGFloat)getUnitCurrentTempFloat:(CGFloat)temp{
     CGFloat currentFloat = 0.0;
     CGFloat tempFloat = temp;
-    NSLog(@"currentFloat - temp = %f",temp);
+//    NSLog(@"currentFloat - temp = %f",temp);
     if (UserModel.temp_unit == NO) {
         //摄氏度
         currentFloat = tempFloat;
@@ -102,7 +102,7 @@
         currentFloat = 1.8 * tempFloat + 32;
     }
 
-    NSLog(@"currentFloat = %f",currentFloat);
+//    NSLog(@"currentFloat = %f",currentFloat);
     return currentFloat;
 }
 

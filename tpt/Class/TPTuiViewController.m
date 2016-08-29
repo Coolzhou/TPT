@@ -90,7 +90,7 @@
         NSString *content =[self heightRowFirst];
 
         CGSize size =[content sizeForMaxWidth:(kScreenWidth - 30) font:[UIFont systemFontOfSize:16]];
-        NSLog(@"size.height = %f",size.height);
+//        NSLog(@"size.height = %f",size.height);
 
         return size.height +40;
 

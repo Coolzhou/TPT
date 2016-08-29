@@ -68,7 +68,7 @@ static FMDatabaseQueue *_queue;
     [_queue inDatabase:^(FMDatabase *db) {
         tempAry = [NSMutableArray array];
         FMResultSet *rs = nil;
-        rs = [db executeQuery:@"select * from t_temp order by id asc"];
+        rs = [db executeQuery:@"select  * from t_temp order by id asc"];
         while (rs.next) {
             NSData *data = [rs dataForColumn:@"temp"];
             WBTemperature *temp = [NSKeyedUnarchiver unarchiveObjectWithData:data];

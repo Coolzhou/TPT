@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-#import "CustomSwitch.h"
+#import "SevenSwitch.h"
 
 typedef void(^SetupCellBlock)(NSInteger tag);
 
@@ -33,8 +33,8 @@ typedef void(^SetupCellBlock)(NSInteger tag);
 @property (weak, nonatomic) IBOutlet UIButton *rightBtnOne;
 @property (weak, nonatomic) IBOutlet UIButton *rightBtnTwo;
 
-@property (weak, nonatomic) IBOutlet CustomSwitch *switchOne;
-@property (weak, nonatomic) IBOutlet CustomSwitch *switchTwo;
+@property (weak, nonatomic) IBOutlet SevenSwitch *switchOne;
+@property (weak, nonatomic) IBOutlet SevenSwitch *switchTwo;
 
 
 @property (nonatomic,copy) SetupCellBlock setUpBlock;

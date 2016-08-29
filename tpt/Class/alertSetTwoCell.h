@@ -7,12 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "CustomSwitch.h"
+#import "SevenSwitch.h"
 @interface alertSetTwoCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UIImageView *bgImgView;
 @property (weak, nonatomic) IBOutlet UILabel *titleLable;
-@property (weak, nonatomic) IBOutlet CustomSwitch *switchBtn;
+@property (weak, nonatomic) IBOutlet SevenSwitch *switchBtn;
 
 
 + (instancetype)thealertSetTwoCellWithTableView:(UITableView *)tableView andIndexPath:(NSIndexPath *)indexpath;

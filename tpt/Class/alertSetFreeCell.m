@@ -8,7 +8,7 @@
 
 #import "alertSetFreeCell.h"
 
-@interface alertSetFreeCell()<CustomSwitchDelegate>
+@interface alertSetFreeCell()
 
 @end
 
@@ -21,17 +21,24 @@
     self.titleOneLable.textColor = MainContentColor;
     self.titleTwoLable.textColor = MainContentColor;
 
-    self.shengSwitchBtn.delegate = self;
-    self.shengSwitchBtn.arrange = CustomSwitchArrangeONLeftOFFRight;
-    self.shengSwitchBtn.onImage = [UIImage imageNamed:@"switchOne_on"];
-    self.shengSwitchBtn.offImage = [UIImage imageNamed:@"switchOne_off"];
-    self.shengSwitchBtn.status = UserModel.max_notify_voice;
 
-    self.dongSwitchBtn.delegate = self;
-    self.dongSwitchBtn.arrange = CustomSwitchArrangeONLeftOFFRight;
-    self.dongSwitchBtn.onImage = [UIImage imageNamed:@"switchOne_on"];
-    self.dongSwitchBtn.offImage = [UIImage imageNamed:@"switchOne_off"];
-    self.dongSwitchBtn.status = UserModel.max_notify_vibration;
+    self.shengSwitchBtn.onTintColor = [UIColor colorWithRed:0.20f green:0.42f blue:0.86f alpha:1.00f];
+    self.shengSwitchBtn.selectType = SevenSwitchImageType;
+    [self.shengSwitchBtn addTarget:self action:@selector(switchChanged:) forControlEvents:UIControlEventValueChanged];
+    if (UserModel.max_notify_voice) {
+        self.shengSwitchBtn.on = YES;
+    }else{
+        self.shengSwitchBtn.on = NO;
+    }
+
+    self.dongSwitchBtn.onTintColor = [UIColor colorWithRed:0.20f green:0.42f blue:0.86f alpha:1.00f];
+    self.dongSwitchBtn.selectType = SevenSwitchImageType;
+    [self.dongSwitchBtn addTarget:self action:@selector(switchChanged:) forControlEvents:UIControlEventValueChanged];
+    if (UserModel.max_notify_vibration) {
+        self.dongSwitchBtn.on = YES;
+    }else{
+        self.dongSwitchBtn.on = NO;
+    }
 
     self.lineView.backgroundColor = MainTitleColor;
     self.lineTwoView.backgroundColor = MainTitleColor;
@@ -51,15 +58,23 @@
     return cell;
 }
 
--(void)customSwitchView:(CustomSwitch *)switchViwe SetStatus:(CustomSwitchStatus)status{
 
-    if (self.shengSwitchBtn ==switchViwe) {
-        UserModel.max_notify_voice = status;
+- (void)switchChanged:(SevenSwitch *)sender {
+    if (sender == self.shengSwitchBtn) {
+        if (sender.on == YES) {
+            UserModel.max_notify_voice = YES;
+        }else{
+            UserModel.max_notify_voice = NO;
+        }
     }else{
-        UserModel.max_notify_vibration = status;
+        if (sender.on == YES) {
+            UserModel.max_notify_vibration = YES;
+        }else{
+            UserModel.max_notify_vibration = NO;
+        }
     }
 
-    NSLog(@"ss = %d,dd = %d",UserModel.max_notify_voice,UserModel.max_notify_vibration);
+    NSLog(@"11user.deve = %d  tempunit = %d ,sender.tag = %ld",UserModel.device_disconnect,UserModel.temp_unit ,(long)sender.tag);
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

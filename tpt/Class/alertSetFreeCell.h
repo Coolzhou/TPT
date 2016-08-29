@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "CustomSwitch.h"
+#import "SevenSwitch.h"
 @interface alertSetFreeCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UIImageView *bgImgView;
@@ -16,8 +16,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *titleOneLable;
 @property (weak, nonatomic) IBOutlet UILabel *titleTwoLable;
 
-@property (weak, nonatomic) IBOutlet CustomSwitch *shengSwitchBtn;
-@property (weak, nonatomic) IBOutlet CustomSwitch *dongSwitchBtn;
+@property (weak, nonatomic) IBOutlet SevenSwitch *shengSwitchBtn;
+@property (weak, nonatomic) IBOutlet SevenSwitch *dongSwitchBtn;
 
 @property (weak, nonatomic) IBOutlet UIView *lineView;
 

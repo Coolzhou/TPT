@@ -21,7 +21,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="290" height="43"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="报警开关" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y1d-mg-e3a">
-                                <rect key="frame" x="10" y="11" width="175" height="21"/>
+                                <rect key="frame" x="10" y="11" width="190" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="80" id="1gc-vP-qlu"/>
                                     <constraint firstAttribute="height" constant="21" id="BpN-wx-doD"/>
@@ -35,12 +35,12 @@
                                     </mask>
                                 </variation>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y20-dX-hxv" customClass="CustomSwitch">
-                                <rect key="frame" x="205" y="9" width="75" height="25"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y20-dX-hxv" customClass="SevenSwitch">
+                                <rect key="frame" x="220" y="7" width="60" height="30"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="25" id="00w-Ed-eVi"/>
-                                    <constraint firstAttribute="width" constant="75" id="Xm0-KI-1Gf"/>
+                                    <constraint firstAttribute="height" constant="30" id="00w-Ed-eVi"/>
+                                    <constraint firstAttribute="width" constant="60" id="Xm0-KI-1Gf"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -67,7 +67,7 @@
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <connections>
                 <outlet property="bgImgView" destination="5so-Zx-1cK" id="y7v-DQ-nim"/>
-                <outlet property="switchBtn" destination="y20-dX-hxv" id="IaF-bi-AJ2"/>
+                <outlet property="switchBtn" destination="y20-dX-hxv" id="uSX-2W-g0k"/>
                 <outlet property="titleLable" destination="y1d-mg-e3a" id="sdC-nr-cvp"/>
             </connections>
         </tableViewCell>

@@ -110,12 +110,12 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view tag="10" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vq5-oi-Yxd" customClass="CustomSwitch">
-                                <rect key="frame" x="230" y="36" width="60" height="25"/>
+                            <view tag="10" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vq5-oi-Yxd" customClass="SevenSwitch">
+                                <rect key="frame" x="230" y="34" width="60" height="30"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="60" id="A9X-sL-txE"/>
-                                    <constraint firstAttribute="height" constant="25" id="nmb-v9-eaA"/>
+                                    <constraint firstAttribute="height" constant="30" id="nmb-v9-eaA"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZAA-K1-jDf">
@@ -140,12 +140,12 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view tag="11" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kON-20-JGF" customClass="CustomSwitch">
-                                <rect key="frame" x="230" y="193" width="60" height="25"/>
+                            <view tag="11" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kON-20-JGF" customClass="SevenSwitch">
+                                <rect key="frame" x="230" y="191" width="60" height="30"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="60" id="5zf-HA-Zwi"/>
-                                    <constraint firstAttribute="height" constant="25" id="d3F-Oe-KXU"/>
+                                    <constraint firstAttribute="height" constant="30" id="d3F-Oe-KXU"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bhp-G0-2TZ">
@@ -282,13 +282,13 @@
                                 <exclude reference="6NN-ES-GAn"/>
                                 <exclude reference="B0Z-or-SjZ"/>
                                 <exclude reference="wOY-Pi-Oo8"/>
-                                <exclude reference="2Zc-NK-DXq"/>
-                                <exclude reference="CR3-tv-z4S"/>
-                                <exclude reference="PKH-5m-5av"/>
                                 <exclude reference="Ttp-9k-I3B"/>
                                 <exclude reference="Z3g-G1-hJm"/>
                                 <exclude reference="hx6-Gu-ZIl"/>
                                 <exclude reference="n52-e5-aH3"/>
+                                <exclude reference="2Zc-NK-DXq"/>
+                                <exclude reference="CR3-tv-z4S"/>
+                                <exclude reference="PKH-5m-5av"/>
                                 <exclude reference="FSK-et-Mk2"/>
                                 <exclude reference="Duh-NV-oaL"/>
                                 <exclude reference="WQt-nL-Uhb"/>
@@ -327,8 +327,8 @@
                 <outlet property="lineTwo" destination="wbI-Zu-fbT" id="DQe-IF-uWq"/>
                 <outlet property="rightBtnOne" destination="ZAA-K1-jDf" id="VPE-V8-nhM"/>
                 <outlet property="rightBtnTwo" destination="bhp-G0-2TZ" id="z0r-A3-kDk"/>
-                <outlet property="switchOne" destination="vq5-oi-Yxd" id="Exo-yf-Gt8"/>
-                <outlet property="switchTwo" destination="kON-20-JGF" id="Gtw-Tc-BKs"/>
+                <outlet property="switchOne" destination="vq5-oi-Yxd" id="c9s-Vg-1HA"/>
+                <outlet property="switchTwo" destination="kON-20-JGF" id="taH-VX-mAG"/>
                 <outlet property="titleFreeLable" destination="d0a-c1-L4c" id="fAu-jF-a6N"/>
                 <outlet property="titleOneLable" destination="9IW-nc-U9V" id="R2v-jq-S8X"/>
                 <outlet property="titleThreeLable" destination="c0S-Pn-UA8" id="lMQ-r6-nUm"/>

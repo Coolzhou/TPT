@@ -62,20 +62,20 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rxP-33-SY1" customClass="CustomSwitch">
-                                <rect key="frame" x="205" y="53" width="75" height="25"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rxP-33-SY1" customClass="SevenSwitch">
+                                <rect key="frame" x="220" y="51" width="60" height="30"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="75" id="jFE-On-K1d"/>
-                                    <constraint firstAttribute="height" constant="25" id="qHw-qX-hf8"/>
+                                    <constraint firstAttribute="width" constant="60" id="jFE-On-K1d"/>
+                                    <constraint firstAttribute="height" constant="30" id="qHw-qX-hf8"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RRT-UW-CG0" customClass="CustomSwitch">
-                                <rect key="frame" x="205" y="93" width="75" height="25"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RRT-UW-CG0" customClass="SevenSwitch">
+                                <rect key="frame" x="220" y="91" width="60" height="30"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="25" id="BJM-gV-ctN"/>
-                                    <constraint firstAttribute="width" constant="75" id="ge4-WP-qLO"/>
+                                    <constraint firstAttribute="height" constant="30" id="BJM-gV-ctN"/>
+                                    <constraint firstAttribute="width" constant="60" id="ge4-WP-qLO"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -128,10 +128,10 @@
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <connections>
                 <outlet property="bgImgView" destination="ce9-uu-4lV" id="hxG-FW-Pna"/>
-                <outlet property="dongSwitchBtn" destination="RRT-UW-CG0" id="YBi-YN-VVZ"/>
+                <outlet property="dongSwitchBtn" destination="RRT-UW-CG0" id="F6F-dX-6A9"/>
                 <outlet property="lineTwoView" destination="tph-N5-KGo" id="DFt-W1-kjx"/>
                 <outlet property="lineView" destination="6L0-Ny-Uuq" id="Osx-AG-JF4"/>
-                <outlet property="shengSwitchBtn" destination="rxP-33-SY1" id="y1z-fU-ylb"/>
+                <outlet property="shengSwitchBtn" destination="rxP-33-SY1" id="9gy-J1-R8Q"/>
                 <outlet property="titleLable" destination="8W8-wU-dIa" id="kUx-Mc-vRT"/>
                 <outlet property="titleOneLable" destination="s1k-ZF-4Qo" id="Gx6-lW-yvh"/>
                 <outlet property="titleTwoLable" destination="zSa-HS-3us" id="3Rb-HH-gp3"/>

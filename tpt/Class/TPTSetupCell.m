@@ -8,7 +8,7 @@
 
 #import "TPTSetupCell.h"
 
-@interface TPTSetupCell()<CustomSwitchDelegate>
+@interface TPTSetupCell()
 
 @end
 
@@ -34,26 +34,27 @@
     [self.rightBtnOne setTitleColor:MainContentColor forState:UIControlStateNormal];
     [self.rightBtnTwo setTitleColor:MainContentColor forState:UIControlStateNormal];
 
-    self.switchOne.delegate = self;
-    self.switchOne.arrange = CustomSwitchArrangeONLeftOFFRight;
-    self.switchOne.onImage = [UIImage imageNamed:@"switchOne_on"];
-    self.switchOne.offImage = [UIImage imageNamed:@"switchOne_off"];
-    
+
+    self.switchOne.onTintColor = [UIColor colorWithRed:0.20f green:0.42f blue:0.86f alpha:1.00f];
+    self.switchOne.selectType = SevenSwitchImageType;
+    [self.switchOne addTarget:self action:@selector(switchChanged:) forControlEvents:UIControlEventValueChanged];
     if (UserModel.device_disconnect) {
-        self.switchOne.status = CustomSwitchStatusOn;
+        self.switchOne.on = YES;
     }else{
-        self.switchOne.status = CustomSwitchStatusOff;
+        self.switchOne.on = NO;
     }
 
-    self.switchTwo.delegate = self;
-    self.switchTwo.arrange = CustomSwitchArrangeONLeftOFFRight;
-    self.switchTwo.onImage = [UIImage imageNamed:@"switchOne_on"];
-    self.switchTwo.offImage = [UIImage imageNamed:@"switchOne_off"];
-
+    self.switchTwo.selectType = SevenSwitchTitleType;
+    [self.switchTwo addTarget:self action:@selector(switchChanged:) forControlEvents:UIControlEventValueChanged];
+    self.switchTwo.offTitleStr = @"℃";
+    self.switchTwo.onTitleStr = @"℉";
+    self.switchTwo.onTintColor = RGB(253, 221, 12);
+    self.switchTwo.inactiveColor = RGB(45, 188, 187);
+    self.switchTwo.isRounded = YES;
     if (UserModel.temp_unit) {
-        self.switchTwo.status = CustomSwitchStatusOn;
+        self.switchTwo.on = YES;
     }else{
-        self.switchTwo.status = CustomSwitchStatusOff;
+        self.switchTwo.on = NO;
     }
 
     NSLog(@"user.deve = %d  tempunit = %d",UserModel.device_disconnect,UserModel.temp_unit);
@@ -88,22 +89,40 @@
     self.setUpBlock(sender.tag);
 }
 
--(void)customSwitchView:(CustomSwitch *)switchViwe SetStatus:(CustomSwitchStatus)status{
-    if (switchViwe.tag == 10) {
-        if (status == CustomSwitchStatusOn) {
+- (void)switchChanged:(SevenSwitch *)sender {
+    if (sender.tag == 10) {
+        if (sender.on == YES) {
             UserModel.device_disconnect = YES;
         }else{
             UserModel.device_disconnect = NO;
         }
     }else{
-        if (status == CustomSwitchStatusOn) {
+        if (sender.on == YES) {
             UserModel.temp_unit = YES;
         }else{
             UserModel.temp_unit = NO;
         }
     }
-    NSLog(@"11user.deve = %d  tempunit = %d",UserModel.device_disconnect,UserModel.temp_unit);
+
+    NSLog(@"11user.deve = %d  tempunit = %d ,sender.tag = %ld",UserModel.device_disconnect,UserModel.temp_unit ,(long)sender.tag);
 }
+
+//-(void)customSwitchView:(CustomSwitch *)switchViwe SetStatus:(CustomSwitchStatus)status{
+//    if (switchViwe.tag == 10) {
+//        if (status == CustomSwitchStatusOn) {
+//            UserModel.device_disconnect = YES;
+//        }else{
+//            UserModel.device_disconnect = NO;
+//        }
+//    }else{
+//        if (status == CustomSwitchStatusOn) {
+//            UserModel.temp_unit = YES;
+//        }else{
+//            UserModel.temp_unit = NO;
+//        }
+//    }
+//    NSLog(@"11user.deve = %d  tempunit = %d",UserModel.device_disconnect,UserModel.temp_unit);
+//}
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];

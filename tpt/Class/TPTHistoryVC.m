@@ -8,7 +8,7 @@
 
 #import "TPTHistoryVC.h"
 #import "TPTHistoryCell.h"
-
+#import "WBTemperature.h"
 #import "TPTStateCacheTool.h"
 #import "TPChartLine.h"
 #import "TPChart.h"
@@ -94,11 +94,15 @@
 
 -(void)removeDataArrayCell:(NSInteger)row{
 
+    WBTemperature *tempModel = self.dataArray[row];
+    [TPTStateCacheTool deleteTemp:tempModel.create_time];
+
     [self.dataArray removeObjectAtIndex:row];
     NSArray *_tempIndexPathArr = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:row inSection:0]];
     [self.tableView deleteRowsAtIndexPaths:_tempIndexPathArr withRowAnimation:UITableViewRowAnimationNone];
     [self.tableView reloadData];
 
+    [[[iToast makeText:@"删除成功"]setGravity:iToastGravityCenter] show];
 }
 
 -(NSMutableArray *)dataArray{

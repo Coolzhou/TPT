@@ -45,7 +45,7 @@
                  [ShareSDKConnector connectWeChat:[WXApi class]];
                  break;
              case SSDKPlatformTypeQQ:
-                 [ShareSDKConnector connectQQ:[QQApiInterface class] tencentOAuthClass:[TencentOAuth class]];
+//                 [ShareSDKConnector connectQQ:[QQApiInterface class] tencentOAuthClass:[TencentOAuth class]];
                  break;
              case SSDKPlatformTypeSinaWeibo:
                  [ShareSDKConnector connectWeibo:[WeiboSDK class]];
@@ -66,9 +66,9 @@
              case SSDKPlatformTypeQQ:
                  //设置QQ应用信息,其中authType设置为使用SSO＋Web形式授权
 
-                 [appInfo SSDKSetupQQByAppId:@"1105440397"
-                                      appKey:@"V8CVLVkNqEB1RI3t"
-                                    authType:SSDKAuthTypeBoth];
+//                 [appInfo SSDKSetupQQByAppId:@"1105440397"
+//                                      appKey:@"V8CVLVkNqEB1RI3t"
+//                                    authType:SSDKAuthTypeBoth];
                  break;
              case SSDKPlatformTypeSinaWeibo:
                  //设置新浪微博应用信息,其中authType设置为使用SSO＋Web形式授权
