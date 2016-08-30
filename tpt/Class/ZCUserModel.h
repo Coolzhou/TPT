@@ -21,6 +21,8 @@
 
 @property (nonatomic, strong) NSString *temp_check; //校准值
 
+@property (nonatomic, strong) NSString *temp_currentElec; //当前电量
+
 @property (nonatomic, assign) BOOL max_alert_state; //警报开启、关闭
 @property (nonatomic, assign) BOOL max_notify_voice; //铃声
 @property (nonatomic, assign) BOOL max_notify_vibration;  //振动

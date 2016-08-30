@@ -215,8 +215,8 @@ static void SoundFinished(SystemSoundID soundID,void* sample){
 /**
  *   振动
  */
-//+ (void *)begainPlayingSoundid{
-//
-//    AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
-//}
++ (void)begainPlayingSoundid{
+
+   AudioServicesPlaySystemSound (kSystemSoundID_Vibrate);//振动
+}
 @end

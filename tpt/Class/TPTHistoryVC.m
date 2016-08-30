@@ -28,6 +28,24 @@
 
 @implementation TPTHistoryVC
 
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+
+    NSArray *histroyArray = [WBCacheTool getTemperature];
+    if (histroyArray.count>1500) {
+        [WBCacheTool deleteAllTemp];
+    }
+    self.historyArray = [histroyArray mutableCopy];
+
+
+    NSArray *array = [TPTStateCacheTool getTemperature];
+
+    if ( array.count>500) {
+        [TPTStateCacheTool deleteAllTemp];
+    }
+    self.dataArray = [array mutableCopy];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navTitleLable.text = NSLocalizedString(@"setting_history", @"");
@@ -38,14 +56,7 @@
 }
 -(void)initData{
 
-    NSArray *array = [TPTStateCacheTool getTemperature];
-    self.dataArray = [array mutableCopy];
 
-    NSArray *histroyArray = [WBCacheTool getTemperature];
-    self.historyArray = [histroyArray mutableCopy];
-
-    NSLog(@"self.history = %@",histroyArray);
-    
 }
 
 -(void)initTableViewHeadView{
@@ -102,7 +113,10 @@
     [self.tableView deleteRowsAtIndexPaths:_tempIndexPathArr withRowAnimation:UITableViewRowAnimationNone];
     [self.tableView reloadData];
 
-    [[[iToast makeText:@"删除成功"]setGravity:iToastGravityCenter] show];
+    [SVProgressHUD showWithStatus:@"删除成功"];
+
+//    [[[iToast makeText:@"删除成功"]setGravity:iToastGravityCenter] show];
+
 }
 
 -(NSMutableArray *)dataArray{

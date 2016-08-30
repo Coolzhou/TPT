@@ -64,7 +64,7 @@
 
 
 "max_tem"= "Temperature Limit Alarm";
-"max_suggest"= "ADVICE：Baby%1$s The suggested temperature value%2$s";
+"max_suggest"= "ADVICE：Baby The suggested temperature value";
 "max_save"= "Save";
 "max_cancel"= "Cancel";
 "max_notify"= "Notifications";

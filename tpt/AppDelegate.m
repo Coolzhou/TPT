@@ -39,6 +39,7 @@
         UserModel.max_tem_middle = @"38.1";
         UserModel.max_tem_high = @"39.1";
         UserModel.max_tem_supper_high = @"41";
+        UserModel.temp_currentElec = @"35";
         UserModel.temp_check = @"0.0";
         UserModel.max_alert_state = NO;
         UserModel.max_notify_vibration = NO;

@@ -7,7 +7,7 @@
 //
 
 #import "TPTool.h"
-
+#import "MJAudioTool.h"
 @implementation TPTool
 
 +(instancetype)sharedToolInstance{
@@ -105,6 +105,95 @@
 //    NSLog(@"currentFloat = %f",currentFloat);
     return currentFloat;
 }
+
+//根据超限温度提示不同警报
++(void)palyAlartTempFloat:(CGFloat)temp{
+
+    //温度超限报警开关
+    if (UserModel.max_alert_state) {
+        if ((temp>=[UserModel.max_tem_low floatValue])&&(temp<[UserModel.max_tem_middle floatValue])) {
+            if (UserModel.max_notify_voice) {
+                //播放音乐
+                [MJAudioTool playMusic:@"innocence.mp3"];
+                //播放音效
+//                [MJAudioTool playSound:@"alarm.wav"];
+            }
+            //振动
+            if (UserModel.max_notify_vibration) {
+                [MJAudioTool begainPlayingSoundid];
+            }
+        }else if ((temp>=[UserModel.max_tem_middle floatValue])&&(temp<[UserModel.max_tem_high floatValue])){
+            if (UserModel.max_notify_voice) {
+                //播放音乐
+                [MJAudioTool playMusic:@"innocence.mp3"];
+                //播放音效
+//                [MJAudioTool playSound:@"alarm.wav"];
+            }
+            //振动
+            if (UserModel.max_notify_vibration) {
+                [MJAudioTool begainPlayingSoundid];
+            }
+        }else if ((temp>=[UserModel.max_tem_high floatValue])&&(temp<[UserModel.max_tem_supper_high floatValue])){
+            if (UserModel.max_notify_voice) {
+                //播放音乐
+                [MJAudioTool playMusic:@"innocence.mp3"];
+//                播放音效
+//                [MJAudioTool playSound:@"alarm.wav"];
+            }
+            //振动
+            if (UserModel.max_notify_vibration) {
+                [MJAudioTool begainPlayingSoundid];
+            }
+        }else if (temp>=[UserModel.max_tem_supper_high floatValue]){
+            if (UserModel.max_notify_voice) {
+                //播放音乐
+                [MJAudioTool playMusic:@"innocence.mp3"];
+//                //播放音效
+//                [MJAudioTool playSound:@"alarm.wav"];
+            }
+            //振动
+            if (UserModel.max_notify_vibration) {
+                [MJAudioTool begainPlayingSoundid];
+            }
+        }else{
+            
+        }
+    }
+}
+
+//设备断开连接时警报
++(void)deviceCutUpalyAlart{
+    //设备断开连接警报开启
+    if (UserModel.device_disconnect) {
+        //播放音乐
+//        [MJAudioTool playMusic:@"innocence.mp3"];
+        ////播放音效
+        //[MJAudioTool playSound:@"alarm.wav"];
+
+        [SVProgressHUD showErrorWithStatus:@"蓝牙设备断开连接"];
+    }
+}
+
+//间隔
++(NSInteger)getMaxTemp:(CGFloat)temp{
+    NSInteger  num = 0;
+    if (temp>=0 && temp<=1) {
+        return num = 1;
+    }else if (temp>1 && temp<=2){
+        return num = 2;
+    }else if (temp>2 && temp<=3){
+        return num = 3;
+    }else if (temp>3 && temp<=4){
+        return num = 4;
+    }else if (temp>4 && temp<=5){
+        return num = 5;
+    }else if (temp>5 && temp<=6){
+        return num = 6;
+    }else{
+        return 1;
+    }
+}
+
 
 
 

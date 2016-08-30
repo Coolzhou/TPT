@@ -15,10 +15,13 @@ static NSString * const MAX_TEM_LOW = @"max_tem_low";
 static NSString * const MAX_TEM_MIDDLE = @"max_tem_middle";
 static NSString * const MAX_TEM_HIGH = @"max_tem_high";
 static NSString * const MAX_TEM_SUPPER_HIGH = @"max_tem_supper_high";
+static NSString * const TEMP_CURRENTELEC = @"temp_currentElec";
 
 static NSString * const MAX_ALERT_STATE = @"max_alert_state";
 static NSString * const MAX_NOTIFY_VOICE= @"max_notify_voice";
 static NSString * const MAX_NOFIFY_VIBRATION= @"max_notify_vibration";
+
+
 
 static NSString * const TEMP_CHECK= @"temp_check";
 static NSString * const  TEMP_UNIT = @"temp_unit";
@@ -87,6 +90,17 @@ static NSString * const  DEVICE_DISCONNECT = @"device_disconnect";
 -(NSString *)temp_check{
     NSString *temp_check = [[NSUserDefaults standardUserDefaults]objectForKey:TEMP_CHECK];
     return temp_check;
+}
+
+//当前电量
+-(void)setTemp_currentElec:(NSString *)temp_currentElec{
+    [[NSUserDefaults standardUserDefaults] setObject:temp_currentElec forKey:TEMP_CURRENTELEC];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+-(NSString *)temp_currentElec{
+    NSString *temp_currentelec = [[NSUserDefaults standardUserDefaults]objectForKey:TEMP_CURRENTELEC];
+    return temp_currentelec;
 }
 
 //警报开关

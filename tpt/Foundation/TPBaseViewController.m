@@ -33,9 +33,10 @@
     UIBarButtonItem *left_navigationItem = [[UIBarButtonItem alloc]initWithCustomView:self.navbackButton];
     
     UIBarButtonItem *right_navigationItem = [[UIBarButtonItem alloc]initWithCustomView:self.navrightButton];
+    UIBarButtonItem *right_navigationbluetoothItem = [[UIBarButtonItem alloc]initWithCustomView:self.navBluetoothView];
     
     self.navigationItem.leftBarButtonItem = left_navigationItem;
-    self.navigationItem.rightBarButtonItem = right_navigationItem;
+    self.navigationItem.rightBarButtonItems = @[right_navigationItem,right_navigationbluetoothItem];
     self.navigationItem.titleView = self.navTitleLable;
 
 }
@@ -222,6 +223,17 @@
     }
     return _navrightButton;
 }
+
+-(UIImageView *)navBluetoothView{
+    if (!_navBluetoothView) {
+        _navBluetoothView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 20, 20)];
+        _navBluetoothView.image = [UIImage imageNamed:@"navigation_bluetooth"];
+        _navBluetoothView.hidden = YES;
+    }
+    return _navBluetoothView;
+}
+
+
 
 -(UILabel *)navTitleLable{
     if (!_navTitleLable) {

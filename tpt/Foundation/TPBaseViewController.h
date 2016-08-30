@@ -16,6 +16,8 @@
 
 @property (nonatomic,strong)UIButton *navrightButton;//右侧按钮
 
+@property (nonatomic,strong)UIImageView *navBluetoothView;//右侧蓝牙按钮
+
 @property (nonatomic,strong)UILabel *navTitleLable;//右侧按钮
 
 

@@ -38,8 +38,8 @@ static const CGFloat kTopSpace = 30.f;//距离顶部y值
 //        self.backgroundColor = [UIColor redColor];
         self.curve = NO;
         self.lineH = 0;
-        _yMax = 42;
-        _yMin = 36;
+        self.yMax = 41;
+        self.yMin = 41 - chartMaxNum;
         chartLineTheXAxisSpan = (self.bounds.size.width-2*chartLineStartX)/(chartMaxNum-1);
         [self drawHorizontal];
         [self drawVertical];
@@ -71,12 +71,12 @@ static const CGFloat kTopSpace = 30.f;//距离顶部y值
 - (void)setYMax:(CGFloat)yMax {
     _yMax = yMax;
 
-    _yMax = _yMax + 2;
+    NSLog(@"_ycount = %f",yMax);
 }
 
 -(void)setYMin:(CGFloat)yMin{
-    _yMax = yMin;
-    _yMin = yMin - 2;
+    _yMin = yMin;
+    NSLog(@"_ycount = %f",yMin);
 }
 
 - (void)setCurve:(BOOL)curve {
@@ -137,27 +137,25 @@ static const CGFloat kTopSpace = 30.f;//距离顶部y值
         [self.pointXArray addObject:@(chartLineStartX + chartLineTheXAxisSpan * i)];
     }
     //设置y轴
+
+    CGFloat maxFloat = [TPTool getUnitCurrentTempFloat:self.yMax];
+    CGFloat minFloat = [TPTool getUnitCurrentTempFloat:self.yMin];
+
+    NSInteger margeH = [TPTool getMaxTemp:((maxFloat - minFloat)/chartMaxNum)];
+
+    NSInteger maxTemp =(NSInteger)maxFloat;
+    NSInteger minTemp =(NSInteger)(maxTemp +1 - chartMaxNum * margeH);
+
+//    NSLog(@"max =%f- float =%f ||  min= %f- mfloat= %ld",_yMax,maxFloat,_yMin,minTemp);
+
     for (NSInteger i = 0; i < _xValues.count; i++) {
 
-//        NSLog(@"aaa = %f",chartLineTheYAxisSpan * kYEqualPaths - [_yValues[i] floatValue]/_yMax * chartLineTheYAxisSpan * kYEqualPaths + kTopSpace);
-//
-//        NSLog(@"50 * 7  - 30 + = %f",(self.lineH * kYEqualPaths-[_yValues[i] floatValue]-kLableMin)/(_yMax-kLableMin) * self.lineH *kYEqualPaths);
+        CGFloat tempFloat = [TPTool getUnitCurrentTemp:_yValues[i]];
 
-
-//    [self.pointYArray addObject:@(self.lineH * chartMaxNum-([_yValues[i] floatValue]-kLableMin)/(_yMax-kLableMin) * self.lineH *chartMaxNum+kTopSpace)];
-
-//        CGFloat margeH = (_yValues[i] - _yMin)/chartMaxNum;
-//        NSInteger  yy =margeH>1? (NSInteger)margeH:1;
-
-        [self.pointYArray addObject:@(self.lineH * chartMaxNum-([_yValues[i] floatValue]-_yMin)/(_yMax-_yMin) * self.lineH *chartMaxNum+kTopSpace)];
-
-//        NSLog(@"ssss = %f")
-
+        [self.pointYArray addObject:@(self.lineH * chartMaxNum-(tempFloat - minTemp)/(maxTemp +1 - minTemp) * self.lineH *chartMaxNum+kTopSpace)];
     }
-    
     for (NSInteger i = 0; i < self.pointXArray.count; i++) {
         CGPoint point = CGPointMake([self.pointXArray[i] floatValue], [self.pointYArray[i] floatValue]);
-//        NSValue * value = [NSValue valueWithBytes:&point objCType:@encode(CGPoint)];
         NSValue * value = [NSValue valueWithCGPoint:point];
         [self.points addObject:value];
     }
@@ -201,8 +199,12 @@ static const CGFloat kTopSpace = 30.f;//距离顶部y值
     view.layer.masksToBounds = YES;
     [self addSubview:view];
 
-    UILabel *pointLable = [[UILabel alloc]initWithFrame:CGRectMake(0, 0,20, 16)];
-    pointLable.text = [NSString stringWithFormat:@"%.2f",point.y];
+    UILabel *pointLable = [[UILabel alloc]initWithFrame:CGRectMake(0, 0,40, 16)];
+    pointLable.center = CGPointMake(point.x, point.y -15);
+    pointLable.font = [UIFont systemFontOfSize:11];
+    pointLable.textColor = [UIColor lightGrayColor];
+    pointLable.textAlignment = NSTextAlignmentCenter;
+    pointLable.text = [NSString stringWithFormat:@"%.2f",[TPTool getUnitCurrentTemp:_yValues[index]]];
     [self addSubview:pointLable];
     
     UIButton * btn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -223,7 +225,12 @@ static const CGFloat kTopSpace = 30.f;//距离顶部y值
     UILabel * label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, chartLineTheXAxisSpan, 20)];
     label.center = CGPointMake(point.x, self.lineH * chartMaxNum + kTopSpace+15);
     label.textColor = [UIColor lightGrayColor];
-    label.font = [UIFont systemFontOfSize:10.f];
+    if (IS_IPHONE_4_OR_LESS ||IS_IPHONE_5) {
+        label.font = [UIFont systemFontOfSize:8.f];
+    }else{
+        label.font = [UIFont systemFontOfSize:10.f];
+    }
+
     label.textAlignment = NSTextAlignmentCenter;
     label.text = _xValues[index];
     [self addSubview:label];
@@ -235,21 +242,18 @@ static const CGFloat kTopSpace = 30.f;//距离顶部y值
         UILabel * label = [[UILabel alloc] initWithFrame:CGRectMake(0, self.lineH * i + kTopSpace-5, chartLineStartX - 5, 10)];
         label.textColor = [UIColor lightGrayColor];
         label.font = [UIFont systemFontOfSize:10.f];
-        label.textAlignment = NSTextAlignmentRight;
+        label.textAlignment = NSTextAlignmentCenter;
         [self addSubview:label];
 
         CGFloat maxFloat = [TPTool getUnitCurrentTempFloat:_yMax];
         CGFloat minFloat = [TPTool getUnitCurrentTempFloat:_yMin];
 
-        CGFloat margeH = (maxFloat - minFloat)/chartMaxNum;
-        CGFloat  yy =margeH>1? margeH:1;
-
-        NSLog(@"max %f- float%f ||  min %f- mfloat %f",_yMax,maxFloat,_yMin,maxFloat);
-
+        NSInteger margeH = [TPTool getMaxTemp:((maxFloat - minFloat)/chartMaxNum)];
+        NSLog(@"margeH = %ld",margeH);
         if (_yValues.count<chartMaxNum) {
-            label.text = [NSString stringWithFormat:@"%.0f",maxFloat - i*yy];
+            label.text = [NSString stringWithFormat:@"%.0f",maxFloat - i*margeH + 1];
         }else{
-            label.text = [NSString stringWithFormat:@"%.0f",maxFloat - i*yy];
+            label.text = [NSString stringWithFormat:@"%.0f",maxFloat - i*margeH + 1];
         }
     }
 }

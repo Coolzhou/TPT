@@ -43,7 +43,7 @@ blue:((float)(rgbValue & 0xFF)) / 255.0 alpha:1.0]
 //line 边框线颜色
 #define LineColor RGB(220,232,230)
 
-#define chartMaxNum 6
+#define chartMaxNum 7
 
 #define chartHistoryMaxNum 7
 

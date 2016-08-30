@@ -49,6 +49,7 @@
 		187550F31D5DA6EC00648557 /* TPTStateCacheTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 187550F21D5DA6EC00648557 /* TPTStateCacheTool.m */; };
 		187550F71D5DB3B700648557 /* TPTHistoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 187550F51D5DB3B700648557 /* TPTHistoryCell.m */; };
 		187550F81D5DB3B700648557 /* TPTHistoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 187550F61D5DB3B700648557 /* TPTHistoryCell.xib */; };
+		187B9D1E1D7522BC000CEC62 /* alarm.wav in Resources */ = {isa = PBXBuildFile; fileRef = 187B9D1D1D7522BC000CEC62 /* alarm.wav */; };
 		18A3E0291D49EFB600FCFF01 /* XPQRotateDials.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A3E0281D49EFB600FCFF01 /* XPQRotateDials.m */; };
 		18B23CEF1D41CC3B00CE9AA6 /* ShareSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18B23CCD1D41CC3B00CE9AA6 /* ShareSDK.framework */; };
 		18B23CF01D41CC3B00CE9AA6 /* ShareSDKExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18B23CD01D41CC3B00CE9AA6 /* ShareSDKExtension.framework */; };
@@ -232,6 +233,7 @@
 		187550F41D5DB3B700648557 /* TPTHistoryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPTHistoryCell.h; sourceTree = "<group>"; };
 		187550F51D5DB3B700648557 /* TPTHistoryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPTHistoryCell.m; sourceTree = "<group>"; };
 		187550F61D5DB3B700648557 /* TPTHistoryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TPTHistoryCell.xib; sourceTree = "<group>"; };
+		187B9D1D1D7522BC000CEC62 /* alarm.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = alarm.wav; sourceTree = "<group>"; };
 		18A3E0271D49EFB600FCFF01 /* XPQRotateDials.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XPQRotateDials.h; sourceTree = "<group>"; };
 		18A3E0281D49EFB600FCFF01 /* XPQRotateDials.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XPQRotateDials.m; sourceTree = "<group>"; };
 		18B23CCD1D41CC3B00CE9AA6 /* ShareSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ShareSDK.framework; sourceTree = "<group>"; };
@@ -599,6 +601,7 @@
 				1810D9C11D588AEE00C1DB65 /* TPTool.h */,
 				1810D9C21D588AEE00C1DB65 /* TPTool.m */,
 				183370F81D70449D001D5EFE /* innocence.mp3 */,
+				187B9D1D1D7522BC000CEC62 /* alarm.wav */,
 				183370F51D704453001D5EFE /* MJAudioTool.h */,
 				183370F61D704453001D5EFE /* MJAudioTool.m */,
 				187550EA1D5D9DE500648557 /* WBCacheTool.h */,
@@ -1249,6 +1252,7 @@
 				18B23CFA1D41CC3C00CE9AA6 /* ShareSDK.bundle in Resources */,
 				180912391D66BC1D003F51A5 /* TPTdutyCell.xib in Resources */,
 				18E560D81D3DBB930053B9A4 /* Main.storyboard in Resources */,
+				187B9D1E1D7522BC000CEC62 /* alarm.wav in Resources */,
 				185A96D71D6A929400403E44 /* TPTCorrectCell.xib in Resources */,
 				18FFB3BE1D5C834400EFE0D3 /* alertSetThreeCell.xib in Resources */,
 				18FD054B1D5B3B5C009D4B16 /* TPTSetEleCell.xib in Resources */,
@@ -1542,7 +1546,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: MA CHAOSHAN (56ZWZ5K99K)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: MA CHAOSHAN (56ZWZ5K99K)";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1566,6 +1570,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.quarks.tpt;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "90784d56-5202-4a85-bfc3-d5fbc2f173b1";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -1575,7 +1580,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: MA CHAOSHAN (56ZWZ5K99K)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: MA CHAOSHAN (56ZWZ5K99K)";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1599,6 +1604,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.quarks.tpt;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "90784d56-5202-4a85-bfc3-d5fbc2f173b1";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

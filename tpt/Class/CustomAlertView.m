@@ -148,18 +148,20 @@
         [self addSubview:qRButton];
 
         NSString *suggestStr = NSLocalizedString(@"max_suggest",@"");
+        NSString *temp;
         if (tag ==10) {
-            NSString *temp = @"37.5";
-            self.infoLable.text = [NSString stringWithFormat:@"%@%@℃",suggestStr,temp];
+            temp = @"37.5";
         }else if (tag ==11){
-            NSString *temp = @"38.1";
-            self.infoLable.text = [NSString stringWithFormat:@"%@%@℃",suggestStr,temp];
+            temp = @"38.1";
         }else if (tag ==12){
-            NSString *temp = @"39.1";
-            self.infoLable.text = [NSString stringWithFormat:@"%@%@℃",suggestStr,temp];
+            temp = @"39.1";
         }else{
-            NSString *temp = @"41";
-            self.infoLable.text = [NSString stringWithFormat:@"%@%@℃",suggestStr,temp];
+            temp = @"41";
+        }
+        if (UserModel.temp_unit) {
+            self.infoLable.text = [NSString stringWithFormat:@"%@ %.1f℉",suggestStr,[TPTool getUnitCurrentTemp:temp]];
+        }else{
+            self.infoLable.text = [NSString stringWithFormat:@"%@ %.1f℃",suggestStr,[TPTool getUnitCurrentTemp:temp]];
         }
         [self show:YES];
     }
@@ -300,6 +302,7 @@
         _infoLable = [[UILabel alloc]init];
         _infoLable.textColor = MainContentColor;
         _infoLable.font = [UIFont systemFontOfSize:17];
+        _infoLable.numberOfLines = 0;
         _infoLable.textAlignment = NSTextAlignmentLeft;
     }
     return _infoLable;

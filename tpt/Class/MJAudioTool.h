@@ -62,7 +62,7 @@
 /**
  *   振动
  */
-//+ (void *)begainPlayingSoundid;
++ (void)begainPlayingSoundid;
 
 
 

@@ -23,7 +23,7 @@
 +(NSString *)getCurrentTempState:(NSString *)temp;
 
 //截屏
-+(UIImage *) captureScreen;
++(UIImage *)captureScreen;
 
 //保存到相册
 +(void)saveScreenshotToPhotosAlbum;
@@ -34,4 +34,15 @@
 
 //根据单位℃、℉ 得到不同温度CGFloat
 +(CGFloat)getUnitCurrentTempFloat:(CGFloat)temp;
+
+//根据超限温度提示不同警报
++(void)palyAlartTempFloat:(CGFloat)temp;
+
+//设备断开连接时警报
++(void)deviceCutUpalyAlart;
+
+
+//间隔
++(NSInteger)getMaxTemp:(CGFloat)temp;
+
 @end

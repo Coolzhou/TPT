@@ -15,7 +15,11 @@
     self.bgImgView.image = [[UIImage imageNamed:@"set_bg_red"] stretchableImageWithLeftCapWidth:10 topCapHeight:10];
     self.titleLable.text = NSLocalizedString(@"setting_power",@"");
     NSString *content = NSLocalizedString(@"setting_power_lest",@"");
-    self.contentLable.text = [NSString stringWithFormat:@"%@17%%",content];
+
+    if ([NSString isNull:UserModel.temp_currentElec]) {
+        UserModel.temp_currentElec = @"35";
+    }
+    self.contentLable.text = [NSString stringWithFormat:@"%@%@%%",content,UserModel.temp_currentElec];
 }
 
 + (instancetype)theTPTSetEleCellWithTableView:(UITableView *)tableView andIndexPath:(NSIndexPath *)indexpath{

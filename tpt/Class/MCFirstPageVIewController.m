@@ -114,6 +114,8 @@
 //    self.rotateDials.value = tempStr;
 //    [self.valueArray addObject:tempStr];
 //
+//    [self showAlarm:[tempStr floatValue]];
+//
 //    NSString *timeStr =[TPTool getCurrentDate];
 //    NSString *tempTimeStr = [TPTool getTempCurrentDate];
 //    [self.timeArray addObject:timeStr];
@@ -197,7 +199,7 @@
 
     [baby setBlockOnCentralManagerDidUpdateState:^(CBCentralManager *central) {
         if (central.state == CBCentralManagerStatePoweredOn) {
-            [SVProgressHUD showInfoWithStatus:@"设备打开成功，开始扫描设备"];
+            NSLog(@"设备打开成功，开始扫描设备");
         }
     }];
     //设置扫描到设备的委托
@@ -208,19 +210,20 @@
     }];
     //设置设备连接成功的委托,同一个baby对象，使用不同的channel切换委托回调
     [baby setBlockOnConnectedAtChannel:channelOnPeropheralView block:^(CBCentralManager *central, CBPeripheral *peripheral) {
-        [SVProgressHUD showInfoWithStatus:[NSString stringWithFormat:@"设备：%@--连接成功",peripheral.name]];
+        NSLog(@"设备：%@--连接成功",peripheral);
+        weakSelf.navBluetoothView.hidden = NO;
     }];
 
     //设置设备连接失败的委托
     [baby setBlockOnFailToConnectAtChannel:channelOnPeropheralView block:^(CBCentralManager *central, CBPeripheral *peripheral, NSError *error) {
         NSLog(@"设备：%@--连接失败",peripheral.name);
-        [SVProgressHUD showInfoWithStatus:[NSString stringWithFormat:@"设备：%@--连接失败",peripheral.name]];
     }];
 
     //设置设备断开连接的委托
     [baby setBlockOnDisconnectAtChannel:channelOnPeropheralView block:^(CBCentralManager *central, CBPeripheral *peripheral, NSError *error) {
         NSLog(@"设备：%@--断开连接",peripheral.name);
-        [SVProgressHUD showInfoWithStatus:[NSString stringWithFormat:@"设备：%@--断开失败",peripheral.name]];
+        weakSelf.navBluetoothView.hidden = YES;
+        [TPTool deviceCutUpalyAlart]; //设备断开警报
         [weakSelf loadData];
     }];
 
@@ -337,7 +340,7 @@
                        NSString *currentElec =[NSString stringWithFormat:@"%u",resultByte[5]];
 
                        if (![NSString isNull:currentElec]) {
-                           [[NSUserDefaults standardUserDefaults]setObject:currentElec forKey:@"currentElec"];//电量
+                           UserModel.temp_currentElec = currentElec;
                        }
                        //温度
                        NSString *aa =[NSString stringWithFormat:@"%u.%u",resultByte[3],resultByte[4]];
@@ -393,20 +396,10 @@
 }
 
 #pragma mark 警报
-
 -(void)showAlarm:(CGFloat)temp{
 
-    if (temp>[UserModel.max_tem_low floatValue]) {
-
-        if (UserModel.max_notify_voice) {
-            [MJAudioTool playSound:@"innocence.mp3" andRepeat:NO];
-        }
-
-//        //振动
-//        if (UserModel.max_notify_vibration) {
-//            [MJAudioTool begainPlayingSoundid];
-//        }
-    }
+    //播放警报
+    [TPTool palyAlartTempFloat:temp];
 }
 
 #pragma mark app 进入后台
