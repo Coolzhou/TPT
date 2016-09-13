@@ -106,7 +106,7 @@
             
         default:{
 //            pushvc = [[MCOtherViewController alloc] init];
-//            [[MCLeftSliderManager sharedInstance].LeftSlideVC closeLeftView];//关闭左侧抽屉
+            [[MCLeftSliderManager sharedInstance].LeftSlideVC closeLeftView];//关闭左侧抽屉
 //            [[MCLeftSliderManager sharedInstance].mainNavigationController pushViewController:pushvc animated:NO];
         }
             break;

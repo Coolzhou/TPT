@@ -41,9 +41,9 @@
         UserModel.max_tem_supper_high = @"41";
         UserModel.temp_currentElec = @"35";
         UserModel.temp_check = @"0.0";
-        UserModel.max_alert_state = NO;
-        UserModel.max_notify_vibration = NO;
-        UserModel.max_notify_voice = NO;
+        UserModel.max_alert_state = YES;
+        UserModel.max_notify_vibration = YES;
+        UserModel.max_notify_voice = YES;
         UserModel.temp_unit = NO;
         UserModel.device_disconnect = NO;
     }

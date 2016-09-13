@@ -35,6 +35,8 @@
 		1810D9C61D58902400C1DB65 /* NSString+DZCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 1810D9C51D58902400C1DB65 /* NSString+DZCategory.m */; };
 		183370F71D704453001D5EFE /* MJAudioTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 183370F61D704453001D5EFE /* MJAudioTool.m */; };
 		183370F91D70449D001D5EFE /* innocence.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 183370F81D70449D001D5EFE /* innocence.mp3 */; };
+		185002F61D87A94C00A29A5B /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 185002F51D87A94C00A29A5B /* Info.plist */; };
+		185002F91D87ABFA00A29A5B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 185002FB1D87ABFA00A29A5B /* InfoPlist.strings */; };
 		185A96D11D6A927300403E44 /* TPTCorrectVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 185A96D01D6A927300403E44 /* TPTCorrectVC.m */; };
 		185A96D61D6A929400403E44 /* TPTCorrectCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 185A96D41D6A929400403E44 /* TPTCorrectCell.m */; };
 		185A96D71D6A929400403E44 /* TPTCorrectCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 185A96D51D6A929400403E44 /* TPTCorrectCell.xib */; };
@@ -206,6 +208,9 @@
 		183370F51D704453001D5EFE /* MJAudioTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJAudioTool.h; sourceTree = "<group>"; };
 		183370F61D704453001D5EFE /* MJAudioTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJAudioTool.m; sourceTree = "<group>"; };
 		183370F81D70449D001D5EFE /* innocence.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = innocence.mp3; sourceTree = "<group>"; };
+		185002F51D87A94C00A29A5B /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		185002FA1D87ABFA00A29A5B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		185002FC1D87ABFC00A29A5B /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		185A96CF1D6A927300403E44 /* TPTCorrectVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPTCorrectVC.h; sourceTree = "<group>"; };
 		185A96D01D6A927300403E44 /* TPTCorrectVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPTCorrectVC.m; sourceTree = "<group>"; };
 		185A96D31D6A929400403E44 /* TPTCorrectCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPTCorrectCell.h; sourceTree = "<group>"; };
@@ -292,7 +297,6 @@
 		18E560D71D3DBB930053B9A4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		18E560D91D3DBB930053B9A4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		18E560DC1D3DBB930053B9A4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		18E560DE1D3DBB930053B9A4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		18E560E31D3DBB930053B9A4 /* tptTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = tptTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		18E560E71D3DBB930053B9A4 /* tptTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = tptTests.m; sourceTree = "<group>"; };
 		18E560E91D3DBB930053B9A4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -761,12 +765,13 @@
 				18B23D141D41D2D100CE9AA6 /* AppDelegate+shareSDK.h */,
 				18B23D151D41D2D100CE9AA6 /* AppDelegate+shareSDK.m */,
 				18E561031D3DDCD10053B9A4 /* PrefixHeader.pch */,
+				185002F51D87A94C00A29A5B /* Info.plist */,
 				185A96EA1D6B050300403E44 /* Localizable.strings */,
 				1869DD7B1D40B24400BA6526 /* TPCommon.h */,
 				180909221D48CDBC004C47F9 /* Macro.h */,
+				185002FB1D87ABFA00A29A5B /* InfoPlist.strings */,
 				18E560D91D3DBB930053B9A4 /* Assets.xcassets */,
 				18E560DB1D3DBB930053B9A4 /* LaunchScreen.storyboard */,
-				18E560DE1D3DBB930053B9A4 /* Info.plist */,
 				18E560D61D3DBB930053B9A4 /* Main.storyboard */,
 				18E560CE1D3DBB930053B9A4 /* main.m */,
 			);
@@ -1238,6 +1243,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1810D9C01D587F4600C1DB65 /* 气泡.png in Resources */,
+				185002F91D87ABFA00A29A5B /* InfoPlist.strings in Resources */,
 				18B23CF11D41CC3B00CE9AA6 /* ShareSDKUI.bundle in Resources */,
 				18FFB3B41D5C831800EFE0D3 /* alertSetOneCell.xib in Resources */,
 				18FD05461D5B3B1B009D4B16 /* TPTSetupCell.xib in Resources */,
@@ -1245,6 +1251,7 @@
 				18FD05501D5B3B71009D4B16 /* TPTSetOtherCell.xib in Resources */,
 				18B953641D49CF5400F2221C /* TPLeftCell.xib in Resources */,
 				18E560DA1D3DBB930053B9A4 /* Assets.xcassets in Resources */,
+				185002F61D87A94C00A29A5B /* Info.plist in Resources */,
 				AE6E9B731D4DDC820080116A /* TPTuiCell.xib in Resources */,
 				18B23CF41D41CC3B00CE9AA6 /* TencentOpenApi_IOS_Bundle.bundle in Resources */,
 				185A96E81D6B050300403E44 /* Localizable.strings in Resources */,
@@ -1430,6 +1437,15 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		185002FB1D87ABFA00A29A5B /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				185002FA1D87ABFA00A29A5B /* en */,
+				185002FC1D87ABFC00A29A5B /* zh-Hans */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
 		185A96EA1D6B050300403E44 /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -1546,7 +1562,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: MA CHAOSHAN (56ZWZ5K99K)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: MA CHAOSHAN (56ZWZ5K99K)";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1580,7 +1596,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: MA CHAOSHAN (56ZWZ5K99K)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: MA CHAOSHAN (56ZWZ5K99K)";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (

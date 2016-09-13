@@ -7,6 +7,8 @@
 */
 
 
+"CFBundleDisplayName" = "Baby Bracelet";
+
 "app_name"= "U-Telecare";
 "unknown_device"= "Unknown device";
 "unknown_characteristic"= "Unknown characteristic";
