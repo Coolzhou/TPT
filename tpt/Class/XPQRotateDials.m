@@ -77,7 +77,12 @@
     tachLayer = [CALayer layer];
     tachLayer.bounds = CGRectMake(marge, 0,dashW, dashW/2);
     tachLayer.position = CGPointMake(kScreenWidth/2, dashW/4);
-    tachLayer.contents = (id)[UIImage imageNamed:@"main_dash"].CGImage;
+
+    if ([TPTool getPreferredLanguage]) {
+        tachLayer.contents = (id)[UIImage imageNamed:@"main_dash_en"].CGImage;
+    }else{
+        tachLayer.contents = (id)[UIImage imageNamed:@"main_dash"].CGImage;
+    }
     [self.layer addSublayer:tachLayer];
     
     // Create the layer for the pin

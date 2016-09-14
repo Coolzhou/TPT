@@ -13,11 +13,6 @@
 @interface TPTool : NSObject
 
 +(instancetype)sharedToolInstance;
-//返回当前时间hh:ss:mm
-+(NSString *)getCurrentDate;
-
-//返回当前时间YYYY/MM/DD hh:ss:mm
-+(NSString *)getTempCurrentDate;
 
 //当前温度状态 0正常 1低热 2中热 3高热4 超热
 +(NSString *)getCurrentTempState:(NSString *)temp;
@@ -41,8 +36,34 @@
 //设备断开连接时警报
 +(void)deviceCutUpalyAlart;
 
-
 //间隔
 +(NSInteger)getMaxTemp:(CGFloat)temp;
+
+//返回当前时间
++(NSString *)getCurrentDate;
+
+//返回当前时间戳
++(int)getCurrentTimeIntDate;
+
+//返回当前时间YYYY/MM/DD hh:ss:mm
++(NSString *)getTempCurrentDate;
+
+
+//时间戳转时间yyyy/MM/dd hh:mm:ss
++(NSString *)dateTimeWithNStringTime:(int)timerInterval;
+
+//时间戳转时间hh:mm:ss
++(NSString *)stringDataWithTimeInterval:(int)timerInterval;
+
+//时间yyyy/MM/dd hh:mm:ss 转时间戳 int
++(int)dateTimeIntervalWithNIntTime:(NSDate *)timer;
+
+//NSDate 0点的时间戳 int
++(int)dateZeroTimeIntervalWithIntTime:(NSDate *)timer;
+
+//时间
++(NSString *)dateTimeForLocaleDate:(NSDate *)currentDate;
+//判断当前系统系统语言
++ (BOOL)getPreferredLanguage;
 
 @end

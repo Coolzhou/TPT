@@ -35,11 +35,13 @@ static const CGFloat kTopSpace = 30.f;//距离顶部y值
 - (instancetype)initWithFrame:(CGRect)frame withDataSource:(NSArray *)dataSource{
     self = [super initWithFrame:frame];
     if (self) {
+
+        NSLog(@"asdfadfadf");
         self.allNum = 0;
         self.nowNum = 0;
         self.backgroundColor = [UIColor clearColor];
         self.curve = NO;
-        self.dataArray = dataSource;
+        self.dataArray = [dataSource copy];
         if (dataSource.count>=chartHistoryMaxNum) {
             self.currentArray = [dataSource subarrayWithRange:NSMakeRange(0, chartHistoryMaxNum)];
         }else{
@@ -54,9 +56,11 @@ static const CGFloat kTopSpace = 30.f;//距离顶部y值
 
 - (void)startDraw {
 
+    NSLog(@"self.dataArray = %@",self.dataArray);
+
     for (int i=0; i<self.dataArray.count; i++) {
         WBTemperature *temps = self.dataArray[i];
-        NSString *timeStr = temps.create_time;
+        NSString *timeStr = [NSString stringWithFormat:@"%@",[TPTool stringDataWithTimeInterval:temps.create_time]];
         NSString *tempStr =  [NSString stringWithFormat:@"%f",temps.temp];
         [self.timeArray addObject:timeStr];
         [self.valueArray addObject:tempStr];

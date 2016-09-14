@@ -26,11 +26,14 @@
 /** 获取一组数据的最小温度*/
 +(CGFloat)getMinTemp:(int)tempID;
 
+/** 当天记录的数组数*/
++(NSArray*)temperatureDateCounts:(int)tempID;
+
 /** 总共记录的数组数*/
 +(NSArray*)temperatureCounts;
 
 /** 删除一条温度*/
-+(void)deleteTemp:(NSString*)tempID;
++(void)deleteTemp:(int)tempID;
 
 +(void)deleteAllTemp;
 

@@ -25,7 +25,7 @@ static FMDatabaseQueue *_queue;
     
     //2.创表
     [_queue inDatabase:^(FMDatabase *db) {
-        [db executeUpdate:@"create table if not exists t_temp (id integer primary key autoincrement, create_time text, temperture real,temp blob);"];
+        [db executeUpdate:@"create table if not exists t_temp (id integer primary key autoincrement, create_time int, temperture real,temp blob);"];
     }];
     
 }
@@ -43,13 +43,12 @@ static FMDatabaseQueue *_queue;
     [_queue inDatabase:^(FMDatabase *db) {
         
         //1.获得需要存储的数据
-        NSString *create_time = temp.create_time;
-//        NSNumber *tempID = @(temp.tempID);
+        int create_time = temp.create_time;
         NSNumber *temperture = @(temp.temp);
         NSData *data = [NSKeyedArchiver archivedDataWithRootObject:temp];
         
         //2.存储数据
-        [db executeUpdate:@"insert into t_temp (create_time, temperture,temp) values(? ,? ,?)",create_time, temperture,data];
+        [db executeUpdate:@"insert into t_temp (create_time, temperture,temp) values(? ,? ,?)",@(create_time), temperture,data];
     }];
     
     [_queue close];
@@ -129,6 +128,26 @@ static FMDatabaseQueue *_queue;
             [array addObject:tempID];
         }
         
+    }];
+    [_queue close];
+    return  [array copy];
+}
+
+/** 当天记录的数组数*/
++(NSArray*)temperatureDateCounts:(int)tempID{
+    [self setup];
+    NSLog(@"tempID = %d",tempID);
+    int tempDD = tempID + 86400;
+    NSMutableArray *array = [NSMutableArray array];
+    [_queue inDatabase:^(FMDatabase *db) {
+        FMResultSet *rs = nil;
+        rs = [db executeQuery:@"select * from t_temp where create_time  between ? and ? ",@(tempID),@(tempDD)];
+        while (rs.next) {
+            NSData *data = [rs dataForColumn:@"temp"];
+            WBTemperature *temp = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+            [array addObject:temp];
+        }
+
     }];
     [_queue close];
     return  [array copy];

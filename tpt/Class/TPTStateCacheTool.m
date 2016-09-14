@@ -25,7 +25,7 @@ static FMDatabaseQueue *_queue;
 
     //2.创表
     [_queue inDatabase:^(FMDatabase *db) {
-        [db executeUpdate:@"create table if not exists t_temp_state (id integer primary key autoincrement, create_time text, temperture real,temp blob,temp_state text);"];
+        [db executeUpdate:@"create table if not exists t_temp_state (id integer primary key autoincrement, create_time int, temperture real,temp blob,temp_state text);"];
     }];
 
 }
@@ -43,13 +43,13 @@ static FMDatabaseQueue *_queue;
     [_queue inDatabase:^(FMDatabase *db) {
 
         //1.获得需要存储的数据
-        NSString *create_time = temp.create_time;
+        int create_time = temp.create_time;
         NSString *temp_state = temp.temp_state;
         NSNumber *temperture = @(temp.temp);
         NSData *data = [NSKeyedArchiver archivedDataWithRootObject:temp];
 
         //2.存储数据
-        [db executeUpdate:@"insert into t_temp_state (create_time, temperture,temp,temp_state) values(? ,? ,?,?)",create_time,temperture,data,temp_state];
+        [db executeUpdate:@"insert into t_temp_state (create_time, temperture,temp,temp_state) values(? ,? ,?,?)",@(create_time),temperture,data,temp_state];
     }];
 
     [_queue close];
@@ -135,15 +135,15 @@ static FMDatabaseQueue *_queue;
     return  [array copy];
 }
 
-+(void)deleteTemp:(NSString*)tempID
++(void)deleteTemp:(int)tempID
 {
     [self setup];
 
-    NSLog(@"tempID = %@",tempID);
+    NSLog(@"tempID = %d",tempID);
 
     [_queue inDatabase:^(FMDatabase *db) {
 
-        [db executeUpdate:@"delete from t_temp_state where create_time = ?",tempID];
+        [db executeUpdate:@"delete from t_temp_state where create_time = ?",@(tempID)];
     }];
 
     [_queue close];

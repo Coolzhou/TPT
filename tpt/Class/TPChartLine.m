@@ -74,7 +74,7 @@ static const CGFloat kTopSpace = 30.f;//距离顶部y值
         [self drawHorizontal];
         [self drawVertical];
 
-        NSLog(@"self.daAryya = %ld",self.dataArray.count);
+        NSLog(@"self.daAryya = %ld",(unsigned long)self.dataArray.count);
     }
     return self;
 }

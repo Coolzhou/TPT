@@ -19,23 +19,6 @@
     return tool;
 }
 
-+(NSString *)getCurrentDate{
-    NSDate *currentDate = [NSDate date];//获取当前时间，日期
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"hh:mm:ss"];
-    NSString *dateString = [dateFormatter stringFromDate:currentDate];
-    NSLog(@"dateString:%@",dateString);
-    return dateString;
-}
-
-+(NSString *)getTempCurrentDate{
-    NSDate *currentDate = [NSDate date];//获取当前时间，日期
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"yyyy/MM/dd hh:mm:ss"];
-    NSString *dateString = [dateFormatter stringFromDate:currentDate];
-    return dateString;
-}
-
 //当前温度状态 -1错误数据 0正常 1低热 2中热 3高热 4超热
 +(NSString *)getCurrentTempState:(NSString *)temp{
 
@@ -114,7 +97,7 @@
         if ((temp>=[UserModel.max_tem_low floatValue])&&(temp<[UserModel.max_tem_middle floatValue])) {
             if (UserModel.max_notify_voice) {
                 //播放音乐
-                [MJAudioTool playMusic:@"innocence.mp3"];
+                [MJAudioTool playMusic:@"main_alert_one.mp3"];
                 //播放音效
 //                [MJAudioTool playSound:@"alarm.wav"];
             }
@@ -125,9 +108,7 @@
         }else if ((temp>=[UserModel.max_tem_middle floatValue])&&(temp<[UserModel.max_tem_high floatValue])){
             if (UserModel.max_notify_voice) {
                 //播放音乐
-                [MJAudioTool playMusic:@"innocence.mp3"];
-                //播放音效
-//                [MJAudioTool playSound:@"alarm.wav"];
+                [MJAudioTool playMusic:@"main_alert_two.mp3"];
             }
             //振动
             if (UserModel.max_notify_vibration) {
@@ -136,9 +117,7 @@
         }else if ((temp>=[UserModel.max_tem_high floatValue])&&(temp<[UserModel.max_tem_supper_high floatValue])){
             if (UserModel.max_notify_voice) {
                 //播放音乐
-                [MJAudioTool playMusic:@"innocence.mp3"];
-//                播放音效
-//                [MJAudioTool playSound:@"alarm.wav"];
+                [MJAudioTool playMusic:@"main_alert_three.mp3"];
             }
             //振动
             if (UserModel.max_notify_vibration) {
@@ -147,9 +126,7 @@
         }else if (temp>=[UserModel.max_tem_supper_high floatValue]){
             if (UserModel.max_notify_voice) {
                 //播放音乐
-                [MJAudioTool playMusic:@"innocence.mp3"];
-//                //播放音效
-//                [MJAudioTool playSound:@"alarm.wav"];
+                [MJAudioTool playMusic:@"main_alert_free.mp3"];
             }
             //振动
             if (UserModel.max_notify_vibration) {
@@ -194,7 +171,115 @@
     }
 }
 
++(NSString *)getCurrentDate{
+    NSDate *currentDate = [NSDate date];//获取当前时间，日期
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"hh:mm:ss"];
+    NSString *dateString = [dateFormatter stringFromDate:currentDate];
+    NSLog(@"dateString:%@",dateString);
+    return dateString;
+}
 
++(NSString *)getCurrentDay{
+    NSDate *currentDate = [NSDate date];//获取当前时间，日期
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-mm-dd"];
+    NSString *dateString = [dateFormatter stringFromDate:currentDate];
+    NSLog(@"dateString:%@",dateString);
+    return dateString;
+}
 
++(int)getCurrentTimeIntDate{
+    NSDate *currentDate = [NSDate date];//获取当前时间，日期
+    int time = [currentDate timeIntervalSince1970];
+    NSLog(@"IntdateString:%d",time);
+    return time;
+}
+
++(NSString *)getTempCurrentDate{
+    NSDate *currentDate = [NSDate date];//获取当前时间，日期
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy/MM/dd hh:mm:ss"];
+    NSString *dateString = [dateFormatter stringFromDate:currentDate];
+    return dateString;
+}
+
+//时间戳转时间yyyy/MM/dd hh:mm:ss
++(NSString *)dateTimeWithNStringTime:(int)timerInterval{
+    NSDate *date = [NSDate dateWithTimeIntervalSince1970:timerInterval];
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"yyyy/MM/dd hh:mm:ss"];
+    NSString *showtime = [formatter stringFromDate:date];
+    return showtime;
+}
+//时间戳转时间hh:mm:ss
++(NSString *)stringDataWithTimeInterval:(int)timerInterval{
+    NSDate *date = [NSDate dateWithTimeIntervalSince1970:timerInterval];
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"hh:mm:ss"];
+    NSString *showtime = [formatter stringFromDate:date];
+    return showtime;
+}
+
+//时间NSDate 转时间戳 int
++(int)dateTimeIntervalWithNIntTime:(NSDate *)timer{
+    int time = [timer timeIntervalSince1970];
+    return time;
+}
+
+//NSDate 0点的时间戳 int
++(int)dateZeroTimeIntervalWithIntTime:(NSDate *)timer{
+
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSDateComponents *components = [calendar components:NSCalendarUnitYear|NSCalendarUnitMonth|NSCalendarUnitDay fromDate:timer];
+    NSDate *startDate = [calendar dateFromComponents:components];
+    int startInt = [TPTool dateTimeIntervalWithNIntTime:startDate];
+
+//    NSLog(@"aaaa = %d ,bb = %d",[TPTool dateTimeIntervalWithNIntTime:startDate] ,[TPTool dateTimeIntervalWithNIntTime:[NSDate date]]);
+    return startInt;
+}
+
++(NSString *)dateTimeForLocaleDate:(NSDate *)currentDate{
+    NSString *dateFormat;
+    NSString *dateComponents = @"yMMMMd";
+
+    NSDateFormatter *monthAndYearFormatter=[[NSDateFormatter alloc] init];
+
+    if ([TPTool getPreferredLanguage]) {
+        NSLocale *usLocale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US"];
+        dateFormat = [NSDateFormatter dateFormatFromTemplate:dateComponents options:0 locale:usLocale];
+        monthAndYearFormatter.dateFormat=dateFormat;
+        NSString *timeStr = [monthAndYearFormatter stringFromDate:currentDate];
+        NSLog(@"timeStr = %@",timeStr);
+        return timeStr;
+    }else{
+
+        NSLocale *zhLocale = [[NSLocale alloc] initWithLocaleIdentifier:@"zh_CN"];
+        dateFormat = [NSDateFormatter dateFormatFromTemplate:dateComponents options:0 locale:zhLocale];
+        monthAndYearFormatter.dateFormat=dateFormat;
+        NSString *timeStr = [monthAndYearFormatter stringFromDate:currentDate];
+        NSLog(@"timeStr = %@",timeStr);
+        return timeStr;
+    }
+}
+
+/**
+ *得到本机现在用的语言
+ * en:英文  zh-Hans:简体中文   zh-Hant:繁体中文    ja:日本  ......
+ */
++ (BOOL)getPreferredLanguage
+{
+    NSUserDefaults* defs = [NSUserDefaults standardUserDefaults];
+    NSArray* languages = [defs objectForKey:@"AppleLanguages"];
+    NSString* preferredLang = [languages objectAtIndex:0];
+
+    if ([preferredLang hasPrefix:@"en"]) {
+        return YES;
+    }else if ([preferredLang hasPrefix:@"zh"]){
+        return NO;
+    }else{
+        return YES;
+    }
+}
 
 @end

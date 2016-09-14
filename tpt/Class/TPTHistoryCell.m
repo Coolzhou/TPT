@@ -16,7 +16,6 @@
     self.bgImgView.image = [[UIImage imageNamed:@"tui_cell_bg"] stretchableImageWithLeftCapWidth:10 topCapHeight:10];
     self.delectBtn.layer.cornerRadius = 3;
     self.delectBtn.layer.masksToBounds = YES;
-
     self.methodLable.layer.cornerRadius = 3;
     self.methodLable.layer.masksToBounds = YES;
     self.stateLable.textColor = MainContentColor;
@@ -73,7 +72,7 @@
     }else{
         self.stateLable.text = NSLocalizedString(@"history_normal",@"");
     }
-    self.timeLable.text = tempModel.create_time;
+    self.timeLable.text = [NSString stringWithFormat:@"%@",[TPTool dateTimeWithNStringTime:tempModel.create_time]];
 }
 
 

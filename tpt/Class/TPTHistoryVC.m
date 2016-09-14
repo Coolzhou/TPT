@@ -13,6 +13,7 @@
 #import "TPChartLine.h"
 #import "TPChart.h"
 #import "WBCacheTool.h"
+#import "ATDatePicker.h"
 @interface TPTHistoryVC ()<UITableViewDataSource,UITableViewDelegate>
 @property (nonatomic,strong)UITableView *tableView;
 
@@ -20,9 +21,13 @@
 
 @property (nonatomic,strong)TPChartLine * chartLine;  //折线图
 
+@property (nonatomic,strong)UIButton *timeButton; //时间But
+
 @property (nonatomic,strong)NSMutableArray *dataArray;//状态数组
 
 @property (nonatomic,strong)NSMutableArray *historyArray; //历史记录数组
+
+@property (nonatomic,strong)NSDate *timeDate; //记录日期
 
 @end
 
@@ -30,39 +35,50 @@
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-
-    NSArray *histroyArray = [WBCacheTool getTemperature];
-    if (histroyArray.count>1500) {
-        [WBCacheTool deleteAllTemp];
-    }
-    self.historyArray = [histroyArray mutableCopy];
-
-
-    NSArray *array = [TPTStateCacheTool getTemperature];
-
-    if ( array.count>500) {
-        [TPTStateCacheTool deleteAllTemp];
-    }
-    self.dataArray = [array mutableCopy];
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navTitleLable.text = NSLocalizedString(@"setting_history", @"");
-
+    self.timeDate = [NSDate date];
     [self initData];
     [self initTableView];
     [self initTableViewHeadView];
 }
 -(void)initData{
 
+//    NSArray *histroyArray = [WBCacheTool getTemperature];
+//    if (histroyArray.count>1500) {
+//        [WBCacheTool deleteAllTemp];
+//    }
+//    self.historyArray = [histroyArray mutableCopy];
+//
+//    NSArray *array = [TPTStateCacheTool getTemperature];
+//
+//    if ( array.count>500) {
+//        [TPTStateCacheTool deleteAllTemp];
+//    }
+//    self.dataArray = [array mutableCopy];
+////    NSLog(@"historyArray = %@  ==== dataArray = %@",self.historyArray,self.dataArray);
+
+
+
+    NSArray *histroyArray = [WBCacheTool temperatureDateCounts:[TPTool dateTimeIntervalWithNIntTime:self.timeDate]];
+    NSLog(@"history. = %@",histroyArray);
+
+
 
 }
 
 -(void)initTableViewHeadView{
 
-    self.chart = [[TPChart alloc]initWithFrame:CGRectMake(15,kScreenHeight-280, self.view.frame.size.width-30, 260) withDataSource:self.historyArray];
-    self.tableView.tableHeaderView = self.chart;
+    UIView *headerView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH,310)];
+    headerView.backgroundColor = [UIColor clearColor];
+    [headerView addSubview:self.timeButton];
+
+    self.chart = [[TPChart alloc]initWithFrame:CGRectMake(0,40, SCREEN_WIDTH, 260) withDataSource:self.historyArray];
+    [headerView addSubview:self.chart];
+    self.tableView.tableHeaderView = headerView;
 }
 
 -(void)initTableView{
@@ -113,10 +129,29 @@
     [self.tableView deleteRowsAtIndexPaths:_tempIndexPathArr withRowAnimation:UITableViewRowAnimationNone];
     [self.tableView reloadData];
 
-    [SVProgressHUD showWithStatus:@"删除成功"];
+    [SVProgressHUD showSuccessWithStatus:@"删除成功"];
+}
 
-//    [[[iToast makeText:@"删除成功"]setGravity:iToastGravityCenter] show];
+#pragma mark 刷新tableView
+-(void)reloadTableViewData{
+    NSLog(@"aaaaa");
+    [self.tableView reloadData];
+}
 
+#pragma mark 点击日期
+-(void)selectDateTime{
+
+    __weak typeof(self) weakSelf = self;
+    ATDatePicker *datePicker = [[ATDatePicker alloc] initWithDatePickerMode:UIDatePickerModeDate DateFormatter:@"yyyy-MM-dd" datePickerFinishBlock:^(NSDate *date) {
+        if (![date isEqualToDate:weakSelf.timeDate]) {
+            weakSelf.timeDate = date;
+            [weakSelf.timeButton setTitle:[TPTool dateTimeForLocaleDate:date] forState:UIControlStateNormal];
+            [weakSelf reloadTableViewData];
+        }
+    }];
+    datePicker.maximumDate = [NSDate date];
+    datePicker.date = self.timeDate;
+    [datePicker show];
 }
 
 -(NSMutableArray *)dataArray{
@@ -133,6 +168,19 @@
     return _historyArray;
 }
 
+-(UIButton *)timeButton{
+    if (!_timeButton) {
+        _timeButton = [[UIButton alloc]initWithFrame:CGRectMake((SCREEN_WIDTH-200)/2,0,200, 30)];
+        _timeButton.backgroundColor =[UIColor whiteColor];
+        _timeButton.layer.cornerRadius = 5;
+        _timeButton.layer.masksToBounds = YES;
+        _timeButton.titleLabel.font = [UIFont systemFontOfSize:15];
+        [_timeButton addTarget:self action:@selector(selectDateTime) forControlEvents:UIControlEventTouchUpInside];
+        [_timeButton setTitleColor:MainContentColor forState:UIControlStateNormal];
+        [_timeButton setTitle:[TPTool dateTimeForLocaleDate:[NSDate date]] forState:UIControlStateNormal];
+    }
+    return _timeButton;
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

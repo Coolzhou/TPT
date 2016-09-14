@@ -27,11 +27,11 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent]; 
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+    [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
 
     NSArray *centralManagerIdentifiers = launchOptions[UIApplicationLaunchOptionsBluetoothCentralsKey];
     NSLog(@"centralManagerIdentifiers = %@",centralManagerIdentifiers);
-
 
     if(![[NSUserDefaults standardUserDefaults] boolForKey:@"firstStartTemp"]){
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"firstStartTemp"];
