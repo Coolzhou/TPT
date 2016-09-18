@@ -138,6 +138,8 @@
         NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
         [formatter setDateFormat:self.dateFormatter];
         _datePickerFinishBlock(self.datePicker.date);
+
+        NSLog(@"时间 = %@",[formatter stringFromDate:self.datePicker.date]);
 //        _datePickerFinishBlock([formatter stringFromDate:self.datePicker.date]);
     }
     [self hide];

@@ -41,33 +41,28 @@
     [super viewDidLoad];
     self.navTitleLable.text = NSLocalizedString(@"setting_history", @"");
     self.timeDate = [NSDate date];
-    [self initData];
+    [self initHistoryData];
+    [self initStateData];
     [self initTableView];
     [self initTableViewHeadView];
 }
--(void)initData{
+-(void)initHistoryData{
 
-//    NSArray *histroyArray = [WBCacheTool getTemperature];
-//    if (histroyArray.count>1500) {
-//        [WBCacheTool deleteAllTemp];
-//    }
-//    self.historyArray = [histroyArray mutableCopy];
-//
-//    NSArray *array = [TPTStateCacheTool getTemperature];
-//
-//    if ( array.count>500) {
-//        [TPTStateCacheTool deleteAllTemp];
-//    }
-//    self.dataArray = [array mutableCopy];
-////    NSLog(@"historyArray = %@  ==== dataArray = %@",self.historyArray,self.dataArray);
+//    NSArray *allhistroyArray = [WBCacheTool getTemperature];
+////    if (histroyArray.count>1500) {
+////        [WBCacheTool deleteAllTemp];
+////    }
+//    self.historyArray = [allhistroyArray mutableCopy];
 
+    //当天历史记录
+    NSArray *currentArray = [WBCacheTool temperatureDateCounts:[TPTool dateZeroTimeIntervalWithIntTime:self.timeDate]];
+    self.historyArray = [currentArray mutableCopy];
+}
 
-
-    NSArray *histroyArray = [WBCacheTool temperatureDateCounts:[TPTool dateTimeIntervalWithNIntTime:self.timeDate]];
-    NSLog(@"history. = %@",histroyArray);
-
-
-
+-(void)initStateData{
+    //状态记录
+    NSArray *dataArray = [TPTStateCacheTool  tptStateTemperatureDateCounts:[TPTool dateZeroTimeIntervalWithIntTime:self.timeDate]];
+    self.dataArray = [dataArray mutableCopy];
 }
 
 -(void)initTableViewHeadView{
@@ -143,15 +138,24 @@
 
     __weak typeof(self) weakSelf = self;
     ATDatePicker *datePicker = [[ATDatePicker alloc] initWithDatePickerMode:UIDatePickerModeDate DateFormatter:@"yyyy-MM-dd" datePickerFinishBlock:^(NSDate *date) {
+        NSLog(@"self.datetime = %@ ,locao = %@",date ,[NSDate date]);
         if (![date isEqualToDate:weakSelf.timeDate]) {
             weakSelf.timeDate = date;
             [weakSelf.timeButton setTitle:[TPTool dateTimeForLocaleDate:date] forState:UIControlStateNormal];
-            [weakSelf reloadTableViewData];
+            [weakSelf refreshChart]; //刷新chart
+            [weakSelf initStateData];//dataArray
+            [weakSelf reloadTableViewData];//tableView刷新
         }
     }];
     datePicker.maximumDate = [NSDate date];
     datePicker.date = self.timeDate;
     [datePicker show];
+}
+
+#pragma mark 刷新chart
+-(void)refreshChart{
+    [self initHistoryData];
+    [self.chart refreshCurrentChart:self.historyArray];
 }
 
 -(NSMutableArray *)dataArray{

@@ -250,7 +250,7 @@
         dateFormat = [NSDateFormatter dateFormatFromTemplate:dateComponents options:0 locale:usLocale];
         monthAndYearFormatter.dateFormat=dateFormat;
         NSString *timeStr = [monthAndYearFormatter stringFromDate:currentDate];
-        NSLog(@"timeStr = %@",timeStr);
+        NSLog(@"timeStr1 = %@",timeStr);
         return timeStr;
     }else{
 
@@ -258,9 +258,23 @@
         dateFormat = [NSDateFormatter dateFormatFromTemplate:dateComponents options:0 locale:zhLocale];
         monthAndYearFormatter.dateFormat=dateFormat;
         NSString *timeStr = [monthAndYearFormatter stringFromDate:currentDate];
-        NSLog(@"timeStr = %@",timeStr);
+        NSLog(@"timeStr2 = %@",timeStr);
         return timeStr;
     }
+}
+
+#pragma mark 返回本月第一天时间戳
++(int)datecurrentMonthFirestDayTime{
+    NSDate *now = [NSDate date];
+    NSCalendar *cal = [NSCalendar currentCalendar];
+    NSDateComponents *comps = [cal
+                               components:NSYearCalendarUnit | NSMonthCalendarUnit
+                               fromDate:now];
+    comps.day = 1;
+    NSDate *firstDay = [cal dateFromComponents:comps];
+
+    int firstTime = [self dateZeroTimeIntervalWithIntTime:firstDay];
+    return firstTime;
 }
 
 /**

@@ -61,6 +61,9 @@
 //NSDate 0点的时间戳 int
 +(int)dateZeroTimeIntervalWithIntTime:(NSDate *)timer;
 
+//pragma mark 返回本月第一天时间戳
++(int)datecurrentMonthFirestDayTime;
+
 //时间
 +(NSString *)dateTimeForLocaleDate:(NSDate *)currentDate;
 //判断当前系统系统语言

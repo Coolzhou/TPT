@@ -31,6 +31,6 @@
 
 - (void)showInView:(UIView *)view;
 
-
+-(void)refreshCurrentChart:(NSMutableArray *)dataArray;
 
 @end

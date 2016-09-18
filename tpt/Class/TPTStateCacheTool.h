@@ -34,6 +34,9 @@
 /** 删除一条温度*/
 +(void)deleteTemp:(int)tempID;
 
+/** 当天记录的数组数*/
++(NSArray*)tptStateTemperatureDateCounts:(int)tempID;
+
 +(void)deleteAllTemp;
 
 @end

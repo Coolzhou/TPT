@@ -74,7 +74,7 @@ static const CGFloat kTopSpace = 30.f;//距离顶部y值
         [self drawHorizontal];
         [self drawVertical];
 
-        NSLog(@"self.daAryya = %ld",(unsigned long)self.dataArray.count);
+//        NSLog(@"self.daAryya = %ld",(unsigned long)self.dataArray.count);
     }
     return self;
 }
@@ -129,7 +129,7 @@ static const CGFloat kTopSpace = 30.f;//距离顶部y值
 //画横线
 - (void)drawHorizontal {
 
-    NSLog(@"44444444");
+//    NSLog(@"44444444");
 
     UIBezierPath * path = [UIBezierPath bezierPath];
     CAShapeLayer * shapeLayer = [CAShapeLayer layer];
@@ -151,7 +151,7 @@ static const CGFloat kTopSpace = 30.f;//距离顶部y值
 //画竖线
 - (void)drawVertical {
 
-    NSLog(@"333333");
+//    NSLog(@"333333");
 
    CGFloat chartLineH = (self.bounds.size.width-2*LineStartX)/(self.dataArray.count-1);
 
@@ -178,7 +178,6 @@ static const CGFloat kTopSpace = 30.f;//距离顶部y值
 
         [self.pointXArray addObject:@(LineStartX + chartLineTheMarge * i)];
     }
-
     //设置y轴
     for (NSInteger i = 0; i < _yValues.count; i++) {
 

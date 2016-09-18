@@ -16,6 +16,9 @@ static const CGFloat kTopSpace = 30.f;//距离顶部y值
 @interface TPChart ()
 
 @property (nonatomic, strong) UIPanGestureRecognizer *panGestureRecognizer;
+
+@property (nonatomic, strong) UIView *bgView;
+
 @property (nonatomic, strong) NSArray *dataArray; //所有数组
 
 @property (nonatomic, strong) NSArray *currentArray; //当前数组
@@ -36,7 +39,6 @@ static const CGFloat kTopSpace = 30.f;//距离顶部y值
     self = [super initWithFrame:frame];
     if (self) {
 
-        NSLog(@"asdfadfadf");
         self.allNum = 0;
         self.nowNum = 0;
         self.backgroundColor = [UIColor clearColor];
@@ -48,6 +50,9 @@ static const CGFloat kTopSpace = 30.f;//距离顶部y值
             self.currentArray = dataSource;
         }
         self.lineH = (self.bounds.size.height - 2*kTopSpace)/chartHistoryMaxNum;
+
+        [self addSubview:self.bgView];
+        [self addYLabel:self.bgView];
         [self startDraw];
     }
     return self;
@@ -56,7 +61,8 @@ static const CGFloat kTopSpace = 30.f;//距离顶部y值
 
 - (void)startDraw {
 
-    NSLog(@"self.dataArray = %@",self.dataArray);
+//    NSLog(@"self.dataArray = %@",self.dataArray);
+    [self.bgView addSubview:self.myScrollView];
 
     for (int i=0; i<self.dataArray.count; i++) {
         WBTemperature *temps = self.dataArray[i];
@@ -65,21 +71,12 @@ static const CGFloat kTopSpace = 30.f;//距离顶部y值
         [self.timeArray addObject:timeStr];
         [self.valueArray addObject:tempStr];
     }
-    UIView *bgView = [[UIView alloc]initWithFrame:CGRectMake(15, 0, kScreenWidth - 30,self.bounds.size.height)];
-    bgView.backgroundColor = [UIColor whiteColor];
-    bgView.layer.cornerRadius = 8;
-    bgView.layer.masksToBounds = YES;
-    [self addSubview:bgView];
-    [self addYLabel:bgView];
-
-    [bgView addSubview:self.myScrollView];
-
-
     NSInteger  dataCount =  self.dataArray.count;
     if (dataCount<=chartMaxNum) {
-        dataCount = chartMaxNum;
+        self.chartLine = [[TPChartLine alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth-70, self.bounds.size.height) withDataArray:self.dataArray];
+    }else{
+        self.chartLine = [[TPChartLine alloc] initWithFrame:CGRectMake(0, 0, kLineStartX*dataCount+40, self.bounds.size.height) withDataArray:self.dataArray];
     }
-    self.chartLine = [[TPChartLine alloc] initWithFrame:CGRectMake(0, 0, kLineStartX*dataCount+40, self.bounds.size.height) withDataArray:self.dataArray];
     self.chartLine.curve = self.curve;
     [self.myScrollView addSubview:self.chartLine];
 
@@ -115,11 +112,29 @@ static const CGFloat kTopSpace = 30.f;//距离顶部y值
     [view addSubview:self];
 }
 
+-(void)refreshCurrentChart:(NSMutableArray *)dataArray{
+    self.dataArray = [dataArray copy];
+
+    if (self.dataArray.count<=chartMaxNum) {
+        _myScrollView.contentSize = CGSizeMake(kScreenWidth-70,self.bounds.size.height);
+    }else{
+        _myScrollView.contentSize = CGSizeMake(kLineStartX*self.dataArray.count+40,self.bounds.size.height);
+    }
+    CGFloat wightScroll = _myScrollView.contentSize.width - _myScrollView.bounds.size.width;
+
+    [_myScrollView  setContentOffset:CGPointMake(wightScroll, 0) animated:NO];
+
+//    NSLog(@"self.dataARRAY = %ld",dataArray.count);
+    [self.chartLine removeFromSuperview];
+    [self.myScrollView removeFromSuperview];
+    [self startDraw];
+}
+
 - (UIScrollView *)myScrollView {
     if (!_myScrollView) {
         _myScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(30, 0, kScreenWidth-30-40,self.bounds.size.height)];
         if (self.dataArray.count<=chartMaxNum) {
-            _myScrollView.contentSize = CGSizeMake(kScreenWidth-60,self.bounds.size.height);
+            _myScrollView.contentSize = CGSizeMake(kScreenWidth-70,self.bounds.size.height);
         }else{
             _myScrollView.contentSize = CGSizeMake(kLineStartX*self.dataArray.count+40,self.bounds.size.height);
         }
@@ -128,6 +143,17 @@ static const CGFloat kTopSpace = 30.f;//距离顶部y值
         _myScrollView.bounces = NO;
     }
     return _myScrollView;
+}
+
+
+-(UIView *)bgView{
+    if (!_bgView) {
+        _bgView = [[UIView alloc]initWithFrame:CGRectMake(15, 0, kScreenWidth - 30,self.bounds.size.height)];
+        _bgView.backgroundColor = [UIColor whiteColor];
+        _bgView.layer.cornerRadius = 8;
+        _bgView.layer.masksToBounds = YES;
+    }
+    return _bgView;
 }
 
 -(NSArray *)dataArray{

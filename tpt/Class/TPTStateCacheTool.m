@@ -25,7 +25,7 @@ static FMDatabaseQueue *_queue;
 
     //2.创表
     [_queue inDatabase:^(FMDatabase *db) {
-        [db executeUpdate:@"create table if not exists t_temp_state (id integer primary key autoincrement, create_time int, temperture real,temp blob,temp_state text);"];
+        [db executeUpdate:@"create table if not exists t_temp_state (id integer primary key autoincrement, create_time integer, temperture real,temp blob,temp_state text);"];
     }];
 
 }
@@ -135,6 +135,26 @@ static FMDatabaseQueue *_queue;
     return  [array copy];
 }
 
+/** 当天记录的数组数*/
++(NSArray*)tptStateTemperatureDateCounts:(int)tempID{
+    [self setup];
+    NSLog(@"tempID = %d",tempID);
+    int tempDD = tempID + 86400;
+    NSMutableArray *array = [NSMutableArray array];
+    [_queue inDatabase:^(FMDatabase *db) {
+        FMResultSet *rs = nil;
+        rs = [db executeQuery:@"select* from t_temp_state where create_time > ? and create_time <? order by id asc",@(tempID),@(tempDD)];
+        while (rs.next) {
+            NSData *data = [rs dataForColumn:@"temp"];
+            WBTemperature *temp = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+            [array addObject:temp];
+        }
+
+    }];
+    [_queue close];
+    return  [array copy];
+}
+
 +(void)deleteTemp:(int)tempID
 {
     [self setup];
@@ -143,7 +163,7 @@ static FMDatabaseQueue *_queue;
 
     [_queue inDatabase:^(FMDatabase *db) {
 
-        [db executeUpdate:@"delete from t_temp_state where create_time = ?",@(tempID)];
+        [db executeUpdate:@"delete from t_temp_state where create_time <?",@(tempID)];
     }];
 
     [_queue close];

@@ -71,10 +71,10 @@
     [super viewDidLoad];
 
     self.view.backgroundColor = [UIColor whiteColor];
-
     self.navigationItem.titleView = self.titleImageView;
-
     self.staticTemp = @"0";
+
+    [self deleteNotCurrentMonthData];//删除非当月数据
     [self loadBabayBluetooth]; //蓝牙
     [self createTimer];
 
@@ -85,11 +85,19 @@
 
 }
 
+-(void)deleteNotCurrentMonthData{
+
+    int firstMonth = [TPTool datecurrentMonthFirestDayTime];
+    [WBCacheTool deleteTemp:firstMonth];
+    [TPTStateCacheTool deleteTemp:firstMonth];
+    NSLog(@"firstMonth = %d",firstMonth);
+
+}
+
 -(void)addchartLineView{
     self.chart = [[SNChart alloc] initWithFrame:CGRectMake(15,kScreenHeight-kScreenHeight*0.35-20, self.view.frame.size.width-30, kScreenHeight*0.35) withDataSource:self andChatStyle:SNChartStyleLine];
     [self.chart showInView:self.view];
 
-    
 }
 - (NSArray *)chatConfigYValue:(SNChart *)chart {
     return @[@"36",@"38"];
@@ -109,45 +117,45 @@
     if (self.writeCBCharacteristic) {
         [self writeValue:self.writeCBCharacteristic];
     }
-    NSString *tempStr =[NSString stringWithFormat:@"%f",arc4random()%7+35+0.46];
-    self.rotateDials.value = tempStr;
-    [self.valueArray addObject:tempStr];
-
-    [self showAlarm:[tempStr floatValue]];
-
-    NSString *timeStr =[TPTool getCurrentDate];
-    int tempTimeInt = [TPTool getCurrentTimeIntDate];
-    [self.timeArray addObject:timeStr];
-
-    if (self.valueArray.count>chartMaxNum) {
-        //默认为正序遍历
-        [self.valueArray removeObjectAtIndex:0];
-    }
-    if (self.timeArray.count>chartMaxNum) {
-        //默认为正序遍历
-        [self.timeArray removeObjectAtIndex:0];
-    }
-    self.chart.valueArray = self.valueArray;
-    self.chart.timeArray = self.timeArray;
-
-    //记录所有数据
-    WBTemperature *temp = [[WBTemperature alloc] init];
-    temp.create_time = tempTimeInt;
-    temp.temp = tempStr.floatValue;
-    [WBCacheTool addTemperature:temp];
-
-    //记录提醒数据
-    NSString *getTemp = [TPTool getCurrentTempState:tempStr];
-    if (![getTemp isEqualToString:@"-1"]) {
-        if (![self.staticTemp isEqualToString:getTemp]) {
-            WBTemperature *temp = [[WBTemperature alloc] init];
-            temp.create_time = tempTimeInt;
-            temp.temp = tempStr.floatValue;
-            temp.temp_state = getTemp;
-            [TPTStateCacheTool addTemperature:temp];
-            self.staticTemp = getTemp;
-        }
-    }
+//    NSString *tempStr =[NSString stringWithFormat:@"%f",arc4random()%7+35+0.46];
+//    self.rotateDials.value = tempStr;
+//    [self.valueArray addObject:tempStr];
+//
+//    [self showAlarm:[tempStr floatValue]];
+//
+//    NSString *timeStr =[TPTool getCurrentDate];
+//    int tempTimeInt = [TPTool getCurrentTimeIntDate];
+//    [self.timeArray addObject:timeStr];
+//
+//    if (self.valueArray.count>chartMaxNum) {
+//        //默认为正序遍历
+//        [self.valueArray removeObjectAtIndex:0];
+//    }
+//    if (self.timeArray.count>chartMaxNum) {
+//        //默认为正序遍历
+//        [self.timeArray removeObjectAtIndex:0];
+//    }
+//    self.chart.valueArray = self.valueArray;
+//    self.chart.timeArray = self.timeArray;
+//
+//    //记录所有数据
+//    WBTemperature *temp = [[WBTemperature alloc] init];
+//    temp.create_time = tempTimeInt;
+//    temp.temp = tempStr.floatValue;
+//    [WBCacheTool addTemperature:temp];
+//
+//    //记录提醒数据
+//    NSString *getTemp = [TPTool getCurrentTempState:tempStr];
+//    if (![getTemp isEqualToString:@"-1"]) {
+//        if (![self.staticTemp isEqualToString:getTemp]) {
+//            WBTemperature *temp = [[WBTemperature alloc] init];
+//            temp.create_time = tempTimeInt;
+//            temp.temp = tempStr.floatValue;
+//            temp.temp_state = getTemp;
+//            [TPTStateCacheTool addTemperature:temp];
+//            self.staticTemp = getTemp;
+//        }
+//    }
 }
 
 #pragma mark rightBarButtonItem
@@ -352,7 +360,7 @@
                        [weakSelf showAlarm:tempfloats];
 
                        NSString *timeStr =[TPTool getCurrentDate];
-                       NSString *tempTimeStr = [TPTool getTempCurrentDate];
+                       int tempTimeInt = [TPTool getCurrentTimeIntDate];
                        [self.timeArray addObject:timeStr];
                    
                        if (self.valueArray.count>chartMaxNum) {
@@ -365,10 +373,9 @@
                        }
                        self.chart.valueArray = self.valueArray;
                        self.chart.timeArray = self.timeArray;
-                   
                        //记录所有数据
                        WBTemperature *temp = [[WBTemperature alloc] init];
-                       temp.create_time = timeStr;
+                       temp.create_time = tempTimeInt;
                        temp.temp = [aa floatValue];
                        [WBCacheTool addTemperature:temp];
                    
@@ -377,7 +384,7 @@
                        if (![getTemp isEqualToString:@"-1"]) {
                            if (![self.staticTemp isEqualToString:getTemp]) {
                                WBTemperature *temp = [[WBTemperature alloc] init];
-                               temp.create_time = tempTimeStr;
+                               temp.create_time = tempTimeInt;
                                temp.temp = aa.floatValue;
                                temp.temp_state = getTemp;
                                [TPTStateCacheTool addTemperature:temp];

@@ -71,12 +71,12 @@ static const CGFloat kTopSpace = 30.f;//距离顶部y值
 - (void)setYMax:(CGFloat)yMax {
     _yMax = yMax;
 
-    NSLog(@"_ycount = %f",yMax);
+//    NSLog(@"_ycount = %f",yMax);
 }
 
 -(void)setYMin:(CGFloat)yMin{
     _yMin = yMin;
-    NSLog(@"_ycount = %f",yMin);
+//    NSLog(@"_ycount = %f",yMin);
 }
 
 - (void)setCurve:(BOOL)curve {
@@ -249,7 +249,7 @@ static const CGFloat kTopSpace = 30.f;//距离顶部y值
         CGFloat minFloat = [TPTool getUnitCurrentTempFloat:_yMin];
 
         NSInteger margeH = [TPTool getMaxTemp:((maxFloat - minFloat)/chartMaxNum)];
-        NSLog(@"margeH = %ld",margeH);
+//        NSLog(@"margeH = %ld",margeH);
         if (_yValues.count<chartMaxNum) {
             label.text = [NSString stringWithFormat:@"%.0f",maxFloat - i*margeH + 1];
         }else{

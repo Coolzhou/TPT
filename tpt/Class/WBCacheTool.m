@@ -16,6 +16,7 @@ static FMDatabaseQueue *_queue;
 
 +(void)setup
 {
+
     //0.获得沙盒的数据库文件名
     NSString *path = [[NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:@"temps.sqlite"];
     
@@ -25,7 +26,7 @@ static FMDatabaseQueue *_queue;
     
     //2.创表
     [_queue inDatabase:^(FMDatabase *db) {
-        [db executeUpdate:@"create table if not exists t_temp (id integer primary key autoincrement, create_time int, temperture real,temp blob);"];
+        [db executeUpdate:@"create table if not exists t_temp (id integer primary key autoincrement, create_time integer, temperture real,temp blob);"];
     }];
     
 }
@@ -46,7 +47,6 @@ static FMDatabaseQueue *_queue;
         int create_time = temp.create_time;
         NSNumber *temperture = @(temp.temp);
         NSData *data = [NSKeyedArchiver archivedDataWithRootObject:temp];
-        
         //2.存储数据
         [db executeUpdate:@"insert into t_temp (create_time, temperture,temp) values(? ,? ,?)",@(create_time), temperture,data];
     }];
@@ -69,6 +69,7 @@ static FMDatabaseQueue *_queue;
         FMResultSet *rs = nil;
         rs = [db executeQuery:@"select  * from t_temp order by id asc"];
         while (rs.next) {
+            NSLog(@"11111111");
             NSData *data = [rs dataForColumn:@"temp"];
             WBTemperature *temp = [NSKeyedUnarchiver unarchiveObjectWithData:data];
             [tempAry addObject:temp];
@@ -141,7 +142,7 @@ static FMDatabaseQueue *_queue;
     NSMutableArray *array = [NSMutableArray array];
     [_queue inDatabase:^(FMDatabase *db) {
         FMResultSet *rs = nil;
-        rs = [db executeQuery:@"select * from t_temp where create_time  between ? and ? ",@(tempID),@(tempDD)];
+        rs = [db executeQuery:@"select* from t_temp where create_time > ? and create_time <? order by id asc",@(tempID),@(tempDD)];
         while (rs.next) {
             NSData *data = [rs dataForColumn:@"temp"];
             WBTemperature *temp = [NSKeyedUnarchiver unarchiveObjectWithData:data];
@@ -159,12 +160,11 @@ static FMDatabaseQueue *_queue;
     
     [_queue inDatabase:^(FMDatabase *db) {
 
-        [db executeUpdate:@"delete from t_temp where tempID = ?",@(tempID)];
+        [db executeUpdate:@"delete from t_temp where create_time <?",@(tempID)];
         
     }];
     
     [_queue close];
-
 }
 
 +(void)deleteAllTemp
