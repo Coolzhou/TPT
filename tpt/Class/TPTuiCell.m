@@ -12,6 +12,7 @@
 
 - (void)awakeFromNib {
     // Initialization code
+    [super awakeFromNib];
 //    self.bgView.backgroundColor = [UIColor whiteColor];
 //    self.bgView.layer.cornerRadius = 8;
     self.titleLabel.textColor = MainTitleColor;

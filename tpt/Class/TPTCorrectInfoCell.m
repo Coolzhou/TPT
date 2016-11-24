@@ -22,6 +22,7 @@
 
 - (void)awakeFromNib {
     // Initialization code
+    [super awakeFromNib];
 }
 
 + (instancetype)theTPTCorrectInfoCellWithTableView:(UITableView *)tableView{

@@ -118,7 +118,7 @@ static const CGFloat kTopSpace = 30.f;//距离顶部y值
 - (void)setYValues:(NSArray *)yValues {
     _yValues = yValues;
 
-    NSLog(@"ycount = %ld",yValues.count);
+    NSLog(@"ycount = %ld",(long)yValues.count);
     //    [self drawHorizontal];
 }
 

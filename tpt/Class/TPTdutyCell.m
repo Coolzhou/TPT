@@ -12,6 +12,7 @@
 
 - (void)awakeFromNib {
     // Initialization code
+    [super awakeFromNib];
 
     self.titleLableOne.textColor = MainTitleColor;
     self.contentLableOne.textColor = MainContentColor;

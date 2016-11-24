@@ -12,6 +12,7 @@
 
 - (void)awakeFromNib {
     // Initialization code
+    [super awakeFromNib];
     self.bgView.backgroundColor = RGBA(211, 213, 190,0.5);
     self.bgView.layer.cornerRadius = 5;
     self.bgView.layer.masksToBounds = YES;

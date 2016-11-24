@@ -12,6 +12,7 @@
 
 - (void)awakeFromNib {
     // Initialization code
+    [super awakeFromNib];
     self.bgImgView.image = [[UIImage imageNamed:@"set_bg_red"] stretchableImageWithLeftCapWidth:10 topCapHeight:10];
     self.titleLable.text = NSLocalizedString(@"setting_power",@"");
     NSString *content = NSLocalizedString(@"setting_power_lest",@"");

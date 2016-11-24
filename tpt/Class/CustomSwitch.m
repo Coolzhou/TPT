@@ -153,6 +153,7 @@
 
 -(void)awakeFromNib
 {
+    [super awakeFromNib];
     NSArray *nibs = [[NSBundle mainBundle] loadNibNamed:@"CustomSwitch" owner:self options:nil];
     for (UIView *view in nibs)
         if ([view isKindOfClass:[UIView class]]) {

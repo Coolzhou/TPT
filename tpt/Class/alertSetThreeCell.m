@@ -12,6 +12,7 @@
 
 - (void)awakeFromNib {
     // Initialization code
+    [super awakeFromNib];
 
     self.lineMargeOne.constant = (kScreenWidth - 30-3)/4;
     self.lineMargeTwo.constant = (kScreenWidth - 30-3)/4;
@@ -87,7 +88,7 @@
 
     __weak typeof(self) weakself = self;
     alert.ButtonClick = ^void(NSInteger buttonTag){
-        NSLog(@"buttonTag = %ld",buttonTag);
+        NSLog(@"buttonTaghou = %ld",(long)buttonTag);
         [weakself saveButtonTemp:buttonTag];
     };
 }

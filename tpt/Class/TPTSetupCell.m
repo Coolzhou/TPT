@@ -16,6 +16,7 @@
 
 - (void)awakeFromNib {
     // Initialization code
+    [super awakeFromNib];
     self.bgImgView.image = [[UIImage imageNamed:@"tui_cell_bg"] stretchableImageWithLeftCapWidth:10 topCapHeight:10];
     self.lineOne.backgroundColor = MainTitleColor;
     self.lineTwo.backgroundColor = MainTitleColor;

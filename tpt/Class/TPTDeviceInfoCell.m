@@ -28,6 +28,7 @@
 
 - (void)awakeFromNib {
     // Initialization code
+    [super awakeFromNib];
 }
 
 + (instancetype)theTPTDeviceInfoCellWithTableView:(UITableView *)tableView{

@@ -18,6 +18,7 @@
 
 - (void)awakeFromNib {
     // Initialization code
+    [super awakeFromNib];
 
     self.currentTemp = UserModel.temp_check.floatValue;
     self.tempLable.textColor = MainTitleColor;
