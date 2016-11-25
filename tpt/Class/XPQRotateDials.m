@@ -132,6 +132,7 @@
     }
 }
 
+#pragma mark  设置角度
 -(void)setValue:(NSString *)value{
     _value = value;
 
@@ -205,21 +206,42 @@
 -(CGFloat)angleWithValue:(CGFloat)value {
 
     CGFloat low = 35.0;
-    CGFloat high  = 42.0;
-    if (value<35){
+    CGFloat high  = 45.0;
+
+    CGFloat tem_low = UserModel.max_tem_low.floatValue;
+    CGFloat tem_middle = UserModel.max_tem_middle.floatValue;
+    CGFloat tem_high =UserModel.max_tem_high.floatValue;
+    CGFloat tem_supper_high = UserModel.max_tem_supper_high.floatValue;
+
+    if (value <low) {
         value = low;
     }
-    if (value < 37.5) {
-        return  (value-low)/(37.5-low)*45;
-    } else if (value >= 37.5 && value < 38) {
-        return 45+ (value-37.5)/(38-37.5)*30;
-    } else if (value >= 38 && value < 39) {
-        return  45+30+(value-38)/(39-38)*35;
-    } else if (value >= 39 && value < 41) {
-        return 45+30+35+ (value-39)/(41-39)*35;
+    if (value < tem_low) {
+        return  (value-low)/(tem_low-low)*45;
+    }else if (value >= tem_low && value < tem_middle) {
+        return 45+ (value-tem_low)/(tem_middle-tem_low)*30;
+    } else if (value >= tem_middle && value < tem_high) {
+        return  45+30+(value-tem_middle)/(tem_high-tem_middle)*35;
+    } else if (value >= tem_high && value < tem_supper_high) {
+        return 45+30+35+ (value-tem_high)/(tem_supper_high-tem_high)*35;
     } else {
-        return 45+30+35+35+ (value-41)/(high-41)*35;
+        return 45+30+35+35+ (value-tem_supper_high)/(high-tem_supper_high)*35;
     }
+
+//    if (value<low){
+//        value = low;
+//    }
+//    if (value < 37.5) {
+//        return  (value-low)/(37.5-low)*45;
+//    } else if (value >= 37.5 && value < 38) {
+//        return 45+ (value-37.5)/(38-37.5)*30;
+//    } else if (value >= 38 && value < 39) {
+//        return  45+30+(value-38)/(39-38)*35;
+//    } else if (value >= 39 && value < 41) {
+//        return 45+30+35+ (value-39)/(41-39)*35;
+//    } else {
+//        return 45+30+35+35+ (value-41)/(high-41)*35;
+//    }
 }
 
 

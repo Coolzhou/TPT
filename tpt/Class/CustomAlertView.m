@@ -174,16 +174,12 @@
     NSLog(@"buttonTagqian = %ld",(long)tag);
 
     if (tag ==10) {
-        self.tempLable.text =[NSString stringWithFormat:@"%.1f",[TPTool getUnitCurrentTemp:UserModel.max_tem_low]];
         self.tempValue = UserModel.max_tem_low;
     }else if (tag ==11){
-        self.tempLable.text =[NSString stringWithFormat:@"%.1f",[TPTool getUnitCurrentTemp:UserModel.max_tem_middle]];
         self.tempValue = UserModel.max_tem_middle;
     }else if (tag ==12){
-        self.tempLable.text =[NSString stringWithFormat:@"%.1f",[TPTool getUnitCurrentTemp:UserModel.max_tem_high]];
         self.tempValue = UserModel.max_tem_high;
     }else{
-        self.tempLable.text =[NSString stringWithFormat:@"%.1f",[TPTool getUnitCurrentTemp:UserModel.max_tem_supper_high]];
         self.tempValue = UserModel.max_tem_supper_high;
     }
 }
@@ -227,34 +223,62 @@
 
 -(void)addTempValueButtonClick{
 
+    CGFloat maxTemp = 0;
+    CGFloat minTemp = 0;
 
-
-//    if (_currentButTag ==10) {
-//        self.tempLable.text =[NSString stringWithFormat:@"%.1f",[TPTool getUnitCurrentTemp:UserModel.max_tem_low]];
-//        self.tempValue = UserModel.max_tem_low;
-//    }else if (_currentButTag ==11){
-//        self.tempLable.text =[NSString stringWithFormat:@"%.1f",[TPTool getUnitCurrentTemp:UserModel.max_tem_middle]];
-//        self.tempValue = UserModel.max_tem_middle;
-//    }else if (_currentButTag ==12){
-//        self.tempLable.text =[NSString stringWithFormat:@"%.1f",[TPTool getUnitCurrentTemp:UserModel.max_tem_high]];
-//        self.tempValue = UserModel.max_tem_high;
-//    }else{
-//        self.tempLable.text =[NSString stringWithFormat:@"%.1f",[TPTool getUnitCurrentTemp:UserModel.max_tem_supper_high]];
-//        self.tempValue = UserModel.max_tem_supper_high;
-//    }
-
+    if (_currentButTag ==10) {
+        maxTemp = UserModel.max_tem_middle.floatValue-0.1;
+        minTemp = 35.0;
+    }else if (_currentButTag ==11){
+        maxTemp = UserModel.max_tem_high.floatValue-0.1;
+        minTemp = UserModel.max_tem_low.floatValue+0.1;
+    }else if (_currentButTag ==12){
+        maxTemp = UserModel.max_tem_supper_high.floatValue-0.1;
+        minTemp = UserModel.max_tem_middle.floatValue+0.1;
+    }else{
+        maxTemp = 45.0;
+        minTemp = UserModel.max_tem_high.floatValue+0.1;
+    }
     CGFloat temp = self.tempValue.floatValue;
-    temp = temp +0.1;
-    self.tempValue = [NSString stringWithFormat:@"%.1f",temp];
-    self.tempLable.text =[NSString stringWithFormat:@"%.1f",[TPTool getUnitCurrentTempFloat:temp]];
+    if (temp<maxTemp) {
+        temp = temp +0.1;
+        self.tempValue = [NSString stringWithFormat:@"%.1f",temp];
+        self.tempLable.text =[NSString stringWithFormat:@"%.1f",[TPTool getUnitCurrentTempFloat:temp]];
+    }
+
+//    NSLog(@"addTemp = %f",temp);
 }
 
 #pragma mark 减
 -(void)reduceTempValueButtonClick{
-    float temp = self.tempValue.floatValue;
-    temp = temp - 0.1;
-    self.tempValue = [NSString stringWithFormat:@"%.1f",temp];
-    self.tempLable.text =[NSString stringWithFormat:@"%.1f",[TPTool getUnitCurrentTempFloat:temp]];
+
+    CGFloat maxTemp = 0;
+    CGFloat minTemp = 0;
+
+    if (_currentButTag ==10) {
+        maxTemp = UserModel.max_tem_middle.floatValue-0.1;
+        minTemp = 35.0;
+    }else if (_currentButTag ==11){
+        maxTemp = UserModel.max_tem_high.floatValue-0.1;
+        minTemp = UserModel.max_tem_low.floatValue+0.1;
+    }else if (_currentButTag ==12){
+        maxTemp = UserModel.max_tem_supper_high.floatValue-0.1;
+        minTemp = UserModel.max_tem_middle.floatValue+0.1;
+    }else{
+        maxTemp = 45.0;
+        minTemp = UserModel.max_tem_high.floatValue+0.1;
+    }
+    CGFloat temp = self.tempValue.floatValue;
+    if (temp>minTemp) {
+        temp = temp - 0.1;
+        self.tempValue = [NSString stringWithFormat:@"%.1f",temp];
+        self.tempLable.text =[NSString stringWithFormat:@"%.1f",[TPTool getUnitCurrentTempFloat:temp]];
+    }
+//    NSLog(@"radueTemp = %f min=%f,max= %f",temp,minTemp,maxTemp);
+//    float temp = self.tempValue.floatValue;
+//    temp = temp - 0.1;
+//    self.tempValue = [NSString stringWithFormat:@"%.1f",temp];
+//    self.tempLable.text =[NSString stringWithFormat:@"%.1f",[TPTool getUnitCurrentTempFloat:temp]];
 }
 
 #pragma mark 点击保存

@@ -1221,8 +1221,8 @@
 				TargetAttributes = {
 					18E560C91D3DBB930053B9A4 = {
 						CreatedOnToolsVersion = 7.2;
-						DevelopmentTeam = REA7NQDZ67;
-						ProvisioningStyle = Automatic;
+						DevelopmentTeam = 56ZWZ5K99K;
+						ProvisioningStyle = Manual;
 					};
 					18E560E21D3DBB930053B9A4 = {
 						CreatedOnToolsVersion = 7.2;
@@ -1586,8 +1586,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: MA CHAOSHAN (56ZWZ5K99K)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = REA7NQDZ67;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				DEVELOPMENT_TEAM = 56ZWZ5K99K;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1607,10 +1607,10 @@
 					"$(PROJECT_DIR)/tpt/Dependency/ShareSDK/Support/PlatformSDK/WeChatSDK",
 					"$(PROJECT_DIR)/tpt/Class",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.quarks.zctx;
+				PRODUCT_BUNDLE_IDENTIFIER = com.quarks.tpt;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "a9d71f81-b6e8-4be8-80fa-62e5bd0d9dd1";
+				PROVISIONING_PROFILE_SPECIFIER = TPT_Distribution_profiles;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -1622,8 +1622,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: MA CHAOSHAN (56ZWZ5K99K)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = REA7NQDZ67;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				DEVELOPMENT_TEAM = 56ZWZ5K99K;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1643,10 +1643,10 @@
 					"$(PROJECT_DIR)/tpt/Dependency/ShareSDK/Support/PlatformSDK/WeChatSDK",
 					"$(PROJECT_DIR)/tpt/Class",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.quarks.zctx;
+				PRODUCT_BUNDLE_IDENTIFIER = com.quarks.tpt;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "a9d71f81-b6e8-4be8-80fa-62e5bd0d9dd1";
+				PROVISIONING_PROFILE_SPECIFIER = TPT_Distribution_profiles;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
