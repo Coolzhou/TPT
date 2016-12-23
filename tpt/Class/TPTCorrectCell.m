@@ -37,8 +37,6 @@
         self.tempLable.text = [NSString stringWithFormat:@"%.1f℃",[TPTool getUnitCurrentTemp:UserModel.temp_check]];
     }
 
-
-
     self.infoLable.text = NSLocalizedString(@"cur_temperature", @"");
 
     [self.saveButton setTitle:NSLocalizedString(@"max_save", @"") forState:UIControlStateNormal];
@@ -84,6 +82,7 @@
 - (IBAction)clickSaveButton:(UIButton *)sender {
 
     UserModel.temp_check = [NSString stringWithFormat:@"%.1f",self.currentTemp];
+    self.dissBlock();
 }
 
 

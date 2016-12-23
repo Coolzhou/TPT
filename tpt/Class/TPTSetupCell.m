@@ -18,6 +18,7 @@
     // Initialization code
     [super awakeFromNib];
     self.bgImgView.image = [[UIImage imageNamed:@"tui_cell_bg"] stretchableImageWithLeftCapWidth:10 topCapHeight:10];
+
     self.lineOne.backgroundColor = MainTitleColor;
     self.lineTwo.backgroundColor = MainTitleColor;
     self.lineThree.backgroundColor = MainTitleColor;
@@ -36,9 +37,12 @@
     [self.rightBtnTwo setTitleColor:MainContentColor forState:UIControlStateNormal];
 
 
-    self.switchOne.onTintColor = [UIColor colorWithRed:0.20f green:0.42f blue:0.86f alpha:1.00f];
     self.switchOne.selectType = SevenSwitchImageType;
     [self.switchOne addTarget:self action:@selector(switchChanged:) forControlEvents:UIControlEventValueChanged];
+
+//    self.switchOne.onTintColor = [UIColor colorWithRed:0.20f green:0.42f blue:0.86f alpha:1.00f];
+//    self.switchOne.inactiveColor = RGBA(212, 212, 212, 0.1);
+//    self.switchOne.inactiveColor = [UIColor groupTableViewBackgroundColor];
     if (UserModel.device_disconnect) {
         self.switchOne.on = YES;
     }else{
@@ -57,6 +61,9 @@
     }else{
         self.switchTwo.on = NO;
     }
+
+//    self.switchOne.backgroundColor = [UIColor orangeColor];
+//    self.switchTwo.backgroundColor = [UIColor purpleColor];
 
     NSLog(@"user.deve = %d  tempunit = %d",UserModel.device_disconnect,UserModel.temp_unit);
     self.titleOneLable.text = NSLocalizedString(@"setting_cut_tip",@"");

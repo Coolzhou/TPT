@@ -55,6 +55,14 @@
     return 1;
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+
+//    static NSString *ID = @"cell";
+//    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
+//    if (cell == nil) {
+//        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ID];
+//    }
+//    return cell;
+
     __weak typeof(self) weakself = self;
     if (indexPath.section==0) {
         TPTSetupCell *cell = [TPTSetupCell theTPTSetupCellWithTableView:tableView andIndexPath:indexPath];

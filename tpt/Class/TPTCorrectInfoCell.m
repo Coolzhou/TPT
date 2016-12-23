@@ -95,10 +95,17 @@
 
     NSString *contentOne = NSLocalizedString(@"setting_tem_check_1",@"");
     NSString *contentTwo = NSLocalizedString(@"setting_tem_check_2",@"");
-    NSString *contentThree = NSLocalizedString(@"setting_tem_check_3",@"");
+    NSString *contentThree = @"";
 
 
+    if (UserModel.temp_unit) {
+        contentThree = NSLocalizedString(@"setting_tem_check_3_f",@"");
+    }else{
+        contentThree = NSLocalizedString(@"setting_tem_check_3",@"");
+    }
     _titleLableOne.text = NSLocalizedString(@"setting_tem_check_tip", @"");
+
+
     _contentLableOne.text = [NSString stringWithFormat:@"%@\n%@\n%@",contentOne,contentTwo,contentThree];
 
     /// 设置cell底部间隙

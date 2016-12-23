@@ -89,6 +89,40 @@
     return currentFloat;
 }
 
+
+//根据单位℉ 得到摄氏度温度CGFloat
++(CGFloat)getFahrenheitDegrrTempFloat:(NSString *)temp{
+    CGFloat currentFloat = 0.0;
+
+    CGFloat tempFloat = [temp floatValue];
+    //    NSLog(@"currentFloat - temp = %f",temp);
+    if (UserModel.temp_unit == YES) {
+        //摄氏度
+        currentFloat = (tempFloat - 32)/1.8;
+    }else{
+        //华氏度
+        currentFloat = tempFloat;
+    }
+    //    NSLog(@"currentFloat = %f",currentFloat);
+    return currentFloat;
+}
+
+//根据单位℉ 得到摄氏度温度CGFloat
++(CGFloat)getFahrenheitDegrrCurrentTempFloat:(CGFloat)temp{
+    CGFloat currentFloat = 0.0;
+    CGFloat tempFloat = temp;
+    //    NSLog(@"currentFloat - temp = %f",temp);
+    if (UserModel.temp_unit == YES) {
+        //摄氏度
+        currentFloat = (temp - 32)/1.8;
+    }else{
+        //华氏度
+        currentFloat = tempFloat;
+    }
+    //    NSLog(@"currentFloat = %f",currentFloat);
+    return currentFloat;
+}
+
 //根据超限温度提示不同警报
 +(void)palyAlartTempFloat:(CGFloat)temp{
 

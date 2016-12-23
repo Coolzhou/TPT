@@ -40,26 +40,7 @@
     self.topTitleFreeLable.textColor = kColorWithRGB(0x62922C);
 
 
-    NSString *max_tem_low =@"";
-    NSString *max_tem_middle =@"";
-    NSString *max_tem_high =@"";
-    NSString *max_tem_supper_high =@"";
-
-    if (UserModel.temp_unit) {
-        max_tem_low =[NSString stringWithFormat:@"%.1f℉", [TPTool getUnitCurrentTemp:UserModel.max_tem_low]];
-        max_tem_middle =[NSString stringWithFormat:@"%.1f℉", [TPTool getUnitCurrentTemp:UserModel.max_tem_middle]];
-        max_tem_high =[NSString stringWithFormat:@"%.1f℉", [TPTool getUnitCurrentTemp:UserModel.max_tem_high]];
-        max_tem_supper_high =[NSString stringWithFormat:@"%.1f℉", [TPTool getUnitCurrentTemp:UserModel.max_tem_supper_high]];
-    }else{
-        max_tem_low =[NSString stringWithFormat:@"%.1f℃", [TPTool getUnitCurrentTemp:UserModel.max_tem_low]];
-        max_tem_middle =[NSString stringWithFormat:@"%.1f℃", [TPTool getUnitCurrentTemp:UserModel.max_tem_middle]];
-        max_tem_high =[NSString stringWithFormat:@"%.1f℃", [TPTool getUnitCurrentTemp:UserModel.max_tem_high]];
-        max_tem_supper_high =[NSString stringWithFormat:@"%.1f℃", [TPTool getUnitCurrentTemp:UserModel.max_tem_supper_high]];
-    }
-    [self.OneBtn setTitle:max_tem_low forState:UIControlStateNormal];
-    [self.TwoBtn setTitle:max_tem_middle forState:UIControlStateNormal];
-    [self.ThreeBtn setTitle:max_tem_high forState:UIControlStateNormal];
-    [self.FreeBtn setTitle:max_tem_supper_high forState:UIControlStateNormal];
+    [self getTemp];//获得各个温度
 
     self.topTitleOneLable.text = NSLocalizedString(@"max_tem_low", @"");
     self.topTitleTwoLable.text = NSLocalizedString(@"max_tem_middle", @"");
@@ -67,7 +48,9 @@
     self.topTitleFreeLable.text = NSLocalizedString(@"max_tem_supper_high", @"");
 
     self.titleLable.text = NSLocalizedString(@"max_tem_click_tip", @"");
-    self.contentLable.text = NSLocalizedString(@"max_tem_click_explanation_c", @"");
+
+
+
     //self.contentLable.text = NSLocalizedString(@"max_tem_click_explanation_f", @"");
 }
 
@@ -96,15 +79,32 @@
 //保存按钮的值
 -(void)saveButtonTemp:(NSInteger)tag{
 
-    if (tag ==10) {
-        [self.OneBtn setTitle:UserModel.max_tem_low forState:UIControlStateNormal];
-    }else if (tag ==11){
-        [self.TwoBtn setTitle:UserModel.max_tem_middle forState:UIControlStateNormal];
-    }else if (tag ==12){
-        [self.ThreeBtn setTitle:UserModel.max_tem_high forState:UIControlStateNormal];
+    [self getTemp];
+}
+
+-(void)getTemp{
+    NSString *max_tem_low =@"";
+    NSString *max_tem_middle =@"";
+    NSString *max_tem_high =@"";
+    NSString *max_tem_supper_high =@"";
+    if (UserModel.temp_unit) {
+        max_tem_low =[NSString stringWithFormat:@"%.1f℉", [TPTool getUnitCurrentTemp:UserModel.max_tem_low]];
+        max_tem_middle =[NSString stringWithFormat:@"%.1f℉", [TPTool getUnitCurrentTemp:UserModel.max_tem_middle]];
+        max_tem_high =[NSString stringWithFormat:@"%.1f℉", [TPTool getUnitCurrentTemp:UserModel.max_tem_high]];
+        max_tem_supper_high =[NSString stringWithFormat:@"%.1f℉", [TPTool getUnitCurrentTemp:UserModel.max_tem_supper_high]];
+        self.contentLable.text = NSLocalizedString(@"max_tem_click_explanation_f", @"");
     }else{
-        [self.FreeBtn setTitle:UserModel.max_tem_supper_high forState:UIControlStateNormal];
+        max_tem_low =[NSString stringWithFormat:@"%.1f℃", [TPTool getUnitCurrentTemp:UserModel.max_tem_low]];
+        max_tem_middle =[NSString stringWithFormat:@"%.1f℃", [TPTool getUnitCurrentTemp:UserModel.max_tem_middle]];
+        max_tem_high =[NSString stringWithFormat:@"%.1f℃", [TPTool getUnitCurrentTemp:UserModel.max_tem_high]];
+        max_tem_supper_high =[NSString stringWithFormat:@"%.1f℃", [TPTool getUnitCurrentTemp:UserModel.max_tem_supper_high]];
+
+        self.contentLable.text = NSLocalizedString(@"max_tem_click_explanation_c", @"");
     }
+    [self.OneBtn setTitle:max_tem_low forState:UIControlStateNormal];
+    [self.TwoBtn setTitle:max_tem_middle forState:UIControlStateNormal];
+    [self.ThreeBtn setTitle:max_tem_high forState:UIControlStateNormal];
+    [self.FreeBtn setTitle:max_tem_supper_high forState:UIControlStateNormal];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

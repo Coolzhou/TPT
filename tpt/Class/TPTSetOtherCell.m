@@ -19,8 +19,8 @@
     self.titleTwoLable.text = NSLocalizedString(@"setting_disclaimer",@"");
     self.contentOneLable.text = NSLocalizedString(@"setting_info_content",@"");
     self.contentTwoLable.text = NSLocalizedString(@"setting_disclaimer_content",@"");
-    [self.oneBut setTitle:NSLocalizedString(@"setting",@"") forState:UIControlStateNormal];
-    [self.twoBut setTitle:NSLocalizedString(@"setting",@"") forState:UIControlStateNormal];
+    [self.oneBut setTitle:NSLocalizedString(@"setting_see",@"") forState:UIControlStateNormal];
+    [self.twoBut setTitle:NSLocalizedString(@"setting_see",@"") forState:UIControlStateNormal];
 }
 
 

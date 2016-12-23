@@ -18,7 +18,7 @@
     NSString *content = NSLocalizedString(@"setting_power_lest",@"");
 
     if ([NSString isNull:UserModel.temp_currentElec]) {
-        UserModel.temp_currentElec = @"35";
+        UserModel.temp_currentElec = @"75";
     }
     self.contentLable.text = [NSString stringWithFormat:@"%@%@%%",content,UserModel.temp_currentElec];
 }

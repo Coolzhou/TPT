@@ -122,9 +122,12 @@
             }else if (indexPath.row==4){
                 titileStr = NSLocalizedString(@"raiders_tab1_title_4",@"");
                 contentStr = NSLocalizedString(@"raiders_tab1_content_4",@"");
-            }else{
+            }else if (indexPath.row==5){
                 titileStr = NSLocalizedString(@"raiders_tab1_title_5",@"");
                 contentStr = NSLocalizedString(@"raiders_tab1_content_5",@"");
+            }else{
+                titileStr = NSLocalizedString(@"raiders_tab1_title_6",@"");
+                contentStr = NSLocalizedString(@"raiders_tab1_content_6",@"");
             }
         }else if(self.typeNum==2){
             if (indexPath.row==0) {
@@ -134,29 +137,29 @@
             if (indexPath.row==0) {
                 contentStr = NSLocalizedString(@"raiders_tab3_content_top",@"");
             }else if (indexPath.row==1){
-                titileStr = NSLocalizedString(@"raiders_tab1_title_1",@"");
+                titileStr = NSLocalizedString(@"raiders_tab3_title_1",@"");
                 contentStr = NSLocalizedString(@"raiders_tab3_content_1",@"");
             }else{
-                titileStr = NSLocalizedString(@"raiders_tab1_title_2",@"");
+                titileStr = NSLocalizedString(@"raiders_tab3_title_2",@"");
                 contentStr = NSLocalizedString(@"raiders_tab3_content_2",@"");
             }
         }else{
             if (indexPath.row==0) {
                 contentStr = NSLocalizedString(@"raiders_tab4_content_top",@"");
             }else if (indexPath.row==1){
-                titileStr = NSLocalizedString(@"raiders_tab1_title_1",@"");
+                titileStr = NSLocalizedString(@"raiders_tab4_title_1",@"");
                 contentStr = NSLocalizedString(@"raiders_tab4_content_1",@"");
             }else if (indexPath.row==2){
-                titileStr = NSLocalizedString(@"raiders_tab1_title_2",@"");
+                titileStr = NSLocalizedString(@"raiders_tab4_title_2",@"");
                 contentStr = NSLocalizedString(@"raiders_tab4_content_2",@"");
             }else if (indexPath.row==3){
-                titileStr = NSLocalizedString(@"raiders_tab1_title_3",@"");
+                titileStr = NSLocalizedString(@"raiders_tab4_title_3",@"");
                 contentStr = NSLocalizedString(@"raiders_tab4_content_3",@"");
             }else if (indexPath.row==4){
-                titileStr = NSLocalizedString(@"raiders_tab1_title_4",@"");
+                titileStr = NSLocalizedString(@"raiders_tab4_title_4",@"");
                 contentStr = NSLocalizedString(@"raiders_tab4_content_4",@"");
             }else{
-                titileStr = NSLocalizedString(@"raiders_tab1_title_5",@"");
+                titileStr = NSLocalizedString(@"raiders_tab4_title_5",@"");
                 contentStr = NSLocalizedString(@"raiders_tab4_content_5",@"");
             }
         }

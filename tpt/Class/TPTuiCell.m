@@ -60,9 +60,12 @@
         }else if (indexPath.row==4){
             self.titleLabel.text = NSLocalizedString(@"raiders_tab1_title_4",@"");
             self.contentLable.text = NSLocalizedString(@"raiders_tab1_content_4",@"");
-        }else{
+        }else if (indexPath.row==5){
             self.titleLabel.text = NSLocalizedString(@"raiders_tab1_title_5",@"");
             self.contentLable.text = NSLocalizedString(@"raiders_tab1_content_5",@"");
+        }else{
+            self.titleLabel.text = NSLocalizedString(@"raiders_tab1_title_6",@"");
+            self.contentLable.text = NSLocalizedString(@"raiders_tab1_content_6",@"");
         }
     }else if(type==2){
         if (indexPath.row==0) {
@@ -72,29 +75,29 @@
         if (indexPath.row==0) {
             self.contentLable.text = NSLocalizedString(@"raiders_tab3_content_top",@"");
         }else if (indexPath.row==1){
-            self.titleLabel.text = NSLocalizedString(@"raiders_tab1_title_1",@"");
+            self.titleLabel.text = NSLocalizedString(@"raiders_tab3_title_1",@"");
             self.contentLable.text = NSLocalizedString(@"raiders_tab3_content_1",@"");
         }else{
-            self.titleLabel.text = NSLocalizedString(@"raiders_tab1_title_2",@"");
+            self.titleLabel.text = NSLocalizedString(@"raiders_tab3_title_2",@"");
             self.contentLable.text = NSLocalizedString(@"raiders_tab3_content_2",@"");
         }
     }else{
         if (indexPath.row==0) {
             self.contentLable.text = NSLocalizedString(@"raiders_tab4_content_top",@"");
         }else if (indexPath.row==1){
-            self.titleLabel.text = NSLocalizedString(@"raiders_tab1_title_1",@"");
+            self.titleLabel.text = NSLocalizedString(@"raiders_tab4_title_1",@"");
             self.contentLable.text = NSLocalizedString(@"raiders_tab4_content_1",@"");
         }else if (indexPath.row==2){
-            self.titleLabel.text = NSLocalizedString(@"raiders_tab1_title_2",@"");
+            self.titleLabel.text = NSLocalizedString(@"raiders_tab4_title_2",@"");
             self.contentLable.text = NSLocalizedString(@"raiders_tab4_content_2",@"");
         }else if (indexPath.row==3){
-            self.titleLabel.text = NSLocalizedString(@"raiders_tab1_title_3",@"");
+            self.titleLabel.text = NSLocalizedString(@"raiders_tab4_title_3",@"");
             self.contentLable.text = NSLocalizedString(@"raiders_tab4_content_3",@"");
         }else if (indexPath.row==4){
-            self.titleLabel.text = NSLocalizedString(@"raiders_tab1_title_4",@"");
+            self.titleLabel.text = NSLocalizedString(@"raiders_tab4_title_4",@"");
             self.contentLable.text = NSLocalizedString(@"raiders_tab4_content_4",@"");
         }else{
-            self.titleLabel.text = NSLocalizedString(@"raiders_tab1_title_5",@"");
+            self.titleLabel.text = NSLocalizedString(@"raiders_tab4_title_5",@"");
             self.contentLable.text = NSLocalizedString(@"raiders_tab4_content_5",@"");
         }
     }

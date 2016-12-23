@@ -111,6 +111,7 @@
         CGFloat infoT = CGRectGetMaxY(centerView.frame);
 
         self.infoLable.frame = CGRectMake(AlertViewJianGe,infoT,alertW- 2*AlertViewJianGe, 54);
+
         self.infoLable.font = [UIFont systemFontOfSize:16];
         self.infoLable.textAlignment = NSTextAlignmentLeft;
         [self addSubview:self.infoLable];
@@ -124,7 +125,9 @@
         cancelButton.frame = CGRectMake(AlertViewJianGe,ButtonY, otherWidth, otherButHeight);
         cancelButton.layer.cornerRadius = 5;
         cancelButton.layer.masksToBounds = YES;
-        [cancelButton setTitle:@"保存" forState:0];
+
+        
+        [cancelButton setTitle:NSLocalizedString(@"max_save",@"") forState:0];
         cancelButton.titleLabel.font = [UIFont systemFontOfSize:15];
         cancelButton.tag =0;
         [cancelButton setTitleColor:[UIColor whiteColor] forState:0];
@@ -137,7 +140,7 @@
         qRButton.frame = CGRectMake(cancelButton.frame.origin.x+otherWidth+AlertViewOtherMarge,ButtonY, otherWidth, otherButHeight);
         qRButton.layer.cornerRadius = 5;
         qRButton.layer.masksToBounds = YES;
-        [qRButton setTitle:@"关闭" forState:0];
+        [qRButton setTitle:NSLocalizedString(@"max_cancel",@"") forState:0];
         qRButton.titleLabel.font = cancelButton.titleLabel.font;
         [qRButton setTitleColor:[UIColor whiteColor] forState:0];
         [qRButton setBackgroundColor:RGB(85, 162, 30)
@@ -172,6 +175,7 @@
 -(void)getTempValue:(NSInteger)tag{
 
     NSLog(@"buttonTagqian = %ld",(long)tag);
+
 
     if (tag ==10) {
         self.tempValue = UserModel.max_tem_low;
@@ -245,8 +249,6 @@
         self.tempValue = [NSString stringWithFormat:@"%.1f",temp];
         self.tempLable.text =[NSString stringWithFormat:@"%.1f",[TPTool getUnitCurrentTempFloat:temp]];
     }
-
-//    NSLog(@"addTemp = %f",temp);
 }
 
 #pragma mark 减
@@ -269,16 +271,13 @@
         minTemp = UserModel.max_tem_high.floatValue+0.1;
     }
     CGFloat temp = self.tempValue.floatValue;
+
     if (temp>minTemp) {
         temp = temp - 0.1;
         self.tempValue = [NSString stringWithFormat:@"%.1f",temp];
         self.tempLable.text =[NSString stringWithFormat:@"%.1f",[TPTool getUnitCurrentTempFloat:temp]];
+
     }
-//    NSLog(@"radueTemp = %f min=%f,max= %f",temp,minTemp,maxTemp);
-//    float temp = self.tempValue.floatValue;
-//    temp = temp - 0.1;
-//    self.tempValue = [NSString stringWithFormat:@"%.1f",temp];
-//    self.tempLable.text =[NSString stringWithFormat:@"%.1f",[TPTool getUnitCurrentTempFloat:temp]];
 }
 
 #pragma mark 点击保存

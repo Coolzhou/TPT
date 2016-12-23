@@ -68,7 +68,6 @@
     }else{
         return [UITableViewCell whc_CellHeightForIndexPath:indexPath tableView:tableView];
     }
-
 }
 
 

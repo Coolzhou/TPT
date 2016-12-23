@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
@@ -12,7 +12,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="163"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <frame key="frameInset" width="320" height="162"/>
+                <frame key="frameInset" width="320" height="162.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bup-XV-LFS">
@@ -65,7 +65,7 @@
                                     <constraint firstAttribute="width" constant="70" id="rjl-wl-XQM"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <state key="normal" title="设置&gt;&gt;">
+                                <state key="normal" title="查看&gt;&gt;">
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
@@ -77,7 +77,7 @@
                                     <constraint firstAttribute="width" constant="70" id="iKo-Pv-MKn"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <state key="normal" title="设置&gt;&gt;">
+                                <state key="normal" title="查看&gt;&gt;">
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
@@ -137,19 +137,19 @@
                             <mask key="constraints">
                                 <exclude reference="mvI-XS-hW4"/>
                                 <exclude reference="smo-U7-27e"/>
-                                <exclude reference="9xX-fH-QB3"/>
-                                <exclude reference="l3R-Nh-j0D"/>
-                                <exclude reference="48h-qa-ke2"/>
-                                <exclude reference="JOH-9A-eTq"/>
-                                <exclude reference="t0n-f7-P3X"/>
                                 <exclude reference="DCY-NB-kG7"/>
                                 <exclude reference="JAg-2c-qzO"/>
                                 <exclude reference="U1A-dc-94E"/>
-                                <exclude reference="YfK-cX-1QQ"/>
-                                <exclude reference="uDh-zN-x3g"/>
+                                <exclude reference="48h-qa-ke2"/>
+                                <exclude reference="JOH-9A-eTq"/>
+                                <exclude reference="t0n-f7-P3X"/>
+                                <exclude reference="9xX-fH-QB3"/>
+                                <exclude reference="l3R-Nh-j0D"/>
                                 <exclude reference="HoM-hf-84B"/>
                                 <exclude reference="P0J-YS-SU8"/>
                                 <exclude reference="kDF-Sz-OsR"/>
+                                <exclude reference="YfK-cX-1QQ"/>
+                                <exclude reference="uDh-zN-x3g"/>
                             </mask>
                         </variation>
                     </view>

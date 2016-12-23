@@ -37,7 +37,7 @@
 "setting_tem_check"= "Temperature Calibration";
 "setting_tem_check_content"= "The。";
 "setting"= "Setting>>";
-"setting_see"= "Check&#160;= ";
+"setting_see"= "Check>>";
 "setting_power"= "The battery power";
 "setting_power_lest"= "The current battery value";
 "setting_info"= "Device info";
@@ -100,6 +100,7 @@
 "setting_tem_check_1" = "1：Measure and mark the axillary temperature with a normal thermometer.";
 "setting_tem_check_2" = "2：Adjust the temperature to the measured figures of normal thermometer with the '+', '-' button.";
 "setting_tem_check_3" = "3：Keep the temperature tolerance to 0.1℃ ~ 0.2℃";
+"setting_tem_check_3_f" = "3：Keep the temperature tolerance to 0.1℉ ~ 0.2℉";
 
 
 "raiders_tab1_content_top" = "When the child's temperature is 38℃~39℃, below is the methods to reduce the fever:";

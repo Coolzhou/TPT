@@ -33,7 +33,7 @@
 
 "setting_tem_check_content" = "校准体温计与手机端显示温度的差异。";
 "setting" = "设置>>";
-"setting_see" = "查看&#160; = ";
+"setting_see" = "查看>>";
 "setting_power" = "宝宝手环电量";
 "setting_power_lest" = "目前电池电量";
 "setting_info" = "设备信息";
@@ -64,8 +64,8 @@
 "max_tem_supper_high" = "超高热";
 "max_tem_switch" = "报警开关";
 "max_tem_click_tip" = "请点击上方数字直接设置温度值";
-"max_tem_click_explanation_c" = "说明：低热指腋温为37.5~38℃、中度热为38.1~39℃、高热为39.1~40℃、超高热为41℃以上。";
-"max_tem_click_explanation_f" = "说明：低热指腋温为99.5~100.5℉、中度热为100.6~102.3℉、高热为102.4~104℉、超高热为105℉以上。";
+"max_tem_click_explanation_c" = "说明：低热指腋温为37.5~38℃、中度热为38.1~39℃、高热为39.1~40℃、超高热为40℃以上。";
+"max_tem_click_explanation_f" = "说明：低热指腋温为99.5~100.5℉、中度热为100.6~102.3℉、高热为102.4~104.1℉、超高热为104.1℉以上。";
 "max_tem_explanation" = "说明：设置报警温度值，当检测到宝宝体温值达到或超过报警值时，将会第一时间向您的手机发出报警信号，提醒需要为宝宝采取措施。";
 
 
@@ -86,6 +86,8 @@
 "setting_tem_check_1" = "1：用医用体温计测量宝宝的腋温并记录。";
 "setting_tem_check_2" = "2：通过上面的“+”、“-”按键调节显示的温度与医用体温计测量的温度一致。";
 "setting_tem_check_3" = "3：温度误差建议控制在0.1~0.2℃之间";
+
+"setting_tem_check_3_f" = "3：温度误差建议控制在0.1~0.2℉之间";
 
 "show_tem" = "宝宝当前温度为%1$s属于%2$s,请及时处理";
 

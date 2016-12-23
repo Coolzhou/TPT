@@ -27,8 +27,14 @@
 +(CGFloat)getUnitCurrentTemp:(NSString *)temp;
 
 
-//根据单位℃、℉ 得到不同温度CGFloat
+//根据单位℃ 得到华氏度温度CGFloat
 +(CGFloat)getUnitCurrentTempFloat:(CGFloat)temp;
+
+//根据单位℉ 得到摄氏度温度CGFloat
++(CGFloat)getFahrenheitDegrrTempFloat:(NSString *)temp;
+
+//根据单位℉ 得到摄氏度温度CGFloat
++(CGFloat)getFahrenheitDegrrCurrentTempFloat:(CGFloat)temp;
 
 //根据超限温度提示不同警报
 +(void)palyAlartTempFloat:(CGFloat)temp;
