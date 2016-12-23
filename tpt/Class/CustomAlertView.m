@@ -92,7 +92,7 @@
         self.tempLable.frame = CGRectMake(addButton.frame.origin.x+btnWidth,0,AlertViewMarge, btnHeight);
 
 
-        self.tempLable.text =[NSString stringWithFormat:@"%.1f",[TPTool getUnitCurrentTemp:self.tempValue]];
+        self.tempLable.text =[NSString stringWithFormat:@"%.1f",self.tempValue.floatValue];
         self.tempLable.font = [UIFont boldSystemFontOfSize:55];
         self.tempLable.textAlignment = NSTextAlignmentCenter;
         [centerView addSubview:self.tempLable];
@@ -176,46 +176,69 @@
 
     NSLog(@"buttonTagqian = %ld",(long)tag);
 
-
-    if (tag ==10) {
-        self.tempValue = UserModel.max_tem_low;
-    }else if (tag ==11){
-        self.tempValue = UserModel.max_tem_middle;
-    }else if (tag ==12){
-        self.tempValue = UserModel.max_tem_high;
+    if (UserModel.temp_unit == NO) {
+        //摄氏度
+        if (tag ==10) {
+            self.tempValue = UserModel.max_tem_low;
+        }else if (tag ==11){
+            self.tempValue = UserModel.max_tem_middle;
+        }else if (tag ==12){
+            self.tempValue = UserModel.max_tem_high;
+        }else{
+            self.tempValue = UserModel.max_tem_supper_high;
+        }
     }else{
-        self.tempValue = UserModel.max_tem_supper_high;
+        NSString *temp =@"";
+        if (tag ==10) {
+            temp = UserModel.max_tem_low;
+        }else if (tag ==11){
+            temp = UserModel.max_tem_middle;
+        }else if (tag ==12){
+            temp = UserModel.max_tem_high;
+        }else{
+            temp = UserModel.max_tem_supper_high;
+        }
+       self.tempValue = [NSString stringWithFormat:@"%.1f",[TPTool getUnitCurrentTemp:temp]];
     }
 }
 
 -(void)saveTempValue{
 
+    NSString *tempC = @"";
+
+    if (UserModel.temp_unit == NO) {
+        //摄氏度
+        tempC = self.tempValue;
+    }else{
+        tempC = [NSString stringWithFormat:@"%.1f",[TPTool getFahrenheitDegrrTempFloat:self.tempValue]];
+    }
+
     if (_currentButTag ==10) {
-        if (![UserModel.max_tem_low isEqualToString:self.tempValue]) {
-            UserModel.max_tem_low = self.tempValue;
+        if (![UserModel.max_tem_low isEqualToString:tempC]) {
+            UserModel.max_tem_low = tempC;
             if (self.ButtonClick) {
                 self.ButtonClick(_currentButTag);
             }
         }
     }else if (_currentButTag ==11){
-        if (![UserModel.max_tem_middle isEqualToString:self.tempValue]) {
-            UserModel.max_tem_middle = self.tempValue;
+        if (![UserModel.max_tem_middle isEqualToString:tempC]) {
+            UserModel.max_tem_middle = tempC;
             if (self.ButtonClick) {
                 self.ButtonClick(_currentButTag);
             }
         }
     }else if (_currentButTag ==12){
 
-        if (![UserModel.max_tem_high isEqualToString:self.tempValue]) {
-            UserModel.max_tem_high = self.tempValue;
+        if (![UserModel.max_tem_high isEqualToString:tempC]) {
+            UserModel.max_tem_high = tempC;
             if (self.ButtonClick) {
                 self.ButtonClick(_currentButTag);
             }
         }
 
     }else{
-        if (![UserModel.max_tem_supper_high isEqualToString:self.tempValue]) {
-            UserModel.max_tem_supper_high = self.tempValue;
+        if (![UserModel.max_tem_supper_high isEqualToString:tempC]) {
+            UserModel.max_tem_supper_high = tempC;
             if (self.ButtonClick) {
                 self.ButtonClick(_currentButTag);
             }
@@ -228,55 +251,75 @@
 -(void)addTempValueButtonClick{
 
     CGFloat maxTemp = 0;
-    CGFloat minTemp = 0;
 
-    if (_currentButTag ==10) {
-        maxTemp = UserModel.max_tem_middle.floatValue-0.1;
-        minTemp = 35.0;
-    }else if (_currentButTag ==11){
-        maxTemp = UserModel.max_tem_high.floatValue-0.1;
-        minTemp = UserModel.max_tem_low.floatValue+0.1;
-    }else if (_currentButTag ==12){
-        maxTemp = UserModel.max_tem_supper_high.floatValue-0.1;
-        minTemp = UserModel.max_tem_middle.floatValue+0.1;
+    if (UserModel.temp_unit == NO) {
+        //摄氏度
+        if (_currentButTag ==10) {
+            maxTemp = UserModel.max_tem_middle.floatValue-0.15;
+        }else if (_currentButTag ==11){
+            maxTemp = UserModel.max_tem_high.floatValue-0.15;
+        }else if (_currentButTag ==12){
+            maxTemp = UserModel.max_tem_supper_high.floatValue-0.15;
+        }else{
+            maxTemp = 45.0;
+        }
     }else{
-        maxTemp = 45.0;
-        minTemp = UserModel.max_tem_high.floatValue+0.1;
+        if (_currentButTag ==10) {
+            maxTemp =[TPTool getUnitCurrentTemp:UserModel.max_tem_middle]-0.15;
+        }else if (_currentButTag ==11){
+            maxTemp =[TPTool getUnitCurrentTemp:UserModel.max_tem_high]-0.15;
+        }else if (_currentButTag ==12){
+            maxTemp =[TPTool getUnitCurrentTemp:UserModel.max_tem_supper_high]-0.15;
+        }else{
+            maxTemp = [TPTool getUnitCurrentTempFloat:45];
+        }
     }
+
     CGFloat temp = self.tempValue.floatValue;
+
+    NSLog(@"temp =%f,maxTemop= %f",temp,maxTemp);
     if (temp<maxTemp) {
         temp = temp +0.1;
-        self.tempValue = [NSString stringWithFormat:@"%.1f",temp];
-        self.tempLable.text =[NSString stringWithFormat:@"%.1f",[TPTool getUnitCurrentTempFloat:temp]];
+        self.tempValue = [NSString stringWithFormat:@"%f",temp];
+        self.tempLable.text = [NSString stringWithFormat:@"%.1f",temp];
     }
 }
 
 #pragma mark 减
 -(void)reduceTempValueButtonClick{
 
-    CGFloat maxTemp = 0;
     CGFloat minTemp = 0;
 
-    if (_currentButTag ==10) {
-        maxTemp = UserModel.max_tem_middle.floatValue-0.1;
-        minTemp = 35.0;
-    }else if (_currentButTag ==11){
-        maxTemp = UserModel.max_tem_high.floatValue-0.1;
-        minTemp = UserModel.max_tem_low.floatValue+0.1;
-    }else if (_currentButTag ==12){
-        maxTemp = UserModel.max_tem_supper_high.floatValue-0.1;
-        minTemp = UserModel.max_tem_middle.floatValue+0.1;
+
+    if (UserModel.temp_unit == NO) {
+        //摄氏度
+        if (_currentButTag ==10) {
+            minTemp = 35.0;
+        }else if (_currentButTag ==11){
+            minTemp = UserModel.max_tem_low.floatValue+0.15;
+        }else if (_currentButTag ==12){
+            minTemp = UserModel.max_tem_middle.floatValue+0.15;
+        }else{
+            minTemp = UserModel.max_tem_high.floatValue+0.15;
+        }
     }else{
-        maxTemp = 45.0;
-        minTemp = UserModel.max_tem_high.floatValue+0.1;
+        if (_currentButTag ==10) {
+            minTemp =[TPTool getUnitCurrentTempFloat:35.0];
+        }else if (_currentButTag ==11){
+            minTemp =[TPTool getUnitCurrentTemp:UserModel.max_tem_low]+0.15;
+        }else if (_currentButTag ==12){
+            minTemp =[TPTool getUnitCurrentTemp:UserModel.max_tem_middle]+0.15;
+        }else{
+            minTemp = [TPTool getUnitCurrentTemp:UserModel.max_tem_high]+0.15;
+        }
     }
     CGFloat temp = self.tempValue.floatValue;
 
-    if (temp>minTemp) {
+    NSLog(@"temp =%f,minTemop= %f",temp,minTemp);
+    if (temp > minTemp) {
         temp = temp - 0.1;
-        self.tempValue = [NSString stringWithFormat:@"%.1f",temp];
-        self.tempLable.text =[NSString stringWithFormat:@"%.1f",[TPTool getUnitCurrentTempFloat:temp]];
-
+        self.tempValue = [NSString stringWithFormat:@"%f",temp];
+        self.tempLable.text = [NSString stringWithFormat:@"%.1f",temp];
     }
 }
 
