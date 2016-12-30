@@ -20,7 +20,11 @@
     // Initialization code
     [super awakeFromNib];
 
-    self.currentTemp = UserModel.temp_check.floatValue;
+    if (UserModel.temp_unit) {
+        self.currentTemp = [TPTool getUnitCurrentTemp:UserModel.temp_check];
+    }else{
+        self.currentTemp = UserModel.temp_check.floatValue;
+    }
     self.tempLable.textColor = MainTitleColor;
     self.infoLable.textColor = MainContentColor;
 
@@ -56,32 +60,49 @@
 
 - (IBAction)clickAddButton:(UIButton *)sender {
 
-    if (self.currentTemp<1) {
-        self.currentTemp = self.currentTemp + 0.1;
+//    NSLog(@"current111 = %f",self.currentTemp);
+
         if (UserModel.temp_unit) {
-            self.tempLable.text = [NSString stringWithFormat:@"%.1f℉",[TPTool getUnitCurrentTempFloat:self.currentTemp]];
+            if (self.currentTemp < 33) {
+                self.currentTemp += 0.1;
+                self.tempLable.text = [NSString stringWithFormat:@"%.1f℉",self.currentTemp];
+            }
         }else{
-            self.tempLable.text = [NSString stringWithFormat:@"%.1f℃",[TPTool getUnitCurrentTempFloat:self.currentTemp]];
+            if (self.currentTemp< 1) {
+                self.currentTemp = self.currentTemp + 0.1;
+                self.tempLable.text = [NSString stringWithFormat:@"%.1f℃",[TPTool getUnitCurrentTempFloat:self.currentTemp]];
+            }
         }
-    }
+
+//    NSLog(@"current22222 = %f",self.currentTemp);
 }
 
 - (IBAction)clickJianButton:(UIButton *)sender {
 
-    if (self.currentTemp > -1) {
-        self.currentTemp = self.currentTemp  - 0.1;
+
         if (UserModel.temp_unit) {
-            self.tempLable.text = [NSString stringWithFormat:@"%.1f℉",[TPTool getUnitCurrentTempFloat:self.currentTemp]];
+            if (self.currentTemp>31) {
+                self.currentTemp -= 0.15;
+//                self.currentTemp = temp;
+                self.tempLable.text = [NSString stringWithFormat:@"%.1f℉",self.currentTemp];
+            }
         }else{
-            self.tempLable.text = [NSString stringWithFormat:@"%.1f℃",[TPTool getUnitCurrentTempFloat:self.currentTemp]];
+            if (self.currentTemp>-1) {
+                self.currentTemp = self.currentTemp  - 0.15;
+                self.tempLable.text = [NSString stringWithFormat:@"%.1f℃",[TPTool getUnitCurrentTempFloat:self.currentTemp]];
+            }
         }
-    }
 }
 
 //保存
 - (IBAction)clickSaveButton:(UIButton *)sender {
 
-    UserModel.temp_check = [NSString stringWithFormat:@"%.1f",self.currentTemp];
+    if (UserModel.temp_unit) {
+        CGFloat temp = [TPTool getFahrenheitDegrrCurrentTempFloat:self.currentTemp];
+        UserModel.temp_check = [NSString stringWithFormat:@"%.1f",temp];
+    }else{
+        UserModel.temp_check = [NSString stringWithFormat:@"%.1f",self.currentTemp];
+    }
     self.dissBlock();
 }
 

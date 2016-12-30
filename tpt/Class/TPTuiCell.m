@@ -32,12 +32,16 @@
         cell.titleLabel.hidden = YES;
         cell.rightImageView.hidden = YES;
         cell.contentLable.numberOfLines = 0;
-        cell.titleConstraintW.constant = 0;
         cell.rightImgConstraintW.constant = 0;
         cell.contentTopConstraintY.constant = -20;
         cell.contentrightConstraintMarge.constant = 0;
     }else{
+        cell.titleLabel.hidden = NO;
+        cell.rightImageView.hidden = NO;
         cell.contentLable.numberOfLines = 2;
+        cell.rightImgConstraintW.constant = 19;
+        cell.contentTopConstraintY.constant = 5;
+        cell.contentrightConstraintMarge.constant = 10;
     }
     return cell;
 }
@@ -101,22 +105,6 @@
             self.contentLable.text = NSLocalizedString(@"raiders_tab4_content_5",@"");
         }
     }
-
-//    NSString *title = [NSString stringWithFormat:@"%@",[dictionary objectForKey:@"title"]];
-//    NSString *content = [dictionary objectForKey:@"content"];
-//
-//    if ([NSString isNull:title]) {
-//        self.titleLabel.hidden = YES;
-//        self.contentLable.numberOfLines = 0;
-//        self.contentLable.preferredMaxLayoutWidth = kScreenWidth - 30;
-//    }else{
-//        self.contentLable.numberOfLines = 2;
-//        self.titleLabel.text = title;
-//    }
-//    self.contentLable.text = content;
-//
-//    NSLog(@"content = %@",content);
-
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

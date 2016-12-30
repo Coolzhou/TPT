@@ -40,6 +40,7 @@
          UserModel.max_alert_state = YES;
     }else{
          UserModel.max_alert_state = NO;
+        [[NSNotificationCenter defaultCenter]postNotificationName:@"All_STATE" object:nil];
     }
 }
 

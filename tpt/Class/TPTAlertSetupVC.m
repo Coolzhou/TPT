@@ -25,8 +25,9 @@
     [super viewDidLoad];
     self.navTitleLable.text = NSLocalizedString(@"max_tem", @"");
     [self initTableView];
-}
 
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(clickAllSwithSetup) name:@"All_STATE" object:nil];
+}
 
 -(void)initTableView{
     self.tableView = [[UITableView alloc]initWithFrame:CGRectZero style:UITableViewStyleGrouped];
@@ -91,6 +92,22 @@
     }else{
         return 20;
     }
+}
+
+#pragma mark 关闭警告
+-(void)clickAllSwithSetup{
+    NSLog(@"sdaf");
+
+    NSIndexPath *index = [NSIndexPath indexPathForRow:0 inSection:3];
+    alertSetFreeCell *cell = [self.tableView cellForRowAtIndexPath:index];
+    cell.shengSwitchBtn.on = NO;
+    cell.dongSwitchBtn.on = NO;
+    UserModel.max_notify_voice = NO;
+    UserModel.max_notify_vibration = NO;    
+}
+
+-(void)dealloc{
+    [[NSNotificationCenter defaultCenter]removeObserver:self name:@"All_STATE" object:nil];
 }
 
 - (void)didReceiveMemoryWarning {

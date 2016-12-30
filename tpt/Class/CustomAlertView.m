@@ -159,7 +159,7 @@
         }else if (tag ==12){
             temp = @"39.1";
         }else{
-            temp = @"41";
+            temp = @"40.1";
         }
         if (UserModel.temp_unit) {
             self.infoLable.text = [NSString stringWithFormat:@"%@ %.1f℉",suggestStr,[TPTool getUnitCurrentTemp:temp]];

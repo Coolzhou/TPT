@@ -39,14 +39,14 @@
         UserModel.max_tem_low = @"37.5";
         UserModel.max_tem_middle = @"38.1";
         UserModel.max_tem_high = @"39.1";
-        UserModel.max_tem_supper_high = @"41";
+        UserModel.max_tem_supper_high = @"40.1";
         UserModel.temp_currentElec = @"35";
         UserModel.temp_check = @"0.0";
         UserModel.max_alert_state = YES;
         UserModel.max_notify_vibration = YES;
         UserModel.max_notify_voice = YES;
         UserModel.temp_unit = NO;
-        UserModel.device_disconnect = NO;
+        UserModel.device_disconnect = YES;
     }
     //shareSDK
     [self shareSDKApplication:application didFinishLaunchingWithOptions:launchOptions];
