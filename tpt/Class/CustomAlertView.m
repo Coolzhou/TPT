@@ -112,7 +112,7 @@
 
         self.infoLable.frame = CGRectMake(AlertViewJianGe,infoT,alertW- 2*AlertViewJianGe, 54);
 
-        self.infoLable.font = [UIFont systemFontOfSize:16];
+        self.infoLable.font = [UIFont systemFontOfSize:14];
         self.infoLable.textAlignment = NSTextAlignmentLeft;
         [self addSubview:self.infoLable];
 
@@ -385,8 +385,9 @@
     if (!_infoLable) {
         _infoLable = [[UILabel alloc]init];
         _infoLable.textColor = MainContentColor;
-        _infoLable.font = [UIFont systemFontOfSize:17];
+        _infoLable.font = [UIFont systemFontOfSize:14];
         _infoLable.numberOfLines = 0;
+        _infoLable.lineBreakMode = NSLineBreakByCharWrapping;
         _infoLable.textAlignment = NSTextAlignmentLeft;
     }
     return _infoLable;

@@ -78,9 +78,9 @@
 "max_tem_supper_high"= "ultra-high fever ";
 "max_tem_switch"= "Alarm Switch";
 "max_tem_click_tip"= "Please click the figures to set the temperature limit value";
-"max_tem_click_explanation_c"= "NOTE: Low fever:37.5~38℃, Medium fever: 38.1~39℃, High fever: 39.1~40℃, ultra-high fever: ≥41℃";
+"max_tem_click_explanation_c"= "NOTE: Low fever:37.5~38℃, Medium fever: 38.1~39℃, High fever: 39.1~40℃, ultra-high fever: >40℃";
 
-"max_tem_click_explanation_f"= "NOTE: Low fever:99.5~100.5℉, Medium fever: 100.6~102.3℉, High fever: 102.4~104.1℉, ultra-high fever: ≥104.1℉。";
+"max_tem_click_explanation_f"= "NOTE: Low fever:99.5~100.5℉, Medium fever: 100.6~102.3℉, High fever: 102.4~104.1℉, ultra-high fever: >104.1℉。";
 
 "max_tem_explanation"= "NOTE: Set the temperature limit value, when the thermometer detects the temperature arrives or exceed this value， it will send alert notification to your mobile immediately, and you can take some measures accordingly";
 

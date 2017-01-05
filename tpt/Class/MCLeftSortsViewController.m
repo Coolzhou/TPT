@@ -25,8 +25,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    picArray = [NSArray arrayWithObjects:@"left_home",@"left_history",@"left_down",@"left_setup",@"left_signout",nil];
-    titleArray = [NSArray arrayWithObjects:NSLocalizedString(@"setting_main",@""),NSLocalizedString(@"setting_history",@""),NSLocalizedString(@"setting_raiders", @""),NSLocalizedString(@"setting_", @""),NSLocalizedString(@"setting_logout", @""),nil];
+    picArray = [NSArray arrayWithObjects:@"left_home",@"left_history",@"left_down",@"left_setup",nil];
+    titleArray = [NSArray arrayWithObjects:NSLocalizedString(@"setting_main",@""),NSLocalizedString(@"setting_history",@""),NSLocalizedString(@"setting_raiders", @""),NSLocalizedString(@"setting_", @""),nil];
 
 
     UIImageView *bgImageView = [[UIImageView alloc]initWithFrame:self.view.bounds];
@@ -59,7 +59,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 5;
+    return titleArray.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
