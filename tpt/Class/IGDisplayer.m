@@ -27,7 +27,7 @@
     _buttonHeight = 40;
     _buttonsInset = 0.5f;
     _customViewSize = CGSizeMake(245, 210);
-    _titleEdgeInsets = UIEdgeInsetsMake(25,16,15,16);
+    _titleEdgeInsets = UIEdgeInsetsMake(15,16,15,16);
     _contentEdgeInsets = UIEdgeInsetsMake(18,16,20,16);
     _isHiddenDisplayerWhenSelected = YES;
     _isHiddenDisplayerByTouch = NO;
@@ -61,6 +61,8 @@
     displayer.titleLabel.text = title;
     displayer.textLabel.text = content;
     [displayer displayerShow];
+
+    NSLog(@"title = %@",title);
 }
 
 -(void)displayerShow{
@@ -74,27 +76,27 @@
 //计算头部标题控件
 -(void)computeTop{
     if (_titleLabel && _titleLabel.text != nil && _titleLabel.text.length > 0) {
-        CGFloat titleW = _displayerWidth - _titleEdgeInsets.left - _titleEdgeInsets.right;
+        CGFloat titleW = _displayerWidth - _titleEdgeInsets.left - _titleEdgeInsets.right - 50;
 //        CGFloat titleH = [_titleLabel sizeThatFits:CGSizeMake(titleW, MAXFLOAT)].height;
         _titleLabel.frame = CGRectMake(_titleEdgeInsets.left,
                                        _titleEdgeInsets.top,
                                        titleW,
-                                       25);
+                                       40);
         [_displayer addSubview:_titleLabel];
 
         CGFloat cancelW = _displayerWidth - 40 - _titleEdgeInsets.right-10;
         self.cancelButton.frame = CGRectMake(cancelW,
-                                       _titleEdgeInsets.top-2,
+                                       _titleEdgeInsets.top+7,
                                        50,
                                        25);
         [_displayer addSubview:self.cancelButton];
 
-        CGFloat lineTop = _titleEdgeInsets.top +_titleEdgeInsets.bottom +25;
+        CGFloat lineTop = _titleEdgeInsets.top +_titleEdgeInsets.bottom +40;
 
         UIView *lineView = [[UIView alloc]initWithFrame:CGRectMake(10,lineTop,_displayerWidth-20,1)];
         lineView.backgroundColor = RGB(175, 175, 175);
         [_displayer addSubview:lineView];
-        _topH = 25 + _titleEdgeInsets.top + _titleEdgeInsets.bottom;
+        _topH = 40 + _titleEdgeInsets.top + _titleEdgeInsets.bottom;
     }
 }
 
@@ -216,7 +218,7 @@
 -(UILabel *)titleLabel{
     if (!_titleLabel) {
         _titleLabel = [[UILabel alloc] init];
-        _titleLabel.font = [UIFont boldSystemFontOfSize:17];
+        _titleLabel.font = [UIFont boldSystemFontOfSize:16];
         _titleLabel.textColor = MainTitleColor;
         _titleLabel.numberOfLines = 0;
         _titleLabel.lineBreakMode = NSLineBreakByCharWrapping;
