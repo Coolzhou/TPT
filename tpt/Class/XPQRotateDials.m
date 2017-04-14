@@ -162,7 +162,7 @@
 #pragma mark 设置值
 -(void)setNeedleAngle:(CGFloat)needleAngle {
 
-    NSLog(@"old = %f 走着 needAng = %f",_needleAngle,needleAngle);
+//    NSLog(@"old = %f 走着 needAng = %f",_needleAngle,needleAngle);
 
     // 因为指针指向上，所以要偏90度
     CGFloat oldAngle = _needleAngle;
@@ -175,6 +175,7 @@
 #pragma mark -动画
 -(void)rotateAnimationWithAngle:(CGFloat)oldAngle toAngle:(CGFloat)newAngle {
     CGFloat stepAngle = fabs(newAngle - oldAngle);
+//    NSLog(@"sepAngle = %f",stepAngle);
     if (stepAngle < 180) {
         [UIView beginAnimations:@"rotation" context:NULL];
         [UIView setAnimationDuration:self.animationTime];
@@ -227,21 +228,6 @@
     } else {
         return 45+30+35+35+ (value-tem_supper_high)/(high-tem_supper_high)*35;
     }
-
-//    if (value<low){
-//        value = low;
-//    }
-//    if (value < 37.5) {
-//        return  (value-low)/(37.5-low)*45;
-//    } else if (value >= 37.5 && value < 38) {
-//        return 45+ (value-37.5)/(38-37.5)*30;
-//    } else if (value >= 38 && value < 39) {
-//        return  45+30+(value-38)/(39-38)*35;
-//    } else if (value >= 39 && value < 41) {
-//        return 45+30+35+ (value-39)/(41-39)*35;
-//    } else {
-//        return 45+30+35+35+ (value-41)/(high-41)*35;
-//    }
 }
 
 
