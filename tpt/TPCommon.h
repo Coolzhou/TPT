@@ -35,4 +35,12 @@
 #define IS_IPHONE_6 (IS_IPHONE && SCREEN_MAX_LENGTH == 667.0)
 #define IS_IPHONE_6P (IS_IPHONE && SCREEN_MAX_LENGTH == 736.0)
 
+
+#define channelOnPeropheralView @"peripheralView"
+#define channelOnCharacteristicView @"CharacteristicView"
+#define kPeripheralName         @"360qws Electric Bike Service"         //外围设备名称
+#define kServiceUUID            @"8A0DFFD0-B80C-4335-8E5F-630031415354" //服务的UUID
+#define kCharacteristicWriteUUID     @"8A0DFFD1-B80C-4335-8E5F-630031415354" //读写特征的UUID
+#define kCharacteristicReadUUID     @"8A0DFFD2-B80C-4335-8E5F-630031415354" //读通知特征的UUID
+
 #endif /* TPCommon_h */

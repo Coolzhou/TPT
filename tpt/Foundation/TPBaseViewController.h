@@ -11,14 +11,15 @@
 @interface TPBaseViewController : UIViewController
 
 @property (nonatomic,strong) UIImageView *bgimageView;//背景图片
-
 @property (nonatomic,strong)UIButton *navbackButton;//返回按钮
 
 @property (nonatomic,strong)UIButton *navrightButton;//右侧按钮
 
 @property (nonatomic,strong)UIImageView *navBluetoothView;//右侧蓝牙按钮
-
 @property (nonatomic,strong)UILabel *navTitleLable;//右侧按钮
+
+
+
 
 
 //点击左导航按钮
