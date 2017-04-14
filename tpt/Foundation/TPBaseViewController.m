@@ -25,6 +25,7 @@
 @property (nonatomic,strong)NSMutableArray *timeArray;  //时间数组
 @property (nonatomic,strong)NSString *staticTemp;//默认正常状态
 
+@property (nonatomic,assign)BOOL connectState;//默认正常状态
 @end
 
 @implementation TPBaseViewController
@@ -33,6 +34,11 @@
     [super viewWillAppear:animated];
     [self setInViewWillAppear];
     
+}
+
+- (void)dealloc{
+    [[NSNotificationCenter defaultCenter]removeObserver:self name:@"backBabyBlue" object:nil];
+    [self removeObserver:self forKeyPath:@"connectState"];
 }
 
 - (void)viewDidAppear:(BOOL)animated{
@@ -62,7 +68,38 @@
     [self loadBabayBluetooth]; //蓝牙
     [self createTimer];
 
+    [self addObserver:self forKeyPath:@"connectState" options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld context:@"ISconnectState"];
+
 }
+
+- (void)observeValueForKeyPath:(NSString*)keyPath ofObject:(id)object change:(NSDictionary*)change context:(void*)context
+
+{
+
+    NSLog(@"被监测的那个对象的属性所在的路径:%@",keyPath);
+
+    NSLog(@"被观察者:%@", object);
+
+    NSLog(@"属性所有状态下的值:%@", change);
+
+    NSLog(@"在注册观察者的时候,传过来的context :%@", context);
+
+    NSString * new =[NSString stringWithFormat:@"%@",[change objectForKey:@"new"]];
+    NSString * old =[NSString stringWithFormat:@"%@",[change objectForKey:@"old"]];
+
+    NSLog(@"old= %@ ,new = %@",old,new);
+
+    if([new isEqualToString:@"1"] && [old isEqualToString:@"0"]) {
+        //从无网络到有网络
+        NSLog(@"11111");
+        [baby cancelAllPeripheralsConnection];
+        //设置委托后直接可以使用，无需等待CBCentralManagerStatePoweredOn状态。
+        baby.scanForPeripherals().begin();
+    }else{
+        NSLog(@"22222");
+    }
+}
+
 
 -(void)clickLeftBarButtonItem{
     [self.navigationController popViewControllerAnimated:YES];
@@ -284,7 +321,6 @@
 }
 
 -(void)loadData{
-
     baby.having(self.currPeripheral).and.channel(channelOnPeropheralView).then.connectToPeripherals().discoverServices().discoverCharacteristics().readValueForCharacteristic().discoverDescriptorsForCharacteristic().readValueForDescriptors().begin();
 }
 
@@ -301,7 +337,9 @@
         if (central.state == CBCentralManagerStatePoweredOn) {
             NSLog(@"设备打开成功，开始扫描设备");
         }
+        NSLog(@"asdfadf");
     }];
+
     //设置扫描到设备的委托
     [baby setBlockOnDiscoverToPeripherals:^(CBCentralManager *central, CBPeripheral *peripheral, NSDictionary *advertisementData, NSNumber *RSSI) {
         NSLog(@"搜索到了设备:%@",peripheral.name);
@@ -311,34 +349,32 @@
     //设置设备连接成功的委托,同一个baby对象，使用不同的channel切换委托回调
     [baby setBlockOnConnectedAtChannel:channelOnPeropheralView block:^(CBCentralManager *central, CBPeripheral *peripheral) {
         NSLog(@"设备：%@--连接成功",peripheral);
-        [SVProgressHUD showInfoWithStatus:@"设备连接成功"];
-        weakSelf.navBluetoothView.hidden = NO;
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [SVProgressHUD showInfoWithStatus:@"设备连接成功"];
+            weakSelf.navBluetoothView.hidden = NO;
+            weakSelf.connectState = NO;
+        });
     }];
 
     //设置设备连接失败的委托
     [baby setBlockOnFailToConnectAtChannel:channelOnPeropheralView block:^(CBCentralManager *central, CBPeripheral *peripheral, NSError *error) {
         NSLog(@"设备：%@--连接失败",peripheral.name);
-         [weakbaby AutoReconnect:peripheral];
+//        [weakSelf loadData]; //连接设备
+        weakSelf.connectState = YES;
     }];
 
-    [baby setBlockOnDisconnect:^(CBCentralManager *central, CBPeripheral *peripheral, NSError *error) {
+    //设置设备断开连接的委托
+    [baby setBlockOnDisconnectAtChannel:channelOnPeropheralView block:^(CBCentralManager *central, CBPeripheral *peripheral, NSError *error) {
         NSLog(@"设备：%@--断开连接",peripheral.name);
-        weakSelf.navBluetoothView.hidden = YES;
-        [SVProgressHUD showErrorWithStatus:@"设备已断开连接"];
-         [weakbaby AutoReconnect:peripheral];
-        [TPTool deviceCutUpalyAlart]; //设备断开警报
+
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [SVProgressHUD showErrorWithStatus:@"设备已断开连接"];
+            weakSelf.navBluetoothView.hidden = YES;
+            [TPTool deviceCutUpalyAlart]; //设备断开警报
+        });
+        weakSelf.connectState = YES;
 //        [weakSelf loadData];
     }];
-
-//    //设置设备断开连接的委托
-//    [baby setBlockOnDisconnectAtChannel:channelOnPeropheralView block:^(CBCentralManager *central, CBPeripheral *peripheral, NSError *error) {
-//        NSLog(@"设备：%@--断开连接",peripheral.name);
-//        weakSelf.navBluetoothView.hidden = YES;
-//        [SVProgressHUD showErrorWithStatus:@"设备已断开连接"];
-//         [weakbaby AutoReconnect:peripheral];
-//        [TPTool deviceCutUpalyAlart]; //设备断开警报
-//        [weakSelf loadData];
-//    }];
 
     //设置发现设备的Services的委托
     [baby setBlockOnDiscoverServicesAtChannel:channelOnPeropheralView block:^(CBPeripheral *peripheral, NSError *error) {
@@ -556,11 +592,6 @@
 //            }
 //        }
 //    }
-}
-
--(void)dealloc{
-
-    [[NSNotificationCenter defaultCenter]removeObserver:self name:@"backBabyBlue" object:nil];
 }
 
 -(UIImageView *)bgimageView{

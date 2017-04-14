@@ -23,7 +23,6 @@
 
 @interface MCFirstPageVIewController ()<SNChartDataSource>{
     BabyBluetooth *baby;
-
 }
 
 @property (strong, nonatomic)XPQRotateDials *rotateDials;

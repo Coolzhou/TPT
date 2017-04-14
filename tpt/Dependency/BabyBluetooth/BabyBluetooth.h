@@ -4,7 +4,7 @@
  https://github.com/coolnameismy/BabyBluetooth
  
  version:0.7.0
-*/
+ */
 
 // Created by 刘彦玮 on 15/3/31.
 // Copyright (c) 2015年 刘彦玮. All rights reserved.
