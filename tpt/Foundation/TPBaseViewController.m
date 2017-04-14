@@ -21,11 +21,11 @@
     BabyBluetooth *baby;
     NSTimer *_timer;     //定时器
 }
+@property (nonatomic,strong)NSMutableArray *servicesArray; //服务数组
 @property (nonatomic,strong)NSMutableArray *valueArray; //温度数组
 @property (nonatomic,strong)NSMutableArray *timeArray;  //时间数组
 @property (nonatomic,strong)NSString *staticTemp;//默认正常状态
 
-@property (nonatomic,assign)BOOL connectState;//默认正常状态
 @end
 
 @implementation TPBaseViewController
@@ -38,7 +38,6 @@
 
 - (void)dealloc{
     [[NSNotificationCenter defaultCenter]removeObserver:self name:@"backBabyBlue" object:nil];
-    [self removeObserver:self forKeyPath:@"connectState"];
 }
 
 - (void)viewDidAppear:(BOOL)animated{
@@ -68,38 +67,7 @@
     [self loadBabayBluetooth]; //蓝牙
     [self createTimer];
 
-    [self addObserver:self forKeyPath:@"connectState" options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld context:@"ISconnectState"];
-
 }
-
-- (void)observeValueForKeyPath:(NSString*)keyPath ofObject:(id)object change:(NSDictionary*)change context:(void*)context
-
-{
-
-    NSLog(@"被监测的那个对象的属性所在的路径:%@",keyPath);
-
-    NSLog(@"被观察者:%@", object);
-
-    NSLog(@"属性所有状态下的值:%@", change);
-
-    NSLog(@"在注册观察者的时候,传过来的context :%@", context);
-
-    NSString * new =[NSString stringWithFormat:@"%@",[change objectForKey:@"new"]];
-    NSString * old =[NSString stringWithFormat:@"%@",[change objectForKey:@"old"]];
-
-    NSLog(@"old= %@ ,new = %@",old,new);
-
-    if([new isEqualToString:@"1"] && [old isEqualToString:@"0"]) {
-        //从无网络到有网络
-        NSLog(@"11111");
-        [baby cancelAllPeripheralsConnection];
-        //设置委托后直接可以使用，无需等待CBCentralManagerStatePoweredOn状态。
-        baby.scanForPeripherals().begin();
-    }else{
-        NSLog(@"22222");
-    }
-}
-
 
 -(void)clickLeftBarButtonItem{
     [self.navigationController popViewControllerAnimated:YES];
@@ -312,8 +280,7 @@
 
     //app 进入后台调用
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(appEnterBackGround) name:@"backBabyBlue" object:nil];
-
-    self.services = [[NSMutableArray alloc]init];
+    
     //初始化BabyBluetooth 蓝牙库
     baby = [BabyBluetooth shareBabyBluetooth];
     //设置蓝牙委托
@@ -337,7 +304,6 @@
         if (central.state == CBCentralManagerStatePoweredOn) {
             NSLog(@"设备打开成功，开始扫描设备");
         }
-        NSLog(@"asdfadf");
     }];
 
     //设置扫描到设备的委托
@@ -352,52 +318,69 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             [SVProgressHUD showInfoWithStatus:@"设备连接成功"];
             weakSelf.navBluetoothView.hidden = NO;
-            weakSelf.connectState = NO;
         });
     }];
 
     //设置设备连接失败的委托
     [baby setBlockOnFailToConnectAtChannel:channelOnPeropheralView block:^(CBCentralManager *central, CBPeripheral *peripheral, NSError *error) {
         NSLog(@"设备：%@--连接失败",peripheral.name);
-//        [weakSelf loadData]; //连接设备
-        weakSelf.connectState = YES;
+
+        weakSelf.navBluetoothView.hidden = YES;
+        [TPTool deviceCutUpalyAlart]; //设备断开警报
+        [weakbaby.centralManager connectPeripheral:peripheral options:nil];
     }];
+    
+    
 
     //设置设备断开连接的委托
     [baby setBlockOnDisconnectAtChannel:channelOnPeropheralView block:^(CBCentralManager *central, CBPeripheral *peripheral, NSError *error) {
-        NSLog(@"设备：%@--断开连接",peripheral.name);
-
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [SVProgressHUD showErrorWithStatus:@"设备已断开连接"];
-            weakSelf.navBluetoothView.hidden = YES;
-            [TPTool deviceCutUpalyAlart]; //设备断开警报
-        });
-        weakSelf.connectState = YES;
-//        [weakSelf loadData];
+        NSLog(@"设备22：%@--断开连接",peripheral.name);
+        weakSelf.navBluetoothView.hidden = YES;
+        [TPTool deviceCutUpalyAlart]; //设备断开警报
+        [weakbaby.centralManager connectPeripheral:peripheral options:nil];
+       
+    }];
+    
+    //断开连接的委托
+    [baby setBlockOnDisconnect:^(CBCentralManager *central, CBPeripheral *peripheral, NSError *error) {
+        NSLog(@"设备11：%@--断开连接",peripheral.name);
+        [SVProgressHUD showErrorWithStatus:@"设备已断开连接"];
+        weakSelf.navBluetoothView.hidden = YES;
+        [TPTool deviceCutUpalyAlart]; //设备断开警报
+        [weakbaby.centralManager connectPeripheral:peripheral options:nil];
     }];
 
     //设置发现设备的Services的委托
     [baby setBlockOnDiscoverServicesAtChannel:channelOnPeropheralView block:^(CBPeripheral *peripheral, NSError *error) {
-        CBService *service = peripheral.services.firstObject;
-        PeripheralInfo *info = [[PeripheralInfo alloc]init];
-        [info setServiceUUID:service.UUID];
-        [info setCharacteristics:(NSMutableArray *)service.characteristics];
+//        CBService *service = peripheral.services.firstObject;
+        
+        NSLog(@"service.char = %@",peripheral.services);
+        
+        for (CBService *service in peripheral.services) {
+            PeripheralInfo *info = [[PeripheralInfo alloc]init];
+            [info setServiceUUID:service.UUID];
+            [weakSelf.servicesArray addObject:info];
 
-        NSLog(@"info.chat = %@",info.characteristics);
-        for (int i=0; i<info.characteristics.count; i++) {
-            CBCharacteristic *characteristic = info.characteristics[i];
-            weakbaby.channel(channelOnCharacteristicView).characteristicDetails(weakSelf.currPeripheral,characteristic);
         }
+//        PeripheralInfo *info = [[PeripheralInfo alloc]init];
+//        [info setServiceUUID:service.UUID];
+//        [info setCharacteristics:(NSMutableArray *)service.characteristics];
+//
+//        NSLog(@"info.chat = %@",info.characteristics);
+//        for (int i=0; i<info.characteristics.count; i++) {
+//            CBCharacteristic *characteristic = info.characteristics[i];
+//            weakbaby.channel(channelOnCharacteristicView).characteristicDetails(weakSelf.currPeripheral,characteristic);
+//        }
         [rhythm beats];
     }];
     //设置发现设service的Characteristics的委托
     [baby setBlockOnDiscoverCharacteristicsAtChannel:channelOnPeropheralView block:^(CBPeripheral *peripheral, CBService *service, NSError *error) {
-        NSLog(@"===service name:%@",service.UUID);
-
+        NSLog(@"===service name:%@",service);
+        [weakSelf insertRowToTableView:service];
     }];
     //设置读取characteristics的委托
     [baby setBlockOnReadValueForCharacteristicAtChannel:channelOnPeropheralView block:^(CBPeripheral *peripheral, CBCharacteristic *characteristics, NSError *error) {
-        NSLog(@"characteristic name:%@ value is:%@",characteristics.UUID,characteristics.value);
+        NSLog(@"characteristic name11:%@ value is:%@",characteristics.UUID,characteristics.value);
 
         if ([characteristics.UUID isEqual:[CBUUID UUIDWithString:kCharacteristicWriteUUID]]) {
             weakSelf.writeCBCharacteristic = characteristics;
@@ -447,6 +430,26 @@
                                      CBConnectPeripheralOptionNotifyOnNotificationKey:@YES};
 
     [baby setBabyOptionsAtChannel:channelOnPeropheralView scanForPeripheralsWithOptions:scanForPeripheralsWithOptions connectPeripheralWithOptions:connectOptions scanForPeripheralsWithServices:nil discoverWithServices:nil discoverWithCharacteristics:nil];
+}
+
+-(void)insertRowToTableView:(CBService *)service{
+    int sect = -1;
+    for (int i=0;i<self.servicesArray.count;i++) {
+        PeripheralInfo *info = [self.servicesArray objectAtIndex:i];
+        if (info.serviceUUID == service.UUID) {
+            sect = i;
+        }
+    }
+    if (sect != -1) {
+        PeripheralInfo *info =[self.servicesArray objectAtIndex:sect];
+        NSLog(@"service.characteristics = %@",service.characteristics);
+        for (int row=0;row<service.characteristics.count;row++) {
+            CBCharacteristic *c = service.characteristics[row];
+            [info.characteristics addObject:c];
+        }
+        PeripheralInfo *curInfo =[self.servicesArray objectAtIndex:sect];
+        NSLog(@"curInfo.characteristics =%@",curInfo.characteristics);        
+    }
 }
 
 
@@ -654,5 +657,12 @@
         _timeArray = [[NSMutableArray alloc]init];
     }
     return _timeArray;
+}
+
+- (NSMutableArray *)servicesArray{
+    if (!_servicesArray) {
+        _servicesArray = [[NSMutableArray alloc]init];
+    }
+    return _servicesArray;
 }
 @end

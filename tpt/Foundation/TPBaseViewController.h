@@ -21,7 +21,6 @@
 @property (nonatomic,strong)UIImageView *navBluetoothView;//右侧蓝牙按钮
 @property (nonatomic,strong)UILabel *navTitleLable;//右侧按钮
 
-@property __block NSMutableArray *services; // service 数组
 @property(strong,nonatomic)CBPeripheral *currPeripheral;
 @property(strong,nonatomic)CBCharacteristic *writeCBCharacteristic; //写服
 

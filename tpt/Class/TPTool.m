@@ -175,6 +175,8 @@
 //设备断开连接时警报
 +(void)deviceCutUpalyAlart{
     //设备断开连接警报开启
+    
+    NSLog(@"断开报警 = %d",UserModel.device_disconnect);
     if (UserModel.device_disconnect) {
         //播放音乐
 //        [MJAudioTool playMusic:@"innocence.mp3"];
