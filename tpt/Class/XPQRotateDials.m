@@ -216,7 +216,10 @@
 
     if (value <low) {
         value = low;
+    }else if(value>45){
+        value = high;
     }
+    
     if (value < tem_low) {
         return  (value-low)/(tem_low-low)*45;
     }else if (value >= tem_low && value < tem_middle) {

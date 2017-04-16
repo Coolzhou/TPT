@@ -25,6 +25,7 @@
 @property (nonatomic,strong)NSMutableArray *timeArray;  //时间数组
 @property (nonatomic,strong)NSString *staticTemp;//默认正常状态
 @property (nonatomic,strong)NSTimer *timer;     //定时器
+@property (nonatomic,strong)NSTimer *backtimer;     //定时器
 @end
 
 @implementation TPBaseViewController
@@ -37,6 +38,8 @@
 
 - (void)dealloc{
     [[NSNotificationCenter defaultCenter]removeObserver:self name:@"backBabyBlue" object:nil];
+    [[NSNotificationCenter defaultCenter]removeObserver:self name:@"foregroundBabyBlue" object:nil];
+    
 }
 
 - (void)viewDidAppear:(BOOL)animated{
@@ -63,7 +66,10 @@
     self.navigationItem.titleView = self.navTitleLable;
     
     self.staticTemp = @"0";
+    
     [self loadBabayBluetooth]; //蓝牙
+    
+//    [self createTimer];//创建定时器
 }
 
 -(void)clickLeftBarButtonItem{
@@ -232,12 +238,13 @@
     }
 }
 
-
 #pragma mark 蓝牙
 -(void)loadBabayBluetooth{
     
     //app 进入后台调用
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(appEnterBackGround) name:@"backBabyBlue" object:nil];
+    
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(appEnterForegroundGround) name:@"foregroundBabyBlue" object:nil];
     
     //初始化BabyBluetooth 蓝牙库
     baby = [BabyBluetooth shareBabyBluetooth];
@@ -345,12 +352,10 @@
             weakSelf.readCBCharacteristic = characteristics;
             [weakSelf setNotifiy:weakSelf.readCBCharacteristic];  //订阅一个值
         }
-        
         if ([characteristics.UUID isEqual:[CBUUID UUIDWithString:kCharacteristicWriteUUID]]) {
             NSLog(@"写入一个值 = %@",characteristics.UUID);
             weakSelf.writeCBCharacteristic = characteristics;
         }
-        
     }];
     //设置查找设备的过滤器
     [baby setFilterOnDiscoverPeripherals:^BOOL(NSString *peripheralName, NSDictionary *advertisementData, NSNumber *RSSI) {
@@ -407,23 +412,44 @@
 
 #pragma mark app 进入后台
 - (void)appEnterBackGround{
+    NSLog(@"蓝牙进入后台调用");
     
-    for(CBService *service in self.currPeripheral.services)
-    {
-        if([service.UUID isEqual:[CBUUID UUIDWithString:kServiceUUID]])
-        {
-            for(CBCharacteristic *characteristic in service.characteristics)
-            {
-                if([characteristic.UUID isEqual:[CBUUID UUIDWithString:kCharacteristicWriteUUID]])
-                {
-                    Byte dataArray[] = {0xFC,0x04,0x01,0x01,0x02,0xED};
-                    NSData *data = [NSData dataWithBytes:dataArray length:sizeof(dataArray)/sizeof(dataArray[0])];
-                    NSLog(@"data11 = %@",data);
-                    [self.currPeripheral writeValue:data forCharacteristic:characteristic type:CBCharacteristicWriteWithResponse];
-                }
-            }
-        }
+    self.backtimer=[NSTimer scheduledTimerWithTimeInterval:10.0 target:self selector:@selector(writData) userInfo:nil repeats:YES];
+    [[NSRunLoop currentRunLoop]addTimer:_timer forMode:NSDefaultRunLoopMode];
+    
+//    for(CBService *service in self.currPeripheral.services)
+//    {
+//        if([service.UUID isEqual:[CBUUID UUIDWithString:kServiceUUID]])
+//        {
+//            for(CBCharacteristic *characteristic in service.characteristics)
+//            {
+//                if([characteristic.UUID isEqual:[CBUUID UUIDWithString:kCharacteristicWriteUUID]])
+//                {
+//                    Byte dataArray[] = {0xFC,0x04,0x01,0x01,0x02,0xED};
+//                    NSData *data = [NSData dataWithBytes:dataArray length:sizeof(dataArray)/sizeof(dataArray[0])];
+//                    NSLog(@"111data11 = %@",data);
+//                    [self.currPeripheral writeValue:data forCharacteristic:self.writeCBCharacteristic type:CBCharacteristicWriteWithResponse];
+//                }
+//            }
+//        }
+//    }
+}
+
+-(void)writData{
+    Byte dataArray[] = {0xFC,0x04,0x01,0x01,0x02,0xED};
+    NSData *data = [NSData dataWithBytes:dataArray length:sizeof(dataArray)/sizeof(dataArray[0])];
+    NSLog(@"111data11 = %@",data);
+    [self.currPeripheral writeValue:data forCharacteristic:self.writeCBCharacteristic type:CBCharacteristicWriteWithResponse];
+}
+
+#pragma mark 返回前台
+- (void)appEnterForegroundGround{
+    NSLog(@"返回前台");
+    if ([self.backtimer isValid]) {
+        [self.backtimer invalidate];
+        self.backtimer = nil;
     }
+    
 }
 -(UIImageView *)bgimageView{
     if (!_bgimageView) {

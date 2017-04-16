@@ -63,15 +63,15 @@
                 }
             }];
 
-            NSLog(@"sortedArray = %@,last = %f,first = %f", sortedArray,[sortedArray.lastObject floatValue],[sortedArray.firstObject floatValue]);
+//            NSLog(@"sortedArray = %@,last = %f,first = %f", sortedArray,[sortedArray.lastObject floatValue],[sortedArray.firstObject floatValue]);
 
-            if (yArray.count>1) {
-                self.chartLine.yMin = [sortedArray.lastObject floatValue];
-                self.chartLine.yMax = [sortedArray.firstObject floatValue];
-            }else{
-                self.chartLine.yMin = [sortedArray.firstObject floatValue]-3;
-                self.chartLine.yMax = [sortedArray.firstObject floatValue]+3;
-            }
+//            if (yArray.count>1) {
+//                self.chartLine.yMin = [sortedArray.lastObject floatValue];
+//                self.chartLine.yMax = [sortedArray.firstObject floatValue];
+//            }else{
+                self.chartLine.yMin = [sortedArray.lastObject integerValue]-3;
+                self.chartLine.yMax = [sortedArray.firstObject integerValue]+3;
+//            }
             [self.chartLine setXValues:xArray];
             [self.chartLine setYValues:yArray];
         }
@@ -95,7 +95,6 @@
                 
             }
         }
-        
         NSArray * sourtArray = [yArray sortedArrayUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
             
             return [obj2 floatValue] > [obj1 floatValue];

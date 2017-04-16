@@ -32,4 +32,10 @@
 //点击右导航按钮
 -(void)clickRightBarButtonItem;
 
+//写一个值
+-(void)writeValue:(CBCharacteristic *)characteristic;
+
+//订阅一个值
+-(void)setNotifiy:(CBCharacteristic *)characteristic;
+
 @end

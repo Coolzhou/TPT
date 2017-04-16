@@ -249,11 +249,13 @@ static const CGFloat kTopSpace = 30.f;//距离顶部y值
         CGFloat minFloat = [TPTool getUnitCurrentTempFloat:_yMin];
 
         NSInteger margeH = [TPTool getMaxTemp:((maxFloat - minFloat)/chartMaxNum)];
-//        NSLog(@"margeH = %ld",margeH);
+//        NSLog(@"margeH = %ld,max = %f ,min = %f",margeH,maxFloat,minFloat);
         if (_yValues.count<chartMaxNum) {
-            label.text = [NSString stringWithFormat:@"%.0f",maxFloat - i*margeH + 1];
+            label.text = [NSString stringWithFormat:@"%.0f",maxFloat - i*margeH+1];
+//            NSLog(@"11111text = %@,i = %ld",label.text,i);
         }else{
-            label.text = [NSString stringWithFormat:@"%.0f",maxFloat - i*margeH + 1];
+            label.text = [NSString stringWithFormat:@"%.0f",maxFloat - i*margeH+1];
+//            NSLog(@"222text = %@,i = %ld",label.text,i);
         }
     }
 }

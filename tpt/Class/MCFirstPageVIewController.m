@@ -68,6 +68,10 @@
     [self addRotateDials]; //增加转盘
     [self addchartLineView];//增加折线图
     
+//    self.chart.valueArray = [NSMutableArray arrayWithObjects:@"35.82",@"40.56",@"25.12", nil];
+//    self.chart.timeArray = [NSMutableArray arrayWithObjects:@"10:29:38",@"10:29:45",@"10:29:45", nil];
+//    self.rotateDials.value = [NSString stringWithFormat:@"48.3"];
+    
 }
 #pragma mark 删除非当月数据
 -(void)deleteNotCurrentMonthData{
@@ -106,8 +110,6 @@
 -(void)addRotateDials{
     
     self.rotateDials = [[XPQRotateDials alloc]initWithFrame:CGRectMake(0,64, kScreenWidth,kScreenHeight *0.65-84)];
-    
-    //    self.rotateDials.backgroundColor = [UIColor orangeColor];
     [self.view addSubview:self.rotateDials];
     
 }
@@ -233,6 +235,7 @@
         [self.currPeripheral writeValue:data forCharacteristic:characteristic type:CBCharacteristicWriteWithResponse];
     }
     NSLog(@"charact = %@ ,current = %@",characteristic.UUID,self.currPeripheral.name);
+    
 }
 
 
