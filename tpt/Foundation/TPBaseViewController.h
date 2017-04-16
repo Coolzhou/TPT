@@ -22,8 +22,8 @@
 @property (nonatomic,strong)UILabel *navTitleLable;//右侧按钮
 
 @property(strong,nonatomic)CBPeripheral *currPeripheral;
-@property(strong,nonatomic)CBCharacteristic *writeCBCharacteristic; //写服
-
+@property(strong,nonatomic)CBCharacteristic *writeCBCharacteristic; //写
+@property(strong,nonatomic)CBCharacteristic *readCBCharacteristic; //读
 
 
 //点击左导航按钮

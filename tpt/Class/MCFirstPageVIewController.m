@@ -56,34 +56,34 @@
 
 -(void)viewDidLoad{
     [super viewDidLoad];
-
+    
     self.view.backgroundColor = [UIColor whiteColor];
     self.navigationItem.titleView = self.titleImageView;
     self.staticTemp = @"0";
-
+    
     baby = [BabyBluetooth shareBabyBluetooth];
     [self deleteNotCurrentMonthData];//删除非当月数据
-
+    
     [self addNavigationItem]; //分享按钮
     [self addRotateDials]; //增加转盘
     [self addchartLineView];//增加折线图
-
+    
 }
 #pragma mark 删除非当月数据
 -(void)deleteNotCurrentMonthData{
-
+    
     int firstMonth = [TPTool datecurrentMonthFirestDayTime];
     [WBCacheTool deleteTemp:firstMonth];
     [TPTStateCacheTool deleteTemp:firstMonth];
     NSLog(@"firstMonth = %d",firstMonth);
-
+    
 }
 
 #pragma mark 增加 折线图
 -(void)addchartLineView{
     self.chart = [[SNChart alloc] initWithFrame:CGRectMake(15,kScreenHeight-kScreenHeight*0.35-20, self.view.frame.size.width-30, kScreenHeight*0.35) withDataSource:self andChatStyle:SNChartStyleLine];
     [self.chart showInView:self.view];
-
+    
 }
 - (NSArray *)chatConfigYValue:(SNChart *)chart {
     return @[@"36",@"38"];
@@ -106,56 +106,57 @@
 -(void)addRotateDials{
     
     self.rotateDials = [[XPQRotateDials alloc]initWithFrame:CGRectMake(0,64, kScreenWidth,kScreenHeight *0.65-84)];
-
-//    self.rotateDials.backgroundColor = [UIColor orangeColor];
+    
+    //    self.rotateDials.backgroundColor = [UIColor orangeColor];
     [self.view addSubview:self.rotateDials];
-
+    
 }
 
 //订阅一个值
 -(void)setNotifiy:(CBCharacteristic *)characteristic{
-
-    __weak typeof(self)weakSelf = self;
+    
+    __weak typeof(self) weakSelf = self;
+    
     if(self.currPeripheral.state != CBPeripheralStateConnected) {
-
+        
         NSLog(@"peripheral已经断开连接，请重新连接");
         //        [SVProgressHUD showErrorWithStatus:@"peripheral已经断开连接，请重新连接"];
         return;
     }
-    if (characteristic.properties & CBCharacteristicPropertyNotify ||  characteristic.properties & CBCharacteristicPropertyIndicate) {
-
-        if(characteristic.isNotifying) {
-            [baby cancelNotify:self.currPeripheral characteristic:characteristic];
+    if (self.readCBCharacteristic.properties & CBCharacteristicPropertyNotify ||  self.readCBCharacteristic.properties & CBCharacteristicPropertyIndicate) {
+        
+        if(self.readCBCharacteristic.isNotifying) {
+            [baby cancelNotify:self.currPeripheral characteristic:self.readCBCharacteristic];
             NSLog(@"通知");
         }else{
-            [weakSelf.currPeripheral setNotifyValue:YES forCharacteristic:characteristic];
-            NSLog(@"取消通知");
+            [self.currPeripheral setNotifyValue:YES forCharacteristic:self.readCBCharacteristic];
+            NSLog(@"取消通知 =%@ - %@",self.currPeripheral,self.readCBCharacteristic);
             [baby notify:self.currPeripheral
-          characteristic:characteristic
+          characteristic:self.readCBCharacteristic
                    block:^(CBPeripheral *peripheral, CBCharacteristic *characteristics, NSError *error) {
                        NSLog(@"通知的值 new value %@",characteristics.value);
                        NSData * data = characteristic.value;
                        Byte * resultByte = (Byte *)[data bytes];
-
+                       
                        NSString *currentElec =[NSString stringWithFormat:@"%u",resultByte[5]];
-
+                       
                        if (![NSString isNull:currentElec]) {
                            UserModel.temp_currentElec = currentElec;
                        }
                        //温度
                        NSString *aa =[NSString stringWithFormat:@"%u.%u",resultByte[3],resultByte[4]];
-
-                   CGFloat tempfloats = [aa floatValue] + [UserModel.temp_check floatValue];
+                       
+                       CGFloat tempfloats = [aa floatValue] + [UserModel.temp_check floatValue];
                        NSLog(@"teeee=%f",tempfloats);
                        self.rotateDials.value = [NSString stringWithFormat:@"%.1f",tempfloats];
                        [self.valueArray addObject:aa];
-
+                       
                        [weakSelf showAlarm:tempfloats];
-
+                       
                        NSString *timeStr =[TPTool getCurrentDate];
                        int tempTimeInt = [TPTool getCurrentTimeIntDate];
                        [self.timeArray addObject:timeStr];
-                   
+                       
                        if (self.valueArray.count>chartMaxNum) {
                            //默认为正序遍历
                            [self.valueArray removeObjectAtIndex:0];
@@ -171,7 +172,7 @@
                        temp.create_time = tempTimeInt;
                        temp.temp = [aa floatValue];
                        [WBCacheTool addTemperature:temp];
-                   
+                       
                        //记录提醒数据
                        NSString *getTemp = [TPTool getCurrentTempState:aa];
                        if (![getTemp isEqualToString:@"-1"]) {
@@ -184,7 +185,7 @@
                                self.staticTemp = getTemp;
                            }
                        }
-
+                       
                    }];
         }
     }
@@ -202,9 +203,9 @@
 
 #pragma mark 蓝牙
 - (IBAction)clickBluetoothSender:(UIButton *)sender {
-
+    
     if (self.currPeripheral) {
-
+        
         for(CBService *service in self.currPeripheral.services)
         {
             if([service.UUID isEqual:[CBUUID UUIDWithString:kServiceUUID]])
@@ -223,11 +224,11 @@
 
 //写一个值
 -(void)writeValue:(CBCharacteristic *)characteristic{
-
+    
     Byte dataArray[] = {0xFC,0x02,0x00,0x02,0xED};
     NSData *data = [NSData dataWithBytes:dataArray length:sizeof(dataArray)/sizeof(dataArray[0])];
     NSLog(@"data3333 = %@",data);
-
+    
     if (characteristic) {
         [self.currPeripheral writeValue:data forCharacteristic:characteristic type:CBCharacteristicWriteWithResponse];
     }
