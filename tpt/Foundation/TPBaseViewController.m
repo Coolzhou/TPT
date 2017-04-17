@@ -281,7 +281,7 @@
     [baby setBlockOnConnectedAtChannel:channelOnPeropheralView block:^(CBCentralManager *central, CBPeripheral *peripheral) {
         NSLog(@"设备：%@--连接成功",peripheral);
         dispatch_async(dispatch_get_main_queue(), ^{
-            [SVProgressHUD showInfoWithStatus:@"设备连接成功"];
+            [SVProgressHUD showSuccessWithStatus:@"设备连接成功"];
             weakSelf.navBluetoothView.hidden = NO;
             [weakSelf createTimer];//创建定时器
         });
@@ -415,7 +415,7 @@
     NSLog(@"蓝牙进入后台调用");
     
     self.backtimer=[NSTimer scheduledTimerWithTimeInterval:10.0 target:self selector:@selector(writData) userInfo:nil repeats:YES];
-    [[NSRunLoop currentRunLoop]addTimer:_timer forMode:NSDefaultRunLoopMode];
+    [[NSRunLoop currentRunLoop]addTimer:self.backtimer forMode:NSDefaultRunLoopMode];
     
 //    for(CBService *service in self.currPeripheral.services)
 //    {
@@ -436,6 +436,7 @@
 }
 
 -(void)writData{
+    NSLog(@"111data11 = ");
     Byte dataArray[] = {0xFC,0x04,0x01,0x01,0x02,0xED};
     NSData *data = [NSData dataWithBytes:dataArray length:sizeof(dataArray)/sizeof(dataArray[0])];
     NSLog(@"111data11 = %@",data);

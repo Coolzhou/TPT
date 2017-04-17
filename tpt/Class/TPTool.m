@@ -129,6 +129,7 @@
     //温度超限报警开关
     if (UserModel.max_alert_state) {
         if ((temp>=[UserModel.max_tem_low floatValue])&&(temp<[UserModel.max_tem_middle floatValue])) {
+            [[iToast makeText:NSLocalizedString(@"max_tem_low",@"")] show];
             if (UserModel.max_notify_voice) {
                 //播放音乐
                 [MJAudioTool playMusic:@"main_alert_one.mp3"];
@@ -140,6 +141,7 @@
                 [MJAudioTool begainPlayingSoundid];
             }
         }else if ((temp>=[UserModel.max_tem_middle floatValue])&&(temp<[UserModel.max_tem_high floatValue])){
+            [[iToast makeText:NSLocalizedString(@"max_tem_middle",@"")] show];
             if (UserModel.max_notify_voice) {
                 //播放音乐
                 [MJAudioTool playMusic:@"main_alert_two.mp3"];
@@ -149,6 +151,7 @@
                 [MJAudioTool begainPlayingSoundid];
             }
         }else if ((temp>=[UserModel.max_tem_high floatValue])&&(temp<[UserModel.max_tem_supper_high floatValue])){
+            [[iToast makeText:NSLocalizedString(@"max_tem_high",@"")] show];
             if (UserModel.max_notify_voice) {
                 //播放音乐
                 [MJAudioTool playMusic:@"main_alert_three.mp3"];
@@ -158,6 +161,7 @@
                 [MJAudioTool begainPlayingSoundid];
             }
         }else if (temp>=[UserModel.max_tem_supper_high floatValue]){
+            [[iToast makeText:NSLocalizedString(@"max_tem_supper_high",@"")] show];
             if (UserModel.max_notify_voice) {
                 //播放音乐
                 [MJAudioTool playMusic:@"main_alert_free.mp3"];
