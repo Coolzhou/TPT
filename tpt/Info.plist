@@ -205,6 +205,7 @@ weibo.com
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>bluetooth-peripheral</string>
+		<string>audio</string>
 		<string>bluetooth-central</string>
 	</array>
 	<key>UIMainStoryboardFile</key>

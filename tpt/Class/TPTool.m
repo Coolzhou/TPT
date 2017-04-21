@@ -126,6 +126,10 @@
 //根据超限温度提示不同警报
 +(void)palyAlartTempFloat:(CGFloat)temp{
 
+    AVAudioSession *session = [AVAudioSession sharedInstance];
+    [session setActive:YES error:nil];
+    [session setCategory:AVAudioSessionCategoryPlayback error:nil];
+    
     //温度超限报警开关
     if (UserModel.max_alert_state) {
         if ((temp>=[UserModel.max_tem_low floatValue])&&(temp<[UserModel.max_tem_middle floatValue])) {
