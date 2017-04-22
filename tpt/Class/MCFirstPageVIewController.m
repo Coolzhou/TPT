@@ -200,7 +200,7 @@
 #pragma mark 警报
 -(void)showAlarm:(CGFloat)temp{
     //播放警报
-    [TPTool palyAlartTempFloat:temp];
+    [TPTool palyAlartTempFloat:temp andVC:self];
 }
 
 #pragma mark 蓝牙

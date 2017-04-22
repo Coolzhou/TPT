@@ -37,10 +37,10 @@
 +(CGFloat)getFahrenheitDegrrCurrentTempFloat:(CGFloat)temp;
 
 //根据超限温度提示不同警报
-+(void)palyAlartTempFloat:(CGFloat)temp;
++(void)palyAlartTempFloat:(CGFloat)temp andVC:(UIViewController *)vc;
 
 //设备断开连接时警报
-+(void)deviceCutUpalyAlart;
++(void)deviceCutUpalyAlart:(UIViewController *)vc;
 
 //间隔
 +(NSInteger)getMaxTemp:(CGFloat)temp;

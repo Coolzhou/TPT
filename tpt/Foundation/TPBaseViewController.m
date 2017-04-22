@@ -295,7 +295,7 @@
             weakSelf.timer = nil;
         }
         weakSelf.navBluetoothView.hidden = YES;
-        [TPTool deviceCutUpalyAlart]; //设备断开警报
+        [TPTool deviceCutUpalyAlart:weakSelf]; //设备断开警报
         [weakbaby AutoReconnect:weakSelf.currPeripheral];
     }];
     
@@ -316,7 +316,7 @@
             }
         }
         weakSelf.navBluetoothView.hidden = YES;
-        [TPTool deviceCutUpalyAlart]; //设备断开警报
+        [TPTool deviceCutUpalyAlart:weakSelf]; //设备断开警报
         [weakbaby scanForPeripherals];
         [weakbaby AutoReconnect:weakSelf.currPeripheral];
         
@@ -407,7 +407,7 @@
 #pragma mark 警报
 -(void)showAlarm:(CGFloat)temp{
     //播放警报
-    [TPTool palyAlartTempFloat:temp];
+    [TPTool palyAlartTempFloat:temp andVC:self];
 }
 
 #pragma mark app 进入后台
@@ -441,6 +441,7 @@
     NSData *data = [NSData dataWithBytes:dataArray length:sizeof(dataArray)/sizeof(dataArray[0])];
     NSLog(@"111data11 = %@",data);
     [self.currPeripheral writeValue:data forCharacteristic:self.writeCBCharacteristic type:CBCharacteristicWriteWithResponse];
+    
 }
 
 #pragma mark 返回前台

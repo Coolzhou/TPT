@@ -8,7 +8,6 @@
 
 #import "ZCUserModel.h"
 
-
 @implementation ZCUserModel
 
 static NSString * const MAX_TEM_LOW = @"max_tem_low";
@@ -26,6 +25,11 @@ static NSString * const MAX_NOFIFY_VIBRATION= @"max_notify_vibration";
 static NSString * const TEMP_CHECK= @"temp_check";
 static NSString * const  TEMP_UNIT = @"temp_unit";
 static NSString * const  DEVICE_DISCONNECT = @"device_disconnect";
+
+static NSString * const ALERT_LOW = @"alert_low";
+static NSString * const ALERT_MIDDLE = @"alert_middle";
+static NSString * const ALERT_HIGH = @"alert_high";
+static NSString * const ALERT_SUPPER_HIGH = @"alert_supper_high";
 
 
 
@@ -151,6 +155,45 @@ static NSString * const  DEVICE_DISCONNECT = @"device_disconnect";
 }
 -(BOOL)device_disconnect{
     BOOL device_disconnect = [[NSUserDefaults standardUserDefaults]boolForKey:DEVICE_DISCONNECT];
+    return device_disconnect;
+}
+
+- (void)setAlert_low:(BOOL)alert_low{
+    [[NSUserDefaults standardUserDefaults]setBool:alert_low forKey:ALERT_LOW];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+- (BOOL)alert_low{
+    BOOL device_disconnect = [[NSUserDefaults standardUserDefaults]boolForKey:ALERT_LOW];
+    return device_disconnect;
+}
+
+- (void)setAlert_middle:(BOOL)alert_middle{
+    [[NSUserDefaults standardUserDefaults]setBool:alert_middle forKey:ALERT_MIDDLE];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+- (BOOL)alert_middle{
+    BOOL device_disconnect = [[NSUserDefaults standardUserDefaults]boolForKey:ALERT_MIDDLE];
+    return device_disconnect;
+}
+
+- (void)setAlert_high:(BOOL)alert_high{
+    [[NSUserDefaults standardUserDefaults]setBool:alert_high forKey:ALERT_HIGH];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+- (BOOL)alert_high{
+    BOOL device_disconnect = [[NSUserDefaults standardUserDefaults]boolForKey:ALERT_HIGH];
+    return device_disconnect;
+}
+
+- (void)setAlert_supper_high:(BOOL)alert_supper_high{
+    [[NSUserDefaults standardUserDefaults]setBool:alert_supper_high forKey:ALERT_SUPPER_HIGH];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+- (BOOL)alert_supper_high{
+    BOOL device_disconnect = [[NSUserDefaults standardUserDefaults]boolForKey:ALERT_SUPPER_HIGH];
     return device_disconnect;
 }
 

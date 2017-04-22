@@ -48,6 +48,11 @@
         UserModel.max_notify_voice = YES;
         UserModel.temp_unit = NO;
         UserModel.device_disconnect = YES;
+        
+        UserModel.alert_low = NO;
+        UserModel.alert_middle = NO;
+        UserModel.alert_high = NO;
+        UserModel.alert_supper_high = NO;
     }
     //shareSDK
     [self shareSDKApplication:application didFinishLaunchingWithOptions:launchOptions];

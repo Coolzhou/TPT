@@ -124,7 +124,7 @@
 }
 
 //根据超限温度提示不同警报
-+(void)palyAlartTempFloat:(CGFloat)temp{
++(void)palyAlartTempFloat:(CGFloat)temp andVC:(UIViewController *)vc{
 
     AVAudioSession *session = [AVAudioSession sharedInstance];
     [session setActive:YES error:nil];
@@ -133,19 +133,21 @@
     //温度超限报警开关
     if (UserModel.max_alert_state) {
         if ((temp>=[UserModel.max_tem_low floatValue])&&(temp<[UserModel.max_tem_middle floatValue])) {
-            [[iToast makeText:NSLocalizedString(@"max_tem_low",@"")] show];
+            if (UserModel.alert_low ==NO) {
+                [TPToolShare showAlertView:NSLocalizedString(@"max_tem_low",@"") andVC:vc andType:1];
+            }
             if (UserModel.max_notify_voice) {
                 //播放音乐
                 [MJAudioTool playMusic:@"main_alert_one.mp3"];
-                //播放音效
-//                [MJAudioTool playSound:@"alarm.wav"];
             }
             //振动
             if (UserModel.max_notify_vibration) {
                 [MJAudioTool begainPlayingSoundid];
             }
         }else if ((temp>=[UserModel.max_tem_middle floatValue])&&(temp<[UserModel.max_tem_high floatValue])){
-            [[iToast makeText:NSLocalizedString(@"max_tem_middle",@"")] show];
+            if (UserModel.alert_middle ==NO) {
+                [TPToolShare showAlertView:NSLocalizedString(@"max_tem_middle",@"") andVC:vc andType:2];
+            }
             if (UserModel.max_notify_voice) {
                 //播放音乐
                 [MJAudioTool playMusic:@"main_alert_two.mp3"];
@@ -155,7 +157,9 @@
                 [MJAudioTool begainPlayingSoundid];
             }
         }else if ((temp>=[UserModel.max_tem_high floatValue])&&(temp<[UserModel.max_tem_supper_high floatValue])){
-            [[iToast makeText:NSLocalizedString(@"max_tem_high",@"")] show];
+            if (UserModel.alert_high ==NO) {
+                [TPToolShare showAlertView:NSLocalizedString(@"max_tem_high",@"") andVC:vc andType:3];
+            }
             if (UserModel.max_notify_voice) {
                 //播放音乐
                 [MJAudioTool playMusic:@"main_alert_three.mp3"];
@@ -165,7 +169,9 @@
                 [MJAudioTool begainPlayingSoundid];
             }
         }else if (temp>=[UserModel.max_tem_supper_high floatValue]){
-            [[iToast makeText:NSLocalizedString(@"max_tem_supper_high",@"")] show];
+            if (UserModel.alert_supper_high ==NO) {
+                [TPToolShare showAlertView:NSLocalizedString(@"max_tem_supper_high",@"") andVC:vc andType:4];
+            }
             if (UserModel.max_notify_voice) {
                 //播放音乐
                 [MJAudioTool playMusic:@"main_alert_free.mp3"];
@@ -180,18 +186,61 @@
     }
 }
 
+- (void)showAlertView:(NSString *)alertStr andVC:(UIViewController *)vc andType:(int)type{
+    
+    UIAlertController *alert  = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"device_remind",@"") message:alertStr preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *action1 = [UIAlertAction actionWithTitle:NSLocalizedString(@"alert_once",@"") style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        
+    }];
+    UIAlertAction *action2 = [UIAlertAction actionWithTitle:NSLocalizedString(@"alert_no",@"") style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        switch (type) {
+            case 1:{
+                UserModel.alert_low = YES;
+            }
+                break;
+            case 2:{
+                UserModel.alert_low = YES;
+                UserModel.alert_middle = YES;
+            }
+                break;
+            case 3:{
+                UserModel.alert_low = YES;
+                UserModel.alert_middle = YES;
+                UserModel.alert_high = YES;
+            }
+                break;
+            default:{
+                UserModel.alert_low = YES;
+                UserModel.alert_middle = YES;
+                UserModel.alert_high = YES;
+                UserModel.alert_supper_high = YES;
+            }
+                break;
+        }
+    }];
+    [alert addAction:action1];
+    [alert addAction:action2];
+    [vc presentViewController:alert animated:YES completion:^{
+    }];
+}
+
 //设备断开连接时警报
-+(void)deviceCutUpalyAlart{
++(void)deviceCutUpalyAlart:(UIViewController *)vc{
     //设备断开连接警报开启
     
     NSLog(@"断开报警 = %d",UserModel.device_disconnect);
     if (UserModel.device_disconnect) {
         //播放音乐
-//        [MJAudioTool playMusic:@"innocence.mp3"];
-        ////播放音效
-        //[MJAudioTool playSound:@"alarm.wav"];
-
-        [SVProgressHUD showErrorWithStatus:@"蓝牙设备断开连接"];
+        UIAlertController *alert  = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"device_alert",@"") message:NSLocalizedString(@"device_disconnected",@"") preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *action1 = [UIAlertAction actionWithTitle:NSLocalizedString(@"ok",@"") style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            
+        }];
+        [alert addAction:action1];
+        [vc presentViewController:alert animated:YES completion:^{
+            
+        }];
+    }else{
+        [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"device_disconnected",@"")];
     }
 }
 

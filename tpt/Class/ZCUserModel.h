@@ -29,4 +29,9 @@
 @property (nonatomic, assign) BOOL temp_unit; //温度单位
 @property (nonatomic, assign) BOOL device_disconnect; //设备断开链接报警
 
+@property (nonatomic, assign) BOOL alert_low; //低热提示
+@property (nonatomic, assign) BOOL alert_middle; //中热提示
+@property (nonatomic, assign) BOOL alert_high; //高热提示
+@property (nonatomic, assign) BOOL alert_supper_high; //超高热提示
+
 @end

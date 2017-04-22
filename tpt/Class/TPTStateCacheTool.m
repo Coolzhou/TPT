@@ -167,7 +167,6 @@ static FMDatabaseQueue *_queue;
     }];
 
     [_queue close];
-
 }
 
 +(void)deleteAllTemp

@@ -155,3 +155,11 @@
 "raiders_tab4_content_4" = ">Cooling paste is a supplementary measures, it may makes the child feel better. But do not use the cold compression therapy for infants, that may cause the capillary contraction, and prevents heat dissipation. DO NOT use this method when the child fever is with chills.";
 
 "raiders_tab4_content_5" = "To prevent body water shortage, and get more sweating. The water can bring the body temperature to a normal level gradually. ";
+
+
+"device_disconnected" = "Bluetooth device disconnected";
+"device_alert" = "Mind";
+"ok" = "OK";
+"alert_once" = "Ignore once";
+"alert_no" = "No prompt";
+"device_remind" = "Mind";

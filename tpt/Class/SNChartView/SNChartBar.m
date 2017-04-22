@@ -179,7 +179,7 @@ static const CGFloat kBarWidth = 30.f;
     UILabel * label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, chartBarTheXAxisSpan, 20)];
     label.center = CGPointMake(point.x + kBarWidth/2 + 10, chartBarTheYAxisSpan * kYEqualPaths + kTopSpace + 20);
     label.textColor = [UIColor lightGrayColor];
-    label.font = [UIFont systemFontOfSize:9.f];
+    label.font = [UIFont systemFontOfSize:8.f];
     label.textAlignment = NSTextAlignmentCenter;
     label.text = _xValues[index];
     [self addSubview:label];
