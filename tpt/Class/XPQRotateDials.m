@@ -136,7 +136,7 @@
 -(void)setValue:(NSString *)value{
     _value = value;
 
-    NSLog(@"value ==== %@",value);
+    
 
     if (UserModel.temp_unit) {
         self.valueLabel.text = [NSString stringWithFormat:@"%.1f℉", [TPTool getUnitCurrentTemp:_value]];
@@ -144,6 +144,8 @@
         self.valueLabel.text = [NSString stringWithFormat:@"%.1f℃", [TPTool getUnitCurrentTemp:_value]];
     }
     CGFloat tempValue = [value floatValue];
+    
+    NSLog(@"value ==== %f",tempValue);
     self.needleAngle = [self angleWithValue:tempValue];
 }
 
@@ -206,8 +208,8 @@
 // 值转成角度
 -(CGFloat)angleWithValue:(CGFloat)value {
 
-    CGFloat low = 35.0;
-    CGFloat high  = 45.0;
+    CGFloat low = 30.0;
+    CGFloat high  = 55.0;
 
     CGFloat tem_low = UserModel.max_tem_low.floatValue;
     CGFloat tem_middle = UserModel.max_tem_middle.floatValue;

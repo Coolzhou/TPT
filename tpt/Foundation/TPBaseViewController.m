@@ -47,7 +47,7 @@
     //    //停止之前的连接
     //    [baby cancelAllPeripheralsConnection];
     //    //设置委托后直接可以使用，无需等待CBCentralManagerStatePoweredOn状态。
-    baby.scanForPeripherals().begin();
+    [AppDelegate shareDelegate].baby.scanForPeripherals().begin();
 }
 
 -(void)viewDidLoad{
@@ -247,7 +247,7 @@
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(appEnterForegroundGround) name:@"foregroundBabyBlue" object:nil];
     
     //初始化BabyBluetooth 蓝牙库
-    baby = [BabyBluetooth shareBabyBluetooth];
+    baby = [AppDelegate shareDelegate].baby;
     //设置蓝牙委托
     [self babyDelegate];
 }
@@ -275,15 +275,16 @@
     [baby setBlockOnDiscoverToPeripherals:^(CBCentralManager *central, CBPeripheral *peripheral, NSDictionary *advertisementData, NSNumber *RSSI) {
         NSLog(@"搜索到了设备:%@",peripheral.name);
         weakSelf.currPeripheral = peripheral;
-        [weakSelf loadData]; //连接设备
+        
+        [weakSelf performSelector:@selector(loadData) withObject:nil afterDelay:2];
+//        [weakSelf loadData]; //连接设备
     }];
     //设置设备连接成功的委托,同一个baby对象，使用不同的channel切换委托回调
     [baby setBlockOnConnectedAtChannel:channelOnPeropheralView block:^(CBCentralManager *central, CBPeripheral *peripheral) {
-        NSLog(@"设备：%@--连接成功",peripheral);
+        NSLog(@"设备：%@--连接成功",peripheral.name);
         dispatch_async(dispatch_get_main_queue(), ^{
-            [SVProgressHUD showSuccessWithStatus:@"设备连接成功"];
+            [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"device_connected", @"")];
             weakSelf.navBluetoothView.hidden = NO;
-            [weakSelf createTimer];//创建定时器
         });
     }];
     
@@ -294,15 +295,31 @@
             [weakSelf.timer invalidate];
             weakSelf.timer = nil;
         }
-        weakSelf.navBluetoothView.hidden = YES;
-        [TPTool deviceCutUpalyAlart:weakSelf]; //设备断开警报
-        [weakbaby AutoReconnect:weakSelf.currPeripheral];
     }];
     
-    
+    //断开已经连接设备
+    [baby setBlockOnDisconnect:^(CBCentralManager *central, CBPeripheral *peripheral, NSError *error) {
+        NSLog(@"as ========");
+        NSLog(@"设备22：%@--断开连接",peripheral.name);
+        if ([weakSelf.timer isValid]) {
+            [weakSelf.timer invalidate];
+            weakSelf.timer = nil;
+        }
+        if (self.readCBCharacteristic.properties & CBCharacteristicPropertyNotify ||  self.readCBCharacteristic.properties & CBCharacteristicPropertyIndicate) {
+            if(weakSelf.readCBCharacteristic.isNotifying) {
+                [weakbaby cancelNotify:weakSelf.currPeripheral characteristic:weakSelf.readCBCharacteristic];
+                NSLog(@"通知2------------");
+            }
+        }
+        weakSelf.writeCBCharacteristic = nil;
+        weakSelf.readCBCharacteristic = nil;
+        weakSelf.navBluetoothView.hidden = YES;
+        [TPTool deviceCutUpalyAlart:weakSelf]; //设备断开警报
+    }];
     //设置设备断开连接的委托
     [baby setBlockOnDisconnectAtChannel:channelOnPeropheralView block:^(CBCentralManager *central, CBPeripheral *peripheral, NSError *error) {
-        NSLog(@"设备22：%@--断开连接",peripheral.name);
+        
+        NSLog(@"设备11：%@--断开连接",peripheral.name);
         if ([weakSelf.timer isValid]) {
             [weakSelf.timer invalidate];
             weakSelf.timer = nil;
@@ -312,49 +329,42 @@
             
             if(weakSelf.readCBCharacteristic.isNotifying) {
                 [weakbaby cancelNotify:weakSelf.currPeripheral characteristic:weakSelf.readCBCharacteristic];
-                NSLog(@"通知");
+                NSLog(@"通知1------------");
             }
         }
+        weakSelf.writeCBCharacteristic = nil;
+        weakSelf.readCBCharacteristic = nil;
+        weakSelf.currPeripheral= nil;
         weakSelf.navBluetoothView.hidden = YES;
-        [TPTool deviceCutUpalyAlart:weakSelf]; //设备断开警报
-        [weakbaby scanForPeripherals];
-        [weakbaby AutoReconnect:weakSelf.currPeripheral];
         
+        [TPTool deviceCutUpalyAlart:weakSelf]; //设备断开警报
+        [weakbaby cancelAllPeripheralsConnection];
+        weakbaby.scanForPeripherals().begin();
+        
+//        [weakbaby AutoReconnect:weakSelf.currPeripheral];
     }];
     
     //设置发现设备的Services的委托
-    [baby setBlockOnDiscoverServicesAtChannel:channelOnPeropheralView block:^(CBPeripheral *peripheral, NSError *error) {
-        CBService *service = peripheral.services.firstObject;
-        
+    [baby setBlockOnDiscoverServicesAtChannel:channelOnPeropheralView block:^(CBPeripheral *peripheral, NSError *error) {        
         NSLog(@"service.char = %@",peripheral.services);
-        
-        PeripheralInfo *info = [[PeripheralInfo alloc]init];
-        [info setServiceUUID:service.UUID];
-        [info setCharacteristics:(NSMutableArray *)service.characteristics];
-        
-        NSLog(@"info.chat = %@",info.characteristics);
-        for (int i=0; i<info.characteristics.count; i++) {
-            CBCharacteristic *characteristic = info.characteristics[i];
-            weakbaby.channel(channelOnCharacteristicView).characteristicDetails(weakSelf.currPeripheral,characteristic);
-        }
         [rhythm beats];
     }];
     //设置发现设service的Characteristics的委托
     [baby setBlockOnDiscoverCharacteristicsAtChannel:channelOnPeropheralView block:^(CBPeripheral *peripheral, CBService *service, NSError *error) {
-        NSLog(@"===service name:%@",service);
+
     }];
     //设置读取characteristics的委托
     [baby setBlockOnReadValueForCharacteristicAtChannel:channelOnPeropheralView block:^(CBPeripheral *peripheral, CBCharacteristic *characteristics, NSError *error) {
-        //        NSLog(@"characteristic name11:%@ value is:%@",characteristics.UUID,characteristics.value);
         
-        if ([characteristics.UUID isEqual:[CBUUID UUIDWithString:kCharacteristicReadUUID]]) {
-            NSLog(@"订阅一个值 = %@",characteristics.UUID);
-            weakSelf.readCBCharacteristic = characteristics;
-            [weakSelf setNotifiy:weakSelf.readCBCharacteristic];  //订阅一个值
-        }
         if ([characteristics.UUID isEqual:[CBUUID UUIDWithString:kCharacteristicWriteUUID]]) {
             NSLog(@"写入一个值 = %@",characteristics.UUID);
             weakSelf.writeCBCharacteristic = characteristics;
+            [weakSelf createTimer];//创建定时器
+        }
+        if ([characteristics.UUID isEqual:[CBUUID UUIDWithString:kCharacteristicReadUUID]]) {
+            NSLog(@"订阅一个值 = %@",characteristics.UUID);
+            weakSelf.readCBCharacteristic = characteristics;
+            [weakSelf setNotifiy:characteristics];  //订阅一个值
         }
     }];
     //设置查找设备的过滤器
@@ -440,8 +450,9 @@
     Byte dataArray[] = {0xFC,0x04,0x01,0x01,0x02,0xED};
     NSData *data = [NSData dataWithBytes:dataArray length:sizeof(dataArray)/sizeof(dataArray[0])];
     NSLog(@"111data11 = %@",data);
-    [self.currPeripheral writeValue:data forCharacteristic:self.writeCBCharacteristic type:CBCharacteristicWriteWithResponse];
-    
+    if (self.writeCBCharacteristic) {
+        [self.currPeripheral writeValue:data forCharacteristic:self.writeCBCharacteristic type:CBCharacteristicWriteWithResponse];
+    }
 }
 
 #pragma mark 返回前台

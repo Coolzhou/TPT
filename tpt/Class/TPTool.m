@@ -130,6 +130,7 @@
     [session setActive:YES error:nil];
     [session setCategory:AVAudioSessionCategoryPlayback error:nil];
     
+    NSLog(@"temp = %f , low = %f , middle = %f ,hight = %f,supper_hight = %f",temp ,[UserModel.max_tem_low floatValue],[UserModel.max_tem_middle floatValue],[UserModel.max_tem_high floatValue],[UserModel.max_tem_supper_high floatValue] );
     //温度超限报警开关
     if (UserModel.max_alert_state) {
         if ((temp>=[UserModel.max_tem_low floatValue])&&(temp<[UserModel.max_tem_middle floatValue])) {
@@ -269,7 +270,7 @@
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"hh:mm:ss"];
     NSString *dateString = [dateFormatter stringFromDate:currentDate];
-    NSLog(@"dateString:%@",dateString);
+//    NSLog(@"dateString:%@",dateString);
     return dateString;
 }
 
@@ -285,7 +286,7 @@
 +(int)getCurrentTimeIntDate{
     NSDate *currentDate = [NSDate date];//获取当前时间，日期
     int time = [currentDate timeIntervalSince1970];
-    NSLog(@"IntdateString:%d",time);
+//    NSLog(@"IntdateString:%d",time);
     return time;
 }
 

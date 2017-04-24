@@ -156,7 +156,7 @@
 
 "raiders_tab4_content_5" = "To prevent body water shortage, and get more sweating. The water can bring the body temperature to a normal level gradually. ";
 
-
+"device_connected" = "Bluetooth device connection success";
 "device_disconnected" = "Bluetooth device disconnected";
 "device_alert" = "Mind";
 "ok" = "OK";

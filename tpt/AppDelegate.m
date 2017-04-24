@@ -54,6 +54,9 @@
         UserModel.alert_high = NO;
         UserModel.alert_supper_high = NO;
     }
+    
+    self.baby = [BabyBluetooth shareBabyBluetooth];
+    
     //shareSDK
     [self shareSDKApplication:application didFinishLaunchingWithOptions:launchOptions];
 
@@ -74,6 +77,11 @@
     MCLeftSlideViewController *rootVC = [[MCLeftSlideViewController alloc] initWithLeftView:leftVC andMainView:firstNav];
     self.window.rootViewController = rootVC;
 
+}
+
++(AppDelegate *)shareDelegate
+{
+    return (AppDelegate *)[UIApplication sharedApplication].delegate;
 }
 
 - (BOOL)application:(UIApplication *)application

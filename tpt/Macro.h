@@ -9,9 +9,6 @@
 #ifndef Macro_h
 #define Macro_h
 
-
-
-
 #define kMainPageDistance   100   //打开左侧窗时，中视图(右视图)露出的宽度
 #define kMainPageScale   1.0  //打开左侧窗时，中视图(右视图）缩放比例
 #define kMainPageCenter  CGPointMake(kScreenWidth + kScreenWidth * kMainPageScale / 2.0 - kMainPageDistance, kScreenHeight / 2)  //打开左侧窗时，中视图中心点

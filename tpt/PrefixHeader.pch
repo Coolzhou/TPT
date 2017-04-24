@@ -10,6 +10,7 @@
 #define MAS_SHORTHAND
 #import <UIKit/UIKit.h>
 #import "AFNetworking.h"
+#import "AppDelegate.h"
 #import "Masonry.h"
 #import "MJExtension.h"
 #import "TPTool.h"

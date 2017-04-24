@@ -131,6 +131,7 @@
 "raiders_tab4_content_5" = "以助发汗，并防脱水。水有调节温度的功能，可使体温下降及补充宝宝体内的失水。";
 
 
+"device_connected" = "蓝牙设备连接成功";
 "device_disconnected" = "蓝牙设备断开连接";
 "device_alert" = "注意";
 "ok" = "确认";

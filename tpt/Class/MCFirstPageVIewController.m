@@ -61,7 +61,7 @@
     self.navigationItem.titleView = self.titleImageView;
     self.staticTemp = @"0";
     
-    baby = [BabyBluetooth shareBabyBluetooth];
+    baby = [AppDelegate shareDelegate].baby;
     [self deleteNotCurrentMonthData];//删除非当月数据
     
     [self addNavigationItem]; //分享按钮
@@ -101,9 +101,14 @@
 -(void)addNavigationItem{
     [self.navbackButton setImage:[UIImage imageNamed:@"navigation_left"] forState:UIControlStateNormal];
 }
+
+#pragma mark 打开左视图
 -(void)clickLeftBarButtonItem{
     //打开左视图
     [[MCLeftSliderManager sharedInstance].LeftSlideVC openLeftView];
+    
+//    [baby cancelAllPeripheralsConnection];
+//    baby.scanForPeripherals().begin();
 }
 
 #pragma mark 转盘
@@ -125,16 +130,16 @@
         //        [SVProgressHUD showErrorWithStatus:@"peripheral已经断开连接，请重新连接"];
         return;
     }
-    if (self.readCBCharacteristic.properties & CBCharacteristicPropertyNotify ||  self.readCBCharacteristic.properties & CBCharacteristicPropertyIndicate) {
+    if (characteristic.properties & CBCharacteristicPropertyNotify ||  characteristic.properties & CBCharacteristicPropertyIndicate) {
         
-        if(self.readCBCharacteristic.isNotifying) {
-            [baby cancelNotify:self.currPeripheral characteristic:self.readCBCharacteristic];
+        if(characteristic.isNotifying) {
+            [baby cancelNotify:self.currPeripheral characteristic:characteristic];
             NSLog(@"通知");
         }else{
-            [self.currPeripheral setNotifyValue:YES forCharacteristic:self.readCBCharacteristic];
-            NSLog(@"取消通知 =%@ - %@",self.currPeripheral,self.readCBCharacteristic);
+            NSLog(@"取消通知 =%@ - %@",self.currPeripheral,characteristic);
+            [self.currPeripheral setNotifyValue:YES forCharacteristic:characteristic];
             [baby notify:self.currPeripheral
-          characteristic:self.readCBCharacteristic
+          characteristic:characteristic
                    block:^(CBPeripheral *peripheral, CBCharacteristic *characteristics, NSError *error) {
                        NSLog(@"通知的值 new value %@",characteristics.value);
                        NSData * data = characteristic.value;
@@ -231,10 +236,10 @@
     NSData *data = [NSData dataWithBytes:dataArray length:sizeof(dataArray)/sizeof(dataArray[0])];
     NSLog(@"data3333 = %@",data);
     
-    if (characteristic) {
-        [self.currPeripheral writeValue:data forCharacteristic:characteristic type:CBCharacteristicWriteWithResponse];
-    }
-    NSLog(@"charact = %@ ,current = %@",characteristic.UUID,self.currPeripheral.name);
+//    if (characteristic) {
+        [self.currPeripheral writeValue:data forCharacteristic:self.writeCBCharacteristic type:CBCharacteristicWriteWithResponse];
+//    }
+    NSLog(@"写入值 charact = %@ ,current = %@",self.writeCBCharacteristic,characteristic);
     
 }
 
