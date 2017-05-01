@@ -191,6 +191,8 @@
                                [TPTStateCacheTool addTemperature:temp];
                                self.staticTemp = getTemp;
                            }
+                       }else{
+                           self.staticTemp = @"-1";
                        }
                        
                    }];

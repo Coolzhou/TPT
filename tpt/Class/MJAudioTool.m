@@ -7,7 +7,7 @@
 //
 
 #import "MJAudioTool.h"
-
+#import "AppDelegate.h"
 @implementation MJAudioTool
 
 /**
@@ -29,11 +29,6 @@ static NSMutableDictionary *_audioPlayerDict;
 {
     _soundIDDict = [NSMutableDictionary dictionary];
     _audioPlayerDict = [NSMutableDictionary dictionary];
-    
-    // 设置音频会话类型
-    AVAudioSession *session = [AVAudioSession sharedInstance];
-    [session setCategory:AVAudioSessionCategorySoloAmbient error:nil];
-    [session setActive:YES error:nil];
 }
 
 /**
@@ -128,6 +123,8 @@ static void SoundFinished(SystemSoundID soundID,void* sample){
 {
     if (!filename) return nil;
     
+    
+    
     // 1.从字典中取出audioPlayer
     AVAudioPlayer *audioPlayer = _audioPlayerDict[filename];
     if (!audioPlayer) { // 创建
@@ -153,7 +150,7 @@ static void SoundFinished(SystemSoundID soundID,void* sample){
     if (!audioPlayer.isPlaying) {
         [audioPlayer play];
     }
-    
+    NSLog(@"走了这里");
     return audioPlayer;
 }
 

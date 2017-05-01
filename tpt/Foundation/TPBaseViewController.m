@@ -305,16 +305,22 @@
             [weakSelf.timer invalidate];
             weakSelf.timer = nil;
         }
+        
         if (self.readCBCharacteristic.properties & CBCharacteristicPropertyNotify ||  self.readCBCharacteristic.properties & CBCharacteristicPropertyIndicate) {
+            
             if(weakSelf.readCBCharacteristic.isNotifying) {
                 [weakbaby cancelNotify:weakSelf.currPeripheral characteristic:weakSelf.readCBCharacteristic];
-                NSLog(@"通知2------------");
+                NSLog(@"通知1------------");
             }
         }
         weakSelf.writeCBCharacteristic = nil;
         weakSelf.readCBCharacteristic = nil;
+        weakSelf.currPeripheral= nil;
         weakSelf.navBluetoothView.hidden = YES;
+        
         [TPTool deviceCutUpalyAlart:weakSelf]; //设备断开警报
+        [weakbaby cancelAllPeripheralsConnection];
+        weakbaby.scanForPeripherals().begin();
     }];
     //设置设备断开连接的委托
     [baby setBlockOnDisconnectAtChannel:channelOnPeropheralView block:^(CBCentralManager *central, CBPeripheral *peripheral, NSError *error) {

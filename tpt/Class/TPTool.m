@@ -23,19 +23,31 @@
 +(NSString *)getCurrentTempState:(NSString *)temp{
 
     CGFloat currentTemp = temp.floatValue;
-    if (currentTemp>=41) {
-        return @"4";
-    }else if (currentTemp>=39 && currentTemp<41){
-        return @"3";
-    }else if (currentTemp>=38 && currentTemp<39){
-        return @"2";
-    }else if (currentTemp>=37.5 && currentTemp<38){
-        return @"2";
-    }else if (currentTemp>=35 && currentTemp<37.5){
+    
+    if ((currentTemp>=[UserModel.max_tem_low floatValue])&&(currentTemp<[UserModel.max_tem_middle floatValue])) {
         return @"1";
+    }else if ((currentTemp>=[UserModel.max_tem_middle floatValue])&&(currentTemp<[UserModel.max_tem_high floatValue])){
+        return @"2";
+    }else if ((currentTemp>=[UserModel.max_tem_high floatValue])&&(currentTemp<[UserModel.max_tem_supper_high floatValue])){
+        return @"3";
+    }else if (currentTemp>=[UserModel.max_tem_supper_high floatValue]){
+        return @"4";
     }else{
         return @"-1";
-    }
+    }   
+//    if (currentTemp>=41) {
+//        return @"4";
+//    }else if (currentTemp>=39 && currentTemp<41){
+//        return @"3";
+//    }else if (currentTemp>=38 && currentTemp<39){
+//        return @"2";
+//    }else if (currentTemp>=37.5 && currentTemp<38){
+//        return @"2";
+//    }else if (currentTemp>=35 && currentTemp<37.5){
+//        return @"1";
+//    }else{
+//        return @"-1";
+//    }
 }
 
 //截屏
@@ -125,10 +137,6 @@
 
 //根据超限温度提示不同警报
 +(void)palyAlartTempFloat:(CGFloat)temp andVC:(UIViewController *)vc{
-
-    AVAudioSession *session = [AVAudioSession sharedInstance];
-    [session setActive:YES error:nil];
-    [session setCategory:AVAudioSessionCategoryPlayback error:nil];
     
     NSLog(@"temp = %f , low = %f , middle = %f ,hight = %f,supper_hight = %f",temp ,[UserModel.max_tem_low floatValue],[UserModel.max_tem_middle floatValue],[UserModel.max_tem_high floatValue],[UserModel.max_tem_supper_high floatValue] );
     //温度超限报警开关
@@ -136,50 +144,52 @@
         if ((temp>=[UserModel.max_tem_low floatValue])&&(temp<[UserModel.max_tem_middle floatValue])) {
             if (UserModel.alert_low ==NO) {
                 [TPToolShare showAlertView:NSLocalizedString(@"max_tem_low",@"") andVC:vc andType:1];
-            }
-            if (UserModel.max_notify_voice) {
-                //播放音乐
-                [MJAudioTool playMusic:@"main_alert_one.mp3"];
-            }
-            //振动
-            if (UserModel.max_notify_vibration) {
-                [MJAudioTool begainPlayingSoundid];
+                
+                if (UserModel.max_notify_voice) {
+                    //播放音乐
+                    [MJAudioTool playMusic:@"main_alert_one.mp3"];
+                }
+                //振动
+                if (UserModel.max_notify_vibration) {
+                    [MJAudioTool begainPlayingSoundid];
+                }
             }
         }else if ((temp>=[UserModel.max_tem_middle floatValue])&&(temp<[UserModel.max_tem_high floatValue])){
             if (UserModel.alert_middle ==NO) {
                 [TPToolShare showAlertView:NSLocalizedString(@"max_tem_middle",@"") andVC:vc andType:2];
-            }
-            if (UserModel.max_notify_voice) {
-                //播放音乐
-                [MJAudioTool playMusic:@"main_alert_two.mp3"];
-            }
-            //振动
-            if (UserModel.max_notify_vibration) {
-                [MJAudioTool begainPlayingSoundid];
+                if (UserModel.max_notify_voice) {
+                    //播放音乐
+                    [MJAudioTool playMusic:@"main_alert_two.mp3"];
+                }
+                //振动
+                if (UserModel.max_notify_vibration) {
+                    [MJAudioTool begainPlayingSoundid];
+                }
             }
         }else if ((temp>=[UserModel.max_tem_high floatValue])&&(temp<[UserModel.max_tem_supper_high floatValue])){
             if (UserModel.alert_high ==NO) {
                 [TPToolShare showAlertView:NSLocalizedString(@"max_tem_high",@"") andVC:vc andType:3];
+                if (UserModel.max_notify_voice) {
+                    //播放音乐
+                    [MJAudioTool playMusic:@"main_alert_three.mp3"];
+                }
+                //振动
+                if (UserModel.max_notify_vibration) {
+                    [MJAudioTool begainPlayingSoundid];
+                }
             }
-            if (UserModel.max_notify_voice) {
-                //播放音乐
-                [MJAudioTool playMusic:@"main_alert_three.mp3"];
-            }
-            //振动
-            if (UserModel.max_notify_vibration) {
-                [MJAudioTool begainPlayingSoundid];
-            }
+            
         }else if (temp>=[UserModel.max_tem_supper_high floatValue]){
             if (UserModel.alert_supper_high ==NO) {
                 [TPToolShare showAlertView:NSLocalizedString(@"max_tem_supper_high",@"") andVC:vc andType:4];
-            }
-            if (UserModel.max_notify_voice) {
-                //播放音乐
-                [MJAudioTool playMusic:@"main_alert_free.mp3"];
-            }
-            //振动
-            if (UserModel.max_notify_vibration) {
-                [MJAudioTool begainPlayingSoundid];
+                if (UserModel.max_notify_voice) {
+                    //播放音乐
+                    [MJAudioTool playMusic:@"main_alert_free.mp3"];
+                }
+                //振动
+                if (UserModel.max_notify_vibration) {
+                    [MJAudioTool begainPlayingSoundid];
+                }
             }
         }else{
             
@@ -229,9 +239,14 @@
 +(void)deviceCutUpalyAlart:(UIViewController *)vc{
     //设备断开连接警报开启
     
+    UserModel.alert_low = NO;
+    UserModel.alert_middle = NO;
+    UserModel.alert_high = NO;
+    UserModel.alert_supper_high = NO;
+    
     NSLog(@"断开报警 = %d",UserModel.device_disconnect);
     if (UserModel.device_disconnect) {
-        //播放音乐
+        //提示
         UIAlertController *alert  = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"device_alert",@"") message:NSLocalizedString(@"device_disconnected",@"") preferredStyle:UIAlertControllerStyleAlert];
         UIAlertAction *action1 = [UIAlertAction actionWithTitle:NSLocalizedString(@"ok",@"") style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
             
@@ -240,6 +255,10 @@
         [vc presentViewController:alert animated:YES completion:^{
             
         }];
+        
+        if (UserModel.max_notify_vibration) {
+            [MJAudioTool begainPlayingSoundid];
+        }
     }else{
         [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"device_disconnected",@"")];
     }

@@ -42,7 +42,7 @@ blue:((float)(rgbValue & 0xFF)) / 255.0 alpha:1.0]
 
 #define chartMaxNum 7
 
-#define chartHistoryMaxNum 7
+#define chartHistoryMaxNum 8
 
 #define DEGREES_TO_RADIANS(d) (d * M_PI / 180)
 

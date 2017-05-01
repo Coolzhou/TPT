@@ -15,8 +15,8 @@
 #import "MCLeftSortsViewController.h"
 #import "MCFirstPageVIewController.h"
 #import "MCMainNavgationVC.h"
-
 #import "ZCUserModel.h"
+#import <AVFoundation/AVFoundation.h>
 @interface AppDelegate ()
 
 @end
@@ -31,6 +31,17 @@
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
     [SVProgressHUD setMinimumDismissTimeInterval:3];
+    //音频后台播放设置
+    AVAudioSession *session = [AVAudioSession sharedInstance];
+    NSError *error = nil;
+    [session setCategory:AVAudioSessionCategoryPlayback error:&error];
+    if (error) {
+        NSLog(@"%s %@", __func__, error);
+    }else{
+        NSLog(@"ssss");
+    }
+    [session setActive:YES error:nil];
+
 
     NSArray *centralManagerIdentifiers = launchOptions[UIApplicationLaunchOptionsBluetoothCentralsKey];
     NSLog(@"centralManagerIdentifiers = %@",centralManagerIdentifiers);
@@ -104,7 +115,7 @@
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {
-
+    
     [[NSNotificationCenter defaultCenter]postNotificationName:@"backBabyBlue" object:self userInfo:nil];
 }
 
