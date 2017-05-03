@@ -180,11 +180,14 @@ static const CGFloat kTopSpace = 30.f;//距离顶部y值
     }
     //设置y轴
     for (NSInteger i = 0; i < _yValues.count; i++) {
-
-        if ([_yValues[i] floatValue]<=35) {
-            [self.pointYArray addObject:@(self.lineH * chartHistoryMaxNum-(35-35)/(42-35)* self.lineH *chartHistoryMaxNum+kTopSpace)];
+        
+        
+        if ([_yValues[i] floatValue]<=20) {
+            [self.pointYArray addObject:@(self.lineH * chartHistoryMaxNum-(20-20)/(44-20)* self.lineH *chartHistoryMaxNum+kTopSpace)];
+        }else if ([_yValues[i] floatValue]>=44){
+            [self.pointYArray addObject:@(self.lineH * chartHistoryMaxNum-(44-20)/(44-20)* self.lineH *chartHistoryMaxNum+kTopSpace)];
         }else{
-            [self.pointYArray addObject:@(self.lineH * chartHistoryMaxNum-([_yValues[i] floatValue]-35)/(42-35)* self.lineH *chartHistoryMaxNum+kTopSpace)];
+            [self.pointYArray addObject:@(self.lineH * chartHistoryMaxNum-([_yValues[i] floatValue]-20)/(44-20)* self.lineH *chartHistoryMaxNum+kTopSpace)];
         }
     }
 

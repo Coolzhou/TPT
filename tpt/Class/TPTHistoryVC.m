@@ -118,10 +118,12 @@
 
     WBTemperature *tempModel = self.dataArray[row];
     [TPTStateCacheTool deleteTemp:tempModel.create_time];
-
-    [self.dataArray removeObjectAtIndex:row];
-    NSArray *_tempIndexPathArr = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:row inSection:0]];
-    [self.tableView deleteRowsAtIndexPaths:_tempIndexPathArr withRowAnimation:UITableViewRowAnimationNone];
+    
+    [self initStateData]; //重新获取状态记录数据然后刷新tableView
+    
+//    [self.dataArray removeObjectAtIndex:row];
+//    NSArray *_tempIndexPathArr = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:row inSection:0]];
+//    [self.tableView deleteRowsAtIndexPaths:_tempIndexPathArr withRowAnimation:UITableViewRowAnimationNone];
     [self.tableView reloadData];
 
     [SVProgressHUD showSuccessWithStatus:@"删除成功"];

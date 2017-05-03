@@ -8,6 +8,7 @@
 
 #import "TPTool.h"
 #import "MJAudioTool.h"
+#import "AppDelegate.h"
 @implementation TPTool
 
 +(instancetype)sharedToolInstance{
@@ -139,6 +140,10 @@
 +(void)palyAlartTempFloat:(CGFloat)temp andVC:(UIViewController *)vc{
     
     NSLog(@"temp = %f , low = %f , middle = %f ,hight = %f,supper_hight = %f",temp ,[UserModel.max_tem_low floatValue],[UserModel.max_tem_middle floatValue],[UserModel.max_tem_high floatValue],[UserModel.max_tem_supper_high floatValue] );
+    
+    AppDelegate *app = [AppDelegate shareDelegate];
+    NSLog(@"app.bool =%d",app.isBackground);
+
     //温度超限报警开关
     if (UserModel.max_alert_state) {
         if ((temp>=[UserModel.max_tem_low floatValue])&&(temp<[UserModel.max_tem_middle floatValue])) {
@@ -154,6 +159,9 @@
                     [MJAudioTool begainPlayingSoundid];
                 }
             }
+            if (app.isBackground == YES) {
+                [TPTool senderLocalNotifcation:NSLocalizedString(@"max_tem_low",@"")];
+            }
         }else if ((temp>=[UserModel.max_tem_middle floatValue])&&(temp<[UserModel.max_tem_high floatValue])){
             if (UserModel.alert_middle ==NO) {
                 [TPToolShare showAlertView:NSLocalizedString(@"max_tem_middle",@"") andVC:vc andType:2];
@@ -166,6 +174,9 @@
                     [MJAudioTool begainPlayingSoundid];
                 }
             }
+            if (app.isBackground == YES) {
+                [TPTool senderLocalNotifcation:NSLocalizedString(@"max_tem_middle",@"")];
+            }
         }else if ((temp>=[UserModel.max_tem_high floatValue])&&(temp<[UserModel.max_tem_supper_high floatValue])){
             if (UserModel.alert_high ==NO) {
                 [TPToolShare showAlertView:NSLocalizedString(@"max_tem_high",@"") andVC:vc andType:3];
@@ -177,6 +188,9 @@
                 if (UserModel.max_notify_vibration) {
                     [MJAudioTool begainPlayingSoundid];
                 }
+            }
+            if (app.isBackground == YES) {
+                [TPTool senderLocalNotifcation:NSLocalizedString(@"max_tem_high",@"")];
             }
             
         }else if (temp>=[UserModel.max_tem_supper_high floatValue]){
@@ -191,10 +205,26 @@
                     [MJAudioTool begainPlayingSoundid];
                 }
             }
+            if (app.isBackground == YES) {
+                [TPTool senderLocalNotifcation:NSLocalizedString(@"max_tem_supper_high",@"")];
+            }
         }else{
             
         }
     }
+}
+
+
++ (void)senderLocalNotifcation:(NSString *)nofiStr{
+    
+    NSLog(@"1212112");
+    UILocalNotification *notification = [[UILocalNotification alloc] init];
+    notification.fireDate=[NSDate dateWithTimeIntervalSinceNow:3];
+    notification.timeZone=[NSTimeZone defaultTimeZone];
+//    notification.applicationIconBadgeNumber = 0; //设置右上角小圆圈数字为1
+    notification.soundName= UILocalNotificationDefaultSoundName;
+    notification.alertBody = nofiStr;
+    [[UIApplication sharedApplication]  scheduleLocalNotification:notification];
 }
 
 - (void)showAlertView:(NSString *)alertStr andVC:(UIViewController *)vc andType:(int)type{

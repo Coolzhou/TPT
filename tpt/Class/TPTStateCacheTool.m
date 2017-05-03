@@ -163,7 +163,7 @@ static FMDatabaseQueue *_queue;
 
     [_queue inDatabase:^(FMDatabase *db) {
 
-        [db executeUpdate:@"delete from t_temp_state where create_time <?",@(tempID)];
+        [db executeUpdate:@"delete from t_temp_state where create_time =?",@(tempID)];
     }];
 
     [_queue close];

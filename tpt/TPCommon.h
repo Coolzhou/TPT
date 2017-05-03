@@ -14,6 +14,10 @@
 
 #define  DEVICE_SYSTEM_VERSION_ISIOS7 ([[[UIDevice currentDevice] systemVersion] floatValue] >=7.0)
 
+#define  DEVICE_SYSTEM_VERSION_ISIOS10 ([[[UIDevice currentDevice] systemVersion] floatValue] >=10.0)
+
+#define  DEVICE_SYSTEM_VERSION_ISIOS8 ([[[UIDevice currentDevice] systemVersion] floatValue] <=8.0)
+
 #define IS_IPAD (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
 #define IS_IPHONE (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
 #define IS_RETINA ([[UIScreen mainScreen] scale] >= 2.0)

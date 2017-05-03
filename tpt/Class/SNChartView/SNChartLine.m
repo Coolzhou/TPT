@@ -226,9 +226,9 @@ static const CGFloat kTopSpace = 30.f;//距离顶部y值
     label.center = CGPointMake(point.x, self.lineH * chartMaxNum + kTopSpace+15);
     label.textColor = [UIColor lightGrayColor];
     if (IS_IPHONE_4_OR_LESS ||IS_IPHONE_5) {
-        label.font = [UIFont systemFontOfSize:8.f];
+        label.font = [UIFont systemFontOfSize:7.f];
     }else{
-        label.font = [UIFont systemFontOfSize:10.f];
+        label.font = [UIFont systemFontOfSize:8.f];
     }
 
     label.textAlignment = NSTextAlignmentCenter;
@@ -241,7 +241,7 @@ static const CGFloat kTopSpace = 30.f;//距离顶部y值
     for (NSInteger i = 0; i <= chartMaxNum; i++) {
         UILabel * label = [[UILabel alloc] initWithFrame:CGRectMake(0, self.lineH * i + kTopSpace-5, chartLineStartX - 5, 10)];
         label.textColor = [UIColor lightGrayColor];
-        label.font = [UIFont systemFontOfSize:8.f];
+        label.font = [UIFont systemFontOfSize:10.f];
         label.textAlignment = NSTextAlignmentCenter;
         [self addSubview:label];
 

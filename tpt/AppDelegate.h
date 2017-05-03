@@ -14,6 +14,8 @@
 
 @property (nonatomic ,strong) BabyBluetooth *baby;
 
+@property (nonatomic ,assign) BOOL isBackground;
+
 +(AppDelegate *)shareDelegate;
 
 

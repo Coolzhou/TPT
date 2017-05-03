@@ -93,7 +93,7 @@ static const CGFloat kTopSpace = 30.f;//距离顶部y值
 //标记y轴label
 - (void)addYLabel:(UIView *)bgView {
 
-    CGFloat maxNum = 42.0;
+    CGFloat maxNum = 44.0;
 
     for (NSInteger i = 0; i <= chartHistoryMaxNum; i++) {
         UILabel * label = [[UILabel alloc] initWithFrame:CGRectMake(0, self.lineH * i + kTopSpace-5, 30, 10)];
@@ -102,8 +102,10 @@ static const CGFloat kTopSpace = 30.f;//距离顶部y值
         label.textAlignment = NSTextAlignmentCenter;
         [bgView addSubview:label];
 
-       CGFloat tempNum = [TPTool getUnitCurrentTempFloat:(maxNum-i)];
-       label.text = [NSString stringWithFormat:@"%.0f",tempNum];
+        if (i != 0 && i != chartHistoryMaxNum) {
+            CGFloat tempNum = [TPTool getUnitCurrentTempFloat:(maxNum-i*3)];
+            label.text = [NSString stringWithFormat:@"%.0f",tempNum];
+        }
     }
 }
 
