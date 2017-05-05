@@ -158,9 +158,9 @@
                 if (UserModel.max_notify_vibration) {
                     [MJAudioTool begainPlayingSoundid];
                 }
-            }
-            if (app.isBackground == YES) {
-                [TPTool senderLocalNotifcation:NSLocalizedString(@"max_tem_low",@"")];
+                if (app.isBackground == YES) {
+                    [TPTool senderLocalNotifcation:NSLocalizedString(@"max_tem_low",@"")];
+                }
             }
         }else if ((temp>=[UserModel.max_tem_middle floatValue])&&(temp<[UserModel.max_tem_high floatValue])){
             if (UserModel.alert_middle ==NO) {
@@ -173,9 +173,9 @@
                 if (UserModel.max_notify_vibration) {
                     [MJAudioTool begainPlayingSoundid];
                 }
-            }
-            if (app.isBackground == YES) {
-                [TPTool senderLocalNotifcation:NSLocalizedString(@"max_tem_middle",@"")];
+                if (app.isBackground == YES) {
+                    [TPTool senderLocalNotifcation:NSLocalizedString(@"max_tem_middle",@"")];
+                }
             }
         }else if ((temp>=[UserModel.max_tem_high floatValue])&&(temp<[UserModel.max_tem_supper_high floatValue])){
             if (UserModel.alert_high ==NO) {
@@ -188,10 +188,12 @@
                 if (UserModel.max_notify_vibration) {
                     [MJAudioTool begainPlayingSoundid];
                 }
+                
+                if (app.isBackground == YES) {
+                    [TPTool senderLocalNotifcation:NSLocalizedString(@"max_tem_high",@"")];
+                }
             }
-            if (app.isBackground == YES) {
-                [TPTool senderLocalNotifcation:NSLocalizedString(@"max_tem_high",@"")];
-            }
+            
             
         }else if (temp>=[UserModel.max_tem_supper_high floatValue]){
             if (UserModel.alert_supper_high ==NO) {
@@ -204,10 +206,11 @@
                 if (UserModel.max_notify_vibration) {
                     [MJAudioTool begainPlayingSoundid];
                 }
+                if (app.isBackground == YES) {
+                    [TPTool senderLocalNotifcation:NSLocalizedString(@"max_tem_supper_high",@"")];
+                }
             }
-            if (app.isBackground == YES) {
-                [TPTool senderLocalNotifcation:NSLocalizedString(@"max_tem_supper_high",@"")];
-            }
+            
         }else{
             
         }
@@ -276,6 +279,11 @@
     
     NSLog(@"断开报警 = %d",UserModel.device_disconnect);
     if (UserModel.device_disconnect) {
+        AppDelegate *app = [AppDelegate shareDelegate];
+        NSLog(@"app.bool =%d",app.isBackground);
+        if (app.isBackground == YES) {
+            [TPTool senderLocalNotifcation:NSLocalizedString(@"device_disconnected",@"")];
+        }
         //提示
         UIAlertController *alert  = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"device_alert",@"") message:NSLocalizedString(@"device_disconnected",@"") preferredStyle:UIAlertControllerStyleAlert];
         UIAlertAction *action1 = [UIAlertAction actionWithTitle:NSLocalizedString(@"ok",@"") style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {

@@ -97,7 +97,6 @@ static CGFloat alpha = 0;
 
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-    
         self.navBarBackgroundImage = [self.navigationController.navigationBar backgroundImageForBarMetrics:UIBarMetricsDefault];
     });
     //设置背景图片

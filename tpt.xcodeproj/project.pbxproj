@@ -1222,7 +1222,7 @@
 					18E560C91D3DBB930053B9A4 = {
 						CreatedOnToolsVersion = 7.2;
 						DevelopmentTeam = 56ZWZ5K99K;
-						ProvisioningStyle = Manual;
+						ProvisioningStyle = Automatic;
 					};
 					18E560E21D3DBB930053B9A4 = {
 						CreatedOnToolsVersion = 7.2;
@@ -1586,7 +1586,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: MA CHAOSHAN (56ZWZ5K99K)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 56ZWZ5K99K;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1609,8 +1609,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.quarks.tpt;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "903f88c1-f3ca-4f3f-8a70-87b26f5a6591";
-				PROVISIONING_PROFILE_SPECIFIER = tpt_Distribution_profiles;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -1622,7 +1622,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: MA CHAOSHAN (56ZWZ5K99K)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 56ZWZ5K99K;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1645,8 +1645,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.quarks.tpt;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "903f88c1-f3ca-4f3f-8a70-87b26f5a6591";
-				PROVISIONING_PROFILE_SPECIFIER = tpt_Distribution_profiles;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

@@ -34,12 +34,14 @@
     [super viewWillAppear:animated];
     [self setInViewWillAppear];
     
+    if (!self.currPeripheral) {
+         [AppDelegate shareDelegate].baby.scanForPeripherals().begin();
+    }
 }
 
 - (void)dealloc{
     [[NSNotificationCenter defaultCenter]removeObserver:self name:@"backBabyBlue" object:nil];
     [[NSNotificationCenter defaultCenter]removeObserver:self name:@"foregroundBabyBlue" object:nil];
-    
 }
 
 - (void)viewDidAppear:(BOOL)animated{
@@ -47,7 +49,7 @@
     //    //停止之前的连接
     //    [baby cancelAllPeripheralsConnection];
     //    //设置委托后直接可以使用，无需等待CBCentralManagerStatePoweredOn状态。
-    [AppDelegate shareDelegate].baby.scanForPeripherals().begin();
+//    [AppDelegate shareDelegate].baby.scanForPeripherals().begin();
 }
 
 -(void)viewDidLoad{
@@ -283,8 +285,9 @@
     [baby setBlockOnConnectedAtChannel:channelOnPeropheralView block:^(CBCentralManager *central, CBPeripheral *peripheral) {
         NSLog(@"设备：%@--连接成功",peripheral.name);
         dispatch_async(dispatch_get_main_queue(), ^{
-            [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"device_connected", @"")];
             weakSelf.navBluetoothView.hidden = NO;
+            [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"device_connected", @"")];
+            
         });
     }];
     
@@ -305,6 +308,8 @@
             [weakSelf.timer invalidate];
             weakSelf.timer = nil;
         }
+        weakSelf.navBluetoothView.hidden = YES;
+        [TPTool deviceCutUpalyAlart:weakSelf]; //设备断开警报
         
         if (self.readCBCharacteristic.properties & CBCharacteristicPropertyNotify ||  self.readCBCharacteristic.properties & CBCharacteristicPropertyIndicate) {
             
@@ -316,10 +321,8 @@
         weakSelf.writeCBCharacteristic = nil;
         weakSelf.readCBCharacteristic = nil;
         weakSelf.currPeripheral= nil;
-        weakSelf.navBluetoothView.hidden = YES;
         
-        [TPTool deviceCutUpalyAlart:weakSelf]; //设备断开警报
-        [weakbaby cancelAllPeripheralsConnection];
+//        [weakbaby cancelAllPeripheralsConnection];
         weakbaby.scanForPeripherals().begin();
     }];
     //设置设备断开连接的委托
@@ -344,7 +347,7 @@
         weakSelf.navBluetoothView.hidden = YES;
         
         [TPTool deviceCutUpalyAlart:weakSelf]; //设备断开警报
-        [weakbaby cancelAllPeripheralsConnection];
+//        [weakbaby cancelAllPeripheralsConnection];
         weakbaby.scanForPeripherals().begin();
         
 //        [weakbaby AutoReconnect:weakSelf.currPeripheral];
@@ -390,12 +393,12 @@
     }];
     
     //设置写数据成功的block
-    [baby setBlockOnDidWriteValueForCharacteristicAtChannel:channelOnCharacteristicView block:^(CBCharacteristic *characteristic, NSError *error) {
+    [baby setBlockOnDidWriteValueForCharacteristicAtChannel:channelOnPeropheralView block:^(CBCharacteristic *characteristic, NSError *error) {
         NSLog(@"setBlockOnDidWriteValueForCharacteristicAtChannel characteristic:%@ and new value:%@",characteristic.UUID, characteristic.value);
     }];
     
     //设置通知状态改变的block
-    [baby setBlockOnDidUpdateNotificationStateForCharacteristicAtChannel:channelOnCharacteristicView block:^(CBCharacteristic *characteristic, NSError *error) {
+    [baby setBlockOnDidUpdateNotificationStateForCharacteristicAtChannel:channelOnPeropheralView block:^(CBCharacteristic *characteristic, NSError *error) {
         NSLog(@"uid:%@,isNotifying:%@",characteristic.UUID,characteristic.isNotifying?@"on":@"off");
     }];
     
@@ -469,6 +472,9 @@
         self.backtimer = nil;
     }
     
+    if (!self.currPeripheral) {
+        [AppDelegate shareDelegate].baby.scanForPeripherals().begin();
+    }
 }
 -(UIImageView *)bgimageView{
     if (!_bgimageView) {
