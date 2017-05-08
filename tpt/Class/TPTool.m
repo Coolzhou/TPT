@@ -9,6 +9,11 @@
 #import "TPTool.h"
 #import "MJAudioTool.h"
 #import "AppDelegate.h"
+
+@interface TPTool()
+@property (nonatomic,strong)UIAlertController *alert;
+@end
+
 @implementation TPTool
 
 +(instancetype)sharedToolInstance{
@@ -232,7 +237,12 @@
 
 - (void)showAlertView:(NSString *)alertStr andVC:(UIViewController *)vc andType:(int)type{
     
-    UIAlertController *alert  = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"device_remind",@"") message:alertStr preferredStyle:UIAlertControllerStyleAlert];
+    if (self.alert) {
+        [self.alert dismissViewControllerAnimated:YES completion:^{
+        }];
+        self.alert = nil;
+    }
+    self.alert  = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"device_remind",@"") message:alertStr preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *action1 = [UIAlertAction actionWithTitle:NSLocalizedString(@"alert_once",@"") style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         
     }];
@@ -262,9 +272,9 @@
                 break;
         }
     }];
-    [alert addAction:action1];
-    [alert addAction:action2];
-    [vc presentViewController:alert animated:YES completion:^{
+    [self.alert addAction:action1];
+    [self.alert addAction:action2];
+    [vc presentViewController:self.alert animated:YES completion:^{
     }];
 }
 

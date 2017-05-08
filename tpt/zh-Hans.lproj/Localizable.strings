@@ -136,5 +136,5 @@
 "device_alert" = "注意";
 "ok" = "确认";
 "alert_once" = "忽略一次";
-"alert_no" = "不在提醒";
+"alert_no" = "不再提醒";
 "device_remind" = "提示";

@@ -278,7 +278,7 @@
         NSLog(@"搜索到了设备:%@",peripheral.name);
         weakSelf.currPeripheral = peripheral;
         
-        [weakSelf performSelector:@selector(loadData) withObject:nil afterDelay:2];
+        [weakSelf performSelector:@selector(loadData) withObject:nil afterDelay:3];
 //        [weakSelf loadData]; //连接设备
     }];
     //设置设备连接成功的委托,同一个baby对象，使用不同的channel切换委托回调
