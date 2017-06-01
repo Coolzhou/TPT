@@ -10,11 +10,12 @@
 #import "TPTAlertSetupVC.h"
 #import "TPTDutyVC.h"
 #import "TPTDeviceInfoVC.h"
-
+#import "TPTSetBuyViewController.h"
 #import "TPTCorrectVC.h"
 #import "TPTSetupCell.h"
 #import "TPTSetEleCell.h"
 #import "TPTSetOtherCell.h"
+#import "TPTSetBuyCell.h"
 
 @interface TPTSetUpVC ()<UITableViewDataSource,UITableViewDelegate>
 
@@ -48,20 +49,13 @@
 #pragma mark UITableViewDataSource,UITableViewDelegate
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 3;
+    return 4;
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return 1;
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-
-//    static NSString *ID = @"cell";
-//    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
-//    if (cell == nil) {
-//        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ID];
-//    }
-//    return cell;
 
     __weak typeof(self) weakself = self;
     if (indexPath.section==0) {
@@ -71,6 +65,10 @@
         };
         return cell;
     }else if (indexPath.section ==1){
+        TPTSetBuyCell *cell = [TPTSetBuyCell theTPTSetOtherCellWithTableView:tableView];
+        return cell;
+    }
+    else if (indexPath.section ==2){
         TPTSetEleCell *cell = [TPTSetEleCell theTPTSetEleCellWithTableView:tableView andIndexPath:indexPath];
         return cell;
     }else{
@@ -87,18 +85,23 @@
         return 308;
     }else if(indexPath.section==1){
         return 67;
+    }
+    else if(indexPath.section==2){
+        return 67;
     }else{
         return 162;
     }
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    if (section==0) {
-        return 30;
-    }else if(section==1){
-        return 40;
-    }else{
-        return 40;
+    return 25;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (indexPath.section ==1) {
+        NSLog(@"asaf");
+        TPTSetBuyViewController * alertVC = [[TPTSetBuyViewController alloc]init];
+        [self.navigationController pushViewController:alertVC animated:YES];
     }
 }
 
@@ -113,7 +116,7 @@
     }
 }
 
-#pragma mark 点击了第三行cell
+#pragma mark 点击了第四行cell
 -(void)clickSectionThreeTableViewCell:(NSInteger)row{
     if (row==1) {
         TPTDeviceInfoVC *info = [[TPTDeviceInfoVC alloc]init];

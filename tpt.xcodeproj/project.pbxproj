@@ -138,6 +138,10 @@
 		AE6E9B6F1D4DD99D0080116A /* UIView_extra.m in Sources */ = {isa = PBXBuildFile; fileRef = AE6E9B6E1D4DD99D0080116A /* UIView_extra.m */; };
 		AE6E9B731D4DDC820080116A /* TPTuiCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE6E9B701D4DDC820080116A /* TPTuiCell.xib */; };
 		AE6E9B741D4DDC820080116A /* TPTuiCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AE6E9B711D4DDC820080116A /* TPTuiCell.m */; };
+		CB1242641EE0431C00F699D4 /* TPTSetBuyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CB1242621EE0431C00F699D4 /* TPTSetBuyCell.m */; };
+		CB1242651EE0431C00F699D4 /* TPTSetBuyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB1242631EE0431C00F699D4 /* TPTSetBuyCell.xib */; };
+		CB1242691EE0498900F699D4 /* TPTSetBuyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB1242681EE0498900F699D4 /* TPTSetBuyViewController.m */; };
+		CB12426B1EE04BFF00F699D4 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB12426A1EE04BFF00F699D4 /* WebKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -389,6 +393,12 @@
 		AE6E9B701D4DDC820080116A /* TPTuiCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TPTuiCell.xib; sourceTree = "<group>"; };
 		AE6E9B711D4DDC820080116A /* TPTuiCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPTuiCell.m; sourceTree = "<group>"; };
 		AE6E9B721D4DDC820080116A /* TPTuiCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPTuiCell.h; sourceTree = "<group>"; };
+		CB1242611EE0431C00F699D4 /* TPTSetBuyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPTSetBuyCell.h; sourceTree = "<group>"; };
+		CB1242621EE0431C00F699D4 /* TPTSetBuyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPTSetBuyCell.m; sourceTree = "<group>"; };
+		CB1242631EE0431C00F699D4 /* TPTSetBuyCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TPTSetBuyCell.xib; sourceTree = "<group>"; };
+		CB1242671EE0498900F699D4 /* TPTSetBuyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPTSetBuyViewController.h; sourceTree = "<group>"; };
+		CB1242681EE0498900F699D4 /* TPTSetBuyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPTSetBuyViewController.m; sourceTree = "<group>"; };
+		CB12426A1EE04BFF00F699D4 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		FFAD3A748BD7A4AAE36505A0 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -397,6 +407,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CB12426B1EE04BFF00F699D4 /* WebKit.framework in Frameworks */,
 				18B23D131D41CD8200CE9AA6 /* AddressBook.framework in Frameworks */,
 				18B23D111D41CD7800CE9AA6 /* AssetsLibrary.framework in Frameworks */,
 				18B23D0F1D41CD6E00CE9AA6 /* MediaPlayer.framework in Frameworks */,
@@ -974,6 +985,7 @@
 		889E37C07B5FAE40C45D0CE3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CB12426A1EE04BFF00F699D4 /* WebKit.framework */,
 				18B23D121D41CD8200CE9AA6 /* AddressBook.framework */,
 				18B23D101D41CD7800CE9AA6 /* AssetsLibrary.framework */,
 				18B23D0E1D41CD6E00CE9AA6 /* MediaPlayer.framework */,
@@ -1050,6 +1062,7 @@
 		AE2987641D4CAE2D00B50AC2 /* 系统设置 */ = {
 			isa = PBXGroup;
 			children = (
+				CB1242661EE0496200F699D4 /* 购买 */,
 				185A96CE1D6A924300403E44 /* 温度校准 */,
 				180912471D66EEBC003F51A5 /* 设备信息 */,
 				180912301D66BA98003F51A5 /* 免责声明 */,
@@ -1141,6 +1154,9 @@
 				18FD054C1D5B3B71009D4B16 /* TPTSetOtherCell.h */,
 				18FD054D1D5B3B71009D4B16 /* TPTSetOtherCell.m */,
 				18FD054E1D5B3B71009D4B16 /* TPTSetOtherCell.xib */,
+				CB1242611EE0431C00F699D4 /* TPTSetBuyCell.h */,
+				CB1242621EE0431C00F699D4 /* TPTSetBuyCell.m */,
+				CB1242631EE0431C00F699D4 /* TPTSetBuyCell.xib */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -1150,6 +1166,15 @@
 			children = (
 			);
 			name = Model;
+			sourceTree = "<group>";
+		};
+		CB1242661EE0496200F699D4 /* 购买 */ = {
+			isa = PBXGroup;
+			children = (
+				CB1242671EE0498900F699D4 /* TPTSetBuyViewController.h */,
+				CB1242681EE0498900F699D4 /* TPTSetBuyViewController.m */,
+			);
+			name = "购买";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1222,7 +1247,7 @@
 					18E560C91D3DBB930053B9A4 = {
 						CreatedOnToolsVersion = 7.2;
 						DevelopmentTeam = 56ZWZ5K99K;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 					};
 					18E560E21D3DBB930053B9A4 = {
 						CreatedOnToolsVersion = 7.2;
@@ -1282,6 +1307,7 @@
 				18E560D81D3DBB930053B9A4 /* Main.storyboard in Resources */,
 				187B9D1E1D7522BC000CEC62 /* alarm.wav in Resources */,
 				185A96D71D6A929400403E44 /* TPTCorrectCell.xib in Resources */,
+				CB1242651EE0431C00F699D4 /* TPTSetBuyCell.xib in Resources */,
 				18FFB3BE1D5C834400EFE0D3 /* alertSetThreeCell.xib in Resources */,
 				18FD054B1D5B3B5C009D4B16 /* TPTSetEleCell.xib in Resources */,
 				18B23CF81D41CC3C00CE9AA6 /* README.txt in Resources */,
@@ -1356,6 +1382,7 @@
 				18A3E0291D49EFB600FCFF01 /* XPQRotateDials.m in Sources */,
 				1821A9131EA0C3BF00721240 /* BabyToy.m in Sources */,
 				1809124E1D66EF42003F51A5 /* TPTDeviceInfoCell.m in Sources */,
+				CB1242641EE0431C00F699D4 /* TPTSetBuyCell.m in Sources */,
 				180912511D66F724003F51A5 /* ZCUserModel.m in Sources */,
 				1821A90F1EA0C3BF00721240 /* BabyOptions.m in Sources */,
 				1821A90E1EA0C3BF00721240 /* BabyDefine.m in Sources */,
@@ -1368,6 +1395,7 @@
 				18E560D21D3DBB930053B9A4 /* AppDelegate.m in Sources */,
 				180912441D66D915003F51A5 /* UITableViewCell+WHC_AutoHeightForCell.m in Sources */,
 				187550EC1D5D9DE500648557 /* WBCacheTool.m in Sources */,
+				CB1242691EE0498900F699D4 /* TPTSetBuyViewController.m in Sources */,
 				1821A9111EA0C3BF00721240 /* BabyRhythm.m in Sources */,
 				18B953631D49CF5400F2221C /* TPLeftCell.m in Sources */,
 				187550F71D5DB3B700648557 /* TPTHistoryCell.m in Sources */,
@@ -1586,8 +1614,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: MA CHAOSHAN (56ZWZ5K99K)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				DEVELOPMENT_TEAM = 56ZWZ5K99K;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1609,8 +1637,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.quarks.tpt;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "903f88c1-f3ca-4f3f-8a70-87b26f5a6591";
+				PROVISIONING_PROFILE_SPECIFIER = tpt_Distribution_profiles;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -1622,8 +1650,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: MA CHAOSHAN (56ZWZ5K99K)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				DEVELOPMENT_TEAM = 56ZWZ5K99K;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1645,8 +1673,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.quarks.tpt;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "903f88c1-f3ca-4f3f-8a70-87b26f5a6591";
+				PROVISIONING_PROFILE_SPECIFIER = tpt_Distribution_profiles;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

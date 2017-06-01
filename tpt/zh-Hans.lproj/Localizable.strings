@@ -8,6 +8,8 @@
 
 "CFBundleDisplayName" = "宝宝手环";
 
+"app_share_name"="宝宝手环--优特卡尔婴幼儿体温计";
+
 "app_name" = "U-Telecare";
 "unknown_device" = "Unknown device";
 "unknown_characteristic" = "Unknown characteristic";
@@ -34,8 +36,11 @@
 "setting_tem_check_content" = "校准体温计与手机端显示温度的差异。";
 "setting" = "设置>>";
 "setting_see" = "查看>>";
-"setting_power" = "宝宝手环电量";
+"setting_power" = "宝宝手环参考电量";
 "setting_power_lest" = "目前电池电量";
+
+"setting_buy"= "立即购买";
+"setting_buy_content"= "优特卡尔婴幼儿专用体温计";
 "setting_info" = "设备信息";
 "setting_info_content" = "关于设备的型号、版本等详细信息";
 "setting_disclaimer" = "免责声明";
@@ -43,7 +48,9 @@
 "disclaimer_content" = "该应用程序中的所有内容（特别是界面设计、文本、图片、标志、音频剪辑等）都是受版权保护的，在没有本公司书面证明和授权的情况下，对所有内容的复制、公众传达或者其它未经我公司许可的行为都属侵犯本公司合法权益行为，未经本公司许可，程序内所有涉及著作权、代码应用和商标等都不允许变更和移除。\n本智能软件是配合智能硬件使用的，在检测婴幼儿生命体征的过程中由于人体的复杂必，疾病并不能通过某些单一的症状发现，须要专业医生综合检查、分析判断。\n我们希望我们的产品在婴幼儿出现疾病征兆时，能够及时帮助您更好地掌握婴幼儿的身体健康情况。使您可能更加轻松，方便的照顾自己的孩子。";
 "disclaimer_tip" = "注意事项";
 "disclaimer_tip_content" = "我方所有信息公供参考，不做个别诊断、用药和使用的根据。";
+"system_device_name"="设备名称：";
 "system_device_model" = "设备型号：";
+"system_device_name_1"="优特卡尔婴幼儿体温计";
 "system_software_version" = "软件版本：";
 "system_hardware_version" = "硬件版本：";
 "raiders_tab_1" = "物理降温";

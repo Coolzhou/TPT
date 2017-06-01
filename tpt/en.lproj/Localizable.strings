@@ -8,7 +8,7 @@
 
 
 "CFBundleDisplayName" = "Baby Bracelet";
-
+"app_share_name"="Baby Bracelet Infant thermometer";
 "app_name"= "U-Telecare";
 "unknown_device"= "Unknown device";
 "unknown_characteristic"= "Unknown characteristic";
@@ -40,6 +40,10 @@
 "setting_see"= "Check>>";
 "setting_power"= "The battery power";
 "setting_power_lest"= "The current battery value";
+
+"setting_buy"= "Buy now";
+"setting_buy_content"= "Infant thermometer";
+
 "setting_info"= "Device info";
 "setting_info_content"= "About the device model, version, etc.";
 "setting_disclaimer"= "Disclaimers";
@@ -51,7 +55,8 @@
 "disclaimer_tip_content"= "The informations and suggestions in this mobile app are ONLY for reference, please reduce the fever as directed by a physician";
 
 
-
+"system_device_name"="Device name：";
+"system_device_name_1"="Infant thermometer";
 "system_device_model"= "Device ID：";
 "system_software_version"= "Software version：";
 "system_hardware_version"= "F.W version：";
