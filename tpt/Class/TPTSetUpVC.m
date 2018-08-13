@@ -49,7 +49,7 @@
 #pragma mark UITableViewDataSource,UITableViewDelegate
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 4;
+    return 3;
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -67,10 +67,6 @@
     }else if (indexPath.section ==1){
         TPTSetBuyCell *cell = [TPTSetBuyCell theTPTSetOtherCellWithTableView:tableView];
         return cell;
-    }
-    else if (indexPath.section ==2){
-        TPTSetEleCell *cell = [TPTSetEleCell theTPTSetEleCellWithTableView:tableView andIndexPath:indexPath];
-        return cell;
     }else{
         TPTSetOtherCell *cell = [TPTSetOtherCell theTPTSetOtherCellWithTableView:tableView andIndexPath:indexPath];
         cell.setOtherBlock = ^(NSInteger tag){
@@ -85,9 +81,6 @@
         return 308;
     }else if(indexPath.section==1){
         return 67;
-    }
-    else if(indexPath.section==2){
-        return 67;
     }else{
         return 162;
     }
@@ -100,8 +93,12 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section ==1) {
         NSLog(@"asaf");
-        TPTSetBuyViewController * alertVC = [[TPTSetBuyViewController alloc]init];
-        [self.navigationController pushViewController:alertVC animated:YES];
+        
+        NSString *textURL = @"http://g.appurl.me/url/22244081";
+        NSURL *cleanURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@", textURL]];
+        [[UIApplication sharedApplication] openURL:cleanURL];
+//        TPTSetBuyViewController * alertVC = [[TPTSetBuyViewController alloc]init];
+//        [self.navigationController pushViewController:alertVC animated:YES];
     }
 }
 

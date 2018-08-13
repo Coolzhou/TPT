@@ -1613,8 +1613,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: MA CHAOSHAN (56ZWZ5K99K)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 56ZWZ5K99K;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1627,7 +1628,7 @@
 				);
 				GCC_PREFIX_HEADER = "$(SRCROOT)/tpt/PrefixHeader.pch";
 				INFOPLIST_FILE = tpt/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1637,8 +1638,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.quarks.tpt;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "903f88c1-f3ca-4f3f-8a70-87b26f5a6591";
-				PROVISIONING_PROFILE_SPECIFIER = tpt_Distribution_profiles;
+				PROVISIONING_PROFILE = "8d77da78-db38-4e98-adfb-a61125949db0";
+				PROVISIONING_PROFILE_SPECIFIER = tpts_Distribution_profile;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -1649,8 +1650,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: MA CHAOSHAN (56ZWZ5K99K)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 56ZWZ5K99K;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1663,7 +1665,7 @@
 				);
 				GCC_PREFIX_HEADER = "$(SRCROOT)/tpt/PrefixHeader.pch";
 				INFOPLIST_FILE = tpt/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1673,8 +1675,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.quarks.tpt;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "903f88c1-f3ca-4f3f-8a70-87b26f5a6591";
-				PROVISIONING_PROFILE_SPECIFIER = tpt_Distribution_profiles;
+				PROVISIONING_PROFILE = "8d77da78-db38-4e98-adfb-a61125949db0";
+				PROVISIONING_PROFILE_SPECIFIER = tpts_Distribution_profile;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
